@@ -2,6 +2,7 @@ import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItemWidget extends StatelessWidget {
   const ProductItemWidget({
@@ -19,7 +20,7 @@ class ProductItemWidget extends StatelessWidget {
         print('123');
       },
       child: SizedBox(
-        width: 156,
+        width: 156.w,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -28,12 +29,12 @@ class ProductItemWidget extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.defaultColor,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: AspectRatio(
                   aspectRatio: 157 / 176,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.r),
                     child: Image.asset(
                       AppImages.thumbnail,
                       fit: BoxFit.cover,
@@ -42,12 +43,12 @@ class ProductItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             ShimmerLoading(
               isLoading: isLoading,
               child: (isLoading) ? _LoadItemWidget() : _ContentItemWidget(),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
           ],
         ),
       ),
@@ -67,20 +68,20 @@ class _ContentItemWidget extends StatelessWidget {
           children: [
             Text(
               '\$$finalPrice',
-              style: const TextStyle(
-                fontSize: 12,
+              style: TextStyle(
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
                 decoration: TextDecoration.lineThrough,
-                color: Color(0xFF4A4A4A),
+                color: const Color(0xFF4A4A4A),
               ),
             ),
             const SizedBox(width: 4),
-            const Text(
+            Text(
               '\$33.00',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFFB6B4B0),
+                color: const Color(0xFFB6B4B0),
               ),
             ),
             const Spacer(),
@@ -89,21 +90,21 @@ class _ContentItemWidget extends StatelessWidget {
               color: Colors.yellow,
             ),
             const SizedBox(width: 4),
-            const Text(
+            Text(
               '4.5',
               style: TextStyle(
-                fontSize: 14,
-                color: Color(0xFF4A4A4A),
+                fontSize: 14.sp,
+                color: const Color(0xFF4A4A4A),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 4),
-        const Text(
+        SizedBox(height: 4.h),
+        Text(
           'Имя продукта',
           style: TextStyle(
-            fontSize: 14,
-            color: Color(0xFF696D84),
+            fontSize: 14.sp,
+            color: const Color(0xFF696D84),
           ),
           maxLines: 1,
           softWrap: true,
@@ -126,16 +127,16 @@ class _LoadItemWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           width: double.infinity,
-          height: 24,
+          height: 24.h,
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: 4.h),
         Container(
           decoration: BoxDecoration(
             color: AppColors.defaultColor,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
           ),
-          width: 100,
-          height: 24,
+          width: 100.w,
+          height: 24.h,
         ),
       ],
     );

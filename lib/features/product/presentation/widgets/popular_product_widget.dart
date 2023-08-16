@@ -1,6 +1,7 @@
 import 'package:e_shop/common/constants/app_text_styles.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopularProductWidget extends StatelessWidget {
   const PopularProductWidget({
@@ -15,8 +16,8 @@ class PopularProductWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -27,17 +28,17 @@ class PopularProductWidget extends StatelessWidget {
               Text(
                 'Посмотреть все',
                 style: TextStyle(
-                  color: Color(0xFFB6B4B0),
+                  color: const Color(0xFFB6B4B0),
                   fontWeight: FontWeight.w500,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                 ),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 7),
+        SizedBox(height: 7.h),
         SizedBox(
-          height: 250,
+          height: 250.w,
           child: ListView.separated(
             physics: isLoading ? const NeverScrollableScrollPhysics() : null,
             scrollDirection: Axis.horizontal,
@@ -46,7 +47,7 @@ class PopularProductWidget extends StatelessWidget {
               return ProductItemWidget(isLoading: isLoading);
             },
             itemBuilder: (BuildContext context, int index) {
-              return const SizedBox(width: 20);
+              return SizedBox(width: 20.w);
             },
           ),
         ),

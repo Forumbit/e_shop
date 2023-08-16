@@ -1,31 +1,28 @@
-
 import 'package:e_shop/common/constants/app_text_styles.dart';
 import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
-import 'package:e_shop/config/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AboutUsWidget extends StatelessWidget {
   const AboutUsWidget({
     super.key,
     required this.isLoading,
-    required SizeConfig sizeConfig,
-  }) : _sizeConfig = sizeConfig;
+  });
 
   final bool isLoading;
-  final SizeConfig _sizeConfig;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'О нас',
             style: AppTextStyles.subtitleStyle,
           ),
-          const SizedBox(height: 3),
+          SizedBox(height: 3.h),
           ShimmerLoading(
             isLoading: isLoading,
             child: SizedBox(
@@ -40,15 +37,15 @@ class AboutUsWidget extends StatelessWidget {
                       fit: BoxFit.cover,
                       opacity: 0.2,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.r),
                     color: Colors.grey,
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(
-                      top: _sizeConfig.getWidth(30),
-                      left: _sizeConfig.getWidth(22),
-                      right: _sizeConfig.getWidth(170),
-                      bottom: _sizeConfig.getWidth(30),
+                      top: 30.h,
+                      left: 22.w,
+                      right: 150.w,
+                      bottom: 30.h,
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -57,26 +54,26 @@ class AboutUsWidget extends StatelessWidget {
                         Text(
                           'Кто мы такие?',
                           style: TextStyle(
-                            fontSize: _sizeConfig.getFontSize(16),
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        SizedBox(height: 5.h),
                         Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...  ',
-                          style: TextStyle(
-                              fontSize: _sizeConfig.getFontSize(12)),
+                          style:
+                              TextStyle(fontSize: 12.sp),
                           maxLines: 3,
                           softWrap: true,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        const SizedBox(height: 5),
+                        SizedBox(height: 5.h),
                         GestureDetector(
                           onTap: () => print(123),
                           child: Text(
                             'Узнать больше',
                             style: TextStyle(
-                              fontSize: _sizeConfig.getFontSize(14),
+                              fontSize: 14.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
