@@ -2,6 +2,7 @@ import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoryListWidget extends StatelessWidget {
   const CategoryListWidget({
@@ -83,7 +84,7 @@ class CategoryItemWidget extends StatelessWidget {
           ),
           onPressed: () {
             if (isLoading) return;
-            print(123);
+            context.push('/product-list');
           },
           child: Text(
             'Телефон',

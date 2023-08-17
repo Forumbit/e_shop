@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return MaterialApp.router(
           theme: ThemeData(
+            fontFamily: 'Montserrat',
             colorScheme: ColorScheme.fromSeed(
               seedColor: AppColors.mainColor,
             ),

@@ -2,6 +2,7 @@ import 'package:e_shop/common/constants/app_text_styles.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class PopularProductWidget extends StatelessWidget {
   const PopularProductWidget({
@@ -25,12 +26,18 @@ class PopularProductWidget extends StatelessWidget {
                 'Популярные',
                 style: AppTextStyles.subtitleStyle,
               ),
-              Text(
-                'Посмотреть все',
-                style: TextStyle(
-                  color: const Color(0xFFB6B4B0),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14.sp,
+              GestureDetector(
+                onTap: () {
+                  if (isLoading) return;
+                  context.push('/product-list');
+                },
+                child: Text(
+                  'Посмотреть все',
+                  style: TextStyle(
+                    color: const Color(0xFFB6B4B0),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14.sp,
+                  ),
                 ),
               ),
             ],

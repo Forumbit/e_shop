@@ -1,8 +1,8 @@
 import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/presentation/widgets/about_us_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/category_list_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/home_app_bar.dart';
 import 'package:e_shop/features/product/presentation/widgets/popular_product_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,7 +28,11 @@ class _HomePageState extends State<HomePage> {
         onPressed: () => _buttonPressed(isLoading),
         child: const Icon(Icons.hourglass_bottom),
       ),
-      appBar: const HomeAppBar(),
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        toolbarHeight: 80.h,
+        title: const SearchWidget(),
+      ),
       body: Shimmer(
         child: ListView(
           physics: isLoading ? const NeverScrollableScrollPhysics() : null,
