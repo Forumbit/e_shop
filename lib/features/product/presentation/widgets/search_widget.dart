@@ -1,12 +1,36 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
+import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
-class SearchWidget extends StatelessWidget {
+class SearchWidget extends StatefulWidget {
   const SearchWidget({
     super.key,
+    this.controllerText,
   });
+
+  final String? controllerText;
+
+  @override
+  State<SearchWidget> createState() => _SearchWidgetState();
+}
+
+class _SearchWidgetState extends State<SearchWidget> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.controllerText);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +38,17 @@ class SearchWidget extends StatelessWidget {
       children: [
         Expanded(
           child: TextField(
+            controller: _controller,
+            onSubmitted: (String text) {
+              if (_controller.text == '') return;
+
+              context.pushNamed(
+                AppRouteNamed.searchProduct,
+                pathParameters: {
+                  AppRouteArgument.query: text,
+                },
+              );
+            },
             decoration: InputDecoration(
               filled: true,
               fillColor: AppColors.defaultColor,

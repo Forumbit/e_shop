@@ -6,9 +6,11 @@ class ProductListWidget extends StatelessWidget {
   const ProductListWidget({
     super.key,
     required this.isLoading,
+    required this.category,
   });
 
   final bool isLoading;
+  final String category;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class ProductListWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: '"Смартфоны"',
+                      text: '"$category"',
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w500,

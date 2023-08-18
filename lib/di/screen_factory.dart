@@ -5,5 +5,17 @@ class _ScreenFactoryDefault implements ScreenFactory {
   Widget makeHome() => const HomePage();
 
   @override
-  Widget makeProductList() => const ProductListPage();
+  Widget makePopularProductList() =>
+      const ProductListPage(category: 'Популярные');
+
+  @override
+  Widget makeCategoryProductList(String category) => ProductListPage(
+        category: category,
+      );
+
+  @override
+  Widget makeSearchProductList(String query) => ProductListPage(
+        category: query,
+        controllerText: query,
+      );
 }

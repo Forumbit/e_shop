@@ -5,7 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductListPage extends StatelessWidget {
-  const ProductListPage({super.key});
+  const ProductListPage({
+    super.key,
+    this.controllerText,
+    required this.category,
+  });
+
+  final String? controllerText;
+  final String category;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,7 @@ class ProductListPage extends StatelessWidget {
           preferredSize: Size.fromHeight(60.h),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-            child: const SearchWidget(),
+            child: SearchWidget(controllerText: controllerText),
           ),
         ),
         scrolledUnderElevation: 0,
@@ -38,7 +45,10 @@ class ProductListPage extends StatelessWidget {
           children: [
             SizedBox(width: 10.h),
             SizedBox(height: 20.h),
-            ProductListWidget(isLoading: isLoading),
+            ProductListWidget(
+              isLoading: isLoading,
+              category: category,
+            ),
           ],
         ),
       ),

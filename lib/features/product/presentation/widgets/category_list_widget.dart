@@ -1,4 +1,5 @@
 import 'package:e_shop/common/constants/app_colors.dart';
+import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,7 +85,12 @@ class CategoryItemWidget extends StatelessWidget {
           ),
           onPressed: () {
             if (isLoading) return;
-            context.push('/product-list');
+            context.pushNamed(
+              AppRouteNamed.categoryProduct,
+              pathParameters: {
+                AppRouteArgument.category: 'Телефон',
+              },
+            );
           },
           child: Text(
             'Телефон',
