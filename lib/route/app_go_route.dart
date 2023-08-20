@@ -8,6 +8,7 @@ abstract interface class ScreenFactory {
   Widget makePopularProductList();
   Widget makeCategoryProductList(String category);
   Widget makeSearchProductList(String query);
+  Widget makeProductDetail(int id);
 }
 
 class AppGoRoute implements AppRoute {
@@ -42,6 +43,15 @@ class AppGoRoute implements AppRoute {
                 screenFactory.makeSearchProductList(
               state.pathParameters[AppRouteArgument.query] ?? '',
             ),
+          ),
+          GoRoute(
+            name: AppRouteNamed.productDetail,
+            path: AppRouteUrl.productDetail,
+            builder: (BuildContext context, GoRouterState state) {
+              final id = int.tryParse(state.pathParameters[AppRouteArgument.id] ?? '');
+              if (id == null) return Container();
+              return screenFactory.makeProductDetail(id);
+            },
           ),
         ],
       );

@@ -1,8 +1,10 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
+import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductItemWidget extends StatelessWidget {
   const ProductItemWidget({
@@ -17,7 +19,10 @@ class ProductItemWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (isLoading) return;
-        print('123');
+        context.pushNamed(
+          AppRouteNamed.productDetail,
+          pathParameters: {AppRouteArgument.id: '1'},
+        );
       },
       child: SizedBox(
         width: 156.w,

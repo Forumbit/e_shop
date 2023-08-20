@@ -18,4 +18,7 @@ class _ScreenFactoryDefault implements ScreenFactory {
         category: query,
         controllerText: query,
       );
+
+  @override
+  Widget makeProductDetail(int id) => const ProductDetailPage();
 }

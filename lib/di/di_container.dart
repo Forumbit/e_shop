@@ -1,3 +1,4 @@
+import 'package:e_shop/features/product/presentation/pages/product_detail_page.dart';
 import 'package:e_shop/features/product/presentation/pages/product_list_page.dart';
 import 'package:e_shop/main.dart';
 import 'package:e_shop/route/app_go_route.dart';
