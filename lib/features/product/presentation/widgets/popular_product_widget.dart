@@ -30,7 +30,7 @@ class PopularProductWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   if (isLoading) return;
-                  context.push(AppRouteUrl.popularProductList);
+                  context.pushNamed(AppRouteNamed.popularProduct);
                 },
                 child: Text(
                   'Посмотреть все',
