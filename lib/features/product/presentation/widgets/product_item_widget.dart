@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
-import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
+import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -9,19 +9,18 @@ import 'package:go_router/go_router.dart';
 class ProductItemWidget extends StatelessWidget {
   const ProductItemWidget({
     super.key,
-    required this.isLoading,
+    required this.product,
   });
 
-  final bool isLoading;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (isLoading) return;
         context.pushNamed(
           AppRouteNamed.productDetail,
-          pathParameters: {AppRouteArgument.id: '1'},
+          pathParameters: {AppRouteArgument.id: product.id.toString()},
         );
       },
       child: SizedBox(
@@ -29,30 +28,24 @@ class ProductItemWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ShimmerLoading(
-              isLoading: isLoading,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.defaultColor,
+            Container(
+              decoration: BoxDecoration(
+                color: AppColors.defaultColor,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: AspectRatio(
+                aspectRatio: 157 / 176,
+                child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
-                ),
-                child: AspectRatio(
-                  aspectRatio: 157 / 176,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.r),
-                    child: Image.asset(
-                      AppImages.thumbnail,
-                      fit: BoxFit.cover,
-                    ),
+                  child: Image.network(
+                    product.thumbnail,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
             SizedBox(height: 8.h),
-            ShimmerLoading(
-              isLoading: isLoading,
-              child: (isLoading) ? _LoadItemWidget() : _ContentItemWidget(),
-            ),
+            _ContentItemWidget(product: product),
             SizedBox(height: 8.h),
           ],
         ),
@@ -62,19 +55,22 @@ class ProductItemWidget extends StatelessWidget {
 }
 
 class _ContentItemWidget extends StatelessWidget {
+  const _ContentItemWidget({required this.product});
+
+  final ProductEntity product;
+
   @override
   Widget build(BuildContext context) {
-    const discountPercent = 12.96;
-    final finalPrice = (33 * (100 - discountPercent) / 100).ceilToDouble();
+    final finalPrice = (product.price * (100 - product.discountPercentage) / 100).ceilToDouble();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Text(
-              '\$$finalPrice',
+              '\$${finalPrice}0',
               style: TextStyle(
-                fontSize: 12.sp,
+                fontSize: 10.sp,
                 fontWeight: FontWeight.w500,
                 decoration: TextDecoration.lineThrough,
                 color: const Color(0xFF4A4A4A),
@@ -82,9 +78,9 @@ class _ContentItemWidget extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              '\$33.00',
+              '\$${product.price}0',
               style: TextStyle(
-                fontSize: 16.sp,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xFFB6B4B0),
               ),
@@ -96,9 +92,9 @@ class _ContentItemWidget extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              '4.5',
+              '${product.rating}',
               style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 12.sp,
                 color: const Color(0xFF4A4A4A),
               ),
             ),
@@ -106,7 +102,7 @@ class _ContentItemWidget extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          'Имя продукта',
+          product.title,
           style: TextStyle(
             fontSize: 14.sp,
             color: const Color(0xFF696D84),
@@ -114,34 +110,6 @@ class _ContentItemWidget extends StatelessWidget {
           maxLines: 1,
           softWrap: true,
           overflow: TextOverflow.ellipsis,
-        ),
-      ],
-    );
-  }
-}
-
-class _LoadItemWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.defaultColor,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          width: double.infinity,
-          height: 24.h,
-        ),
-        SizedBox(height: 4.h),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.defaultColor,
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-          width: 100.w,
-          height: 24.h,
         ),
       ],
     );

@@ -1,48 +1,57 @@
 import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
-import 'package:e_shop/features/product/presentation/widgets/about_us_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/category_list_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/popular_product_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/search_widget.dart';
+import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
+import 'package:e_shop/features/product/domain/entities/product_entity.dart';
+import 'package:e_shop/features/product/presentation/widgets/home_widgets/about_us_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/loading_widgets/popular_product_loading_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/home_widgets/popular_product_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomePage extends StatefulWidget {
+
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  var isLoading = true;
-  void _buttonPressed(isLoadingToggle) {
-    isLoading = !isLoadingToggle;
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _buttonPressed(isLoading),
-        child: const Icon(Icons.hourglass_bottom),
-      ),
       appBar: AppBar(
         scrolledUnderElevation: 0,
         toolbarHeight: 80.h,
-        title: const SearchWidget(),
+        // title: const SearchWidget(),
       ),
       body: Shimmer(
         child: ListView(
-          physics: isLoading ? const NeverScrollableScrollPhysics() : null,
           children: [
             SizedBox(height: 9.h),
-            CategoryListWidget(isLoading: isLoading),
+            // BlocBuilder<CategoryBloc, CategoryState>(
+            //   builder: (context, state) {
+            //     return state.when(
+            //       initial: () => const CategoryListLoadingWidget(),
+            //       loading: () => const CategoryListLoadingWidget(),
+            //       loaded: (List<String> categories) =>
+            //           CategoryListWidget(categories: categories),
+            //       error: () =>
+            //           const Center(child: Text('Произошла какая-то ошибка')),
+            //     );
+            //   },
+            // ),
             SizedBox(height: 17.h),
-            PopularProductWidget(isLoading: isLoading),
+            BlocBuilder<ProductListBloc, ProductListState>(
+              builder: (context, state) {
+                return state.when(
+                  initial: () => const PopularProductLoadingWidget(),
+                  loading: () => const PopularProductLoadingWidget(),
+                  loaded: (List<ProductEntity> products) =>
+                      PopularProductWidget(products: products),
+                  error: () =>
+                      const Center(child: Text('Произошла какая-то ошибка')),
+                );
+              },
+            ),
             SizedBox(height: 10.h),
-            AboutUsWidget(isLoading: isLoading),
+            const AboutUsWidget(isLoading: false),
             SizedBox(height: 20.h)
           ],
         ),
