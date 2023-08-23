@@ -20,24 +20,18 @@ mixin _$ProductListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() onGetPopularProducts,
-    required TResult Function() onGetCategoryProducts,
-    required TResult Function() onGetSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? onGetPopularProducts,
-    TResult? Function()? onGetCategoryProducts,
-    TResult? Function()? onGetSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? onGetPopularProducts,
-    TResult Function()? onGetCategoryProducts,
-    TResult Function()? onGetSearchProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,25 +39,18 @@ mixin _$ProductListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OnGetPopularProducts value) onGetPopularProducts,
-    required TResult Function(_OnGetCategoryProducts value)
-        onGetCategoryProducts,
-    required TResult Function(_OnGetSearchProducts value) onGetSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult? Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult? Function(_OnGetSearchProducts value)? onGetSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult Function(_OnGetSearchProducts value)? onGetSearchProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,8 +113,6 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() onGetPopularProducts,
-    required TResult Function() onGetCategoryProducts,
-    required TResult Function() onGetSearchProducts,
   }) {
     return started();
   }
@@ -137,8 +122,6 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? onGetPopularProducts,
-    TResult? Function()? onGetCategoryProducts,
-    TResult? Function()? onGetSearchProducts,
   }) {
     return started?.call();
   }
@@ -148,8 +131,6 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? onGetPopularProducts,
-    TResult Function()? onGetCategoryProducts,
-    TResult Function()? onGetSearchProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -163,9 +144,6 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OnGetPopularProducts value) onGetPopularProducts,
-    required TResult Function(_OnGetCategoryProducts value)
-        onGetCategoryProducts,
-    required TResult Function(_OnGetSearchProducts value) onGetSearchProducts,
   }) {
     return started(this);
   }
@@ -175,8 +153,6 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult? Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult? Function(_OnGetSearchProducts value)? onGetSearchProducts,
   }) {
     return started?.call(this);
   }
@@ -186,8 +162,6 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult Function(_OnGetSearchProducts value)? onGetSearchProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -241,8 +215,6 @@ class _$_OnGetPopularProducts implements _OnGetPopularProducts {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() onGetPopularProducts,
-    required TResult Function() onGetCategoryProducts,
-    required TResult Function() onGetSearchProducts,
   }) {
     return onGetPopularProducts();
   }
@@ -252,8 +224,6 @@ class _$_OnGetPopularProducts implements _OnGetPopularProducts {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? onGetPopularProducts,
-    TResult? Function()? onGetCategoryProducts,
-    TResult? Function()? onGetSearchProducts,
   }) {
     return onGetPopularProducts?.call();
   }
@@ -263,8 +233,6 @@ class _$_OnGetPopularProducts implements _OnGetPopularProducts {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? onGetPopularProducts,
-    TResult Function()? onGetCategoryProducts,
-    TResult Function()? onGetSearchProducts,
     required TResult orElse(),
   }) {
     if (onGetPopularProducts != null) {
@@ -278,9 +246,6 @@ class _$_OnGetPopularProducts implements _OnGetPopularProducts {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OnGetPopularProducts value) onGetPopularProducts,
-    required TResult Function(_OnGetCategoryProducts value)
-        onGetCategoryProducts,
-    required TResult Function(_OnGetSearchProducts value) onGetSearchProducts,
   }) {
     return onGetPopularProducts(this);
   }
@@ -290,8 +255,6 @@ class _$_OnGetPopularProducts implements _OnGetPopularProducts {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult? Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult? Function(_OnGetSearchProducts value)? onGetSearchProducts,
   }) {
     return onGetPopularProducts?.call(this);
   }
@@ -301,8 +264,6 @@ class _$_OnGetPopularProducts implements _OnGetPopularProducts {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult Function(_OnGetSearchProducts value)? onGetSearchProducts,
     required TResult orElse(),
   }) {
     if (onGetPopularProducts != null) {
@@ -314,236 +275,6 @@ class _$_OnGetPopularProducts implements _OnGetPopularProducts {
 
 abstract class _OnGetPopularProducts implements ProductListEvent {
   const factory _OnGetPopularProducts() = _$_OnGetPopularProducts;
-}
-
-/// @nodoc
-abstract class _$$_OnGetCategoryProductsCopyWith<$Res> {
-  factory _$$_OnGetCategoryProductsCopyWith(_$_OnGetCategoryProducts value,
-          $Res Function(_$_OnGetCategoryProducts) then) =
-      __$$_OnGetCategoryProductsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_OnGetCategoryProductsCopyWithImpl<$Res>
-    extends _$ProductListEventCopyWithImpl<$Res, _$_OnGetCategoryProducts>
-    implements _$$_OnGetCategoryProductsCopyWith<$Res> {
-  __$$_OnGetCategoryProductsCopyWithImpl(_$_OnGetCategoryProducts _value,
-      $Res Function(_$_OnGetCategoryProducts) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_OnGetCategoryProducts implements _OnGetCategoryProducts {
-  const _$_OnGetCategoryProducts();
-
-  @override
-  String toString() {
-    return 'ProductListEvent.onGetCategoryProducts()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnGetCategoryProducts);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() onGetPopularProducts,
-    required TResult Function() onGetCategoryProducts,
-    required TResult Function() onGetSearchProducts,
-  }) {
-    return onGetCategoryProducts();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? onGetPopularProducts,
-    TResult? Function()? onGetCategoryProducts,
-    TResult? Function()? onGetSearchProducts,
-  }) {
-    return onGetCategoryProducts?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? onGetPopularProducts,
-    TResult Function()? onGetCategoryProducts,
-    TResult Function()? onGetSearchProducts,
-    required TResult orElse(),
-  }) {
-    if (onGetCategoryProducts != null) {
-      return onGetCategoryProducts();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_OnGetPopularProducts value) onGetPopularProducts,
-    required TResult Function(_OnGetCategoryProducts value)
-        onGetCategoryProducts,
-    required TResult Function(_OnGetSearchProducts value) onGetSearchProducts,
-  }) {
-    return onGetCategoryProducts(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult? Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult? Function(_OnGetSearchProducts value)? onGetSearchProducts,
-  }) {
-    return onGetCategoryProducts?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult Function(_OnGetSearchProducts value)? onGetSearchProducts,
-    required TResult orElse(),
-  }) {
-    if (onGetCategoryProducts != null) {
-      return onGetCategoryProducts(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnGetCategoryProducts implements ProductListEvent {
-  const factory _OnGetCategoryProducts() = _$_OnGetCategoryProducts;
-}
-
-/// @nodoc
-abstract class _$$_OnGetSearchProductsCopyWith<$Res> {
-  factory _$$_OnGetSearchProductsCopyWith(_$_OnGetSearchProducts value,
-          $Res Function(_$_OnGetSearchProducts) then) =
-      __$$_OnGetSearchProductsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_OnGetSearchProductsCopyWithImpl<$Res>
-    extends _$ProductListEventCopyWithImpl<$Res, _$_OnGetSearchProducts>
-    implements _$$_OnGetSearchProductsCopyWith<$Res> {
-  __$$_OnGetSearchProductsCopyWithImpl(_$_OnGetSearchProducts _value,
-      $Res Function(_$_OnGetSearchProducts) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_OnGetSearchProducts implements _OnGetSearchProducts {
-  const _$_OnGetSearchProducts();
-
-  @override
-  String toString() {
-    return 'ProductListEvent.onGetSearchProducts()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnGetSearchProducts);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() onGetPopularProducts,
-    required TResult Function() onGetCategoryProducts,
-    required TResult Function() onGetSearchProducts,
-  }) {
-    return onGetSearchProducts();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? onGetPopularProducts,
-    TResult? Function()? onGetCategoryProducts,
-    TResult? Function()? onGetSearchProducts,
-  }) {
-    return onGetSearchProducts?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? onGetPopularProducts,
-    TResult Function()? onGetCategoryProducts,
-    TResult Function()? onGetSearchProducts,
-    required TResult orElse(),
-  }) {
-    if (onGetSearchProducts != null) {
-      return onGetSearchProducts();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_OnGetPopularProducts value) onGetPopularProducts,
-    required TResult Function(_OnGetCategoryProducts value)
-        onGetCategoryProducts,
-    required TResult Function(_OnGetSearchProducts value) onGetSearchProducts,
-  }) {
-    return onGetSearchProducts(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult? Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult? Function(_OnGetSearchProducts value)? onGetSearchProducts,
-  }) {
-    return onGetSearchProducts?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_OnGetPopularProducts value)? onGetPopularProducts,
-    TResult Function(_OnGetCategoryProducts value)? onGetCategoryProducts,
-    TResult Function(_OnGetSearchProducts value)? onGetSearchProducts,
-    required TResult orElse(),
-  }) {
-    if (onGetSearchProducts != null) {
-      return onGetSearchProducts(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnGetSearchProducts implements ProductListEvent {
-  const factory _OnGetSearchProducts() = _$_OnGetSearchProducts;
 }
 
 /// @nodoc

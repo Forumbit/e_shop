@@ -12,37 +12,26 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   ProductListBloc(this._productRepository) : super(const _Initial()) {
     on<ProductListEvent>(
       (event, emit) async => event.when(
-        started: () async => await _init(event, emit),
-        onGetPopularProducts: () => _getPopularProducts(event, emit),
-        onGetCategoryProducts: () => _getCategoryProducts(event, emit),
-        onGetSearchProducts: () => _getSearchProducts(event, emit),
-        // onGetProduct: () => _getProduct(event, emit),
+        started: () async => await _init(emit),
+        onGetPopularProducts: () => _getPopularProducts(emit),
       ),
       transformer: concurrent(),
     );
   }
 
   final ProductRepository _productRepository;
+  var _page = 0;
+  var _products = <ProductEntity>[];
 
-  Future<void> _init(event, emit) async {
-    await _getPopularProducts(event, emit);
+  Future<void> _init(emit) async {
+    await _getPopularProducts(emit);
   }
 
-  Future<void> _getPopularProducts(event, emit) async {
+  Future<void> _getPopularProducts(emit) async {
     emit(const ProductListState.loading());
-    final products = await _productRepository.getPopularProducts();
-    emit(ProductListState.loaded(products));
-  }
-
-  Future<void> _getCategoryProducts(event, emit) async {
-    emit();
-  }
-
-  Future<void> _getSearchProducts(event, emit) async {
-    emit();
-  }
-
-  Future<void> _getProduct(event, emit) async {
-    emit();
+    final products = await _productRepository.getPopularProducts(_page * 10);
+    _page++;
+    _products.addAll(products);
+    emit(ProductListState.loaded(_products));
   }
 }

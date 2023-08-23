@@ -8,13 +8,13 @@ class ProductRepositoryImpl implements ProductRepository {
 
   ProductRepositoryImpl({required this.productRemoteDataSource});
 
-
   @override
-  Future<List<ProductEntity>> getPopularProducts() async {
+  Future<List<ProductEntity>> getPopularProducts(int skip) async {
     try {
-      final productModels = await productRemoteDataSource.getPopularProducts();
-      final productEntities = productModels
-          .map((e) => ProductMapper.toEntity(e)).toList();
+      final productModels =
+          await productRemoteDataSource.getPopularProducts(skip);
+      final productEntities =
+          productModels.map((e) => ProductMapper.toEntity(e)).toList();
       return productEntities;
     } catch (e) {
       print(e);
@@ -33,7 +33,7 @@ class ProductRepositoryImpl implements ProductRepository {
       throw Exception(e);
     }
   }
-  
+
   // @override
   // Future<List<ProductEntity>> getCategoryProducts(String category) async {
   //   try {
