@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -43,8 +42,11 @@ class HomePage extends StatelessWidget {
                 return state.when(
                   initial: () => const PopularProductLoadingWidget(),
                   loading: () => const PopularProductLoadingWidget(),
-                  loaded: (List<ProductEntity> products) =>
+                  loaded: (List<ProductEntity> products, _) =>
                       PopularProductWidget(products: products),
+
+                  //! Maybe it is wrong!
+                  newProductsLoaded: (_, __) => const SizedBox.shrink(),
                   error: () =>
                       const Center(child: Text('Произошла какая-то ошибка')),
                 );

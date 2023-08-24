@@ -1,3 +1,4 @@
+import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:e_shop/features/product/presentation/widgets/loading_widgets/product_item_loading_widget.dart';
@@ -15,72 +16,86 @@ class ProductListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Row(
-            children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Категория ',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: const Color(0xFF999BA9),
-                      ),
-                    ),
-                    TextSpan(
-                      text: '"$category"',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF2F2F2F),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              Text(
-                '26 результатов',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: const Color(0xFF999BA9),
-                ),
-              ),
-            ],
-          ),
+    return Shimmer(
+        child: BlocBuilder<ProductListBloc, ProductListState>(
+      builder: (context, state) => state.when(
+        //! Is is maybe Wrong!
+        initial: () => const _ProductGridViewWidget(
+          products: null,
+          isProductsEnded: false,
         ),
-        SizedBox(height: 16.h),
-        BlocBuilder<ProductListBloc, ProductListState>(
-          builder: (context, state) => state.when(
-            initial: () => const _ProductGridViewWidget(products: null),
-            loading: () => const _ProductGridViewWidget(products: null),
-            loaded: (products) => _ProductGridViewWidget(products: products),
-            error: () => const Text('Произошла какая-то ошибка'),
-          ),
-        )
-      ],
-    );
+        loading: () => const _ProductGridViewWidget(
+          products: null,
+          isProductsEnded: false,
+        ),
+        //! It is maybe wrong!
+        loaded: (products, isProductsEnded) => _ProductGridViewWidget(
+            products: products, isProductsEnded: isProductsEnded),
+
+        newProductsLoaded: (List<ProductEntity> products, isProductsEnded) =>
+            _ProductGridViewWidget(
+                products: products, isProductsEnded: isProductsEnded),
+        error: () => const Text('Произошла какая-то ошибка'),
+      ),
+    ));
   }
 }
 
-class _ProductGridViewWidget extends StatelessWidget {
+class _ProductGridViewWidget extends StatefulWidget {
   const _ProductGridViewWidget({
     required this.products,
+    required this.isProductsEnded,
   });
 
   final List<ProductEntity>? products;
+  final bool isProductsEnded;
+
+  @override
+  State<_ProductGridViewWidget> createState() => _ProductGridViewWidgetState();
+}
+
+class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
+  late final ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    print(widget.isProductsEnded);
+    if (widget.isProductsEnded) return;
+    _scrollController.addListener(_onChange);
+  }
+
+  @override
+  void dispose() {
+    if (!widget.isProductsEnded) {
+      _scrollController.removeListener(_onChange);
+    }
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onChange() {
+    if (_scrollController.position.maxScrollExtent ==
+        _scrollController.offset) {
+      context
+          .read<ProductListBloc>()
+          .add(ProductListEvent.onGetPopularProducts(widget.products));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = products == null;
+    final isLoading = widget.products == null;
+
+    //! Change Variable name
+    final loadCount = widget.isProductsEnded ? 0 : 4;
+
     return GridView.builder(
-      physics: const NeverScrollableScrollPhysics(),
+      controller: _scrollController,
+      physics: isLoading ? const NeverScrollableScrollPhysics() : null,
       padding: EdgeInsets.symmetric(horizontal: 20.w),
-      itemCount: isLoading ? 10 : products!.length,
+      itemCount: isLoading ? 10 : widget.products!.length + loadCount,
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -89,7 +104,11 @@ class _ProductGridViewWidget extends StatelessWidget {
       ),
       itemBuilder: (BuildContext context, int index) {
         if (isLoading) return const ProductItemLoadingWidget();
-        return ProductItemWidget(product: products![index]);
+        if (index < widget.products!.length) {
+          return ProductItemWidget(product: widget.products![index]);
+        } else {
+          return const ProductItemLoadingWidget();
+        }
       },
     );
   }

@@ -13,25 +13,36 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     on<ProductListEvent>(
       (event, emit) async => event.when(
         started: () async => await _init(emit),
-        onGetPopularProducts: () => _getPopularProducts(emit),
+        onGetPopularProducts: (products) => _getPopularProducts(emit, products),
       ),
-      transformer: concurrent(),
+      transformer: sequential(),
     );
   }
 
   final ProductRepository _productRepository;
-  var _page = 0;
-  var _products = <ProductEntity>[];
 
   Future<void> _init(emit) async {
-    await _getPopularProducts(emit);
+    emit(const ProductListState.loading());
+    await _getPopularProducts(emit, null);
   }
 
-  Future<void> _getPopularProducts(emit) async {
-    emit(const ProductListState.loading());
-    final products = await _productRepository.getPopularProducts(_page * 10);
-    _page++;
-    _products.addAll(products);
-    emit(ProductListState.loaded(_products));
+  Future<void> _getPopularProducts(
+    emit,
+    List<ProductEntity>? oldProducts,
+  ) async {
+    final page = oldProducts != null ? oldProducts.length : 0;
+
+    //! Not right variable, replace
+    final limit = 10;
+
+    final products = await _productRepository.getPopularProducts(page);
+    final isProductsEnded = products.length < limit;
+    print(isProductsEnded);
+    if (oldProducts != null) {
+      final list = <ProductEntity>[...oldProducts, ...products];
+      emit(ProductListState.newProductsLoaded(list, isProductsEnded));
+    } else {
+      emit(ProductListState.loaded(products, isProductsEnded));
+    }
   }
 }

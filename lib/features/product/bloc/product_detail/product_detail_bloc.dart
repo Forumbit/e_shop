@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/features/product/domain/repository/product_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
@@ -13,7 +14,9 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       (event, emit) async => event.when(
         started: (int id) async => await _init(emit, id),
       ),
+      transformer: sequential(),
     );
+
   }
 
   final ProductRepository _productRepository;
