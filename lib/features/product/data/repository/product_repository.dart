@@ -1,6 +1,8 @@
 import 'package:e_shop/features/product/data/datasources/product_remote_data_source.dart';
+import 'package:e_shop/features/product/data/mapper/product_list_mapper.dart';
 import 'package:e_shop/features/product/data/mapper/product_mapper.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
+import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/domain/repository/product_repository.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
@@ -9,12 +11,11 @@ class ProductRepositoryImpl implements ProductRepository {
   ProductRepositoryImpl({required this.productRemoteDataSource});
 
   @override
-  Future<List<ProductEntity>> getPopularProducts(int skip) async {
+  Future<ProductListEntity> getPopularProducts(int skip) async {
     try {
-      final productModels =
+      final productListModel =
           await productRemoteDataSource.getPopularProducts(skip);
-      final productEntities =
-          productModels.map((e) => ProductMapper.toEntity(e)).toList();
+      final productEntities = ProductListMapper.toEntity(productListModel);
       return productEntities;
     } catch (e) {
       print(e);

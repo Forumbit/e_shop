@@ -1,4 +1,4 @@
-import 'package:e_shop/features/product/data/models/product_model.dart';
+import 'package:e_shop/features/product/data/models/product/product_model.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 
 class ProductMapper {

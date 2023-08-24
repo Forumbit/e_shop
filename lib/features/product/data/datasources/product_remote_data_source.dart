@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:e_shop/features/product/data/models/product_model.dart';
+import 'package:e_shop/features/product/data/models/product/product_model.dart';
+import 'package:e_shop/features/product/data/models/product_list/product_list_model.dart';
 
 abstract interface class ProductRemoteDataSource {
-  Future<List<ProductModel>> getPopularProducts(int skip);
+  Future<ProductListModel> getPopularProducts(int skip);
   Future<ProductModel> getProduct(int id);
 
   // Future<List<ProductModel>> getCategoryProducts(String category);
@@ -16,10 +17,10 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   final Dio dio;
 
   @override
-  Future<List<ProductModel>> getPopularProducts(int skip) async {
+  Future<ProductListModel> getPopularProducts(int skip) async {
     final response = await dio.get('https://dummyjson.com/products/?limit=10&skip=$skip');
-    final json = response.data['products'] as List<dynamic>;
-    final products = json.map((e) => ProductModel.fromJson(e)).toList();
+    final json = response.data as Map<String, dynamic>;
+    final products = ProductListModel.fromJson(json);
     return products;
   }
 

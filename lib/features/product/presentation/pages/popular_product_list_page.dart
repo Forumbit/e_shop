@@ -1,9 +1,11 @@
+import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_list_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProductListPage extends StatelessWidget {
-  const ProductListPage({
+class PopularProductListPage extends StatelessWidget {
+  const PopularProductListPage({
     super.key,
     this.controllerText,
     required this.category,
@@ -53,18 +55,39 @@ class ProductListPage extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                Text(
-                  '26 результатов',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    color: const Color(0xFF999BA9),
-                  ),
-                ),
+                BlocBuilder<ProductListBloc, ProductListState>(
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      loaded: (productsList, isProductsEnded) => Text(
+                        '${productsList.total} результатов',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: const Color(0xFF999BA9),
+                        ),
+                      ),
+                      newProductsLoaded: (productsList, isProductsEnded) =>
+                          Text(
+                        '${productsList.total} результатов',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: const Color(0xFF999BA9),
+                        ),
+                      ),
+                      orElse: () => Text(
+                        '0 результатов',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: const Color(0xFF999BA9),
+                        ),
+                      ),
+                    );
+                  },
+                )
               ],
             ),
           ),
         ),
-        // bottom: PreferredSize(
+        //? bottom: PreferredSize(
         //   preferredSize: Size.fromHeight(60.h),
         //   child: Padding(
         //     padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),

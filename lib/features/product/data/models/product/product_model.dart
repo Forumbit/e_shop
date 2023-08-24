@@ -10,7 +10,7 @@ class ProductModel with _$ProductModel {
     required int id,
     required String title,
     required String description,
-    required double price,
+    required int price,
     required double discountPercentage,
     required double rating,
     required int stock,

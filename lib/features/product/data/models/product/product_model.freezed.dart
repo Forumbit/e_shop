@@ -23,7 +23,7 @@ mixin _$ProductModel {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
   double get discountPercentage => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   int get stock => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $ProductModelCopyWith<$Res> {
       {int id,
       String title,
       String description,
-      double price,
+      int price,
       double discountPercentage,
       double rating,
       int stock,
@@ -99,7 +99,7 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       discountPercentage: null == discountPercentage
           ? _value.discountPercentage
           : discountPercentage // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ abstract class _$$_ProductModelCopyWith<$Res>
       {int id,
       String title,
       String description,
-      double price,
+      int price,
       double discountPercentage,
       double rating,
       int stock,
@@ -193,7 +193,7 @@ class __$$_ProductModelCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       discountPercentage: null == discountPercentage
           ? _value.discountPercentage
           : discountPercentage // ignore: cast_nullable_to_non_nullable
@@ -253,7 +253,7 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   @override
   final String description;
   @override
-  final double price;
+  final int price;
   @override
   final double discountPercentage;
   @override
@@ -354,7 +354,7 @@ abstract class _ProductModel implements ProductModel {
       {required final int id,
       required final String title,
       required final String description,
-      required final double price,
+      required final int price,
       required final double discountPercentage,
       required final double rating,
       required final int stock,
@@ -373,7 +373,7 @@ abstract class _ProductModel implements ProductModel {
   @override
   String get description;
   @override
-  double get price;
+  int get price;
   @override
   double get discountPercentage;
   @override

@@ -1,6 +1,6 @@
 import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
-import 'package:e_shop/features/product/domain/entities/product_entity.dart';
+import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/presentation/widgets/loading_widgets/product_item_loading_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -19,22 +19,35 @@ class ProductListWidget extends StatelessWidget {
     return Shimmer(
         child: BlocBuilder<ProductListBloc, ProductListState>(
       builder: (context, state) => state.when(
+
         //! Is is maybe Wrong!
         initial: () => const _ProductGridViewWidget(
-          products: null,
+          productList: null,
           isProductsEnded: false,
         ),
         loading: () => const _ProductGridViewWidget(
-          products: null,
+          productList: null,
           isProductsEnded: false,
         ),
-        //! It is maybe wrong!
-        loaded: (products, isProductsEnded) => _ProductGridViewWidget(
-            products: products, isProductsEnded: isProductsEnded),
 
-        newProductsLoaded: (List<ProductEntity> products, isProductsEnded) =>
+        //! It is maybe wrong!
+        loaded: (
+          ProductListEntity productList,
+          isProductsEnded,
+        ) =>
             _ProductGridViewWidget(
-                products: products, isProductsEnded: isProductsEnded),
+          productList: productList,
+          isProductsEnded: isProductsEnded,
+        ),
+
+        newProductsLoaded: (
+          ProductListEntity productList,
+          isProductsEnded,
+        ) =>
+            _ProductGridViewWidget(
+          productList: productList,
+          isProductsEnded: isProductsEnded,
+        ),
         error: () => const Text('Произошла какая-то ошибка'),
       ),
     ));
@@ -43,11 +56,11 @@ class ProductListWidget extends StatelessWidget {
 
 class _ProductGridViewWidget extends StatefulWidget {
   const _ProductGridViewWidget({
-    required this.products,
+    required this.productList,
     required this.isProductsEnded,
   });
 
-  final List<ProductEntity>? products;
+  final ProductListEntity? productList;
   final bool isProductsEnded;
 
   @override
@@ -80,13 +93,14 @@ class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
         _scrollController.offset) {
       context
           .read<ProductListBloc>()
-          .add(ProductListEvent.onGetPopularProducts(widget.products));
+          .add(ProductListEvent.onGetPopularProducts(widget.productList));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = widget.products == null;
+    final products = widget.productList?.products;
+    final isLoading = products == null;
 
     //! Change Variable name
     final loadCount = widget.isProductsEnded ? 0 : 4;
@@ -95,7 +109,7 @@ class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
       controller: _scrollController,
       physics: isLoading ? const NeverScrollableScrollPhysics() : null,
       padding: EdgeInsets.symmetric(horizontal: 20.w),
-      itemCount: isLoading ? 10 : widget.products!.length + loadCount,
+      itemCount: isLoading ? 10 : products.length + loadCount,
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -104,8 +118,8 @@ class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
       ),
       itemBuilder: (BuildContext context, int index) {
         if (isLoading) return const ProductItemLoadingWidget();
-        if (index < widget.products!.length) {
-          return ProductItemWidget(product: widget.products![index]);
+        if (index < products.length) {
+          return ProductItemWidget(product: products[index]);
         } else {
           return const ProductItemLoadingWidget();
         }

@@ -61,28 +61,44 @@ class _ContentItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final finalPrice = (product.price * (100 - product.discountPercentage) / 100).ceilToDouble();
+    final finalPrice =
+        (product.price * (100 - product.discountPercentage) ~/ 100);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            Text(
-              '\$${finalPrice}0',
-              style: TextStyle(
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w500,
-                decoration: TextDecoration.lineThrough,
-                color: const Color(0xFF4A4A4A),
-              ),
-            ),
-            const SizedBox(width: 4),
-            Text(
-              '\$${product.price}0',
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFFB6B4B0),
+            SizedBox(
+              width: 95.w,
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '\$${product.price}',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                            decoration: TextDecoration.lineThrough,
+                            color: const Color(0xFF4A4A4A),
+                          ),
+                        ),
+                        const TextSpan(
+                          text: '  '
+                        ),
+                      ],
+                    ),
+                    TextSpan(
+                      text: '\$$finalPrice',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFFB6B4B0),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const Spacer(),
@@ -94,7 +110,7 @@ class _ContentItemWidget extends StatelessWidget {
             Text(
               '${product.rating}',
               style: TextStyle(
-                fontSize: 12.sp,
+                fontSize: 14.sp,
                 color: const Color(0xFF4A4A4A),
               ),
             ),
