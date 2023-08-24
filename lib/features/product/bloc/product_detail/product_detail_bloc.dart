@@ -9,7 +9,7 @@ part 'product_detail_state.dart';
 part 'product_detail_bloc.freezed.dart';
 
 class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
-  ProductDetailBloc(this._productRepository) : super(_Initial()) {
+  ProductDetailBloc(this._productRepository) : super(const _Initial()) {
     on<ProductDetailEvent>(
       (event, emit) async => event.when(
         started: (int id) async => await _init(emit, id),

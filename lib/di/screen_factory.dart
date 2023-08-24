@@ -45,7 +45,7 @@ class _ScreenFactoryDefault implements ScreenFactory {
         )..add(const ProductListEvent.started()),
         child: PopularProductListPage(
           category: query,
-          controllerText: query,
+          // controllerText: query,
         ),
       );
 

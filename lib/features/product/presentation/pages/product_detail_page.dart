@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/features/product/bloc/product_detail/product_detail_bloc.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
-import 'package:e_shop/features/product/presentation/widgets/loading_widgets/product_detail_loading_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_detail_loading_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/carousel_product_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/characters_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/floating_action_add_button.dart';

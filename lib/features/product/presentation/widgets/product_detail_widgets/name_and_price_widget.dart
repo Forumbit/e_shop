@@ -34,7 +34,7 @@ class NameAndPriceWidget extends StatelessWidget {
             ),
           ),
           Text(
-            '\$${product.price}0',
+            '\$${product.price}',
             style: TextStyle(
               fontSize: 28.sp,
               fontWeight: FontWeight.bold,

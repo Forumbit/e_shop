@@ -1,4 +1,5 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:e_shop/common/constants/app_remote_constants.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/domain/repository/product_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,20 +31,22 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     emit,
     ProductListEntity? oldProductList,
   ) async {
+    // skip api parameter
     final page = oldProductList != null ? oldProductList.products.length : 0;
-
-    //! Not right variable, replace
-    final limit = 10;
-
     final productList = await _productRepository.getPopularProducts(page);
-    final isProductsEnded = productList.products.length < limit;
+
+    // if number of products < limit, then products are ended
+    final areProductsEnded =
+        productList.products.length < DummyJsonApiConstants.limitParameter;
 
     if (oldProductList != null) {
       final allProducts = [...oldProductList.products, ...productList.products];
-      final allProductList = productList.copyWith(products: allProducts);
-      emit(ProductListState.newProductsLoaded(allProductList, isProductsEnded));
+      final newProductList = productList.copyWith(products: allProducts);
+
+      emit(
+          ProductListState.newProductsLoaded(newProductList, areProductsEnded));
     } else {
-      emit(ProductListState.loaded(productList, isProductsEnded));
+      emit(ProductListState.loaded(productList, areProductsEnded));
     }
   }
 }

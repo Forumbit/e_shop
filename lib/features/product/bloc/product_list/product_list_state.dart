@@ -5,8 +5,8 @@ class ProductListState with _$ProductListState {
   const factory ProductListState.initial() = _Initial;
   const factory ProductListState.loading() = _Loading;
   const factory ProductListState.loaded(
-      ProductListEntity products, bool isProductsEnded) = _Loaded;
+      ProductListEntity products, bool areProductsEnded) = _Loaded;
   const factory ProductListState.newProductsLoaded(
-      ProductListEntity products, bool isProductsEnded) = _NewProductsLoaded;
+      ProductListEntity products, bool areProductsEnded) = _NewProductsLoaded;
   const factory ProductListState.error() = _Error;
 }

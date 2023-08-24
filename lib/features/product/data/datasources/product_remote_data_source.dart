@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_shop/common/constants/app_remote_constants.dart';
 import 'package:e_shop/features/product/data/models/product/product_model.dart';
 import 'package:e_shop/features/product/data/models/product_list/product_list_model.dart';
 
@@ -18,7 +19,8 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<ProductListModel> getPopularProducts(int skip) async {
-    final response = await dio.get('https://dummyjson.com/products/?limit=10&skip=$skip');
+    final response = await dio.get(
+        '${DummyJsonApiConstants.host}/products/?limit=${DummyJsonApiConstants.limitParameter}&skip=$skip');
     final json = response.data as Map<String, dynamic>;
     final products = ProductListModel.fromJson(json);
     return products;
@@ -26,7 +28,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<ProductModel> getProduct(int id) async {
-    final response = await dio.get('https://dummyjson.com/products/$id');
+    final response = await dio.get('${DummyJsonApiConstants.host}/products/$id');
     final json = response.data as Map<String, dynamic>;
     final product = ProductModel.fromJson(json);
     return product;

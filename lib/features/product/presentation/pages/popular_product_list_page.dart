@@ -7,11 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PopularProductListPage extends StatelessWidget {
   const PopularProductListPage({
     super.key,
-    this.controllerText,
+    // this.controllerText,
     required this.category,
   });
 
-  final String? controllerText;
+  // final String? controllerText;
   final String category;
 
   @override
@@ -58,28 +58,13 @@ class PopularProductListPage extends StatelessWidget {
                 BlocBuilder<ProductListBloc, ProductListState>(
                   builder: (context, state) {
                     return state.maybeWhen(
-                      loaded: (productsList, isProductsEnded) => Text(
-                        '${productsList.total} результатов',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: const Color(0xFF999BA9),
-                        ),
-                      ),
-                      newProductsLoaded: (productsList, isProductsEnded) =>
-                          Text(
-                        '${productsList.total} результатов',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: const Color(0xFF999BA9),
-                        ),
-                      ),
-                      orElse: () => Text(
-                        '0 результатов',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: const Color(0xFF999BA9),
-                        ),
-                      ),
+                      loaded: (productsList, isProductsEnded) {
+                        return _TotalProductWidget(total: productsList.total);
+                      },
+                      newProductsLoaded: (productsList, isProductsEnded) {
+                        return _TotalProductWidget(total: productsList.total);
+                      },
+                      orElse: () => const _TotalProductWidget(total: null),
                     );
                   },
                 )
@@ -98,6 +83,23 @@ class PopularProductListPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: ProductListWidget(category: category),
+    );
+  }
+}
+
+class _TotalProductWidget extends StatelessWidget {
+  const _TotalProductWidget({required this.total});
+
+  final int? total;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '${total ?? 0} результатов',
+      style: TextStyle(
+        fontSize: 14.sp,
+        color: const Color(0xFF999BA9),
+      ),
     );
   }
 }

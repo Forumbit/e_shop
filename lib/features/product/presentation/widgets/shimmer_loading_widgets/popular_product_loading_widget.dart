@@ -1,6 +1,6 @@
 import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_text_styles.dart';
-import 'package:e_shop/features/product/presentation/widgets/loading_widgets/product_item_loading_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_item_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
