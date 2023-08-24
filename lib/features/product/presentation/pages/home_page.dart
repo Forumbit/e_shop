@@ -1,6 +1,6 @@
 import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
-import 'package:e_shop/features/product/domain/entities/product_entity.dart';
+import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/presentation/widgets/home_widgets/about_us_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/loading_widgets/popular_product_loading_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/home_widgets/popular_product_widget.dart';
@@ -42,8 +42,8 @@ class HomePage extends StatelessWidget {
                 return state.when(
                   initial: () => const PopularProductLoadingWidget(),
                   loading: () => const PopularProductLoadingWidget(),
-                  loaded: (List<ProductEntity> products, _) =>
-                      PopularProductWidget(products: products),
+                  loaded: (ProductListEntity productList, _) =>
+                      PopularProductWidget(products: productList.products),
 
                   //! Maybe it is wrong!
                   newProductsLoaded: (_, __) => const SizedBox.shrink(),

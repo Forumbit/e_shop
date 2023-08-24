@@ -27,7 +27,7 @@ class _ScreenFactoryDefault implements ScreenFactory {
         create: (context) => ProductListBloc(
           _diContainer._getProductRepository(),
         )..add(const ProductListEvent.started()),
-        child: const ProductListPage(category: 'Популярные'),
+        child: const PopularProductListPage(category: 'Популярные'),
       );
 
   @override
@@ -35,7 +35,7 @@ class _ScreenFactoryDefault implements ScreenFactory {
         create: (context) => ProductListBloc(
           _diContainer._getProductRepository(),
         )..add(const ProductListEvent.started()),
-        child: ProductListPage(category: category),
+        child: PopularProductListPage(category: category),
       );
 
   @override
@@ -43,7 +43,7 @@ class _ScreenFactoryDefault implements ScreenFactory {
         create: (context) => ProductListBloc(
           _diContainer._getProductRepository(),
         )..add(const ProductListEvent.started()),
-        child: ProductListPage(
+        child: PopularProductListPage(
           category: query,
           controllerText: query,
         ),

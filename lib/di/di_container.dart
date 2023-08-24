@@ -5,7 +5,7 @@ import 'package:e_shop/features/product/data/datasources/product_remote_data_sou
 import 'package:e_shop/features/product/data/repository/product_repository.dart';
 import 'package:e_shop/features/product/domain/repository/product_repository.dart';
 import 'package:e_shop/features/product/presentation/pages/product_detail_page.dart';
-import 'package:e_shop/features/product/presentation/pages/product_list_page.dart';
+import 'package:e_shop/features/product/presentation/pages/popular_product_list_page.dart';
 import 'package:e_shop/main.dart';
 import 'package:e_shop/route/app_go_route.dart';
 import 'package:flutter/material.dart';
