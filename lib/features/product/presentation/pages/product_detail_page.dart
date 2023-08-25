@@ -31,7 +31,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         } else if (notification.direction == ScrollDirection.reverse) {
           if (isVisible) setState(() => isVisible = false);
         }
-
         return true;
       },
       child: Scaffold(

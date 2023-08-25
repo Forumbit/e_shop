@@ -17,33 +17,34 @@ class ProductListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer(
-        child: BlocBuilder<ProductListBloc, ProductListState>(
-      builder: (context, state) => state.maybeWhen(
-        orElse: () => const _ProductGridViewWidget(
-          productList: null,
-          areProductsEnded: false,
+      child: BlocBuilder<ProductListBloc, ProductListState>(
+        builder: (context, state) => state.maybeWhen(
+          orElse: () => const _ProductGridViewWidget(
+            productList: null,
+            areProductsEnded: false,
+          ),
+          loaded: (
+            ProductListEntity productList,
+            bool areProductsEnded,
+          ) {
+            return _ProductGridViewWidget(
+              productList: productList,
+              areProductsEnded: areProductsEnded,
+            );
+          },
+          newProductsLoaded: (
+            ProductListEntity productList,
+            bool areProductsEnded,
+          ) {
+            return _ProductGridViewWidget(
+              productList: productList,
+              areProductsEnded: areProductsEnded,
+            );
+          },
+          error: () => const Text('Something went wrong'),
         ),
-        loaded: (
-          ProductListEntity productList,
-          bool areProductsEnded,
-        ) {
-          return _ProductGridViewWidget(
-            productList: productList,
-            areProductsEnded: areProductsEnded,
-          );
-        },
-        newProductsLoaded: (
-          ProductListEntity productList,
-          bool areProductsEnded,
-        ) {
-          return _ProductGridViewWidget(
-            productList: productList,
-            areProductsEnded: areProductsEnded,
-          );
-        },
-        error: () => const Text('Something went wrong'),
       ),
-    ));
+    );
   }
 }
 
