@@ -21,14 +21,14 @@ class CharactersWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Бренд:',
+                  'Brand:',
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: const Color(0xFF2F2F2F),
                   ),
                 ),
                 Text(
-                  'Категория:',
+                  'Category:',
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: const Color(0xFF2F2F2F),

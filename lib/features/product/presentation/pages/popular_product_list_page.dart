@@ -20,7 +20,7 @@ class PopularProductListPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 80.h,
         title: Text(
-          'Продукты',
+          'Products',
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.w500,
@@ -37,7 +37,7 @@ class PopularProductListPage extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Категория ',
+                        text: 'Category ',
                         style: TextStyle(
                           fontSize: 14.sp,
                           color: const Color(0xFF999BA9),
@@ -95,7 +95,7 @@ class _TotalProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '${total ?? 0} результатов',
+      '${total ?? 0} results',
       style: TextStyle(
         fontSize: 14.sp,
         color: const Color(0xFF999BA9),

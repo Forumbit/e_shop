@@ -5,9 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FloatingActionAddButton extends StatelessWidget {
-  const FloatingActionAddButton({
-    super.key,
-  });
+  const FloatingActionAddButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +20,7 @@ class FloatingActionAddButton extends StatelessWidget {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.black),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
+                overlayColor: MaterialStateProperty.all(Colors.grey[600]),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.r),
@@ -37,7 +36,7 @@ class FloatingActionAddButton extends StatelessWidget {
                     color: Colors.white,
                   ),
                   SizedBox(width: 10.w),
-                  const Text('Добавить в корзину'),
+                  const Text('Add to cart'),
                 ],
               ),
             ),

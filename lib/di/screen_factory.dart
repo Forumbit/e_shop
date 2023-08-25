@@ -27,7 +27,7 @@ class _ScreenFactoryDefault implements ScreenFactory {
         create: (context) => ProductListBloc(
           _diContainer._getProductRepository(),
         )..add(const ProductListEvent.started()),
-        child: const PopularProductListPage(category: 'Популярные'),
+        child: const PopularProductListPage(category: 'Popular'),
       );
 
   @override

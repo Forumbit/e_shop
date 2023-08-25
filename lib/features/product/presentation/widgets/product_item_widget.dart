@@ -32,6 +32,12 @@ class ProductItemWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.defaultColor,
                 borderRadius: BorderRadius.circular(8.r),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 8,
+                  )
+                ],
               ),
               child: AspectRatio(
                 aspectRatio: 157 / 176,
@@ -84,9 +90,7 @@ class _ContentItemWidget extends StatelessWidget {
                             color: const Color(0xFF4A4A4A),
                           ),
                         ),
-                        const TextSpan(
-                          text: '  '
-                        ),
+                        const TextSpan(text: '  '),
                       ],
                     ),
                     TextSpan(

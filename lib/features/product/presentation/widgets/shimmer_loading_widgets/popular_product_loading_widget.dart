@@ -19,7 +19,7 @@ class PopularProductLoadingWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Популярные',
+                'Popular',
                 style: AppTextStyles.subtitleStyle,
               ),
               GestureDetector(
@@ -27,7 +27,7 @@ class PopularProductLoadingWidget extends StatelessWidget {
                   context.pushNamed(AppRouteNamed.popularProduct);
                 },
                 child: Text(
-                  'Посмотреть все',
+                  'show all',
                   style: TextStyle(
                     color: const Color(0xFFB6B4B0),
                     fontWeight: FontWeight.w500,

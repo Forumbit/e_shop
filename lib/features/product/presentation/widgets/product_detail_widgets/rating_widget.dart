@@ -40,7 +40,7 @@ class RatingWidget extends StatelessWidget {
           ),
           SizedBox(width: 10.w),
           Text(
-            '125+ отзывов',
+            '125+ reviews',
             style: TextStyle(
               fontSize: 16.sp,
               color: const Color(0xFF2F2F2F),

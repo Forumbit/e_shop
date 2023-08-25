@@ -41,7 +41,7 @@ class ProductListWidget extends StatelessWidget {
             areProductsEnded: areProductsEnded,
           );
         },
-        error: () => const Text('Произошла какая-то ошибка'),
+        error: () => const Text('Something went wrong'),
       ),
     ));
   }

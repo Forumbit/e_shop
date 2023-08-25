@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                   //! Maybe it is wrong!
                   newProductsLoaded: (_, __) => const SizedBox.shrink(),
                   error: () =>
-                      const Center(child: Text('Произошла какая-то ошибка')),
+                      const Center(child: Text('Something went wrong')),
                 );
               },
             ),

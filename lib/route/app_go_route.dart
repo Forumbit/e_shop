@@ -74,7 +74,7 @@ class AppGoRoute implements AppRoute {
                     builder: (BuildContext context, GoRouterState state) =>
                         const Scaffold(
                       body: Center(
-                        child: Text('Корзина'),
+                        child: Text('Cart'),
                       ),
                     ),
                   ),
@@ -87,7 +87,7 @@ class AppGoRoute implements AppRoute {
                     builder: (BuildContext context, GoRouterState state) =>
                         const Scaffold(
                       body: Center(
-                        child: Text('Избранное'),
+                        child: Text('Favorite'),
                       ),
                     ),
                   ),
@@ -100,7 +100,7 @@ class AppGoRoute implements AppRoute {
                     builder: (BuildContext context, GoRouterState state) =>
                         const Scaffold(
                       body: Center(
-                        child: Text('Пользователь'),
+                        child: Text('User'),
                       ),
                     ),
                   ),

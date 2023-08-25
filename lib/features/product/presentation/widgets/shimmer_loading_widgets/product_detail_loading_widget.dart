@@ -119,7 +119,7 @@ class ProductDetailLoadingWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.r),
                   color: AppColors.defaultColor,
                 ),
-                child: const Center(child: Text('Отзывов пока нет')),
+                child: const Center(child: Text('Reviews not yet')),
               ),
             ),
           ),
