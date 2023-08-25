@@ -36,10 +36,10 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Montserrat
+    - family: Nunito
       fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
-        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+        - asset: assets/fonts/Nunito/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito/Nunito-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+        - asset: assets/fonts/Nunito/Nunito-Bold.ttf
           weight: 700
