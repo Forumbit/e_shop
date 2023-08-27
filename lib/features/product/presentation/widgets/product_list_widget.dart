@@ -1,6 +1,8 @@
+
 import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
-import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
+import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
+import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_item_loading_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,18 +12,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ProductListWidget extends StatelessWidget {
   const ProductListWidget({
     super.key,
-    required this.category,
+    this.category,
+    required this.productListEnum,
   });
-  final String category;
+  final String? category;
+  final ProductListEnum productListEnum;
 
   @override
   Widget build(BuildContext context) {
     return Shimmer(
       child: BlocBuilder<ProductListBloc, ProductListState>(
         builder: (context, state) => state.maybeWhen(
-          orElse: () => const _ProductGridViewWidget(
+          orElse: () => _ProductGridViewWidget(
             productList: null,
             areProductsEnded: false,
+            productListEnum: productListEnum,
           ),
           loaded: (
             ProductListEntity productList,
@@ -30,15 +35,7 @@ class ProductListWidget extends StatelessWidget {
             return _ProductGridViewWidget(
               productList: productList,
               areProductsEnded: areProductsEnded,
-            );
-          },
-          newProductsLoaded: (
-            ProductListEntity productList,
-            bool areProductsEnded,
-          ) {
-            return _ProductGridViewWidget(
-              productList: productList,
-              areProductsEnded: areProductsEnded,
+              productListEnum: productListEnum,
             );
           },
           error: () => const Text('Something went wrong'),
@@ -52,10 +49,14 @@ class _ProductGridViewWidget extends StatefulWidget {
   const _ProductGridViewWidget({
     required this.productList,
     required this.areProductsEnded,
+    required this.productListEnum,
+    this.category,
   });
 
   final ProductListEntity? productList;
   final bool areProductsEnded;
+  final String? category;
+  final ProductListEnum productListEnum;
 
   @override
   State<_ProductGridViewWidget> createState() => _ProductGridViewWidgetState();
@@ -84,9 +85,13 @@ class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
   void _onChange() {
     if (_scrollController.position.maxScrollExtent ==
         _scrollController.offset) {
-      context
-          .read<ProductListBloc>()
-          .add(ProductListEvent.onGetPopularProducts(widget.productList));
+      context.read<ProductListBloc>().add(
+            ProductListEvent.onGetProducts(
+              productListEnum: widget.productListEnum,
+              query: widget.category,
+              page: (widget.productList?.products.length ?? 0) ~/ 10,
+            ),
+          );
     }
   }
 
@@ -101,7 +106,7 @@ class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
     return GridView.builder(
       controller: _scrollController,
       physics: isLoading ? const NeverScrollableScrollPhysics() : null,
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
       itemCount: isLoading ? 10 : products.length + isLoadingCount,
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

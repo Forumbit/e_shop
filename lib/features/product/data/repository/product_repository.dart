@@ -24,6 +24,11 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
+  Future<ProductListEntity> getProducts(int skip, {String parameter = ''}) async {
+    return await getPopularProducts(skip);
+  }
+
+  @override
   Future<ProductEntity> getProduct(int id) async {
     try {
       final productModel = await productRemoteDataSource.getProduct(id);
@@ -34,43 +39,4 @@ class ProductRepositoryImpl implements ProductRepository {
       throw Exception(e);
     }
   }
-
-  // @override
-  // Future<List<ProductEntity>> getCategoryProducts(String category) async {
-  //   try {
-  //     final productModels =
-  //         await productRemoteDataSource.getCategoryProducts(category);
-  //     final productEntities = productModels
-  //         .map((e) => ProductMapper.toEntity(e)).toList();
-  //     return productEntities;
-  //   } catch (e) {
-  //     print(e);
-  //     throw Exception(e);
-  //   }
-  // }
-
-  // @override
-  // Future<List<String>> getProductsCategories() async {
-  //   try {
-  //     final categories = await productRemoteDataSource.getProductsCategories();
-  //     return categories;
-  //   } catch (e) {
-  //     print(e);
-  //     throw Exception(e);
-  //   }
-  // }
-
-  // @override
-  // Future<List<ProductEntity>> getSearchProducts(String query) async {
-  //   try {
-  //     final productModels =
-  //         await productRemoteDataSource.getSearchProducts(query);
-  //     final productEntities = productModels
-  //         .map((e) => ProductMapper.toEntity(e)).toList();
-  //     return productEntities;
-  //   } catch (e) {
-  //     print(e);
-  //     throw Exception(e);
-  //   }
-  // }
 }

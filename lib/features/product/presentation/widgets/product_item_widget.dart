@@ -1,6 +1,7 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/common/constants/app_shadows.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,12 +33,7 @@ class ProductItemWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.defaultColor,
                 borderRadius: BorderRadius.circular(8.r),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 8,
-                  )
-                ],
+                boxShadow: AppShadows.itemShadow,
               ),
               child: AspectRatio(
                 aspectRatio: 157 / 176,

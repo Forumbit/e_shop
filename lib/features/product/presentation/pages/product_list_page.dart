@@ -1,4 +1,5 @@
-import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
+import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
+import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,12 +8,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PopularProductListPage extends StatelessWidget {
   const PopularProductListPage({
     super.key,
-    // this.controllerText,
-    required this.category,
+    this.category,
+    required this.productListEnum,
   });
 
-  // final String? controllerText;
-  final String category;
+  final String? category;
+  final ProductListEnum productListEnum;
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +38,14 @@ class PopularProductListPage extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Category ',
+                        text: 'Showing  ',
                         style: TextStyle(
                           fontSize: 14.sp,
                           color: const Color(0xFF999BA9),
                         ),
                       ),
                       TextSpan(
-                        text: '"$category"',
+                        text: category != null ? '"$category"' : '"Popular"',
                         style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w500,
@@ -59,9 +60,6 @@ class PopularProductListPage extends StatelessWidget {
                   builder: (context, state) {
                     return state.maybeWhen(
                       loaded: (productsList, isProductsEnded) {
-                        return _TotalProductWidget(total: productsList.total);
-                      },
-                      newProductsLoaded: (productsList, isProductsEnded) {
                         return _TotalProductWidget(total: productsList.total);
                       },
                       orElse: () => const _TotalProductWidget(total: null),
@@ -82,7 +80,10 @@ class PopularProductListPage extends StatelessWidget {
         scrolledUnderElevation: 0,
         centerTitle: true,
       ),
-      body: ProductListWidget(category: category),
+      body: ProductListWidget(
+        productListEnum: productListEnum,
+        category: category,
+      ),
     );
   }
 }
