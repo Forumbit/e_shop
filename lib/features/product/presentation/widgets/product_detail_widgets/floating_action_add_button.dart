@@ -1,5 +1,5 @@
 import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/features/product/bloc/product_detail/product_detail_bloc.dart';
+import 'package:e_shop/features/product/presentation/bloc/product_detail/product_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
