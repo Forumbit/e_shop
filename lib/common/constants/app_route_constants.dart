@@ -14,6 +14,7 @@ abstract class AppRouteNamed {
 
 abstract class AppRouteUrl {
   static const home = '/';
+  static const categoryList = 'category_list';
   static const popularProductList = 'product_list/popular';
   static const categoryProductList =
       'product_list/${AppRouteNamed.categoryProduct}/:${AppRouteArgument.category}';

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 abstract interface class ScreenFactory {
   Widget makeHome();
+  Widget makeCategoryList();
   Widget makePopularProductList();
   Widget makeCategoryProductList(String category);
   Widget makeSearchProductList(String query);
@@ -31,6 +32,13 @@ class AppGoRoute implements AppRoute {
                     builder: (BuildContext context, GoRouterState state) =>
                         screenFactory.makeHome(),
                     routes: [
+                      //! Переделать
+                      GoRoute(
+                        name: AppRouteNamed.categoryList,
+                        path: AppRouteUrl.categoryList,
+                        builder: (BuildContext context, GoRouterState state) =>
+                            screenFactory.makeCategoryList(),
+                      ),
                       GoRoute(
                         name: AppRouteNamed.popularProduct,
                         path: AppRouteUrl.popularProductList,
