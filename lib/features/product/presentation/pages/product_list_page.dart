@@ -82,7 +82,7 @@ class PopularProductListPage extends StatelessWidget {
       ),
       body: ProductListWidget(
         productListEnum: productListEnum,
-        category: category,
+        query: category,
       ),
     );
   }

@@ -1,10 +1,8 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/common/product_list_repository/product_list_repository.dart';
 import 'package:e_shop/config/configuration.dart';
-import 'package:e_shop/features/category/domain/repository/category_repository.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
-import 'package:e_shop/features/product/domain/repository/product_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -17,9 +15,9 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     on<ProductListEvent>(
       (event, emit) async => event.when(
         started: (productListEnum, parameter) async => await _init(
-          emit,
-          productListEnum,
-          parameter,
+          emit: emit,
+          productListEnum: productListEnum,
+          parameter: parameter,
         ),
         onGetProducts: (productListEnum, parameter, page) => _getProducts(
           emit: emit,
@@ -34,11 +32,11 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
 
   final ProductListRepository _productListRepository;
 
-  Future<void> _init(
+  Future<void> _init({
     emit,
-    ProductListEnum productListEnum,
+    ProductListEnum productListEnum = ProductListEnum.popular,
     String? parameter,
-  ) async {
+  }) async {
     emit(const ProductListState.loading());
     await _getProducts(
       emit: emit,
@@ -53,53 +51,51 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     String? parameter,
     int page = 0,
   }) async {
-    final _skip = page * 10;
+    late final ProductListEntity newProductList;
 
-    late final ProductListEntity _newProductList;
-    var _productsAreEnded = false;
+    //* The query parameter, which skip old products
+    final skip = page * int.parse(ApiConfiguration.limitQueryParameter);
+
+    //* if previous products are ended,
+    //* we don't need use new request
+    var oldProductsAreEnded = false;
 
     if (state is _Loaded) {
-      _productsAreEnded = (state as _Loaded).productList.products.length <
-          int.parse(ApiConfiguration.limitQueryParameter);
+      oldProductsAreEnded = (state as _Loaded).areProductsEnded;
     }
 
-    if (!_productsAreEnded) {
+    if (!oldProductsAreEnded) {
       switch (productListEnum) {
         case ProductListEnum.popular:
-          final productRepository = _productListRepository as ProductRepository;
-          _newProductList = await productRepository.getProducts(_skip);
+          newProductList = await _productListRepository.getProducts(skip);
           break;
         case ProductListEnum.category:
-          final categoryRepository =
-              _productListRepository as CategoryRepository;
-          _newProductList = await categoryRepository.getProducts(
-            _skip,
+          newProductList = await _productListRepository.getProducts(
+            skip,
             parameter: parameter ?? '',
           );
           break;
         case ProductListEnum.search:
           //! Change
-          final productRepository = _productListRepository as ProductRepository;
-          _newProductList = await productRepository.getProducts(_skip);
+          newProductList = await _productListRepository.getProducts(skip);
           break;
       }
 
-      final areProductsEnded = _newProductList.products.length <
+      final areProductsEnded = newProductList.products.length <
           int.parse(ApiConfiguration.limitQueryParameter);
 
       if (state is _Loaded) {
         final oldProducts = (state as _Loaded).productList;
-
         final allProducts = [
           ...oldProducts.products,
-          ..._newProductList.products
+          ...newProductList.products,
         ];
-        final productList = _newProductList.copyWith(products: allProducts);
+        final productList = newProductList.copyWith(products: allProducts);
         emit(ProductListState.loaded(productList, areProductsEnded));
         return;
       }
 
-      emit(ProductListState.loaded(_newProductList, areProductsEnded));
+      emit(ProductListState.loaded(newProductList, areProductsEnded));
     }
   }
 }

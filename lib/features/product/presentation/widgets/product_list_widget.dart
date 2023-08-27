@@ -1,4 +1,3 @@
-
 import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
@@ -12,10 +11,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ProductListWidget extends StatelessWidget {
   const ProductListWidget({
     super.key,
-    this.category,
+    this.query,
     required this.productListEnum,
   });
-  final String? category;
+  final String? query;
   final ProductListEnum productListEnum;
 
   @override
@@ -36,6 +35,7 @@ class ProductListWidget extends StatelessWidget {
               productList: productList,
               areProductsEnded: areProductsEnded,
               productListEnum: productListEnum,
+              query: query,
             );
           },
           error: () => const Text('Something went wrong'),
@@ -50,12 +50,12 @@ class _ProductGridViewWidget extends StatefulWidget {
     required this.productList,
     required this.areProductsEnded,
     required this.productListEnum,
-    this.category,
+    this.query,
   });
 
   final ProductListEntity? productList;
   final bool areProductsEnded;
-  final String? category;
+  final String? query;
   final ProductListEnum productListEnum;
 
   @override
@@ -88,7 +88,7 @@ class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
       context.read<ProductListBloc>().add(
             ProductListEvent.onGetProducts(
               productListEnum: widget.productListEnum,
-              query: widget.category,
+              query: widget.query,
               page: (widget.productList?.products.length ?? 0) ~/ 10,
             ),
           );
