@@ -1,5 +1,20 @@
-import 'package:e_shop/common/widgets/shimmer/shimmer_gradient.dart';
 import 'package:flutter/material.dart';
+
+const shimmerGradient = LinearGradient(
+  colors: [
+    Color(0xFFEBEBF4),
+    Color(0xFFF4F4F4),
+    Color(0xFFEBEBF4),
+  ],
+  stops: [
+    0.1,
+    0.3,
+    0.4,
+  ],
+  begin: Alignment(-1.0, -0.3),
+  end: Alignment(1.0, 0.3),
+  tileMode: TileMode.clamp,
+);
 
 class _SlidingGradientTransform extends GradientTransform {
   final double slidePercent; // от 0 до 1
@@ -29,20 +44,17 @@ class Shimmer extends StatefulWidget {
 }
 
 class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
-
   //* ====== Variables ======
   late AnimationController _shimmerController;
-  final _shimmerGradient = ShimmerGradient.shimmerGradient;
-
 
   //* ====== Methods ======
   Listenable get shimmerChanges => _shimmerController;
 
   LinearGradient get gradient => LinearGradient(
-        colors: _shimmerGradient.colors,
-        stops: _shimmerGradient.stops,
-        begin: _shimmerGradient.begin,
-        end: _shimmerGradient.end,
+        colors: shimmerGradient.colors,
+        stops: shimmerGradient.stops,
+        begin: shimmerGradient.begin,
+        end: shimmerGradient.end,
         transform: _SlidingGradientTransform(_shimmerController.value),
       );
 
@@ -57,7 +69,6 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
     final shimmerBox = context.findRenderObject() as RenderBox;
     return descendant.localToGlobal(offset, ancestor: shimmerBox);
   }
-
 
   //* ====== Overrides ======
   @override
