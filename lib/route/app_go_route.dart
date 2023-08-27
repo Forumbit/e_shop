@@ -32,7 +32,6 @@ class AppGoRoute implements AppRoute {
                     builder: (BuildContext context, GoRouterState state) =>
                         screenFactory.makeHome(),
                     routes: [
-                      //! Переделать
                       GoRoute(
                         name: AppRouteNamed.categoryList,
                         path: AppRouteUrl.categoryList,
