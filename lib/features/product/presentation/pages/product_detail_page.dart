@@ -53,7 +53,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             scrolledUnderElevation: 0,
             foregroundColor: Colors.white,
             backgroundColor: Colors.black45,
-            title: const _AppBarTitle(),
+            title: _AppBarTitle(),
             centerTitle: true,
             shadowColor: Colors.black,
           ),
@@ -84,10 +84,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 }
 
 class _AppBarTitle extends StatelessWidget {
-  const _AppBarTitle({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductDetailBloc, ProductDetailState>(

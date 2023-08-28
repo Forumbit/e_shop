@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_shop/features/category/domain/repository/category_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -24,7 +26,7 @@ class CategoryListBloc extends Bloc<CategoryListEvent, CategoryListState> {
       final categories = await _categoryRepository.getCategories();
       emit(CategoryListState.loaded(categories));
     } catch (e) {
-      print(e);
+      log(e.toString());
       emit(const CategoryListState.error());
     }
   }

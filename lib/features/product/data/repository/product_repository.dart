@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_shop/features/product/data/datasources/product_remote_data_source.dart';
 import 'package:e_shop/features/product/data/mapper/product_list_mapper.dart';
 import 'package:e_shop/features/product/data/mapper/product_mapper.dart';
@@ -18,7 +20,7 @@ class ProductRepositoryImpl implements ProductRepository {
       final productEntities = ProductListMapper.toEntity(productListModel);
       return productEntities;
     } catch (e) {
-      print(e);
+      log(e.toString());
       throw Exception(e);
     }
   }
@@ -35,7 +37,7 @@ class ProductRepositoryImpl implements ProductRepository {
       final productEntity = ProductMapper.toEntity(productModel);
       return productEntity;
     } catch (e) {
-      print(e);
+      log(e.toString());
       throw Exception(e);
     }
   }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/common/repositories/product_list_repository.dart';
 import 'package:e_shop/common/configuration.dart';
@@ -71,7 +73,7 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
         }
       }
     } catch (e) {
-      print(e);
+      log(e.toString());
       emit(const ProductListState.error());
     }
   }

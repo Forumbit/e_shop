@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
 import 'package:e_shop/common/constants/app_text_styles.dart';
@@ -32,9 +34,8 @@ class AboutUsWidget extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 335 / 180,
               child: Container(
-                decoration: const BoxDecoration(
-                  boxShadow: AppShadows.itemShadow
-                ),
+                decoration:
+                    const BoxDecoration(boxShadow: AppShadows.itemShadow),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
                   child: Container(
@@ -47,7 +48,7 @@ class AboutUsWidget extends StatelessWidget {
                     ),
                     child: Stack(
                       children: [
-                        const _BackgroundItemWidget(),
+                        _BackgroundItemWidget(),
                         Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: 20.w,
@@ -76,7 +77,7 @@ class AboutUsWidget extends StatelessWidget {
                                 ),
                                 SizedBox(height: 5.h),
                                 GestureDetector(
-                                  onTap: () => print(123),
+                                  onTap: () => log('123'),
                                   child: Text(
                                     AppTexts.moreInfo,
                                     style: TextStyle(
@@ -104,10 +105,6 @@ class AboutUsWidget extends StatelessWidget {
 }
 
 class _BackgroundItemWidget extends StatelessWidget {
-  const _BackgroundItemWidget({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(

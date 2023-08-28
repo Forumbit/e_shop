@@ -8,7 +8,7 @@ class AppBlocObserver extends BlocObserver {
     super.onEvent(bloc, event);
     print('===================');
     print('On Event:\n');
-    print('${bloc.runtimeType}: \n$event');
+    print('${bloc.runtimeType}: $event');
     print('===================');
   }
 
@@ -16,7 +16,7 @@ class AppBlocObserver extends BlocObserver {
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     print('===================');
     print('On Error:\n');
-    print('${bloc.runtimeType}: \n$error\n');
+    print('${bloc.runtimeType}: $error\n');
     print('Stacktrace: \n$stackTrace');
     print('===================');
     super.onError(bloc, error, stackTrace);
@@ -27,7 +27,7 @@ class AppBlocObserver extends BlocObserver {
     super.onChange(bloc, change);
     print('===================');
     print('On Change:\n');
-    print('${bloc.runtimeType}: \n$change');
+    print('${bloc.runtimeType}: $change');
     print('===================');
   }
 
@@ -36,7 +36,7 @@ class AppBlocObserver extends BlocObserver {
     super.onTransition(bloc, transition);
     print('===================');
     print('On Transition:\n');
-    print('${bloc.runtimeType}: \n$transition');
+    print('${bloc.runtimeType}: $transition');
     print('===================');
   }
 }

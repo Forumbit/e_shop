@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/features/product/domain/repository/product_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +32,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       final product = await _productRepository.getProduct(id);
       emit(ProductDetailState.loaded(product));
     } catch (e) {
-      print(e);
+      log(e.toString());
       emit(const ProductDetailState.error());
     }
   }
