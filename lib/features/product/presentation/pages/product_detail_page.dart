@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
@@ -62,7 +63,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               loading: () => const ProductDetailLoadingWidget(),
               loaded: (ProductEntity product) =>
                   ProductDetailWidget(product: product),
-              error: () => const Center(child: Text('Something went wrong')),
+              error: () => const Center(child: Text(AppTexts.error)),
             ),
           ),
           floatingActionButtonLocation:
@@ -99,7 +100,7 @@ class _AppBarTitle extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          orElse: () => const Text('Loading...'),
+          orElse: () => const Text(AppTexts.loading),
         );
       },
     );

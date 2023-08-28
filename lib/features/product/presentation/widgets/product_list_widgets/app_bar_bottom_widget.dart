@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,14 +26,14 @@ class AppBarBottomWidget extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: 'Showing  ',
+                  text: '${AppTexts.showing}  ',
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: const Color(0xFF999BA9),
                   ),
                 ),
                 TextSpan(
-                  text: category != null ? '"$category"' : '"Popular"',
+                  text: category != null ? '"$category"' : '"${AppTexts.popular}"',
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
@@ -67,7 +68,7 @@ class _TotalProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '${total ?? 0} results',
+      '${total ?? 0} ${AppTexts.results.toLowerCase()}',
       style: TextStyle(
         fontSize: 14.sp,
         color: const Color(0xFF999BA9),

@@ -19,7 +19,7 @@ class DetailImageWidget extends StatefulWidget {
 
 class _DetailImageWidgetState extends State<DetailImageWidget> {
   late final PageController _pageController;
-  var _page;
+  var _page = 0;
 
   @override
   void initState() {

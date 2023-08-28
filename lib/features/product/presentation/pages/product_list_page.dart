@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/repositories/product_list_repository.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
@@ -41,7 +42,7 @@ class ProductListPage extends StatelessWidget {
         appBar: AppBar(
           toolbarHeight: 80.h,
           title: Text(
-            'Products',
+            AppTexts.products,
             style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,

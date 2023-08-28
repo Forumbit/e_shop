@@ -1,4 +1,5 @@
 import 'package:e_shop/common/constants/app_images.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_detail/product_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,7 @@ class FloatingActionAddButton extends StatelessWidget {
                     color: Colors.white,
                   ),
                   SizedBox(width: 10.w),
-                  const Text('Add to cart'),
+                  const Text(AppTexts.addToCart),
                 ],
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
 import 'package:e_shop/common/constants/app_text_styles.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,7 @@ class AboutUsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'About us',
+            AppTexts.aboutUs,
             style: AppTextStyles.subtitleStyle,
           ),
           SizedBox(height: 3.h),
@@ -59,7 +60,7 @@ class AboutUsWidget extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Who are we?',
+                                  AppTexts.whoAreWe,
                                   style: TextStyle(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
@@ -77,7 +78,7 @@ class AboutUsWidget extends StatelessWidget {
                                 GestureDetector(
                                   onTap: () => print(123),
                                   child: Text(
-                                    'More info',
+                                    AppTexts.moreInfo,
                                     style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,

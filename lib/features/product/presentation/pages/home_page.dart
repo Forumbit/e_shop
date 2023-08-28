@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/widgets/shimmer/shimmer.dart';
@@ -49,7 +50,7 @@ class HomePage extends StatelessWidget {
                   loaded: (List<String> categories) =>
                       CategoryListWidget(categories: categories),
                   error: () =>
-                      const Center(child: Text('Something went wrong')),
+                      const Center(child: Text(AppTexts.error)),
                 ),
               ),
               SizedBox(height: 17.h),
@@ -61,7 +62,7 @@ class HomePage extends StatelessWidget {
                     loaded: (ProductListEntity productList, _) =>
                         PopularProductWidget(products: productList.products),
                     error: () =>
-                        const Center(child: Text('Something went wrong')),
+                        const Center(child: Text(AppTexts.error)),
                   );
                 },
               ),

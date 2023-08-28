@@ -1,6 +1,7 @@
 import 'package:e_shop/common/constants/app_gradients.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/widgets/shimmer/shimmer.dart';
@@ -24,7 +25,7 @@ class CategoryListPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           scrolledUnderElevation: 0,
-          title: const Text('Categories'),
+          title: const Text(AppTexts.categories),
           centerTitle: true,
         ),
         body: Shimmer(
@@ -36,7 +37,7 @@ class CategoryListPage extends StatelessWidget {
               categories: categories,
             ),
             error: () => const Center(
-              child: Text('Something went wrong'),
+              child: Text(AppTexts.error),
             ),
           ),
         )),

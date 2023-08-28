@@ -1,6 +1,7 @@
 import 'package:e_shop/common/constants/app_gradients.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +26,7 @@ class CategoryListWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Categories',
+                AppTexts.categories,
                 style: TextStyle(
                   color: const Color(0xFF4A4A4A),
                   fontWeight: FontWeight.w500,
@@ -37,7 +38,7 @@ class CategoryListWidget extends StatelessWidget {
                   context.pushNamed(AppRouteNamed.categoryList);
                 },
                 child: Text(
-                  'Show all',
+                  AppTexts.showAll,
                   style: TextStyle(
                     color: const Color(0xFFB6B4B0),
                     fontWeight: FontWeight.w500,

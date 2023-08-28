@@ -1,4 +1,5 @@
 import 'package:e_shop/common/constants/app_colors.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,7 @@ class CategoryListLoadingWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Категории',
+                AppTexts.categories,
                 style: TextStyle(
                   color: const Color(0xFF4A4A4A),
                   fontWeight: FontWeight.w500,
@@ -26,7 +27,7 @@ class CategoryListLoadingWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                'Посмотреть все',
+                AppTexts.showAll,
                 style: TextStyle(
                   color: const Color(0xFFB6B4B0),
                   fontWeight: FontWeight.w500,

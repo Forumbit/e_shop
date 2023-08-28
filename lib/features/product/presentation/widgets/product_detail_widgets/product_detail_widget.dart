@@ -1,4 +1,5 @@
 import 'package:e_shop/common/constants/app_colors.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/carousel_product_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/characters_widget.dart';
@@ -48,7 +49,7 @@ class ProductDetailWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.r),
               color: AppColors.defaultColor,
             ),
-            child: const Center(child: Text('Reviews not yet')),
+            child: const Center(child: Text(AppTexts.reviewsNotYet)),
           ),
         ),
         SizedBox(height: 50.h),
