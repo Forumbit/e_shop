@@ -53,7 +53,11 @@ class _CategoryGridViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isLoading = categories == null;
+
+    //! Проблема: перестраивается элементы
+    //! Из-за чего создаются и удаляются новые контроллеры
     return GridView.builder(
+      physics: isLoading ? const NeverScrollableScrollPhysics() : null,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 150 / 200,

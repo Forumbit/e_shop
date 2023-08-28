@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
@@ -26,32 +28,41 @@ class ProductsGridViewWidget extends StatefulWidget {
 }
 
 class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
-  late final ScrollController _scrollController;
+  late final ScrollController? _scrollController;
 
   @override
   void initState() {
     super.initState();
+    if (widget.areProductsEnded) {
+      _scrollController = null;
+      return;
+    }
     _scrollController = ScrollController();
-    if (widget.areProductsEnded) return;
-    _scrollController.addListener(_onChange);
+    log('Scroll Controller was initilialized');
+    _scrollController!.addListener(_onChange);
+    log('Scroll Change was added');
   }
 
   @override
   void dispose() {
     if (!widget.areProductsEnded) {
-      _scrollController.removeListener(_onChange);
+      _scrollController!.removeListener(_onChange);
+      log('Scroll Change was removed');
+      _scrollController!.dispose();
+      log('Scroll controller was disposed');
     }
-    _scrollController.dispose();
     super.dispose();
   }
 
   void _onChange() {
-    if (_scrollController.position.maxScrollExtent ==
-        _scrollController.offset) {
+    if (_scrollController!.position.maxScrollExtent ==
+        _scrollController!.offset) {
       final skip = (widget.productList?.products.length ?? 0) ~/ 10;
-      context.read<ProductListBloc>().add(
-            ProductListEvent.onGetProducts(query: widget.query, skip: skip),
-          );
+      if (!widget.areProductsEnded) {
+        context.read<ProductListBloc>().add(
+              ProductListEvent.onGetProducts(query: widget.query, skip: skip),
+            );
+      } else {}
     }
   }
 
@@ -62,13 +73,13 @@ class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
 
     // bottom shimmer
     final isLoadingCount = widget.areProductsEnded ? 0 : 2;
-
+    //! Проблема: перестраивается элементы
+    //! Из-за чего создаются и удаляются новые контроллеры
     return GridView.builder(
       controller: _scrollController,
       physics: isLoading ? const NeverScrollableScrollPhysics() : null,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
       itemCount: isLoading ? 10 : products.length + isLoadingCount,
-      shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 157 / 250,

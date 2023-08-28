@@ -1,42 +1,34 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 
 class AppBlocObserver extends BlocObserver {
+  final logger = Logger();
+
   @override
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
-    print('===================');
-    print('On Event:\n');
-    print('${bloc.runtimeType}: $event');
-    print('===================');
+    logger.i('On Event: \n${bloc.runtimeType}: $event');
   }
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    print('===================');
-    print('On Error:\n');
-    print('${bloc.runtimeType}: $error\n');
-    print('Stacktrace: \n$stackTrace');
-    print('===================');
+    logger.e(
+      '${bloc.runtimeType}:',
+      error: error,
+      stackTrace: stackTrace,
+    );
     super.onError(bloc, error, stackTrace);
   }
 
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    print('===================');
-    print('On Change:\n');
-    print('${bloc.runtimeType}: $change');
-    print('===================');
+    logger.i('On Change: \n${bloc.runtimeType}: $change');
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    print('===================');
-    print('On Transition:\n');
-    print('${bloc.runtimeType}: $transition');
-    print('===================');
+    logger.i('On Transition: \n${bloc.runtimeType}: $transition');
   }
 }

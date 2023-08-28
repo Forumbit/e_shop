@@ -37,40 +37,27 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   }
 
   Future<void> _getProducts({emit, String? parameter, int page = 0}) async {
-    late final ProductListEntity newProductList;
-
     //* The query parameter, which skip old products
     final skip = page * int.parse(ApiConfiguration.limitQueryParameter);
 
-    //* if previous products are ended,
-    //* we don't need use new request
-    var oldProductsAreEnded = false;
-
-    //* checking if there is still data in api
-    if (state is _Loaded) {
-      oldProductsAreEnded = (state as _Loaded).areProductsEnded;
-    }
-
     try {
-      if (!oldProductsAreEnded) {
-        newProductList = await _productListRepository.getProducts(
-          skip,
-          parameter: parameter ?? '',
-        );
+      final newProductList = await _productListRepository.getProducts(
+        skip,
+        parameter: parameter ?? '',
+      );
 
-        final areProductsEnded = newProductList.products.length <
-            int.parse(ApiConfiguration.limitQueryParameter);
+      final areProductsEnded = newProductList.products.length <
+          int.parse(ApiConfiguration.limitQueryParameter);
 
-        if (state is _Loaded) {
-          final oldProducts = (state as _Loaded).productList;
-          final productList = newProductList.copyWith(products: [
-            ...oldProducts.products,
-            ...newProductList.products,
-          ]);
-          emit(ProductListState.loaded(productList, areProductsEnded));
-        } else if (state is _Loading) {
-          emit(ProductListState.loaded(newProductList, areProductsEnded));
-        }
+      if (state is _Loaded) {
+        final oldProducts = (state as _Loaded).productList;
+        final productList = newProductList.copyWith(products: [
+          ...oldProducts.products,
+          ...newProductList.products,
+        ]);
+        emit(ProductListState.loaded(productList, areProductsEnded));
+      } else if (state is _Loading) {
+        emit(ProductListState.loaded(newProductList, areProductsEnded));
       }
     } catch (e) {
       log(e.toString());

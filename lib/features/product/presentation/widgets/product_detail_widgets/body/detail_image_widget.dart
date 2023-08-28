@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +28,13 @@ class _DetailImageWidgetState extends State<DetailImageWidget> {
     super.initState();
     _pageController = PageController(initialPage: widget.initialPage);
     _page = _pageController.initialPage;
+    log('Page controller was initialized');
   }
 
   @override
   void dispose() {
     _pageController.dispose();
+    log('Page controller was disposed');
     super.dispose();
   }
 
