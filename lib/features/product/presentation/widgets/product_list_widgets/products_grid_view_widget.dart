@@ -1,52 +1,15 @@
-import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
-import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_item_loading_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_item_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_item_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProductListWidget extends StatelessWidget {
-  const ProductListWidget({
+class ProductsGridViewWidget extends StatefulWidget {
+  const ProductsGridViewWidget({
     super.key,
-    this.query,
-    required this.productListEnum,
-  });
-  final String? query;
-  final ProductListEnum productListEnum;
-
-  @override
-  Widget build(BuildContext context) {
-    return Shimmer(
-      child: BlocBuilder<ProductListBloc, ProductListState>(
-        builder: (context, state) => state.maybeWhen(
-          orElse: () => _ProductGridViewWidget(
-            productList: null,
-            areProductsEnded: false,
-            productListEnum: productListEnum,
-          ),
-          loaded: (
-            ProductListEntity productList,
-            bool areProductsEnded,
-          ) {
-            return _ProductGridViewWidget(
-              productList: productList,
-              areProductsEnded: areProductsEnded,
-              productListEnum: productListEnum,
-              query: query,
-            );
-          },
-          error: () => const Text('Something went wrong'),
-        ),
-      ),
-    );
-  }
-}
-
-class _ProductGridViewWidget extends StatefulWidget {
-  const _ProductGridViewWidget({
     required this.productList,
     required this.areProductsEnded,
     required this.productListEnum,
@@ -59,10 +22,10 @@ class _ProductGridViewWidget extends StatefulWidget {
   final ProductListEnum productListEnum;
 
   @override
-  State<_ProductGridViewWidget> createState() => _ProductGridViewWidgetState();
+  State<ProductsGridViewWidget> createState() => _ProductsGridViewWidgetState();
 }
 
-class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
+class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
   late final ScrollController _scrollController;
 
   @override
@@ -85,12 +48,9 @@ class _ProductGridViewWidgetState extends State<_ProductGridViewWidget> {
   void _onChange() {
     if (_scrollController.position.maxScrollExtent ==
         _scrollController.offset) {
+      final skip = (widget.productList?.products.length ?? 0) ~/ 10;
       context.read<ProductListBloc>().add(
-            ProductListEvent.onGetProducts(
-              productListEnum: widget.productListEnum,
-              query: widget.query,
-              page: (widget.productList?.products.length ?? 0) ~/ 10,
-            ),
+            ProductListEvent.onGetProducts(query: widget.query, skip: skip),
           );
     }
   }

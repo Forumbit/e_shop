@@ -1,8 +1,7 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:e_shop/common/product_list_repository/product_list_repository.dart';
-import 'package:e_shop/config/configuration.dart';
+import 'package:e_shop/common/repositories/product_list_repository.dart';
+import 'package:e_shop/common/configuration.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
-import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,14 +13,12 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   ProductListBloc(this._productListRepository) : super(const _Initial()) {
     on<ProductListEvent>(
       (event, emit) async => event.when(
-        started: (productListEnum, parameter) async => await _init(
+        started: (parameter) async => await _init(
           emit: emit,
-          productListEnum: productListEnum,
           parameter: parameter,
         ),
-        onGetProducts: (productListEnum, parameter, page) => _getProducts(
+        onGetProducts: (parameter, page) => _getProducts(
           emit: emit,
-          productListEnum: productListEnum,
           parameter: parameter,
           page: page,
         ),
@@ -32,25 +29,12 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
 
   final ProductListRepository _productListRepository;
 
-  Future<void> _init({
-    emit,
-    ProductListEnum productListEnum = ProductListEnum.popular,
-    String? parameter,
-  }) async {
+  Future<void> _init({emit, String? parameter}) async {
     emit(const ProductListState.loading());
-    await _getProducts(
-      emit: emit,
-      productListEnum: productListEnum,
-      parameter: parameter,
-    );
+    await _getProducts(emit: emit, parameter: parameter);
   }
 
-  Future<void> _getProducts({
-    emit,
-    ProductListEnum productListEnum = ProductListEnum.popular,
-    String? parameter,
-    int page = 0,
-  }) async {
+  Future<void> _getProducts({emit, String? parameter, int page = 0}) async {
     late final ProductListEntity newProductList;
 
     //* The query parameter, which skip old products
@@ -60,42 +44,35 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     //* we don't need use new request
     var oldProductsAreEnded = false;
 
+    //* checking if there is still data in api
     if (state is _Loaded) {
       oldProductsAreEnded = (state as _Loaded).areProductsEnded;
     }
 
-    if (!oldProductsAreEnded) {
-      switch (productListEnum) {
-        case ProductListEnum.popular:
-          newProductList = await _productListRepository.getProducts(skip);
-          break;
-        case ProductListEnum.category:
-          newProductList = await _productListRepository.getProducts(
-            skip,
-            parameter: parameter ?? '',
-          );
-          break;
-        case ProductListEnum.search:
-          //! Change
-          newProductList = await _productListRepository.getProducts(skip);
-          break;
+    try {
+      if (!oldProductsAreEnded) {
+        newProductList = await _productListRepository.getProducts(
+          skip,
+          parameter: parameter ?? '',
+        );
+
+        final areProductsEnded = newProductList.products.length <
+            int.parse(ApiConfiguration.limitQueryParameter);
+
+        if (state is _Loaded) {
+          final oldProducts = (state as _Loaded).productList;
+          final productList = newProductList.copyWith(products: [
+            ...oldProducts.products,
+            ...newProductList.products,
+          ]);
+          emit(ProductListState.loaded(productList, areProductsEnded));
+        } else if (state is _Loading) {
+          emit(ProductListState.loaded(newProductList, areProductsEnded));
+        }
       }
-
-      final areProductsEnded = newProductList.products.length <
-          int.parse(ApiConfiguration.limitQueryParameter);
-
-      if (state is _Loaded) {
-        final oldProducts = (state as _Loaded).productList;
-        final allProducts = [
-          ...oldProducts.products,
-          ...newProductList.products,
-        ];
-        final productList = newProductList.copyWith(products: allProducts);
-        emit(ProductListState.loaded(productList, areProductsEnded));
-        return;
-      }
-
-      emit(ProductListState.loaded(newProductList, areProductsEnded));
+    } catch (e) {
+      print(e);
+      emit(const ProductListState.error());
     }
   }
 }

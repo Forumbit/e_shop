@@ -16,7 +16,6 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       ),
       transformer: sequential(),
     );
-
   }
 
   final ProductRepository _productRepository;
@@ -26,9 +25,13 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
   }
 
   Future<void> _getProduct(emit, int id) async {
-    emit(const ProductDetailState.loading());
-    final product = await _productRepository.getProduct(id);
-    emit(ProductDetailState.loaded(product));
+    try {
+      emit(const ProductDetailState.loading());
+      final product = await _productRepository.getProduct(id);
+      emit(ProductDetailState.loaded(product));
+    } catch (e) {
+      print(e);
+      emit(const ProductDetailState.error());
+    }
   }
-
 }

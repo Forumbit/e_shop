@@ -1,4 +1,4 @@
-import 'package:e_shop/common/product_list_repository/product_list_repository.dart';
+import 'package:e_shop/common/repositories/product_list_repository.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 

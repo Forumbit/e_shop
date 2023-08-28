@@ -1,5 +1,5 @@
 import 'package:e_shop/common/constants/app_route_constants.dart';
-import 'package:e_shop/common/widgets/custom_bottom_bar.dart';
+import 'package:e_shop/features/widgets/custom_bottom_bar.dart';
 import 'package:e_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

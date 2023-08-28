@@ -1,8 +1,10 @@
 import 'package:e_shop/common/constants/app_gradients.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
-import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
-import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
+import 'package:e_shop/di/di_container.dart';
+import 'package:e_shop/common/utils/provider/provider_value.dart';
+import 'package:e_shop/features/widgets/shimmer/shimmer.dart';
+import 'package:e_shop/features/widgets/shimmer/shimmer_loading.dart';
 import 'package:e_shop/features/category/presentation/bloc/category_list/category_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,25 +16,31 @@ class CategoryListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        scrolledUnderElevation: 0,
-        title: const Text('Categories'),
-        centerTitle: true,
-      ),
-      body: Shimmer(
-          child: BlocBuilder<CategoryListBloc, CategoryListState>(
-        builder: (context, state) => state.when(
-          initial: () => const _CategoryGridViewWidget(),
-          loading: () => const _CategoryGridViewWidget(),
-          loaded: (categories) => _CategoryGridViewWidget(
-            categories: categories,
-          ),
-          error: () => const Center(
-            child: Text('Something went wrong'),
-          ),
+    final diContainer = ProviderValue.of<DIContainer>(context).value;
+    return BlocProvider<CategoryListBloc>(
+      create: (context) => CategoryListBloc(
+        diContainer.getCategoryRepository(),
+      )..add(const CategoryListEvent.started()),
+      child: Scaffold(
+        appBar: AppBar(
+          scrolledUnderElevation: 0,
+          title: const Text('Categories'),
+          centerTitle: true,
         ),
-      )),
+        body: Shimmer(
+            child: BlocBuilder<CategoryListBloc, CategoryListState>(
+          builder: (context, state) => state.when(
+            initial: () => const _CategoryGridViewWidget(),
+            loading: () => const _CategoryGridViewWidget(),
+            loaded: (categories) => _CategoryGridViewWidget(
+              categories: categories,
+            ),
+            error: () => const Center(
+              child: Text('Something went wrong'),
+            ),
+          ),
+        )),
+      ),
     );
   }
 }
@@ -45,7 +53,7 @@ class _CategoryGridViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final isLoading = categories == null;
     return GridView.builder(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 150 / 200,
         crossAxisSpacing: 10.w,

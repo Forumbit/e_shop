@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_colors.dart';
-import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
+import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/detail_image_widget.dart';
+import 'package:e_shop/features/widgets/shimmer/shimmer_loading.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/detail_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

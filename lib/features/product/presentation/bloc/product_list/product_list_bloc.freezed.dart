@@ -16,31 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProductListEvent {
-  ProductListEnum get productListEnum => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ProductListEnum productListEnum, String? parameter)
-        started,
-    required TResult Function(
-            ProductListEnum productListEnum, String? query, int page)
-        onGetProducts,
+    required TResult Function(String? parameter) started,
+    required TResult Function(String? query, int skip) onGetProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ProductListEnum productListEnum, String? parameter)?
-        started,
-    TResult? Function(ProductListEnum productListEnum, String? query, int page)?
-        onGetProducts,
+    TResult? Function(String? parameter)? started,
+    TResult? Function(String? query, int skip)? onGetProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ProductListEnum productListEnum, String? parameter)?
-        started,
-    TResult Function(ProductListEnum productListEnum, String? query, int page)?
-        onGetProducts,
+    TResult Function(String? parameter)? started,
+    TResult Function(String? query, int skip)? onGetProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,10 +54,6 @@ mixin _$ProductListEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProductListEventCopyWith<ProductListEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -74,8 +61,6 @@ abstract class $ProductListEventCopyWith<$Res> {
   factory $ProductListEventCopyWith(
           ProductListEvent value, $Res Function(ProductListEvent) then) =
       _$ProductListEventCopyWithImpl<$Res, ProductListEvent>;
-  @useResult
-  $Res call({ProductListEnum productListEnum});
 }
 
 /// @nodoc
@@ -87,30 +72,15 @@ class _$ProductListEventCopyWithImpl<$Res, $Val extends ProductListEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? productListEnum = null,
-  }) {
-    return _then(_value.copyWith(
-      productListEnum: null == productListEnum
-          ? _value.productListEnum
-          : productListEnum // ignore: cast_nullable_to_non_nullable
-              as ProductListEnum,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res>
-    implements $ProductListEventCopyWith<$Res> {
+abstract class _$$_StartedCopyWith<$Res> {
   factory _$$_StartedCopyWith(
           _$_Started value, $Res Function(_$_Started) then) =
       __$$_StartedCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({ProductListEnum productListEnum, String? parameter});
+  $Res call({String? parameter});
 }
 
 /// @nodoc
@@ -123,14 +93,9 @@ class __$$_StartedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productListEnum = null,
     Object? parameter = freezed,
   }) {
     return _then(_$_Started(
-      productListEnum: null == productListEnum
-          ? _value.productListEnum
-          : productListEnum // ignore: cast_nullable_to_non_nullable
-              as ProductListEnum,
       parameter: freezed == parameter
           ? _value.parameter
           : parameter // ignore: cast_nullable_to_non_nullable
@@ -142,16 +107,15 @@ class __$$_StartedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Started implements _Started {
-  const _$_Started({required this.productListEnum, required this.parameter});
+  const _$_Started({this.parameter = null});
 
   @override
-  final ProductListEnum productListEnum;
-  @override
+  @JsonKey()
   final String? parameter;
 
   @override
   String toString() {
-    return 'ProductListEvent.started(productListEnum: $productListEnum, parameter: $parameter)';
+    return 'ProductListEvent.started(parameter: $parameter)';
   }
 
   @override
@@ -159,14 +123,12 @@ class _$_Started implements _Started {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Started &&
-            (identical(other.productListEnum, productListEnum) ||
-                other.productListEnum == productListEnum) &&
             (identical(other.parameter, parameter) ||
                 other.parameter == parameter));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productListEnum, parameter);
+  int get hashCode => Object.hash(runtimeType, parameter);
 
   @JsonKey(ignore: true)
   @override
@@ -177,38 +139,30 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ProductListEnum productListEnum, String? parameter)
-        started,
-    required TResult Function(
-            ProductListEnum productListEnum, String? query, int page)
-        onGetProducts,
+    required TResult Function(String? parameter) started,
+    required TResult Function(String? query, int skip) onGetProducts,
   }) {
-    return started(productListEnum, parameter);
+    return started(parameter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ProductListEnum productListEnum, String? parameter)?
-        started,
-    TResult? Function(ProductListEnum productListEnum, String? query, int page)?
-        onGetProducts,
+    TResult? Function(String? parameter)? started,
+    TResult? Function(String? query, int skip)? onGetProducts,
   }) {
-    return started?.call(productListEnum, parameter);
+    return started?.call(parameter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ProductListEnum productListEnum, String? parameter)?
-        started,
-    TResult Function(ProductListEnum productListEnum, String? query, int page)?
-        onGetProducts,
+    TResult Function(String? parameter)? started,
+    TResult Function(String? query, int skip)? onGetProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(productListEnum, parameter);
+      return started(parameter);
     }
     return orElse();
   }
@@ -246,28 +200,21 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements ProductListEvent {
-  const factory _Started(
-      {required final ProductListEnum productListEnum,
-      required final String? parameter}) = _$_Started;
+  const factory _Started({final String? parameter}) = _$_Started;
 
-  @override
-  ProductListEnum get productListEnum;
   String? get parameter;
-  @override
   @JsonKey(ignore: true)
   _$$_StartedCopyWith<_$_Started> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnGetProductsCopyWith<$Res>
-    implements $ProductListEventCopyWith<$Res> {
+abstract class _$$_OnGetProductsCopyWith<$Res> {
   factory _$$_OnGetProductsCopyWith(
           _$_OnGetProducts value, $Res Function(_$_OnGetProducts) then) =
       __$$_OnGetProductsCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({ProductListEnum productListEnum, String? query, int page});
+  $Res call({String? query, int skip});
 }
 
 /// @nodoc
@@ -281,22 +228,17 @@ class __$$_OnGetProductsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productListEnum = null,
     Object? query = freezed,
-    Object? page = null,
+    Object? skip = null,
   }) {
     return _then(_$_OnGetProducts(
-      productListEnum: null == productListEnum
-          ? _value.productListEnum
-          : productListEnum // ignore: cast_nullable_to_non_nullable
-              as ProductListEnum,
       query: freezed == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String?,
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      skip: null == skip
+          ? _value.skip
+          : skip // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -305,24 +247,18 @@ class __$$_OnGetProductsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetProducts implements _OnGetProducts {
-  const _$_OnGetProducts(
-      {this.productListEnum = ProductListEnum.popular,
-      this.query = null,
-      this.page = 0});
+  const _$_OnGetProducts({this.query = null, this.skip = 0});
 
-  @override
-  @JsonKey()
-  final ProductListEnum productListEnum;
   @override
   @JsonKey()
   final String? query;
   @override
   @JsonKey()
-  final int page;
+  final int skip;
 
   @override
   String toString() {
-    return 'ProductListEvent.onGetProducts(productListEnum: $productListEnum, query: $query, page: $page)';
+    return 'ProductListEvent.onGetProducts(query: $query, skip: $skip)';
   }
 
   @override
@@ -330,14 +266,12 @@ class _$_OnGetProducts implements _OnGetProducts {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnGetProducts &&
-            (identical(other.productListEnum, productListEnum) ||
-                other.productListEnum == productListEnum) &&
             (identical(other.query, query) || other.query == query) &&
-            (identical(other.page, page) || other.page == page));
+            (identical(other.skip, skip) || other.skip == skip));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productListEnum, query, page);
+  int get hashCode => Object.hash(runtimeType, query, skip);
 
   @JsonKey(ignore: true)
   @override
@@ -348,38 +282,30 @@ class _$_OnGetProducts implements _OnGetProducts {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ProductListEnum productListEnum, String? parameter)
-        started,
-    required TResult Function(
-            ProductListEnum productListEnum, String? query, int page)
-        onGetProducts,
+    required TResult Function(String? parameter) started,
+    required TResult Function(String? query, int skip) onGetProducts,
   }) {
-    return onGetProducts(productListEnum, query, page);
+    return onGetProducts(query, skip);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ProductListEnum productListEnum, String? parameter)?
-        started,
-    TResult? Function(ProductListEnum productListEnum, String? query, int page)?
-        onGetProducts,
+    TResult? Function(String? parameter)? started,
+    TResult? Function(String? query, int skip)? onGetProducts,
   }) {
-    return onGetProducts?.call(productListEnum, query, page);
+    return onGetProducts?.call(query, skip);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ProductListEnum productListEnum, String? parameter)?
-        started,
-    TResult Function(ProductListEnum productListEnum, String? query, int page)?
-        onGetProducts,
+    TResult Function(String? parameter)? started,
+    TResult Function(String? query, int skip)? onGetProducts,
     required TResult orElse(),
   }) {
     if (onGetProducts != null) {
-      return onGetProducts(productListEnum, query, page);
+      return onGetProducts(query, skip);
     }
     return orElse();
   }
@@ -417,16 +343,11 @@ class _$_OnGetProducts implements _OnGetProducts {
 }
 
 abstract class _OnGetProducts implements ProductListEvent {
-  const factory _OnGetProducts(
-      {final ProductListEnum productListEnum,
-      final String? query,
-      final int page}) = _$_OnGetProducts;
+  const factory _OnGetProducts({final String? query, final int skip}) =
+      _$_OnGetProducts;
 
-  @override
-  ProductListEnum get productListEnum;
   String? get query;
-  int get page;
-  @override
+  int get skip;
   @JsonKey(ignore: true)
   _$$_OnGetProductsCopyWith<_$_OnGetProducts> get copyWith =>
       throw _privateConstructorUsedError;
