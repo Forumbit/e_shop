@@ -13,11 +13,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ProductListPage extends StatelessWidget {
   const ProductListPage({
     super.key,
-    this.category,
+    this.parameter,
     required this.productListEnum,
   });
 
-  final String? category;
+  final String? parameter;
   final ProductListEnum productListEnum;
 
   @override
@@ -31,16 +31,15 @@ class ProductListPage extends StatelessWidget {
       case ProductListEnum.category:
         repository = diContainer.getCategoryRepository();
       case ProductListEnum.search:
-        //! Change Repository
-        repository = diContainer.getProductRepository();
+        repository = diContainer.getSearchRepository();
     }
 
     return BlocProvider<ProductListBloc>(
       create: (context) => ProductListBloc(repository)
-        ..add(ProductListEvent.started(parameter: category)),
+        ..add(ProductListEvent.started(parameter: parameter)),
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 80.h,
+          toolbarHeight: 100.h,
           title: Text(
             AppTexts.products,
             style: TextStyle(
@@ -50,15 +49,18 @@ class ProductListPage extends StatelessWidget {
             ),
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(16.h),
-            child: AppBarBottomWidget(category: category),
+            preferredSize: Size.fromHeight(80.h),
+            child: AppBarBottomWidget(
+              parameter: parameter,
+              productListEnum: productListEnum,
+            ),
           ),
           scrolledUnderElevation: 0,
           centerTitle: true,
         ),
         body: ProductListWidget(
           productListEnum: productListEnum,
-          query: category,
+          query: parameter,
         ),
       ),
     );
