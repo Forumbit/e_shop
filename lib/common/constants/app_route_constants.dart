@@ -9,10 +9,12 @@ abstract class AppRouteNamed {
   static const categoryProduct = 'category_product';
   static const searchProduct = 'search_product';
   static const productDetail = 'product_detail';
+  static const categoryList = 'category_list';
 }
 
 abstract class AppRouteUrl {
   static const home = '/';
+  static const categoryList = 'category_list';
   static const popularProductList = 'product_list/popular';
   static const categoryProductList =
       'product_list/${AppRouteNamed.categoryProduct}/:${AppRouteArgument.category}';

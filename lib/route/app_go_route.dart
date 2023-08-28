@@ -1,11 +1,12 @@
 import 'package:e_shop/common/constants/app_route_constants.dart';
-import 'package:e_shop/common/widgets/custom_bottom_bar.dart';
+import 'package:e_shop/features/widgets/custom_bottom_bar.dart';
 import 'package:e_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 abstract interface class ScreenFactory {
   Widget makeHome();
+  Widget makeCategoryList();
   Widget makePopularProductList();
   Widget makeCategoryProductList(String category);
   Widget makeSearchProductList(String query);
@@ -31,6 +32,12 @@ class AppGoRoute implements AppRoute {
                     builder: (BuildContext context, GoRouterState state) =>
                         screenFactory.makeHome(),
                     routes: [
+                      GoRoute(
+                        name: AppRouteNamed.categoryList,
+                        path: AppRouteUrl.categoryList,
+                        builder: (BuildContext context, GoRouterState state) =>
+                            screenFactory.makeCategoryList(),
+                      ),
                       GoRoute(
                         name: AppRouteNamed.popularProduct,
                         path: AppRouteUrl.popularProductList,

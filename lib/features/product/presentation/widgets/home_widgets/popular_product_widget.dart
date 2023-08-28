@@ -44,11 +44,10 @@ class PopularProductWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 7.h),
         SizedBox(
           height: 260.w,
           child: ListView.separated(
-            padding: EdgeInsets.only(top: 8.h),
+            padding: EdgeInsets.only(top: 12.h),
             scrollDirection: Axis.horizontal,
             itemCount: products.length,
             separatorBuilder: (BuildContext context, int index) {

@@ -1,40 +1,43 @@
 import 'package:dio/dio.dart';
 import 'package:e_shop/common/utils/mixins/product_remote_datasource_mixin.dart';
 import 'package:e_shop/common/configuration.dart';
-import 'package:e_shop/features/product/data/models/product/product_model.dart';
 import 'package:e_shop/features/product/data/models/product_list/product_list_model.dart';
 
-abstract interface class ProductRemoteDataSource {
-  Future<ProductListModel> getPopularProducts(int skip);
-  Future<ProductModel> getProduct(int id);
+abstract interface class CategoryRemoteDataSource {
+  Future<List<String>> getCategories();
+  Future<ProductListModel> getProductsOfCategory(
+    String category,
+    int skip,
+  );
 }
 
-class ProductRemoteDataSourceImpl
+class CategoryRemoteDataSourceImpl
     with ProductRemoteDataSourceMixin
-    implements ProductRemoteDataSource {
-  ProductRemoteDataSourceImpl({required this.dio});
+    implements CategoryRemoteDataSource {
+  CategoryRemoteDataSourceImpl(this.dio);
 
   final Dio dio;
 
   @override
-  Future<ProductModel> getProduct(int id) async {
+  Future<List<String>> getCategories() async {
     final url = Uri.http(
       ApiConfiguration.host,
-      '/products/$id',
+      '/products/categories',
     ).toString();
-
     final response = await dio.get(url);
-
     final json = response.data;
-    final product = ProductModel.fromJson(json);
-    return product;
+    final categories = List<String>.from(json);
+    return categories;
   }
 
   @override
-  Future<ProductListModel> getPopularProducts(int skip) async {
+  Future<ProductListModel> getProductsOfCategory(
+    String category,
+    int skip,
+  ) async {
     final url = Uri.http(
       ApiConfiguration.host,
-      '/products',
+      'products/category/$category',
       {
         'limit': ApiConfiguration.limitQueryParameter,
         'skip': skip.toString(),
