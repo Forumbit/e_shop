@@ -24,19 +24,21 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final diContainer = ProviderValue.of<DIContainer>(context).value;
 
+    final providers = <BlocProvider>[
+      BlocProvider<CategoryListBloc>(
+        create: (context) => CategoryListBloc(
+          diContainer.getCategoryRepository(),
+        )..add(const CategoryListEvent.started()),
+      ),
+      BlocProvider<ProductListBloc>(
+        create: (context) => ProductListBloc(
+          diContainer.getProductRepository(),
+        )..add(const ProductListEvent.started()),
+      ),
+    ];
+
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<CategoryListBloc>(
-          create: (context) =>
-              CategoryListBloc(diContainer.getCategoryRepository())
-                ..add(const CategoryListEvent.started()),
-        ),
-        BlocProvider<ProductListBloc>(
-          create: (context) =>
-              ProductListBloc(diContainer.getProductRepository())
-                ..add(const ProductListEvent.started()),
-        ),
-      ],
+      providers: providers,
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
