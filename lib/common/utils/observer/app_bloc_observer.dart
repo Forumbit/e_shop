@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
@@ -23,12 +25,13 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    logger.i('On Change: \n${bloc.runtimeType}: $change');
+    logger.i(
+        'On Change: \n${bloc.runtimeType}: \n⏮️ Current state: ${change.currentState}\n⏭️ Next State: ${change.nextState}');
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    logger.i('On Transition: \n${bloc.runtimeType}: $transition');
+    log('On Transition: ${bloc.runtimeType}');
   }
 }

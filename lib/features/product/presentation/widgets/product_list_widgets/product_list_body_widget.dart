@@ -10,10 +10,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ProductListWidget extends StatelessWidget {
   const ProductListWidget({
     super.key,
-    this.query,
+    required this.controller,
     required this.productListEnum,
   });
-  final String? query;
+  final TextEditingController controller;
   final ProductListEnum productListEnum;
 
   @override
@@ -34,7 +34,7 @@ class ProductListWidget extends StatelessWidget {
               productList: productList,
               areProductsEnded: areProductsEnded,
               productListEnum: productListEnum,
-              query: query,
+              query: controller.text,
             );
           },
           error: () => const Text(AppTexts.error),

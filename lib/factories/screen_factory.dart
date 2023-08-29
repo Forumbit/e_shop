@@ -36,7 +36,7 @@ class ScreenFactoryDefault implements ScreenFactory {
         value: _diContainer,
         child: ProductListPage(
           productListEnum: ProductListEnum.category,
-          category: category,
+          parameter: category,
         ),
       );
 
@@ -45,7 +45,7 @@ class ScreenFactoryDefault implements ScreenFactory {
         value: _diContainer,
         child: ProductListPage(
           productListEnum: ProductListEnum.search,
-          category: query,
+          parameter: query,
           // controllerText: query,
         ),
       );

@@ -19,19 +19,22 @@ mixin _$ProductListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? parameter) started,
-    required TResult Function(String? query, int skip) onGetProducts,
+    required TResult Function(String? query, int page) onGetProducts,
+    required TResult Function(String query) onSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? parameter)? started,
-    TResult? Function(String? query, int skip)? onGetProducts,
+    TResult? Function(String? query, int page)? onGetProducts,
+    TResult? Function(String query)? onSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? parameter)? started,
-    TResult Function(String? query, int skip)? onGetProducts,
+    TResult Function(String? query, int page)? onGetProducts,
+    TResult Function(String query)? onSearchProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ProductListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OnGetProducts value) onGetProducts,
+    required TResult Function(_OnSearchProducts value) onSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OnGetProducts value)? onGetProducts,
+    TResult? Function(_OnSearchProducts value)? onSearchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OnGetProducts value)? onGetProducts,
+    TResult Function(_OnSearchProducts value)? onSearchProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,7 +146,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? parameter) started,
-    required TResult Function(String? query, int skip) onGetProducts,
+    required TResult Function(String? query, int page) onGetProducts,
+    required TResult Function(String query) onSearchProducts,
   }) {
     return started(parameter);
   }
@@ -149,7 +156,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? parameter)? started,
-    TResult? Function(String? query, int skip)? onGetProducts,
+    TResult? Function(String? query, int page)? onGetProducts,
+    TResult? Function(String query)? onSearchProducts,
   }) {
     return started?.call(parameter);
   }
@@ -158,7 +166,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? parameter)? started,
-    TResult Function(String? query, int skip)? onGetProducts,
+    TResult Function(String? query, int page)? onGetProducts,
+    TResult Function(String query)? onSearchProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,6 +181,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OnGetProducts value) onGetProducts,
+    required TResult Function(_OnSearchProducts value) onSearchProducts,
   }) {
     return started(this);
   }
@@ -181,6 +191,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OnGetProducts value)? onGetProducts,
+    TResult? Function(_OnSearchProducts value)? onSearchProducts,
   }) {
     return started?.call(this);
   }
@@ -190,6 +201,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OnGetProducts value)? onGetProducts,
+    TResult Function(_OnSearchProducts value)? onSearchProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -214,7 +226,7 @@ abstract class _$$_OnGetProductsCopyWith<$Res> {
           _$_OnGetProducts value, $Res Function(_$_OnGetProducts) then) =
       __$$_OnGetProductsCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? query, int skip});
+  $Res call({String? query, int page});
 }
 
 /// @nodoc
@@ -229,16 +241,16 @@ class __$$_OnGetProductsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? query = freezed,
-    Object? skip = null,
+    Object? page = null,
   }) {
     return _then(_$_OnGetProducts(
       query: freezed == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String?,
-      skip: null == skip
-          ? _value.skip
-          : skip // ignore: cast_nullable_to_non_nullable
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -247,18 +259,18 @@ class __$$_OnGetProductsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetProducts implements _OnGetProducts {
-  const _$_OnGetProducts({this.query = null, this.skip = 0});
+  const _$_OnGetProducts({this.query = null, this.page = 0});
 
   @override
   @JsonKey()
   final String? query;
   @override
   @JsonKey()
-  final int skip;
+  final int page;
 
   @override
   String toString() {
-    return 'ProductListEvent.onGetProducts(query: $query, skip: $skip)';
+    return 'ProductListEvent.onGetProducts(query: $query, page: $page)';
   }
 
   @override
@@ -267,11 +279,11 @@ class _$_OnGetProducts implements _OnGetProducts {
         (other.runtimeType == runtimeType &&
             other is _$_OnGetProducts &&
             (identical(other.query, query) || other.query == query) &&
-            (identical(other.skip, skip) || other.skip == skip));
+            (identical(other.page, page) || other.page == page));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query, skip);
+  int get hashCode => Object.hash(runtimeType, query, page);
 
   @JsonKey(ignore: true)
   @override
@@ -283,29 +295,32 @@ class _$_OnGetProducts implements _OnGetProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? parameter) started,
-    required TResult Function(String? query, int skip) onGetProducts,
+    required TResult Function(String? query, int page) onGetProducts,
+    required TResult Function(String query) onSearchProducts,
   }) {
-    return onGetProducts(query, skip);
+    return onGetProducts(query, page);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? parameter)? started,
-    TResult? Function(String? query, int skip)? onGetProducts,
+    TResult? Function(String? query, int page)? onGetProducts,
+    TResult? Function(String query)? onSearchProducts,
   }) {
-    return onGetProducts?.call(query, skip);
+    return onGetProducts?.call(query, page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? parameter)? started,
-    TResult Function(String? query, int skip)? onGetProducts,
+    TResult Function(String? query, int page)? onGetProducts,
+    TResult Function(String query)? onSearchProducts,
     required TResult orElse(),
   }) {
     if (onGetProducts != null) {
-      return onGetProducts(query, skip);
+      return onGetProducts(query, page);
     }
     return orElse();
   }
@@ -315,6 +330,7 @@ class _$_OnGetProducts implements _OnGetProducts {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OnGetProducts value) onGetProducts,
+    required TResult Function(_OnSearchProducts value) onSearchProducts,
   }) {
     return onGetProducts(this);
   }
@@ -324,6 +340,7 @@ class _$_OnGetProducts implements _OnGetProducts {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OnGetProducts value)? onGetProducts,
+    TResult? Function(_OnSearchProducts value)? onSearchProducts,
   }) {
     return onGetProducts?.call(this);
   }
@@ -333,6 +350,7 @@ class _$_OnGetProducts implements _OnGetProducts {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OnGetProducts value)? onGetProducts,
+    TResult Function(_OnSearchProducts value)? onSearchProducts,
     required TResult orElse(),
   }) {
     if (onGetProducts != null) {
@@ -343,13 +361,152 @@ class _$_OnGetProducts implements _OnGetProducts {
 }
 
 abstract class _OnGetProducts implements ProductListEvent {
-  const factory _OnGetProducts({final String? query, final int skip}) =
+  const factory _OnGetProducts({final String? query, final int page}) =
       _$_OnGetProducts;
 
   String? get query;
-  int get skip;
+  int get page;
   @JsonKey(ignore: true)
   _$$_OnGetProductsCopyWith<_$_OnGetProducts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnSearchProductsCopyWith<$Res> {
+  factory _$$_OnSearchProductsCopyWith(
+          _$_OnSearchProducts value, $Res Function(_$_OnSearchProducts) then) =
+      __$$_OnSearchProductsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$_OnSearchProductsCopyWithImpl<$Res>
+    extends _$ProductListEventCopyWithImpl<$Res, _$_OnSearchProducts>
+    implements _$$_OnSearchProductsCopyWith<$Res> {
+  __$$_OnSearchProductsCopyWithImpl(
+      _$_OnSearchProducts _value, $Res Function(_$_OnSearchProducts) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$_OnSearchProducts(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnSearchProducts implements _OnSearchProducts {
+  const _$_OnSearchProducts(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'ProductListEvent.onSearchProducts(query: $query)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnSearchProducts &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OnSearchProductsCopyWith<_$_OnSearchProducts> get copyWith =>
+      __$$_OnSearchProductsCopyWithImpl<_$_OnSearchProducts>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? parameter) started,
+    required TResult Function(String? query, int page) onGetProducts,
+    required TResult Function(String query) onSearchProducts,
+  }) {
+    return onSearchProducts(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? parameter)? started,
+    TResult? Function(String? query, int page)? onGetProducts,
+    TResult? Function(String query)? onSearchProducts,
+  }) {
+    return onSearchProducts?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? parameter)? started,
+    TResult Function(String? query, int page)? onGetProducts,
+    TResult Function(String query)? onSearchProducts,
+    required TResult orElse(),
+  }) {
+    if (onSearchProducts != null) {
+      return onSearchProducts(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_OnGetProducts value) onGetProducts,
+    required TResult Function(_OnSearchProducts value) onSearchProducts,
+  }) {
+    return onSearchProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_OnGetProducts value)? onGetProducts,
+    TResult? Function(_OnSearchProducts value)? onSearchProducts,
+  }) {
+    return onSearchProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_OnGetProducts value)? onGetProducts,
+    TResult Function(_OnSearchProducts value)? onSearchProducts,
+    required TResult orElse(),
+  }) {
+    if (onSearchProducts != null) {
+      return onSearchProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSearchProducts implements ProductListEvent {
+  const factory _OnSearchProducts(final String query) = _$_OnSearchProducts;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$_OnSearchProductsCopyWith<_$_OnSearchProducts> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

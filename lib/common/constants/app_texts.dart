@@ -15,4 +15,5 @@ class AppTexts {
   static const reviewsNotYet = 'Reviews not yet';
   static const showing = 'Showing';
   static const results = 'Results';
+  static const searchProducts = 'Search products';
 }
