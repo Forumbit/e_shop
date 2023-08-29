@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:e_shop/common/utils/mixins/product_remote_datasource_mixin.dart';
 import 'package:e_shop/common/configuration.dart';
@@ -18,28 +20,38 @@ class ProductRemoteDataSourceImpl
 
   @override
   Future<ProductModel> getProduct(int id) async {
-    final url = Uri.http(
-      ApiConfiguration.host,
-      '/products/$id',
-    ).toString();
+    try {
+      final url = Uri.http(
+        ApiConfiguration.host,
+        '/products/$id',
+      ).toString();
 
-    final response = await dio.get(url);
+      final response = await dio.get(url);
 
-    final json = response.data;
-    final product = ProductModel.fromJson(json);
-    return product;
+      final json = response.data;
+      final product = ProductModel.fromJson(json);
+      return product;
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 
   @override
   Future<ProductListModel> getPopularProducts(int skip) async {
-    final url = Uri.http(
-      ApiConfiguration.host,
-      '/products',
-      {
-        'limit': ApiConfiguration.limitQueryParameter,
-        'skip': skip.toString(),
-      },
-    );
-    return await getProducts(dio, url);
+    try {
+      final url = Uri.http(
+        ApiConfiguration.host,
+        '/products',
+        {
+          'limit': ApiConfiguration.limitQueryParameter,
+          'skip': skip.toString(),
+        },
+      );
+      return await getProducts(dio, url);
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 }

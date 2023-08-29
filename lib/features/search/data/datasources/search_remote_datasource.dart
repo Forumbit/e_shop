@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:e_shop/common/configuration.dart';
 import 'package:e_shop/common/utils/mixins/product_remote_datasource_mixin.dart';
@@ -16,15 +18,20 @@ class SearchRemoteDataSourceImpl
 
   @override
   Future<ProductListModel> getProductsOfSearch(skip, query) async {
-    final url = Uri.http(
-      ApiConfiguration.host,
-      '/products/search',
-      {
-        'limit': ApiConfiguration.limitQueryParameter,
-        'skip': skip.toString(),
-        'q': query,
-      },
-    );
-    return await getProducts(dio, url);
+    try {
+      final url = Uri.http(
+        ApiConfiguration.host,
+        '/products/search',
+        {
+          'limit': ApiConfiguration.limitQueryParameter,
+          'skip': skip.toString(),
+          'q': query,
+        },
+      );
+      return await getProducts(dio, url);
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 }

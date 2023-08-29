@@ -43,10 +43,9 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   }
 
   Future<void> _getProducts({emit, String? parameter, int page = 0}) async {
-    //* The query parameter, which skip old products
-    final skip = page * int.parse(ApiConfiguration.limitQueryParameter);
-
     try {
+      //* The query parameter, which skip old products
+      final skip = page * int.parse(ApiConfiguration.limitQueryParameter);
       final newProductList = await _productListRepository.getProducts(
         skip,
         parameter: parameter ?? '',
