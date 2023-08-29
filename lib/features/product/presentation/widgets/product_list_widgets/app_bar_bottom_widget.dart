@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
@@ -5,22 +6,19 @@ import 'package:e_shop/features/search/presentation/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class AppBarBottomWidget extends StatelessWidget {
   const AppBarBottomWidget({
     super.key,
-    required this.parameter,
+    required this.controller,
     required this.productListEnum,
   });
 
-  final String? parameter;
+  final TextEditingController controller;
   final ProductListEnum productListEnum;
 
-
   //! 1. parameter text doesn't change
-  //! 2. loading emit not working
-  //! 3. Wrong pagination
-  //! 4. Updating is strange
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,10 +27,21 @@ class AppBarBottomWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: productListEnum == ProductListEnum.search
               ? SearchWidget(
-                  controllerText: parameter,
-                  isHome: false,
+                  controller: controller,
+                  onSubmitted: (String query) =>
+                      context.read<ProductListBloc>().add(
+                            ProductListEvent.onSearchProducts(query),
+                          ),
                 )
-              : const SearchWidget(isHome: false),
+              : SearchWidget(
+                  controller: controller,
+                  onSubmitted: (String query) => context.pushNamed(
+                    AppRouteNamed.searchProduct,
+                    pathParameters: {
+                      AppRouteArgument.query: query,
+                    },
+                  ),
+                ),
         ),
         SizedBox(height: 8.h),
         Padding(
@@ -41,54 +50,27 @@ class AppBarBottomWidget extends StatelessWidget {
             children: [
               BlocBuilder<ProductListBloc, ProductListState>(
                 builder: (context, state) {
-                  return state.maybeWhen(
-                    loaded: (productsList, isProductsEnded) {
-                      return RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '${AppTexts.showing}  ',
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                color: const Color(0xFF999BA9),
-                              ),
-                            ),
-                            TextSpan(
-                              text: parameter != null
-                                  ? '"$parameter"'
-                                  : '"${AppTexts.popular}"',
-                              style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xFF2F2F2F),
-                              ),
-                            ),
-                          ],
+                  return RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '${AppTexts.showing}  ',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: const Color(0xFF999BA9),
+                          ),
                         ),
-                      );
-                    },
-                    orElse: () => RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '${AppTexts.showing}  ',
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              color: const Color(0xFF999BA9),
-                            ),
+                        TextSpan(
+                          text: controller.text != ''
+                              ? '"${controller.text}"'
+                              : '"${AppTexts.popular}"',
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF2F2F2F),
                           ),
-                          TextSpan(
-                            text: parameter != null
-                                ? '"$parameter"'
-                                : '"${AppTexts.popular}"',
-                            style: TextStyle(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xFF2F2F2F),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   );
                 },

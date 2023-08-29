@@ -1,69 +1,33 @@
-import 'dart:developer';
-
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-
 class SearchWidget extends StatefulWidget {
   const SearchWidget({
     super.key,
-    this.controllerText,
-    required this.isHome,
+    this.controller,
+    required this.onSubmitted,
   });
 
-  final String? controllerText;
-  final bool isHome;
+  final TextEditingController? controller;
+  final void Function(String) onSubmitted;
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
-  late final TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: widget.controllerText);
-    log('Text Editing Controller was initialized');
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    log('Text Editing Controller was disposed');
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: TextField(
-            controller: _controller,
+            controller: widget.controller,
             onSubmitted: (String text) {
-              if (_controller.text == '') return;
-              if (widget.isHome) {
-                context.pushNamed(
-                  AppRouteNamed.searchProduct,
-                  pathParameters: {
-                    AppRouteArgument.query: text,
-                  },
-                );
-              } else {
-                context.read<ProductListBloc>().add(
-                      ProductListEvent.onGetProducts(
-                        query: _controller.text,
-                      ),
-                    );
-              }
+              if (text == '') return;
+              widget.onSubmitted(text);
             },
             decoration: InputDecoration(
               filled: true,

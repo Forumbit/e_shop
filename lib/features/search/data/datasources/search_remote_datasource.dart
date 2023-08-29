@@ -19,7 +19,11 @@ class SearchRemoteDataSourceImpl
     final url = Uri.http(
       ApiConfiguration.host,
       '/products/search',
-      {'q': query},
+      {
+        'limit': ApiConfiguration.limitQueryParameter,
+        'skip': skip.toString(),
+        'q': query,
+      },
     );
     return await getProducts(dio, url);
   }

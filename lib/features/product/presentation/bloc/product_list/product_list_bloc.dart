@@ -24,6 +24,7 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
           parameter: parameter,
           page: page,
         ),
+        onSearchProducts: (String query) => _searchProducts(emit, query),
       ),
       transformer: sequential(),
     );
@@ -34,6 +35,11 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   Future<void> _init({emit, String? parameter}) async {
     emit(const ProductListState.loading());
     await _getProducts(emit: emit, parameter: parameter);
+  }
+
+  Future<void> _searchProducts(emit, String query) async {
+    emit(const ProductListState.loading());
+    await _getProducts(emit: emit, parameter: query);
   }
 
   Future<void> _getProducts({emit, String? parameter, int page = 0}) async {

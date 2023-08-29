@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/repositories/product_list_repository.dart';
 import 'package:e_shop/di/di_container.dart';
@@ -10,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProductListPage extends StatelessWidget {
+class ProductListPage extends StatefulWidget {
   const ProductListPage({
     super.key,
     this.parameter,
@@ -21,11 +23,32 @@ class ProductListPage extends StatelessWidget {
   final ProductListEnum productListEnum;
 
   @override
+  State<ProductListPage> createState() => _ProductListPageState();
+}
+
+class _ProductListPageState extends State<ProductListPage> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.parameter);
+    log('Text Editing Controller was initialized');
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    log('Text Editing Controller was disposed');
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     late final ProductListRepository repository;
     final diContainer = ProviderValue.of<DIContainer>(context).value;
 
-    switch (productListEnum) {
+    switch (widget.productListEnum) {
       case ProductListEnum.popular:
         repository = diContainer.getProductRepository();
       case ProductListEnum.category:
@@ -36,7 +59,7 @@ class ProductListPage extends StatelessWidget {
 
     return BlocProvider<ProductListBloc>(
       create: (context) => ProductListBloc(repository)
-        ..add(ProductListEvent.started(parameter: parameter)),
+        ..add(ProductListEvent.started(parameter: widget.parameter)),
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 100.h,
@@ -51,16 +74,16 @@ class ProductListPage extends StatelessWidget {
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(80.h),
             child: AppBarBottomWidget(
-              parameter: parameter,
-              productListEnum: productListEnum,
+              controller: _controller,
+              productListEnum: widget.productListEnum,
             ),
           ),
           scrolledUnderElevation: 0,
           centerTitle: true,
         ),
         body: ProductListWidget(
-          productListEnum: productListEnum,
-          query: parameter,
+          controller: _controller,
+          productListEnum: widget.productListEnum,
         ),
       ),
     );

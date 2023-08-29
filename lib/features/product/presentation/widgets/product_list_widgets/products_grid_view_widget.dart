@@ -57,10 +57,10 @@ class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
   void _onChange() {
     if (_scrollController!.position.maxScrollExtent ==
         _scrollController!.offset) {
-      final skip = (widget.productList?.products.length ?? 0) ~/ 10;
+      final page = (widget.productList?.products.length ?? 0) ~/ 10;
       if (!widget.areProductsEnded) {
         context.read<ProductListBloc>().add(
-              ProductListEvent.onGetProducts(query: widget.query, skip: skip),
+              ProductListEvent.onGetProducts(query: widget.query, page: page),
             );
       } else {}
     }

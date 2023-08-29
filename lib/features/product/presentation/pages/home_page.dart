@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
@@ -14,6 +15,7 @@ import 'package:e_shop/features/product/presentation/widgets/home_widgets/popula
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,7 +42,14 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           scrolledUnderElevation: 0,
           toolbarHeight: 80.h,
-          title: const SearchWidget(isHome: true),
+          title: SearchWidget(
+            onSubmitted: (String query) => context.pushNamed(
+              AppRouteNamed.searchProduct,
+              pathParameters: {
+                AppRouteArgument.query: query,
+              },
+            ),
+          ),
         ),
         body: Shimmer(
           child: ListView(
@@ -51,8 +60,7 @@ class HomePage extends StatelessWidget {
                   orElse: () => const CategoryListLoadingWidget(),
                   loaded: (List<String> categories) =>
                       CategoryListWidget(categories: categories),
-                  error: () =>
-                      const Center(child: Text(AppTexts.error)),
+                  error: () => const Center(child: Text(AppTexts.error)),
                 ),
               ),
               SizedBox(height: 17.h),
@@ -63,8 +71,7 @@ class HomePage extends StatelessWidget {
                     loading: () => const PopularProductLoadingWidget(),
                     loaded: (ProductListEntity productList, _) =>
                         PopularProductWidget(products: productList.products),
-                    error: () =>
-                        const Center(child: Text(AppTexts.error)),
+                    error: () => const Center(child: Text(AppTexts.error)),
                   );
                 },
               ),
