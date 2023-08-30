@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:e_shop/factories/screen_factory.dart';
+import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:e_shop/features/auth/data/repository/auth_repository.dart';
+import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 
 import 'package:e_shop/features/category/data/datasources/category_remote_datasource.dart';
 import 'package:e_shop/features/category/data/repository/category_repository.dart';
@@ -12,31 +15,40 @@ import 'package:e_shop/features/search/data/repository/search_repository.dart';
 import 'package:e_shop/features/search/domain/repository/search_repository.dart';
 import 'package:e_shop/main.dart';
 import 'package:e_shop/route/app_go_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DIContainer {
   final _dio = Dio();
 
+  //* ============= app feature =============
   ScreenFactory _makeScreenFactory() => ScreenFactoryDefault();
   AppRoute makeRoute() => AppGoRoute(screenFactory: _makeScreenFactory());
 
-  //* ========== product feature ==========
+  //* ============= auth feature =============
+  AuthRemoteDataSource _getRemoteDataSource() =>
+      AuthRemoteDataSourceImpl(FirebaseAuth.instance);
+
+  AuthRepository getAuthRepository() =>
+      AuthRepositoryImpl(_getRemoteDataSource());
+
+  //* ============= product feature =============
   ProductRemoteDataSource _getProductRemoteDataSource() =>
       ProductRemoteDataSourceImpl(dio: _dio);
 
   ProductRepository getProductRepository() => ProductRepositoryImpl(
       productRemoteDataSource: _getProductRemoteDataSource());
 
-  //* ========== category feature ==========
+  //* ============= category feature =============
   CategoryRemoteDataSource _getCategoryRemoteDataSource() =>
       CategoryRemoteDataSourceImpl(_dio);
 
   CategoryRepository getCategoryRepository() =>
       CategoryRepositoryImpl(_getCategoryRemoteDataSource());
 
-  //* ========== search feature ==========
+  //* ============= search feature =============
   SearchRemoteDataSource _getSearchRemoteDataSource() =>
       SearchRemoteDataSourceImpl(_dio);
 
-   SearchRepository getSearchRepository() =>
-       SearchRepositoryImpl(_getSearchRemoteDataSource());
+  SearchRepository getSearchRepository() =>
+      SearchRepositoryImpl(_getSearchRemoteDataSource());
 }
