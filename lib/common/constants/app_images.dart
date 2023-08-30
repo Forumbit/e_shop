@@ -8,5 +8,7 @@ abstract class AppImages {
   static const search = 'assets/images/search.png';
   static const star = 'assets/images/star.png';
   static const defaultImage = 'assets/images/default_image.png';
-    static const thumbnail = 'assets/images/thumbnail.jpg';
+  static const thumbnail = 'assets/images/thumbnail.jpg';
+  static const visible = 'assets/images/visible.png';
+  static const invisible = 'assets/images/invisible.png';
 }

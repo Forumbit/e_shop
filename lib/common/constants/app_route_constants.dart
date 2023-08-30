@@ -13,7 +13,13 @@ abstract class AppRouteNamed {
 }
 
 abstract class AppRouteUrl {
-  static const home = '/';
+  static const loader = '/';
+  static const home = '/home';
+  static const account = '/account';
+  static const login = '/login';
+  static const signUp = '/sign_up';
+  static const resetPassword = '/reset_password';
+  static const verifyEmail = '/vefify_email';
   static const categoryList = 'category_list';
   static const popularProductList = 'product_list/popular';
   static const categoryProductList =
