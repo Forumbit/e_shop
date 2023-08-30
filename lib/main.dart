@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract interface class AppFactory {
-  void initialize();
+  Future<void> initialize();
   Widget makeApp();
 }
 
 final app = appFactory();
 
-void main() {
-  app.initialize();
+void main() async {
+  await app.initialize();
   runApp(app.makeApp());
 }
 
@@ -38,6 +38,11 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Nunito',
             colorScheme: ColorScheme.fromSeed(
               seedColor: AppColors.mainColor,
+            ),
+            textSelectionTheme: const TextSelectionThemeData(
+              selectionColor: AppColors.mainColor,
+              cursorColor: AppColors.mainColor,
+              selectionHandleColor: AppColors.mainColor,
             ),
             useMaterial3: true,
           ),
