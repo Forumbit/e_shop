@@ -17,7 +17,10 @@ class ScreenFactoryDefault implements ScreenFactory {
   final _diContainer = DIContainer();
 
   @override
-  Widget makeLoader() => const LoaderPage();
+  Widget makeLoader() => ProviderValue(
+        value: _diContainer,
+        child: const LoaderPage(),
+      );
 
   @override
   Widget makeLogin() => ProviderValue(
