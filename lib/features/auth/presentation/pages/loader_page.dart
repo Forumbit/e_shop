@@ -6,43 +6,33 @@ import 'package:e_shop/features/user/domain/entities/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LoaderPage extends StatefulWidget {
+class LoaderPage extends StatelessWidget {
   const LoaderPage({super.key});
 
-  @override
-  State<LoaderPage> createState() => _LoaderPageState();
-}
-
-class _LoaderPageState extends State<LoaderPage> {
   void _onInitAfterBuild(
     BuildContext context,
     AuthRepository authRepository,
   ) {
     final UserEntity? user = authRepository.getUser();
-
     if (user != null) {
       if (!user.emailVerified) {
         context.go(AppRouteUrl.verifyEmail);
         return;
       } else {
-        context.go(AppRouteUrl.login);
+        context.go(AppRouteUrl.home);
         return;
       }
     }
-    context.go(AppRouteUrl.home);
+    context.go(AppRouteUrl.login);
   }
 
+  // @override
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final diContainer = ProviderValue.of<DIContainer>(context).value;
       _onInitAfterBuild(context, diContainer.getAuthRepository());
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     //! Change
     return const Scaffold(
       body: Center(
