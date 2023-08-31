@@ -8,8 +8,8 @@ abstract interface class AuthRemoteDataSource {
   Future<void> loginWithGmail();
   Future<void> signUp(String email, String password);
   Future<void> resetPassword(String email);
-  Future<void> sendVerificationEmail();
-  Future<bool> checkEmailVerify();
+  Future<void> sendEmailVerification();
+  Future<bool> checkEmailVerification();
   Future<void> deleteAccount();
   Future<void> logout();
 }
@@ -83,7 +83,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<void> sendVerificationEmail() async {
+  Future<void> sendEmailVerification() async {
     try {
       final user = firebaseAuth.currentUser!;
       await user.sendEmailVerification();
@@ -93,7 +93,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<bool> checkEmailVerify() async {
+  Future<bool> checkEmailVerification() async {
     try {
       final user = firebaseAuth.currentUser!;
       await user.reload();

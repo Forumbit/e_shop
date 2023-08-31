@@ -26,9 +26,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   bool canResendEmail = false;
   Timer? timer;
 
-  Future<void> _checkEmailVerified() async {
+  Future<void> _checkEmailVerification() async {
     try {
-      isEmailVerified = await widget.authRepository.checkEmailVerify();
+      isEmailVerified = await widget.authRepository.checkEmailVerification();
       if (isEmailVerified && mounted) {
         context.go(AppRouteUrl.loader);
       }
@@ -38,9 +38,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     }
   }
 
-  Future<void> _sendVerificationEmail() async {
+  Future<void> _sendEmailVerification() async {
     try {
-      await widget.authRepository.verifyEmail();
+      await widget.authRepository.sendEmailVerification();
       setState(() {
         canResendEmail = false;
       });
@@ -71,13 +71,13 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     super.initState();
 
     if (!isEmailVerified) {
-      _sendVerificationEmail();
+      _sendEmailVerification();
     }
 
     timer = Timer.periodic(
       const Duration(seconds: 3),
       (timer) {
-        _checkEmailVerified();
+        _checkEmailVerification();
       },
     );
   }
@@ -111,7 +111,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
               ),
               SizedBox(height: 20.h),
               CustomElevatedButton(
-                onPressed: canResendEmail ? _sendVerificationEmail : null,
+                onPressed: canResendEmail ? _sendEmailVerification : null,
                 backgroundColor: canResendEmail ? AppColors.mainColor : null,
                 child: const Text(AppTexts.send),
               ),

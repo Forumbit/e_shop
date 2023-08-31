@@ -24,7 +24,7 @@ class AppTexts {
   static const verifyEmail = 'VerifyEmail';
   static const clickHere = 'Click here';
   static const dontHaveAccount = 'Don\'t have an Account?';
-  static const repeatPassword = 'Repeat password';
+  static const confirmPassword = 'Confirm password';
   static const send = 'Send';
   static const linkWasSend = 'Link was send to your mail!';
   static const cancel = 'Cancel';

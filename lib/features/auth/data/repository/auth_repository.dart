@@ -55,9 +55,9 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> verifyEmail() async {
+  Future<void> sendEmailVerification() async {
     try {
-      await authRemoteDataSource.sendVerificationEmail();
+      await authRemoteDataSource.sendEmailVerification();
     } catch (e) {
       log(e.toString());
       throw Exception(e);
@@ -65,8 +65,8 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<bool> checkEmailVerify() async {
-    return await authRemoteDataSource.checkEmailVerify();
+  Future<bool> checkEmailVerification() async {
+    return await authRemoteDataSource.checkEmailVerification();
   }
 
   @override

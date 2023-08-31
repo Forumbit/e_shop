@@ -21,7 +21,7 @@ mixin AuthMethodsMixin {
     try {
       await authRepository.login(email, password);
       if (context.mounted) {
-        context.go(AppRouteUrl.home);
+        context.go(AppRouteUrl.loader);
       }
     } on WrongEmailOrPasswordException {
       SnackBarMessenger.showSnackBar(

@@ -20,7 +20,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
   late final TextEditingController _email;
   late final TextEditingController _password;
-  late final TextEditingController _repeatPassword;
+  late final TextEditingController _confirmPassword;
 
   var isLoading = false;
   final formKey = GlobalKey<FormState>();
@@ -35,7 +35,7 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
       authRepository,
       _email.text.trim(),
       _password.text.trim(),
-      _repeatPassword.text.trim(),
+      _confirmPassword.text.trim(),
     );
     isLoading = false;
     setState(() {});
@@ -46,14 +46,14 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
     super.initState();
     _email = TextEditingController();
     _password = TextEditingController();
-    _repeatPassword = TextEditingController();
+    _confirmPassword = TextEditingController();
   }
 
   @override
   void dispose() {
     _email.dispose();
     _password.dispose();
-    _repeatPassword.dispose();
+    _confirmPassword.dispose();
     super.dispose();
   }
 
@@ -92,8 +92,8 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
                     ),
                     SizedBox(height: 20.h),
                     PasswordTextField(
-                      controller: _repeatPassword,
-                      labelText: AppTexts.repeatPassword,
+                      controller: _confirmPassword,
+                      labelText: AppTexts.confirmPassword,
                     ),
                   ],
                 ),
