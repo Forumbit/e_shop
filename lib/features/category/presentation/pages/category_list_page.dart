@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_gradients.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
@@ -37,7 +38,7 @@ class CategoryListPage extends StatelessWidget {
               categories: categories,
             ),
             error: () => const Center(
-              child: Text(AppTexts.error),
+              child: Text(AppErrorText.commonError),
             ),
           ),
         )),

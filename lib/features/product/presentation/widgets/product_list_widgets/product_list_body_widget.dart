@@ -1,4 +1,4 @@
-import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_list_widgets/products_grid_view_widget.dart';
 import 'package:e_shop/features/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
@@ -37,7 +37,7 @@ class ProductListWidget extends StatelessWidget {
               query: controller.text,
             );
           },
-          error: () => const Text(AppTexts.error),
+          error: () => const Text(AppErrorText.commonError,),
         ),
       ),
     );

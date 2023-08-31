@@ -5,12 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 abstract interface class ScreenFactory {
+  Widget makeLoader();
   Widget makeHome();
+  Widget makeLogin();
+  Widget makeVerifyEmail();
+  Widget makeSignUp();
+  Widget makeResetPassword();
   Widget makeCategoryList();
   Widget makePopularProductList();
   Widget makeCategoryProductList(String category);
   Widget makeSearchProductList(String query);
   Widget makeProductDetail(int id);
+  Widget makeProfile();
 }
 
 class AppGoRoute implements AppRoute {
@@ -19,8 +25,28 @@ class AppGoRoute implements AppRoute {
 
   @override
   RouterConfig<Object>? get router => GoRouter(
-        initialLocation: AppRouteUrl.home,
+        initialLocation: AppRouteUrl.loader,
         routes: [
+          GoRoute(
+            path: AppRouteUrl.loader,
+            builder: (context, state) => screenFactory.makeLoader(),
+          ),
+          GoRoute(
+            path: AppRouteUrl.login,
+            builder: (context, state) => screenFactory.makeLogin(),
+          ),
+          GoRoute(
+            path: AppRouteUrl.signUp,
+            builder: (context, state) => screenFactory.makeSignUp(),
+          ),
+          GoRoute(
+            path: AppRouteUrl.resetPassword,
+            builder: (context, state) => screenFactory.makeResetPassword(),
+          ),
+          GoRoute(
+            path: AppRouteUrl.verifyEmail,
+            builder: (context, state) => screenFactory.makeVerifyEmail(),
+          ),
           StatefulShellRoute.indexedStack(
             builder: (context, state, navigationShell) =>
                 CustomBottomBar(navigationShell: navigationShell),
@@ -103,13 +129,9 @@ class AppGoRoute implements AppRoute {
               StatefulShellBranch(
                 routes: [
                   GoRoute(
-                    path: '/user',
+                    path: '/profile',
                     builder: (BuildContext context, GoRouterState state) =>
-                        const Scaffold(
-                      body: Center(
-                        child: Text('User'),
-                      ),
-                    ),
+                        screenFactory.makeProfile(),
                   ),
                 ],
               ),

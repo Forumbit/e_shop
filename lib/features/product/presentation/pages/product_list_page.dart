@@ -32,7 +32,11 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(text: widget.parameter);
+    if (widget.productListEnum == ProductListEnum.category) {
+      _controller = TextEditingController(text: '');
+    } else {
+      _controller = TextEditingController(text: widget.parameter);
+    }
     log('Text Editing Controller was initialized');
   }
 
@@ -74,6 +78,9 @@ class _ProductListPageState extends State<ProductListPage> {
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(80.h),
             child: AppBarBottomWidget(
+              categoryName: widget.productListEnum == ProductListEnum.category
+                  ? widget.parameter
+                  : null,
               controller: _controller,
               productListEnum: widget.productListEnum,
             ),

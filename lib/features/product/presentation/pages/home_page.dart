@@ -1,5 +1,5 @@
+import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/search/presentation/widgets/search_widget.dart';
@@ -62,7 +62,8 @@ class HomePage extends StatelessWidget {
                   orElse: () => const CategoryListLoadingWidget(),
                   loaded: (List<String> categories) =>
                       CategoryListWidget(categories: categories),
-                  error: () => const Center(child: Text(AppTexts.error)),
+                  error: () =>
+                      const Center(child: Text(AppErrorText.commonError)),
                 ),
               ),
               SizedBox(height: 17.h),
@@ -73,7 +74,11 @@ class HomePage extends StatelessWidget {
                     loading: () => const PopularProductLoadingWidget(),
                     loaded: (ProductListEntity productList, _) =>
                         PopularProductWidget(products: productList.products),
-                    error: () => const Center(child: Text(AppTexts.error)),
+                    error: () => const Center(
+                      child: Text(
+                        AppErrorText.commonError,
+                      ),
+                    ),
                   );
                 },
               ),

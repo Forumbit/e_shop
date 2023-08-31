@@ -1,6 +1,7 @@
 import 'package:e_shop/common/utils/observer/app_bloc_observer.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/main.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,9 +13,12 @@ class AppFactoryImpl implements AppFactory {
   AppFactoryImpl();
 
   @override
-  void initialize() {
+  Future<void> initialize() async {
+    WidgetsFlutterBinding.ensureInitialized();
     Bloc.observer = AppBlocObserver();
+    await Firebase.initializeApp();
   }
+  
   @override
   Widget makeApp() => MyApp(appRoute: _diContainer.makeRoute());
   

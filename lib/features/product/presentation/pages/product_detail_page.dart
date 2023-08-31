@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
@@ -63,7 +64,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               loading: () => const ProductDetailLoadingWidget(),
               loaded: (ProductEntity product) =>
                   ProductDetailWidget(product: product),
-              error: () => const Center(child: Text(AppTexts.error)),
+              error: () => const Center(child: Text(AppErrorText.commonError,)),
             ),
           ),
           floatingActionButtonLocation:
