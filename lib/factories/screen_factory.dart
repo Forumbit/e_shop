@@ -10,6 +10,7 @@ import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/pages/home_page.dart';
 import 'package:e_shop/features/product/presentation/pages/product_detail_page.dart';
 import 'package:e_shop/features/product/presentation/pages/product_list_page.dart';
+import 'package:e_shop/features/user/presentation/pages/user_page.dart';
 import 'package:e_shop/route/app_go_route.dart';
 import 'package:flutter/material.dart';
 
@@ -90,20 +91,8 @@ class ScreenFactoryDefault implements ScreenFactory {
       );
 
   @override
-  Widget makeProfile() => Scaffold(
-        body: Center(
-          child: Column(
-            children: [
-              const Text('User'),
-              IconButton(
-                onPressed: () async {
-                  final repository = _diContainer.getAuthRepository();
-                  await repository.logout();
-                },
-                icon: const Icon(Icons.logout),
-              ),
-            ],
-          ),
-        ),
+  Widget makeProfile() => ProviderValue(
+        value: _diContainer,
+        child: const UserPage(),
       );
 }
