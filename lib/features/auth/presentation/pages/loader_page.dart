@@ -1,7 +1,8 @@
-import 'dart:async';
-
 import 'package:e_shop/common/constants/app_route_constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:e_shop/common/utils/provider/provider_value.dart';
+import 'package:e_shop/di/di_container.dart';
+import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
+import 'package:e_shop/features/user/domain/entities/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,17 +14,20 @@ class LoaderPage extends StatefulWidget {
 }
 
 class _LoaderPageState extends State<LoaderPage> {
-  late final StreamSubscription<User?> _subscription;
+  void _onInitAfterBuild(
+    BuildContext context,
+    AuthRepository authRepository,
+  ) {
+    final UserEntity? user = authRepository.getUser();
 
-  void _onAuthChange(User? event) {
-    if (event != null) {
-      if (!event.emailVerified) {
+    if (user != null) {
+      if (!user.emailVerified) {
         context.go(AppRouteUrl.verifyEmail);
         return;
+      } else {
+        context.go(AppRouteUrl.login);
+        return;
       }
-    } else {
-      context.go(AppRouteUrl.login);
-      return;
     }
     context.go(AppRouteUrl.home);
   }
@@ -31,15 +35,10 @@ class _LoaderPageState extends State<LoaderPage> {
   @override
   void initState() {
     super.initState();
-    //! Firebase in UI!!!! Osujdau
-    _subscription =
-        FirebaseAuth.instance.authStateChanges().listen(_onAuthChange);
-  }
-
-  @override
-  void dispose() {
-    _subscription.cancel();
-    super.dispose();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final diContainer = ProviderValue.of<DIContainer>(context).value;
+      _onInitAfterBuild(context, diContainer.getAuthRepository());
+    });
   }
 
   @override
