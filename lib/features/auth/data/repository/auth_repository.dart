@@ -2,11 +2,24 @@ import 'dart:developer';
 import 'package:e_shop/common/error/exception.dart';
 import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
+import 'package:e_shop/features/user/domain/entities/user_entity.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.authRemoteDataSource);
 
   final AuthRemoteDataSource authRemoteDataSource;
+
+  @override
+  UserEntity? getUser() {
+    try {
+      //! Change
+      final userModel = authRemoteDataSource.getUser();
+      return UserEntity();
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
+  }
 
   @override
   Future<void> login(String email, String password) async {

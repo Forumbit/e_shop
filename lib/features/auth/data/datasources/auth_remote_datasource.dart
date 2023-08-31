@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:e_shop/common/constants/firebase_exception_code.dart';
 import 'package:e_shop/common/error/exception.dart';
+import 'package:e_shop/features/user/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract interface class AuthRemoteDataSource {
+  UserModel? getUser();
   Future<void> login(String email, String password);
   Future<void> loginWithGmail();
   Future<void> signUp(String email, String password);
@@ -18,6 +22,27 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl(this.firebaseAuth);
 
   final FirebaseAuth firebaseAuth;
+
+  @override
+  UserModel? getUser() {
+    UserModel? userModel = UserModel();
+    try {
+      final authStateChanges = firebaseAuth.authStateChanges();
+      final subscription = authStateChanges.listen(
+        (event) {
+          if (event != null) {
+            userModel = UserModel();
+          } else {
+            userModel = null;
+          }
+        },
+      );
+      subscription.cancel();
+      return userModel;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 
   @override
   Future<void> login(String email, String password) async {
