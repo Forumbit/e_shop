@@ -25,13 +25,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   UserModel? getUser() {
-    UserModel? userModel = UserModel();
     try {
+      UserModel? userModel;
       final authStateChanges = firebaseAuth.authStateChanges();
       final subscription = authStateChanges.listen(
         (event) {
           if (event != null) {
-            userModel = UserModel();
+            userModel = UserModel(
+              displayName: event.displayName,
+              email: event.email,
+              emailVerified: event.emailVerified,
+              uid: event.uid,
+              phoneNumber: event.phoneNumber,
+              photoURL: event.photoURL,
+            );
           } else {
             userModel = null;
           }
