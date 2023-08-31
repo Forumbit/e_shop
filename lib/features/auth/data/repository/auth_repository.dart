@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:e_shop/common/error/exception.dart';
 import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
+import 'package:e_shop/features/user/data/mapper/user_mapper.dart';
 import 'package:e_shop/features/user/domain/entities/user_entity.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -12,9 +13,10 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   UserEntity? getUser() {
     try {
-      //! Change
       final userModel = authRemoteDataSource.getUser();
-      return UserEntity();
+      final userEntity =
+          userModel == null ? null : UserMapper.toEntity(userModel);
+      return userEntity;
     } catch (e) {
       log(e.toString());
       throw Exception(e);
