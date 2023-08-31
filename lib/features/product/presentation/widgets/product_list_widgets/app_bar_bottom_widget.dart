@@ -11,14 +11,15 @@ import 'package:go_router/go_router.dart';
 class AppBarBottomWidget extends StatelessWidget {
   const AppBarBottomWidget({
     super.key,
+    this.categoryName,
     required this.controller,
     required this.productListEnum,
   });
 
   final TextEditingController controller;
   final ProductListEnum productListEnum;
+  final String? categoryName;
 
-  //! 1. parameter text doesn't change
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -61,9 +62,14 @@ class AppBarBottomWidget extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: controller.text != ''
-                              ? '"${controller.text}"'
-                              : '"${AppTexts.popular}"',
+                          text: switch (productListEnum) {
+                            ProductListEnum.popular => '"Popular"',
+                            ProductListEnum.category => '"$categoryName"',
+                            ProductListEnum.search => '"${controller.text}"',
+                          },
+                          // text: controller.text != ''
+                          //     ? '"${controller.text}"'
+                          //     : '"${AppTexts.popular}"',
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
