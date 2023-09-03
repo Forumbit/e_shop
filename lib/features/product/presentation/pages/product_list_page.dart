@@ -50,7 +50,7 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   Widget build(BuildContext context) {
     late final ProductListRepository repository;
-    final diContainer = ProviderValue.of<DIContainer>(context).value;
+    final diContainer = ProviderValue.of<DIContainer>(context);
 
     switch (widget.productListEnum) {
       case ProductListEnum.popular:

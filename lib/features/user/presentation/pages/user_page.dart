@@ -32,7 +32,7 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final diContainer = ProviderValue.of<DIContainer>(context).value;
+    final diContainer = ProviderValue.of<DIContainer>(context);
     return BlocProvider(
       create: (context) => UserBloc(
         authRepository: diContainer.getAuthRepository(),

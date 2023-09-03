@@ -18,7 +18,7 @@ class CategoryListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final diContainer = ProviderValue.of<DIContainer>(context).value;
+    final diContainer = ProviderValue.of<DIContainer>(context);
     return BlocProvider<CategoryListBloc>(
       create: (context) => CategoryListBloc(
         diContainer.getCategoryRepository(),

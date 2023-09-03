@@ -1,5 +1,5 @@
 import 'package:e_shop/common/constants/app_colors.dart';
-import 'package:e_shop/common/constants/app_gifs.dart';
+import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/utils/mixins/auth_methods_mixin.dart';
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> with AuthMethodsMixin {
 
   @override
   Widget build(BuildContext context) {
-    final diContainer = ProviderValue.of<DIContainer>(context).value;
+    final diContainer = ProviderValue.of<DIContainer>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> with AuthMethodsMixin {
             children: [
               SizedBox(height: 100.h),
               Image.asset(
-                AppGifs.firebasePassword,
+                AppImages.login,
                 height: 200.h,
               ),
               SizedBox(height: 20.h),
@@ -125,16 +125,23 @@ class _LoginPageState extends State<LoginPage> with AuthMethodsMixin {
                       : const Text(AppTexts.login),
                 ),
               ),
-              SizedBox(height: 40.h),
-              const Text('${AppTexts.dontHaveAccount}?'),
               SizedBox(height: 10.h),
-              SizedBox(
-                width: double.infinity,
-                height: 54.h,
-                child: CustomElevatedButton(
-                  onPressed: () => context.push(AppRouteUrl.signUp),
-                  child: const Text(AppTexts.signUp),
-                ),
+              Row(
+                children: [
+                  const Expanded(
+                    child: Divider(
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 10.w),
+                  const Text('or'),
+                  SizedBox(width: 10.w),
+                  const Expanded(
+                    child: Divider(
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 10.h),
               SizedBox(
@@ -144,6 +151,24 @@ class _LoginPageState extends State<LoginPage> with AuthMethodsMixin {
                   authRepository: diContainer.getAuthRepository(),
                 ),
               ),
+              SizedBox(height: 40.h),
+              const Text('${AppTexts.dontHaveAccount}?'),
+              SizedBox(height: 10.h),
+              SizedBox(
+                width: double.infinity,
+                height: 54.h,
+                child: CustomElevatedButton(
+                  backgroundColor: Colors.black,
+                  onPressed: () => context.push(AppRouteUrl.signUp),
+                  child: const Text(
+                    AppTexts.signUp,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 30.h),
             ],
           ),
         ),

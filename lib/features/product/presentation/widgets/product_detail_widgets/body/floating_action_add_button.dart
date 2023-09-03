@@ -1,6 +1,7 @@
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_detail/product_detail_bloc.dart';
+import 'package:e_shop/features/widgets/custom_widgets/modal_bottom_sheet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,21 @@ class FloatingActionAddButton extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () => showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (_) => BlocProvider.value(
+                  value: context.read<ProductDetailBloc>(),
+                  child: ModalBottomSheet(
+                    total: product.stock,
+                    initialValue: 1,
+                    onEvent: (int quantity) =>
+                        BlocProvider.of<ProductDetailBloc>(context).add(
+                      ProductDetailEvent.onPressedCartButton(quantity),
+                    ),
+                  ),
+                ),
+              ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
