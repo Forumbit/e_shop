@@ -47,7 +47,7 @@ class ScreenFactoryDefault implements ScreenFactory {
   @override
   Widget makeVerifyEmail() => ProviderValue<DIContainer>(
         value: _diContainer,
-        child: VerifyEmailPage(),
+        child: const VerifyEmailPage(),
       );
 
   @override
