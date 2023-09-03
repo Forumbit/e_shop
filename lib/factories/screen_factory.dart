@@ -5,6 +5,7 @@ import 'package:e_shop/features/auth/presentation/pages/login_page.dart';
 import 'package:e_shop/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:e_shop/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:e_shop/features/auth/presentation/pages/verify_email_page.dart';
+import 'package:e_shop/features/cart/presentation/pages/cart_page.dart';
 import 'package:e_shop/features/category/presentation/pages/category_list_page.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/pages/home_page.dart';
@@ -94,5 +95,11 @@ class ScreenFactoryDefault implements ScreenFactory {
   Widget makeProfile() => ProviderValue(
         value: _diContainer,
         child: const UserPage(),
+      );
+
+  @override
+  Widget makeCart() => ProviderValue(
+        value: _diContainer,
+        child: const CartPage(),
       );
 }

@@ -5,4 +5,5 @@ abstract class AppErrorText {
   static const passwordDoNotMatch = 'Passwords don\'t match!';
   static const emailAlreadyInUse = 'Email already in use!';
   static const emailIsWrong = 'Email is wrong, try again';
+  static const valueMoreThanTotal = 'Value should be less than total value!';
 }

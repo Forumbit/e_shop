@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProductDetailEvent {
-  int get id => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id) started,
+    required TResult Function(int quantity) onPressedCartButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id)? started,
+    TResult? Function(int quantity)? onPressedCartButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id)? started,
+    TResult Function(int quantity)? onPressedCartButton,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_OnPressedCartButton value) onPressedCartButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_OnPressedCartButton value)? onPressedCartButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_OnPressedCartButton value)? onPressedCartButton,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProductDetailEventCopyWith<ProductDetailEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $ProductDetailEventCopyWith<$Res> {
   factory $ProductDetailEventCopyWith(
           ProductDetailEvent value, $Res Function(ProductDetailEvent) then) =
       _$ProductDetailEventCopyWithImpl<$Res, ProductDetailEvent>;
-  @useResult
-  $Res call({int id});
 }
 
 /// @nodoc
@@ -73,28 +72,13 @@ class _$ProductDetailEventCopyWithImpl<$Res, $Val extends ProductDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res>
-    implements $ProductDetailEventCopyWith<$Res> {
+abstract class _$$_StartedCopyWith<$Res> {
   factory _$$_StartedCopyWith(
           _$_Started value, $Res Function(_$_Started) then) =
       __$$_StartedCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int id});
 }
@@ -154,6 +138,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id) started,
+    required TResult Function(int quantity) onPressedCartButton,
   }) {
     return started(id);
   }
@@ -162,6 +147,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id)? started,
+    TResult? Function(int quantity)? onPressedCartButton,
   }) {
     return started?.call(id);
   }
@@ -170,6 +156,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id)? started,
+    TResult Function(int quantity)? onPressedCartButton,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,6 +169,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_OnPressedCartButton value) onPressedCartButton,
   }) {
     return started(this);
   }
@@ -190,6 +178,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_OnPressedCartButton value)? onPressedCartButton,
   }) {
     return started?.call(this);
   }
@@ -198,6 +187,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_OnPressedCartButton value)? onPressedCartButton,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -210,11 +200,145 @@ class _$_Started implements _Started {
 abstract class _Started implements ProductDetailEvent {
   const factory _Started(final int id) = _$_Started;
 
-  @override
   int get id;
-  @override
   @JsonKey(ignore: true)
   _$$_StartedCopyWith<_$_Started> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnPressedCartButtonCopyWith<$Res> {
+  factory _$$_OnPressedCartButtonCopyWith(_$_OnPressedCartButton value,
+          $Res Function(_$_OnPressedCartButton) then) =
+      __$$_OnPressedCartButtonCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int quantity});
+}
+
+/// @nodoc
+class __$$_OnPressedCartButtonCopyWithImpl<$Res>
+    extends _$ProductDetailEventCopyWithImpl<$Res, _$_OnPressedCartButton>
+    implements _$$_OnPressedCartButtonCopyWith<$Res> {
+  __$$_OnPressedCartButtonCopyWithImpl(_$_OnPressedCartButton _value,
+      $Res Function(_$_OnPressedCartButton) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? quantity = null,
+  }) {
+    return _then(_$_OnPressedCartButton(
+      null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnPressedCartButton implements _OnPressedCartButton {
+  const _$_OnPressedCartButton(this.quantity);
+
+  @override
+  final int quantity;
+
+  @override
+  String toString() {
+    return 'ProductDetailEvent.onPressedCartButton(quantity: $quantity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnPressedCartButton &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, quantity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OnPressedCartButtonCopyWith<_$_OnPressedCartButton> get copyWith =>
+      __$$_OnPressedCartButtonCopyWithImpl<_$_OnPressedCartButton>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int id) started,
+    required TResult Function(int quantity) onPressedCartButton,
+  }) {
+    return onPressedCartButton(quantity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int id)? started,
+    TResult? Function(int quantity)? onPressedCartButton,
+  }) {
+    return onPressedCartButton?.call(quantity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int id)? started,
+    TResult Function(int quantity)? onPressedCartButton,
+    required TResult orElse(),
+  }) {
+    if (onPressedCartButton != null) {
+      return onPressedCartButton(quantity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_OnPressedCartButton value) onPressedCartButton,
+  }) {
+    return onPressedCartButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_OnPressedCartButton value)? onPressedCartButton,
+  }) {
+    return onPressedCartButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_OnPressedCartButton value)? onPressedCartButton,
+    required TResult orElse(),
+  }) {
+    if (onPressedCartButton != null) {
+      return onPressedCartButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnPressedCartButton implements ProductDetailEvent {
+  const factory _OnPressedCartButton(final int quantity) =
+      _$_OnPressedCartButton;
+
+  int get quantity;
+  @JsonKey(ignore: true)
+  _$$_OnPressedCartButtonCopyWith<_$_OnPressedCartButton> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

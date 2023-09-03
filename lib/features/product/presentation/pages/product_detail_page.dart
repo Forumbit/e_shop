@@ -37,11 +37,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final diContainer = ProviderValue.of<DIContainer>(context).value;
+    final diContainer = ProviderValue.of<DIContainer>(context);
 
     return BlocProvider<ProductDetailBloc>(
       create: (context) => ProductDetailBloc(
         diContainer.getProductRepository(),
+        diContainer.getCartProductRepository(),
+        diContainer.getAuthRepository(),
       )..add(ProductDetailEvent.started(widget.id)),
       child: NotificationListener<UserScrollNotification>(
         onNotification: (notification) {

@@ -31,4 +31,6 @@ class AppTexts {
   static const checkMailTitle = 'A link has been sent to your email!';
   static const checkMailDescription =
       'Please go to the mail and click on the link to register your email address.';
+  static const submit = 'submit';
+  static const cart = 'Cart';
 }

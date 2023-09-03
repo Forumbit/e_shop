@@ -1,4 +1,5 @@
 import 'package:e_shop/common/constants/app_colors.dart';
+import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/utils/mixins/auth_methods_mixin.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
@@ -6,6 +7,7 @@ import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:e_shop/features/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:e_shop/features/widgets/custom_widgets/email_text_field.dart';
+import 'package:e_shop/features/widgets/custom_widgets/gmail_button.dart';
 import 'package:e_shop/features/widgets/custom_widgets/password_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,7 +61,7 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
 
   @override
   Widget build(BuildContext context) {
-    final diContainer = ProviderValue.of<DIContainer>(context).value;
+    final diContainer = ProviderValue.of<DIContainer>(context);
     return Scaffold(
       appBar: AppBar(scrolledUnderElevation: 0),
       body: SingleChildScrollView(
@@ -68,7 +70,12 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: 100.h),
+              SizedBox(height: 20.h),
+              Image.asset(
+                AppImages.signUp,
+                height: 200.h,
+              ),
+              SizedBox(height: 30.h),
               Text(
                 AppTexts.signUp,
                 style: TextStyle(
@@ -111,7 +118,34 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
                       ? const CircularProgressIndicator(color: Colors.black)
                       : const Text(AppTexts.signUp),
                 ),
-              )
+              ),
+              SizedBox(height: 10.h),
+              Row(
+                children: [
+                  const Expanded(
+                    child: Divider(
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 10.w),
+                  const Text('or'),
+                  SizedBox(width: 10.w),
+                  const Expanded(
+                    child: Divider(
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.h),
+              SizedBox(
+                width: double.infinity,
+                height: 54.h,
+                child: GmailButton(
+                  authRepository: diContainer.getAuthRepository(),
+                ),
+              ),
+              SizedBox(height: 30.h),
             ],
           ),
         ),

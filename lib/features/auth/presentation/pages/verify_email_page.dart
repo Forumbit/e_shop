@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:e_shop/common/constants/app_colors.dart';
+import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
@@ -97,6 +98,11 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Image.asset(
+                AppImages.verification,
+                height: 200.h,
+              ),
+              SizedBox(height: 30.h),
               Text(
                 AppTexts.checkMailTitle,
                 style: TextStyle(
