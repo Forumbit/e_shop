@@ -174,7 +174,7 @@ class _AuthDivider extends StatelessWidget {
           ),
         ),
         SizedBox(width: 10.w),
-        const Text('or'),
+        const Text(AppTexts.or),
         SizedBox(width: 10.w),
         const Expanded(
           child: Divider(
