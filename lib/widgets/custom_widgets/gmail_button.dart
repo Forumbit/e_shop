@@ -1,5 +1,5 @@
 import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:e_shop/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';

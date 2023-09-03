@@ -1,5 +1,5 @@
 import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
 import 'package:e_shop/di/di_container.dart';

@@ -1,6 +1,6 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/utils/mixins/auth_methods_mixin.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';

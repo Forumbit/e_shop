@@ -20,8 +20,10 @@ abstract class AppRouteUrl {
   static const signUp = '/sign_up';
   static const resetPassword = '/reset_password';
   static const verifyEmail = '/vefify_email';
-  static const categoryList = 'category_list';
-  static const popularProductList = 'product_list/popular';
+
+  //* RouteNamedUrls
+  static const categoryList = AppRouteNamed.categoryList;
+  static const popularProductList = 'product_list/${AppRouteNamed.popularProduct}';
   static const categoryProductList =
       'product_list/${AppRouteNamed.categoryProduct}/:${AppRouteArgument.category}';
   static const searchProductList =

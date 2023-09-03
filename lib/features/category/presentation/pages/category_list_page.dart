@@ -1,6 +1,6 @@
 import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_gradients.dart';
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';

@@ -1,4 +1,4 @@
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/constants/app_text_styles.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
