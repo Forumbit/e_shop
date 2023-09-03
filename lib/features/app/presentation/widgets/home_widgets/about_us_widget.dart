@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
 import 'package:e_shop/common/constants/app_text_styles.dart';
@@ -77,7 +75,7 @@ class AboutUsWidget extends StatelessWidget {
                                 ),
                                 SizedBox(height: 5.h),
                                 GestureDetector(
-                                  onTap: () => log('123'),
+                                  onTap: () {},
                                   child: Text(
                                     AppTexts.moreInfo,
                                     style: TextStyle(

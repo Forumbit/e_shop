@@ -25,23 +25,27 @@ class LoaderBloc extends Bloc<LoaderEvent, LoaderState> {
   final CartRepository cartRepository;
 
   Future<void> _init(emit) async {
-    final UserEntity? user = authRepository.getUser();
-    if (user == null) return emit(const LoaderState.isLogged(false));
-    if (!user.emailVerified) {
-      emit(const LoaderState.noVerifiedEmail());
-      return;
-    }
+    try {
+      final UserEntity? user = authRepository.getUser();
+      if (user == null) return emit(const LoaderState.isLogged(false));
+      if (!user.emailVerified) {
+        emit(const LoaderState.noVerifiedEmail());
+        return;
+      }
 
-    final cart = await cartRepository.getCart(user.uid);
-    if (cart == null) {
-      final cartEntity = CartEntity(
-        docId: null,
-        uid: user.uid,
-        products: [],
-      );
-      await cartRepository.createCart(cartEntity);
-    }
+      final cart = await cartRepository.getCart(user.uid);
+      if (cart == null) {
+        final cartEntity = CartEntity(
+          docId: null,
+          uid: user.uid,
+          products: [],
+        );
+        await cartRepository.createCart(cartEntity);
+      }
 
-    emit(const LoaderState.isLogged(true));
+      emit(const LoaderState.isLogged(true));
+    } catch (e) {
+      rethrow;
+    }
   }
 }
