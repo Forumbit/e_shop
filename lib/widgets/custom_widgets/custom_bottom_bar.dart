@@ -54,7 +54,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
           children: [
             SizedBox(
               width: double.infinity,
-              height: 2,
+              height: 2.h,
               child: Stack(
                 children: [
                   AnimatedPositioned(
@@ -63,8 +63,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                         (MediaQuery.of(context).size.width / 4 * _index),
                     curve: Curves.fastOutSlowIn,
                     child: Container(
-                      width: 20,
-                      height: 3,
+                      width: 20.w,
+                      height: 3.h,
                       color: Colors.black,
                     ),
                   ),

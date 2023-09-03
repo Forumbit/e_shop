@@ -61,7 +61,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Stock: ${widget.total.toString()}'),
+          Text('${AppTexts.total}: ${widget.total.toString()}'),
           SizedBox(height: 20.h),
           SizedBox(
             child: Row(
@@ -124,7 +124,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
               context.pop();
               CustomSnackBar.showSnackBar(
                 context,
-                'Product succesfully added to cart!',
+                AppTexts.productSuccessAdded,
                 false,
               );
             },

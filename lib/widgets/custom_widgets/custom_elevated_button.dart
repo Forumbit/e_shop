@@ -16,7 +16,6 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: backgroundColor != null
@@ -29,12 +28,6 @@ class CustomElevatedButton extends StatelessWidget {
         ),
       ),
       child: child,
-      // child: Text(
-      //   text,
-      //   style: const TextStyle(
-      //     fontWeight: FontWeight.bold,
-      //   ),
-      // ),
     );
   }
 }

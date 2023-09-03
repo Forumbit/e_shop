@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:e_shop/widgets/shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 
@@ -30,12 +29,10 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
   void didChangeDependencies() {
     if (_shimmerChanges != null) {
       _shimmerChanges!.removeListener(_onShimmerChange);
-      log('Shimmer change was removed');
     }
     _shimmerChanges = Shimmer.of(context)?.shimmerChanges;
     if (_shimmerChanges != null) {
       _shimmerChanges!.addListener(_onShimmerChange);
-      log('Shimmer change was added');
     }
     super.didChangeDependencies();
   }
@@ -43,7 +40,6 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
   @override
   void dispose() {
     _shimmerChanges?.removeListener(_onShimmerChange);
-    log('Shimmer change was removed');
     super.dispose();
   }
 

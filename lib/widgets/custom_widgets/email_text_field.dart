@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_text_input_decoration.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class EmailTextField extends StatelessWidget {
       controller: controller,
       validator: (value) {
         if (value != null && !EmailValidator.validate(value)) {
-          return 'Email is not correct, try again!';
+          return AppErrorText.emailIsNotCorrect;
         } else {
           return null;
         }

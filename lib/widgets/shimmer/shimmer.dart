@@ -1,4 +1,3 @@
-import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:flutter/material.dart';
 
 const shimmerGradient = LinearGradient(
@@ -81,13 +80,11 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
         max: 1.5,
         period: const Duration(milliseconds: 1000),
       );
-    logger.i('Shimmer controller was initialized');
   }
 
   @override
   void dispose() {
     _shimmerController.dispose();
-    logger.i('Shimmer controller was disposed');
     super.dispose();
   }
 

@@ -1,4 +1,5 @@
 import 'package:e_shop/common/constants/app_colors.dart';
+import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_text_input_decoration.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       obscureText: isHiddenPassword,
       validator: (value) {
         if (value != null && value.length < 6) {
-          return 'Password length must be more than 6 characters';
+          return AppErrorText.passwordLengthLessThan;
         }
         return null;
       },
