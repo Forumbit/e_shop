@@ -1,7 +1,6 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/utils/mixins/auth_methods_mixin.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
 import 'package:e_shop/di/di_container.dart';
@@ -27,8 +26,7 @@ class ResetPasswordPage extends StatefulWidget {
   State<ResetPasswordPage> createState() => _ResetPasswordPageState();
 }
 
-class _ResetPasswordPageState extends State<ResetPasswordPage>
-    with AuthMethodsMixin {
+class _ResetPasswordPageState extends State<ResetPasswordPage> {
   late final TextEditingController _email;
   final formKey = GlobalKey<FormState>();
 

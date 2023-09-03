@@ -1,11 +1,11 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/utils/mixins/auth_methods_mixin.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/features/auth/presentation/bloc/auth/auth_bloc.dart';
+import 'package:e_shop/features/auth/presentation/widgets/auth_divider.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:e_shop/widgets/custom_widgets/email_text_field.dart';
@@ -23,7 +23,7 @@ class SignUpPage extends StatefulWidget {
   State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
+class _SignUpPageState extends State<SignUpPage> {
   late final TextEditingController _email;
   late final TextEditingController _password;
   late final TextEditingController _confirmPassword;
@@ -145,7 +145,7 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                  _AuthDivider(),
+                  const AuthDivider(),
                   SizedBox(height: 10.h),
                   SizedBox(
                     width: double.infinity,
@@ -159,29 +159,6 @@ class _SignUpPageState extends State<SignUpPage> with AuthMethodsMixin {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _AuthDivider extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Expanded(
-          child: Divider(
-            color: Colors.black,
-          ),
-        ),
-        SizedBox(width: 10.w),
-        const Text(AppTexts.or),
-        SizedBox(width: 10.w),
-        const Expanded(
-          child: Divider(
-            color: Colors.black,
-          ),
-        ),
-      ],
     );
   }
 }
