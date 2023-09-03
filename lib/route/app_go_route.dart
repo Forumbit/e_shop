@@ -1,5 +1,5 @@
 import 'package:e_shop/common/constants/app_route_constants.dart';
-import 'package:e_shop/features/widgets/custom_bottom_bar.dart';
+import 'package:e_shop/features/widgets/custom_widgets/custom_bottom_bar.dart';
 import 'package:e_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,6 +17,7 @@ abstract interface class ScreenFactory {
   Widget makeSearchProductList(String query);
   Widget makeProductDetail(int id);
   Widget makeProfile();
+  Widget makeCart();
 }
 
 class AppGoRoute implements AppRoute {
@@ -105,11 +106,7 @@ class AppGoRoute implements AppRoute {
                   GoRoute(
                     path: '/cart',
                     builder: (BuildContext context, GoRouterState state) =>
-                        const Scaffold(
-                      body: Center(
-                        child: Text('Cart'),
-                      ),
-                    ),
+                        screenFactory.makeCart(),
                   ),
                 ],
               ),
