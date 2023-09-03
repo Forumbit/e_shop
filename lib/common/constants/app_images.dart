@@ -11,4 +11,10 @@ abstract class AppImages {
   static const thumbnail = 'assets/images/thumbnail.jpg';
   static const visible = 'assets/images/visible.png';
   static const invisible = 'assets/images/invisible.png';
+  static const gmail = 'assets/images/gmail.png';
+  static const login = 'assets/images/login.png';
+  static const resetPassword = 'assets/images/forgot-password.png';
+  static const verification = 'assets/images/verification.png';
+  static const signUp = 'assets/images/sign-up.png';
+  static const logo = 'assets/images/logo.png';
 }
