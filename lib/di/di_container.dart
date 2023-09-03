@@ -26,29 +26,34 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class DIContainer {
   final _dio = Dio();
+  late final FirebaseFirestore _firebaseStore = FirebaseFirestore.instance;
+  late final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   //* ============= app feature =============
   ScreenFactory _makeScreenFactory() => ScreenFactoryDefault();
   AppRoute makeRoute() => AppGoRoute(screenFactory: _makeScreenFactory());
 
   //* ============= auth feature =============
   AuthRemoteDataSource _getAuthRemoteDataSource() =>
-      AuthRemoteDataSourceImpl(FirebaseAuth.instance);
+      AuthRemoteDataSourceImpl(_firebaseAuth);
 
   AuthRepository getAuthRepository() =>
       AuthRepositoryImpl(_getAuthRemoteDataSource());
 
   //* ============= cart feature ===============
   CartRemoteDataSource _getCartRemoteDataSource() => CartRemoteDataSourceImpl(
-        firebaseFirestore: FirebaseFirestore.instance,
+        firebaseFirestore: _firebaseStore,
       );
+
   CartProductRemoteDataSource _getCartProductRemoteDataSource() =>
       CartProductRemoteDataSourceImpl(
-        FirebaseFirestore.instance,
+        firebaseFirestore: _firebaseStore,
       );
 
   CartRepository getCartRepository() => CartRepositoryImpl(
-      cartRemoteDataSource: _getCartRemoteDataSource(),
-      cartProductRemoteDataSource: _getCartProductRemoteDataSource());
+        cartRemoteDataSource: _getCartRemoteDataSource(),
+        cartProductRemoteDataSource: _getCartProductRemoteDataSource(),
+      );
 
   CartProductRepository getCartProductRepository() => CartProductRepositoryImpl(
         cartProductRemoteDataSource: _getCartProductRemoteDataSource(),
@@ -60,19 +65,22 @@ class DIContainer {
       ProductRemoteDataSourceImpl(dio: _dio);
 
   ProductRepository getProductRepository() => ProductRepositoryImpl(
-      productRemoteDataSource: _getProductRemoteDataSource());
+        productRemoteDataSource: _getProductRemoteDataSource(),
+      );
 
   //* ============= category feature =============
   CategoryRemoteDataSource _getCategoryRemoteDataSource() =>
-      CategoryRemoteDataSourceImpl(_dio);
+      CategoryRemoteDataSourceImpl(dio: _dio);
 
-  CategoryRepository getCategoryRepository() =>
-      CategoryRepositoryImpl(_getCategoryRemoteDataSource());
+  CategoryRepository getCategoryRepository() => CategoryRepositoryImpl(
+        categoryRemoteDatasource: _getCategoryRemoteDataSource(),
+      );
 
   //* ============= search feature =============
   SearchRemoteDataSource _getSearchRemoteDataSource() =>
-      SearchRemoteDataSourceImpl(_dio);
+      SearchRemoteDataSourceImpl(dio: _dio);
 
-  SearchRepository getSearchRepository() =>
-      SearchRepositoryImpl(_getSearchRemoteDataSource());
+  SearchRepository getSearchRepository() => SearchRepositoryImpl(
+        searchRemoteDataSource: _getSearchRemoteDataSource(),
+      );
 }

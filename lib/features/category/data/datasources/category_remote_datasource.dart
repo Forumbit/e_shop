@@ -16,7 +16,7 @@ abstract interface class CategoryRemoteDataSource {
 class CategoryRemoteDataSourceImpl
     with ProductRemoteDataSourceMixin
     implements CategoryRemoteDataSource {
-  CategoryRemoteDataSourceImpl(this.dio);
+  CategoryRemoteDataSourceImpl({required this.dio});
 
   final Dio dio;
 

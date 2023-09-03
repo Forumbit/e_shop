@@ -11,9 +11,9 @@ abstract interface class CartProductRemoteDataSource {
 }
 
 class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
-  CartProductRemoteDataSourceImpl(this.firedb);
+  CartProductRemoteDataSourceImpl({required this.firebaseFirestore});
 
-  final FirebaseFirestore firedb;
+  final FirebaseFirestore firebaseFirestore;
 
   //* Function, which return the oldProductJson
   Future<QuerySnapshot<Map<String, dynamic>>> _getOldProduct(
@@ -32,7 +32,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
 
   @override
   Future<List<CartProductModel>?> getProductsCart(String cartId) async {
-    final carts = firedb.collection(FireDBNames.carts);
+    final carts = firebaseFirestore.collection(FireDBNames.carts);
     final products =
         await carts.doc(cartId).collection(FireDBNames.products).get();
     if (products.docs.isNotEmpty) {
@@ -50,7 +50,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
     CartProductModel product,
   ) async {
     try {
-      final carts = firedb.collection(FireDBNames.carts);
+      final carts = firebaseFirestore.collection(FireDBNames.carts);
       final products = carts.doc(cartId).collection(FireDBNames.products);
 
       //* Getting old product, with unique id [product.id]
@@ -91,7 +91,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
     CartProductModel product,
   ) async {
     try {
-      final carts = firedb.collection(FireDBNames.carts);
+      final carts = firebaseFirestore.collection(FireDBNames.carts);
       final products = carts.doc(cartId).collection(FireDBNames.products);
 
       //* Getting old product with unique id [product.id]
@@ -113,7 +113,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
   @override
   Future<void> deleteProductCart(String cartId, String productId) async {
     try {
-      final carts = firedb.collection(FireDBNames.carts);
+      final carts = firebaseFirestore.collection(FireDBNames.carts);
       final products = carts.doc(cartId).collection(FireDBNames.products);
       await products.doc(productId).delete();
     } catch (e) {

@@ -6,7 +6,7 @@ import 'package:e_shop/features/search/data/datasources/search_remote_datasource
 import 'package:e_shop/features/search/domain/repository/search_repository.dart';
 
 class SearchRepositoryImpl implements SearchRepository {
-  SearchRepositoryImpl(this.searchRemoteDataSource);
+  SearchRepositoryImpl({required this.searchRemoteDataSource});
 
   final SearchRemoteDataSource searchRemoteDataSource;
 

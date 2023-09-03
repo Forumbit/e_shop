@@ -12,7 +12,7 @@ abstract interface class SearchRemoteDataSource {
 class SearchRemoteDataSourceImpl
     with ProductRemoteDataSourceMixin
     implements SearchRemoteDataSource {
-  SearchRemoteDataSourceImpl(this.dio);
+  SearchRemoteDataSourceImpl({required this.dio});
 
   final Dio dio;
 

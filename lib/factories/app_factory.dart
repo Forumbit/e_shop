@@ -18,8 +18,9 @@ class AppFactoryImpl implements AppFactory {
     Bloc.observer = AppBlocObserver();
     await Firebase.initializeApp();
   }
-  
+
   @override
-  Widget makeApp() => MyApp(appRoute: _diContainer.makeRoute());
-  
+  Widget makeApp() {
+    return MyApp(appRoute: _diContainer.makeRoute());
+  }
 }
