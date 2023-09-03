@@ -14,16 +14,19 @@ abstract class AppRouteNamed {
 
 abstract class AppRouteUrl {
   static const loader = '/';
-  static const home = '/home';
-  static const account = '/account';
   static const login = '/login';
-  static const signUp = '/sign_up';
   static const resetPassword = '/reset_password';
   static const verifyEmail = '/vefify_email';
+  static const signUp = '/sign_up';
+  static const home = '/home';
+  static const favorite = '/favorite';
+  static const profile = '/profile';
+  static const cart = '/cart';
 
   //* RouteNamedUrls
   static const categoryList = AppRouteNamed.categoryList;
-  static const popularProductList = 'product_list/${AppRouteNamed.popularProduct}';
+  static const popularProductList =
+      'product_list/${AppRouteNamed.popularProduct}';
   static const categoryProductList =
       'product_list/${AppRouteNamed.categoryProduct}/:${AppRouteArgument.category}';
   static const searchProductList =

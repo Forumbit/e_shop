@@ -39,4 +39,6 @@ class AppTexts {
   static const translationWasSuccess = 'Transaction was succesffully completed';
   static const checkout = 'Checkout';
   static const quantity = 'Quantity';
+  static const profile = 'Profile';
+  static const favorite = 'Favorite';
 }

@@ -1,3 +1,4 @@
+import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/widgets/custom_widgets/custom_bottom_bar.dart';
 import 'package:e_shop/main.dart';
@@ -104,7 +105,7 @@ class AppGoRoute implements AppRoute {
               StatefulShellBranch(
                 routes: [
                   GoRoute(
-                    path: '/cart',
+                    path: AppRouteUrl.cart,
                     builder: (BuildContext context, GoRouterState state) =>
                         screenFactory.makeCart(),
                   ),
@@ -113,11 +114,11 @@ class AppGoRoute implements AppRoute {
               StatefulShellBranch(
                 routes: [
                   GoRoute(
-                    path: '/favorite',
+                    path: AppRouteUrl.favorite,
                     builder: (BuildContext context, GoRouterState state) =>
                         const Scaffold(
                       body: Center(
-                        child: Text('Favorite'),
+                        child: Text(AppTexts.favorite),
                       ),
                     ),
                   ),
@@ -126,7 +127,7 @@ class AppGoRoute implements AppRoute {
               StatefulShellBranch(
                 routes: [
                   GoRoute(
-                    path: '/profile',
+                    path: AppRouteUrl.profile,
                     builder: (BuildContext context, GoRouterState state) =>
                         screenFactory.makeProfile(),
                   ),
