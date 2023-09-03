@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/error/exception.dart';
+import 'package:e_shop/common/error/exceptions.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +24,14 @@ mixin AuthMethodsMixin {
         context.go(AppRouteUrl.loader);
       }
     } on WrongEmailOrPasswordException {
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.wrongEmailOrPassword,
         true,
       );
     } catch (e) {
       print('UI: $e');
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.commonError,
         true,
@@ -50,7 +50,7 @@ mixin AuthMethodsMixin {
       if (!isValid) return;
       await authRepository.resetPassword(email);
       if (context.mounted) {
-        SnackBarMessenger.showSnackBar(
+        CustomSnackBar.showSnackBar(
           context,
           AppTexts.linkWasSend,
           false,
@@ -58,14 +58,14 @@ mixin AuthMethodsMixin {
         context.go(AppRouteUrl.loader);
       }
     } on WrongEmailOrPasswordException {
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.userNotFound,
         true,
       );
     } catch (e) {
       print(e);
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.commonError,
         true,
@@ -85,7 +85,7 @@ mixin AuthMethodsMixin {
 
     if (!isValid) return;
     if (password != repeatPassword) {
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.passwordDoNotMatch,
         true,
@@ -98,14 +98,14 @@ mixin AuthMethodsMixin {
         context.go(AppRouteUrl.loader);
       }
     } on EmailAlreadyInUse {
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.emailAlreadyInUse,
         true,
       );
     } catch (e) {
       print(e);
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.commonError,
         true,

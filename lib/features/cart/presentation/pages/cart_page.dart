@@ -167,7 +167,7 @@ class CartPage extends StatelessWidget {
                         width: double.infinity,
                         child: CustomElevatedButton(
                           backgroundColor: AppColors.mainColor,
-                          onPressed: () => SnackBarMessenger.showSnackBar(
+                          onPressed: () => CustomSnackBar.showSnackBar(
                             context,
                             'Transaction was succesffully completed',
                             false,

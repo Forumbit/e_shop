@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SnackBarMessenger {
+class CustomSnackBar {
   static const successColor = Colors.greenAccent;
   static const errorColor = Colors.redAccent;
 

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:e_shop/common/constants/firebase_constants/firebase_exception_code.dart';
-import 'package:e_shop/common/error/exception.dart';
+import 'package:e_shop/common/error/exceptions.dart';
 import 'package:e_shop/features/user/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';

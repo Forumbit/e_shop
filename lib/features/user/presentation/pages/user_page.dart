@@ -22,7 +22,7 @@ class UserPage extends StatelessWidget {
       if (context.mounted) context.go(AppRouteUrl.loader);
     } catch (e) {
       print(e);
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.commonError,
         true,

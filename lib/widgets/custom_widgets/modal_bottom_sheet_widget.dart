@@ -122,7 +122,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
               if (!isValid) return;
               widget.onEvent(_parseController());
               context.pop();
-              SnackBarMessenger.showSnackBar(
+              CustomSnackBar.showSnackBar(
                 context,
                 'Product succesfully added to cart!',
                 false,
