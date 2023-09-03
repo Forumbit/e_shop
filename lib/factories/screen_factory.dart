@@ -20,7 +20,7 @@ class ScreenFactoryDefault implements ScreenFactory {
 
   //* ============ app screen factory ============
   @override
-  Widget makeLoader() => ProviderValue(
+  Widget makeLoader() => ProviderValue<DIContainer>(
         value: _diContainer,
         child: const LoaderPage(),
       );
@@ -33,13 +33,13 @@ class ScreenFactoryDefault implements ScreenFactory {
 
   //* ============ auth screen factory ============
   @override
-  Widget makeLogin() => ProviderValue(
+  Widget makeLogin() => ProviderValue<DIContainer>(
         value: _diContainer,
         child: const LoginPage(),
       );
 
   @override
-  Widget makeSignUp() => ProviderValue(
+  Widget makeSignUp() => ProviderValue<DIContainer>(
         value: _diContainer,
         child: const SignUpPage(),
       );
@@ -96,17 +96,16 @@ class ScreenFactoryDefault implements ScreenFactory {
         ),
       );
 
-
   //* ============ profile screen factory ============
   @override
-  Widget makeProfile() => ProviderValue(
+  Widget makeProfile() => ProviderValue<DIContainer>(
         value: _diContainer,
         child: const UserPage(),
       );
 
   //* ============ cart screen factory ============
   @override
-  Widget makeCart() => ProviderValue(
+  Widget makeCart() => ProviderValue<DIContainer>(
         value: _diContainer,
         child: const CartPage(),
       );
