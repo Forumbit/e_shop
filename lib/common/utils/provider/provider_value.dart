@@ -9,11 +9,11 @@ class ProviderValue<T> extends InheritedWidget {
 
   final T value;
 
-  static ProviderValue? maybeOf<T>(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ProviderValue<T>>();
+  static T? maybeOf<T>(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ProviderValue<T>>()?.value;
   }
 
-  static ProviderValue of<T>(BuildContext context) {
+  static T of<T>(BuildContext context) {
     final provider = maybeOf<T>(context);
     if (provider == null) throw Exception('The provider is null');
     return provider;
