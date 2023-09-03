@@ -1,4 +1,4 @@
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
@@ -63,13 +63,10 @@ class AppBarBottomWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text: switch (productListEnum) {
-                            ProductListEnum.popular => '"Popular"',
+                            ProductListEnum.popular => '"${AppTexts.popular}"',
                             ProductListEnum.category => '"$categoryName"',
                             ProductListEnum.search => '"${controller.text}"',
                           },
-                          // text: controller.text != ''
-                          //     ? '"${controller.text}"'
-                          //     : '"${AppTexts.popular}"',
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,

@@ -1,4 +1,5 @@
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/features/app/presentation/bloc/loader/loader_bloc.dart';
@@ -28,7 +29,7 @@ class LoaderPage extends StatelessWidget {
         child: const Scaffold(
           body: Center(
             child: Text(
-              'Loading...',
+              AppTexts.loading,
               style: TextStyle(
                 color: Colors.grey,
               ),

@@ -4,5 +4,5 @@ abstract interface class CartRepository {
   Future<void> createCart(CartEntity cart);
   Future<CartEntity?> getCart(String uid);
   Future<void> updateCart(CartEntity cartEntity);
-  Future<void> deleteCart();
+  Future<void> deleteCart(String cartId);
 }

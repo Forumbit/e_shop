@@ -1,10 +1,10 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/carousel_product_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/characters_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/name_and_price_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/rating_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_body/carousel_product_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_body/characters_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_body/name_and_price_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_body/rating_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/common/utils/mixins/product_remote_datasource_mixin.dart';
-import 'package:e_shop/common/configuration.dart';
+import 'package:e_shop/config/configuration.dart';
 import 'package:e_shop/features/product/data/models/product/product_model.dart';
 import 'package:e_shop/features/product/data/models/product_list/product_list_model.dart';
 
@@ -31,9 +30,13 @@ class ProductRemoteDataSourceImpl
       final json = response.data;
       final product = ProductModel.fromJson(json);
       return product;
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Get product remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -44,14 +47,18 @@ class ProductRemoteDataSourceImpl
         ApiConfiguration.host,
         '/products',
         {
-          'limit': ApiConfiguration.limitQueryParameter,
-          'skip': skip.toString(),
+          ApiConfiguration.limitText: ApiConfiguration.limitQueryParameter,
+          ApiConfiguration.skipText: skip.toString(),
         },
       );
       return await getProducts(dio, url);
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Get popular product remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 }

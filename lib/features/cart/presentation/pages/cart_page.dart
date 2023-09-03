@@ -1,15 +1,13 @@
-import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
-import 'package:e_shop/common/utils/snack_bar_message.dart';
 import 'package:e_shop/di/di_container.dart';
-
 import 'package:e_shop/features/cart/domain/entities/cart_entity.dart';
 import 'package:e_shop/features/cart/presentation/bloc/cart/cart_bloc.dart';
-import 'package:e_shop/features/cart/presentation/widgets/cart_page_loading_widget.dart';
-import 'package:e_shop/features/widgets/custom_widgets/custom_elevated_button.dart';
-import 'package:e_shop/features/widgets/custom_widgets/modal_bottom_sheet_widget.dart';
+import 'package:e_shop/features/cart/presentation/widgets/cart_bottom_sheet_widget.dart';
+import 'package:e_shop/features/cart/presentation/widgets/shimmer_widgets/cart_page_loading_widget.dart';
+import 'package:e_shop/features/cart/presentation/widgets/cart_product_actions_widget.dart';
+import 'package:e_shop/features/cart/presentation/widgets/cart_product_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,6 +29,8 @@ class CartPage extends StatelessWidget {
           initial: () => const CartPageLoadingWidget(),
           loading: () => const CartPageLoadingWidget(),
           loaded: (CartEntity cart) {
+
+            //* Total price 😶
             final total = (cart.products != null && cart.products!.isNotEmpty)
                 ? cart.products!.map((e) => e.total).reduce(
                       (value, element) => value + element,
@@ -75,67 +75,9 @@ class CartPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 20.h),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 5.h),
-                              SizedBox(
-                                width: 80.w,
-                                child: Text(
-                                  product.title,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.sp,
-                                  ),
-                                  maxLines: 1,
-                                ),
-                              ),
-                              const Spacer(),
-                              Text('\$${product.price.toString()}'),
-                              Text('Quantity: ${product.quantity.toString()}'),
-                              Text('Total: \$${product.total}'),
-                              SizedBox(height: 8.h),
-                            ],
-                          ),
+                          CartProductContentWidget(product: product),
                           const Spacer(),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              IconButton(
-                                onPressed: () => context.read<CartBloc>().add(
-                                      CartEvent.onProductDeleted(
-                                        product.docId!,
-                                      ),
-                                    ),
-                                icon: const Icon(Icons.clear),
-                              ),
-                              IconButton(
-                                highlightColor: Colors.black,
-                                onPressed: () => showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  context: context,
-                                  builder: (_) => ModalBottomSheet(
-                                    total: product.stock,
-                                    onEvent: (int value) {
-                                      final cartProduct = product.copyWith(
-                                        quantity: value,
-                                        total: value * product.price,
-                                      );
-                                      context.read<CartBloc>().add(
-                                            CartEvent.onProductUpdated(
-                                              cartProduct,
-                                            ),
-                                          );
-                                    },
-                                    initialValue: product.quantity,
-                                  ),
-                                ),
-                                icon: const Icon(Icons.edit),
-                              ),
-                            ],
-                          ),
+                          CartProductActionsWidget(product: product),
                         ],
                       ),
                     ),
@@ -145,46 +87,7 @@ class CartPage extends StatelessWidget {
                   return SizedBox(height: 14.h);
                 },
               ),
-              bottomSheet: SizedBox(
-                width: double.infinity,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(height: 10.h),
-                      Text(
-                        total != null ? 'Total: \$$total' : 'Total: ???',
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
-                      SizedBox(
-                        height: 54.h,
-                        width: double.infinity,
-                        child: CustomElevatedButton(
-                          backgroundColor: AppColors.mainColor,
-                          onPressed: () => SnackBarMessenger.showSnackBar(
-                            context,
-                            'Transaction was succesffully completed',
-                            false,
-                          ),
-                          child: const Text(
-                            'Checkout',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20.h),
-                    ],
-                  ),
-                ),
-              ),
+              bottomSheet: CartBottomSheet(total: total),
             );
           },
           error: () => const Scaffold(

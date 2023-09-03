@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/features/cart/data/datasources/cart_product_remote_data_source.dart';
 import 'package:e_shop/features/cart/data/datasources/cart_remote_data_source.dart';
 import 'package:e_shop/features/cart/data/mapper/cart_mapper.dart';
@@ -20,9 +19,13 @@ class CartRepositoryImpl implements CartRepository {
     try {
       final cartModel = CartMapper.fromEntity(cart);
       await cartRemoteDataSource.createCart(cartModel);
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'create cart repo',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -36,9 +39,13 @@ class CartRepositoryImpl implements CartRepository {
           : null;
       final finalCartModel = cartModel.copyWith(products: products);
       return CartMapper.toEntity(finalCartModel);
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'get cart repo',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -47,15 +54,27 @@ class CartRepositoryImpl implements CartRepository {
     try {
       final cartModel = CartMapper.fromEntity(cartEntity);
       await cartRemoteDataSource.updateCart(cartModel);
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'update cart repo',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
   @override
-  Future<void> deleteCart() {
-    // TODO: implement deleteCart
-    throw UnimplementedError();
+  Future<void> deleteCart(String cartId) async {
+    try {
+      await cartRemoteDataSource.deleteCart(cartId);
+    } on Object catch (e, s) {
+      logger.e(
+        'delete cart repo',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
+    }
   }
 }

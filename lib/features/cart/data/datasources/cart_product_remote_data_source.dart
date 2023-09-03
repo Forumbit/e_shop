@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/common/constants/firebase_collectioin_names.dart';
+import 'package:e_shop/common/constants/firebase_constants/firebase_collection_names.dart';
+import 'package:e_shop/common/constants/firebase_constants/firebase_field_names.dart';
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/features/cart/data/models/cart_product_model.dart';
 
 abstract interface class CartProductRemoteDataSource {
@@ -10,36 +12,55 @@ abstract interface class CartProductRemoteDataSource {
 }
 
 class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
-  CartProductRemoteDataSourceImpl(this.firedb);
+  CartProductRemoteDataSourceImpl({required this.firebaseFirestore});
 
-  final FirebaseFirestore firedb;
+  final FirebaseFirestore firebaseFirestore;
 
   //* Function, which return the oldProductJson
   Future<QuerySnapshot<Map<String, dynamic>>> _getOldProduct(
     CollectionReference<Map<String, dynamic>> products,
     int productId,
   ) async {
-    final oldProductJson = await products
-        .where(
-          'id',
-          isEqualTo: productId,
-        )
-        .get();
+    try {
+      final oldProductJson = await products
+          .where(
+            FBFieldNames.productId,
+            isEqualTo: productId,
+          )
+          .get();
 
-    return oldProductJson;
+      return oldProductJson;
+    } on Object catch (e, s) {
+      logger.e(
+        'On get old product remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
+    }
   }
 
   @override
   Future<List<CartProductModel>?> getProductsCart(String cartId) async {
-    final carts = firedb.collection(FireDBNames.carts);
-    final products = await carts.doc(cartId).collection('products').get();
-    if (products.docs.isNotEmpty) {
-      final productsModel = products.docs
-          .map((e) => CartProductModel.fromJson(e.data()))
-          .toList();
-      return productsModel;
+    try {
+      final carts = firebaseFirestore.collection(FireDBNames.carts);
+      final products =
+          await carts.doc(cartId).collection(FireDBNames.products).get();
+      if (products.docs.isNotEmpty) {
+        final productsModel = products.docs
+            .map((e) => CartProductModel.fromJson(e.data()))
+            .toList();
+        return productsModel;
+      }
+      return [];
+    } on Object catch (e, s) {
+      logger.e(
+        'Get products cart remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
-    return [];
   }
 
   @override
@@ -48,8 +69,8 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
     CartProductModel product,
   ) async {
     try {
-      final carts = firedb.collection(FireDBNames.carts);
-      final products = carts.doc(cartId).collection('products');
+      final carts = firebaseFirestore.collection(FireDBNames.carts);
+      final products = carts.doc(cartId).collection(FireDBNames.products);
 
       //* Getting old product, with unique id [product.id]
       final oldProductJson = await _getOldProduct(products, product.id);
@@ -70,6 +91,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
           total: oldProduct.total + product.total,
         );
         if (newProduct.quantity > product.stock) {
+          //! Handle error
           throw Exception('New product quantity more than product quantity');
         }
         //* if product exist in db, we update him ⬇️
@@ -77,8 +99,13 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
               newProduct.toJson(),
             );
       }
-    } catch (e) {
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Add product cart remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -88,8 +115,8 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
     CartProductModel product,
   ) async {
     try {
-      final carts = firedb.collection(FireDBNames.carts);
-      final products = carts.doc(cartId).collection('products');
+      final carts = firebaseFirestore.collection(FireDBNames.carts);
+      final products = carts.doc(cartId).collection(FireDBNames.products);
 
       //* Getting old product with unique id [product.id]
       final oldProductJson = await _getOldProduct(products, product.id);
@@ -102,19 +129,29 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
               product.toJson(),
             );
       }
-    } catch (e) {
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Update product cart remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
   @override
   Future<void> deleteProductCart(String cartId, String productId) async {
     try {
-      final carts = firedb.collection(FireDBNames.carts);
-      final products = carts.doc(cartId).collection('products');
+      final carts = firebaseFirestore.collection(FireDBNames.carts);
+      final products = carts.doc(cartId).collection(FireDBNames.products);
       await products.doc(productId).delete();
-    } catch (e) {
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Delete product cart remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 }

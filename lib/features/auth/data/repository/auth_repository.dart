@@ -1,5 +1,5 @@
-import 'dart:developer';
-import 'package:e_shop/common/error/exception.dart';
+import 'package:e_shop/common/error/exceptions.dart';
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:e_shop/features/user/data/mapper/user_mapper.dart';
@@ -13,13 +13,17 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   UserEntity? getUser() {
     try {
-      final userModel = authRemoteDataSource.getUser();
+      final userModel = authRemoteDataSource.getAccount();
       final userEntity =
           userModel == null ? null : UserMapper.toEntity(userModel);
       return userEntity;
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -28,10 +32,14 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await authRemoteDataSource.login(email, password);
     } on WrongEmailOrPasswordException {
-      throw WrongEmailOrPasswordException();
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+      rethrow;
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -39,9 +47,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> loginWithGmail() async {
     try {
       await authRemoteDataSource.loginWithGmail();
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -51,9 +63,13 @@ class AuthRepositoryImpl implements AuthRepository {
       await authRemoteDataSource.resetPassword(email);
     } on WrongEmailOrPasswordException {
       throw WrongEmailOrPasswordException();
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -63,9 +79,13 @@ class AuthRepositoryImpl implements AuthRepository {
       await authRemoteDataSource.signUp(email, password);
     } on EmailAlreadyInUse {
       throw EmailAlreadyInUse();
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -73,9 +93,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> sendEmailVerification() async {
     try {
       await authRemoteDataSource.sendEmailVerification();
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -88,9 +112,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> deleteAccount() async {
     try {
       await authRemoteDataSource.deleteAccount();
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -98,9 +126,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> logout() async {
     try {
       await authRemoteDataSource.logout();
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'GetUser remote exception',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 }

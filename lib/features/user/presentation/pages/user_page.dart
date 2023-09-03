@@ -1,5 +1,6 @@
 import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
 import 'package:e_shop/di/di_container.dart';
@@ -21,8 +22,7 @@ class UserPage extends StatelessWidget {
       await authRepository.logout();
       if (context.mounted) context.go(AppRouteUrl.loader);
     } catch (e) {
-      print(e);
-      SnackBarMessenger.showSnackBar(
+      CustomSnackBar.showSnackBar(
         context,
         AppErrorText.commonError,
         true,
@@ -39,7 +39,7 @@ class UserPage extends StatelessWidget {
       )..add(const UserEvent.started()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Profile'),
+          title: const Text(AppTexts.profile),
           centerTitle: true,
           actions: [
             IconButton(

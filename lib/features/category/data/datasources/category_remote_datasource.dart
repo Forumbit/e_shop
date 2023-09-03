@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/common/utils/mixins/product_remote_datasource_mixin.dart';
-import 'package:e_shop/common/configuration.dart';
+import 'package:e_shop/config/configuration.dart';
 import 'package:e_shop/features/product/data/models/product_list/product_list_model.dart';
 
 abstract interface class CategoryRemoteDataSource {
@@ -16,7 +15,7 @@ abstract interface class CategoryRemoteDataSource {
 class CategoryRemoteDataSourceImpl
     with ProductRemoteDataSourceMixin
     implements CategoryRemoteDataSource {
-  CategoryRemoteDataSourceImpl(this.dio);
+  CategoryRemoteDataSourceImpl({required this.dio});
 
   final Dio dio;
 
@@ -31,9 +30,13 @@ class CategoryRemoteDataSourceImpl
       final json = response.data;
       final categories = List<String>.from(json);
       return categories;
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Get categories remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -47,14 +50,18 @@ class CategoryRemoteDataSourceImpl
         ApiConfiguration.host,
         'products/category/$category',
         {
-          'limit': ApiConfiguration.limitQueryParameter,
-          'skip': skip.toString(),
+          ApiConfiguration.limitText: ApiConfiguration.limitQueryParameter,
+          ApiConfiguration.skipText: skip.toString(),
         },
       );
       return await getProducts(dio, url);
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Get products of category remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 }

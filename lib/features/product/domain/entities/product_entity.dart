@@ -1,27 +1,20 @@
-class ProductEntity {
-  final int id;
-  final String title;
-  final String description;
-  final int price;
-  final double discountPercentage;
-  final double rating;
-  final int stock;
-  final String brand;
-  final String category;
-  final String thumbnail;
-  final List<String> images;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  ProductEntity({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.price,
-    required this.discountPercentage,
-    required this.rating,
-    required this.stock,
-    required this.brand,
-    required this.category,
-    required this.thumbnail,
-    required this.images,
-  });
+part 'product_entity.freezed.dart';
+
+@freezed
+class ProductEntity with _$ProductEntity {
+  factory ProductEntity({
+    required int id,
+    required String title,
+    required String description,
+    required int price,
+    required double discountPercentage,
+    required double rating,
+    required int stock,
+    required String brand,
+    required String category,
+    required String thumbnail,
+    required List<String> images,
+  }) = _ProductEntity;
 }

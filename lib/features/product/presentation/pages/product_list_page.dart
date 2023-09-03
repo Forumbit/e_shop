@@ -1,7 +1,5 @@
-import 'dart:developer';
-
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/repositories/product_list_repository.dart';
+import 'package:e_shop/common/repository/product_list_repository.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
@@ -37,13 +35,11 @@ class _ProductListPageState extends State<ProductListPage> {
     } else {
       _controller = TextEditingController(text: widget.parameter);
     }
-    log('Text Editing Controller was initialized');
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    log('Text Editing Controller was disposed');
     super.dispose();
   }
 

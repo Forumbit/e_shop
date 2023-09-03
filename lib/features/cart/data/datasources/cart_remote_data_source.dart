@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/common/constants/firebase_collectioin_names.dart';
+import 'package:e_shop/common/constants/firebase_constants/firebase_collection_names.dart';
+import 'package:e_shop/common/constants/firebase_constants/firebase_field_names.dart';
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/features/cart/data/models/cart_model.dart';
 
 abstract interface class CartRemoteDataSource {
@@ -25,8 +27,13 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
           .collection(FireDBNames.carts)
           .doc(doc.id)
           .update(cartWithId.toJson());
-    } catch (e) {
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'create remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -36,14 +43,24 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       final carts = firebaseFirestore.collection(
         FireDBNames.carts,
       );
-      final cart = await carts.where('uid', isEqualTo: uid).get();
+      final cart = await carts
+          .where(
+            FBFieldNames.uid,
+            isEqualTo: uid,
+          )
+          .get();
       if (cart.docs.isNotEmpty) {
         final cartModel = CartModel.fromJson(cart.docs.first.data());
         return cartModel;
       }
       return null;
-    } catch (e) {
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'get cart remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -54,8 +71,13 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
         FireDBNames.carts,
       );
       await carts.doc(cart.docId).update(cart.toJson());
-    } catch (e) {
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'update cart remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 
@@ -66,8 +88,13 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
         FireDBNames.carts,
       );
       await carts.doc(documentId).delete();
-    } catch (e) {
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'delete cart remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 }

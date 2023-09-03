@@ -36,41 +36,76 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   final CartProductRepository cartProductRepository;
 
   Future<void> _init(emit) async {
-    emit(const CartState.loading());
-    final user = _getUser();
-    await _getCart(user.uid, emit);
+    try {
+      emit(const CartState.loading());
+      final user = _getUser(emit);
+      await _getCart(user.uid, emit);
+    } catch (e) {
+      emit(const CartState.error());
+      rethrow;
+    }
   }
 
   Future<void> _refreshCart(emit) async {
-    emit(const CartState.loading());
-    final user = _getUser();
-    await _getCart(user.uid, emit);
+    try {
+      emit(const CartState.loading());
+      final user = _getUser(emit);
+      await _getCart(user.uid, emit);
+    } catch (e) {
+      emit(const CartState.error());
+      rethrow;
+    }
   }
 
-  UserEntity _getUser() {
-    return authRepository.getUser()!;
+  UserEntity _getUser(emit) {
+    try {
+      return authRepository.getUser()!;
+    } catch (e) {
+      emit(const CartState.error());
+      rethrow;
+    }
   }
 
   Future<void> _getCart(String uid, emit) async {
-    final cart = await cartRepository.getCart(uid);
-    print(cart);
-    emit(CartState.loaded(cart!));
+    try {
+      final cart = await cartRepository.getCart(uid);
+      print(cart);
+      emit(CartState.loaded(cart!));
+    } catch (e) {
+      emit(const CartState.error());
+      rethrow;
+    }
   }
 
   Future<void> _updateCart(emit) async {
-    final user = authRepository.getUser();
-    await _getCart(user!.uid, emit);
+    try {
+      final user = authRepository.getUser();
+      await _getCart(user!.uid, emit);
+    } catch (e) {
+      emit(const CartState.error());
+      rethrow;
+    }
   }
 
   Future<void> _onProductUpdated(emit, CartProductEntity product) async {
-    final cartId = (state as _Loaded).cart.docId!;
-    await cartProductRepository.updateProductCart(cartId, product);
-    await _updateCart(emit);
+    try {
+      final cartId = (state as _Loaded).cart.docId!;
+      await cartProductRepository.updateProductCart(cartId, product);
+      await _updateCart(emit);
+    } catch (e) {
+      emit(const CartState.error());
+      rethrow;
+    }
   }
 
   Future<void> _onProductDeleted(emit, String productId) async {
-    final cartId = (state as _Loaded).cart.docId!;
-    await cartProductRepository.deleteProductCart(cartId, productId);
-    await _updateCart(emit);
+    try {
+      final cartId = (state as _Loaded).cart.docId!;
+      await cartProductRepository.deleteProductCart(cartId, productId);
+      await _updateCart(emit);
+    } catch (e) {
+      emit(const CartState.error());
+      rethrow;
+    }
   }
 }

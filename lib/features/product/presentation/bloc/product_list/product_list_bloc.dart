@@ -1,8 +1,6 @@
-import 'dart:developer';
-
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:e_shop/common/repositories/product_list_repository.dart';
-import 'package:e_shop/common/configuration.dart';
+import 'package:e_shop/common/repository/product_list_repository.dart';
+import 'package:e_shop/config/configuration.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,13 +31,21 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   final ProductListRepository _productListRepository;
 
   Future<void> _init({emit, String? parameter}) async {
-    emit(const ProductListState.loading());
-    await _getProducts(emit: emit, parameter: parameter);
+    try {
+      emit(const ProductListState.loading());
+      await _getProducts(emit: emit, parameter: parameter);
+    } catch (e) {
+      emit(const ProductListState.error());
+    }
   }
 
   Future<void> _searchProducts(emit, String query) async {
-    emit(const ProductListState.loading());
-    await _getProducts(emit: emit, parameter: query);
+    try {
+      emit(const ProductListState.loading());
+      await _getProducts(emit: emit, parameter: query);
+    } catch (e) {
+      emit(const ProductListState.error());
+    }
   }
 
   Future<void> _getProducts({emit, String? parameter, int page = 0}) async {
@@ -65,7 +71,6 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
         emit(ProductListState.loaded(newProductList, areProductsEnded));
       }
     } catch (e) {
-      log(e.toString());
       emit(const ProductListState.error());
     }
   }

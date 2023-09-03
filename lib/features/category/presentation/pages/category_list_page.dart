@@ -1,12 +1,12 @@
 import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_gradients.dart';
-import 'package:e_shop/common/constants/app_route_constants.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
-import 'package:e_shop/features/widgets/shimmer/shimmer.dart';
-import 'package:e_shop/features/widgets/shimmer/shimmer_loading.dart';
+import 'package:e_shop/widgets/shimmer/shimmer.dart';
+import 'package:e_shop/widgets/shimmer/shimmer_loading.dart';
 import 'package:e_shop/features/category/presentation/bloc/category_list/category_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,9 +54,6 @@ class _CategoryGridViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isLoading = categories == null;
-
-    //! Проблема: перестраивается элементы
-    //! Из-за чего создаются и удаляются новые контроллеры
     return GridView.builder(
       physics: isLoading ? const NeverScrollableScrollPhysics() : null,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -95,7 +92,6 @@ class _CategoryGridViewItemWidget extends StatelessWidget {
       isLoading: isLoading,
       child: GestureDetector(
         onTap: () {
-          //! Тут надо додумать
           if (isLoading) return;
           context.pushNamed(
             AppRouteNamed.categoryProduct,
