@@ -18,12 +18,20 @@ import 'package:flutter/material.dart';
 class ScreenFactoryDefault implements ScreenFactory {
   final _diContainer = DIContainer();
 
+  //* ============ app screen factory ============
   @override
   Widget makeLoader() => ProviderValue(
         value: _diContainer,
         child: const LoaderPage(),
       );
 
+  @override
+  Widget makeHome() => ProviderValue<DIContainer>(
+        value: _diContainer,
+        child: const HomePage(),
+      );
+
+  //* ============ auth screen factory ============
   @override
   Widget makeLogin() => ProviderValue(
         value: _diContainer,
@@ -46,24 +54,11 @@ class ScreenFactoryDefault implements ScreenFactory {
         authRepository: _diContainer.getAuthRepository(),
       );
 
-  @override
-  Widget makeHome() => ProviderValue<DIContainer>(
-        value: _diContainer,
-        child: const HomePage(),
-      );
-
+  //* ============ category screen factory ============
   @override
   Widget makeCategoryList() => ProviderValue<DIContainer>(
         value: _diContainer,
         child: const CategoryListPage(),
-      );
-
-  @override
-  Widget makePopularProductList() => ProviderValue<DIContainer>(
-        value: _diContainer,
-        child: const ProductListPage(
-          productListEnum: ProductListEnum.popular,
-        ),
       );
 
   @override
@@ -75,6 +70,22 @@ class ScreenFactoryDefault implements ScreenFactory {
         ),
       );
 
+  //* ============ product screen factory ============
+  @override
+  Widget makePopularProductList() => ProviderValue<DIContainer>(
+        value: _diContainer,
+        child: const ProductListPage(
+          productListEnum: ProductListEnum.popular,
+        ),
+      );
+
+  @override
+  Widget makeProductDetail(int id) => ProviderValue<DIContainer>(
+        value: _diContainer,
+        child: ProductDetailPage(id: id),
+      );
+
+  //* ============ search screen factory ============
   @override
   Widget makeSearchProductList(String query) => ProviderValue<DIContainer>(
         value: _diContainer,
@@ -85,18 +96,15 @@ class ScreenFactoryDefault implements ScreenFactory {
         ),
       );
 
-  @override
-  Widget makeProductDetail(int id) => ProviderValue<DIContainer>(
-        value: _diContainer,
-        child: ProductDetailPage(id: id),
-      );
 
+  //* ============ profile screen factory ============
   @override
   Widget makeProfile() => ProviderValue(
         value: _diContainer,
         child: const UserPage(),
       );
 
+  //* ============ cart screen factory ============
   @override
   Widget makeCart() => ProviderValue(
         value: _diContainer,

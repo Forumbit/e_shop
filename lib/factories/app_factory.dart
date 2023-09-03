@@ -10,8 +10,6 @@ AppFactory appFactory() => AppFactoryImpl();
 class AppFactoryImpl implements AppFactory {
   final _diContainer = DIContainer();
 
-  AppFactoryImpl();
-
   @override
   Future<void> initialize() async {
     WidgetsFlutterBinding.ensureInitialized();
