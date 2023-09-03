@@ -3,7 +3,7 @@ import 'package:e_shop/common/constants/app_route_constants.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/search/presentation/widgets/search_widget.dart';
-import 'package:e_shop/features/widgets/shimmer/shimmer.dart';
+import 'package:e_shop/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/category/presentation/bloc/category_list/category_list_bloc.dart';
 import 'package:e_shop/features/category/presentation/widgets/products_of_category_list_loading_widget.dart';
 import 'package:e_shop/features/category/presentation/widgets/products_of_category_list_widget.dart';
