@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'verify_email_bloc.dart';
+part of 'email_verification_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$VerifyEmailEvent {
+mixin _$EmailVerificationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -72,16 +72,17 @@ mixin _$VerifyEmailEvent {
 }
 
 /// @nodoc
-abstract class $VerifyEmailEventCopyWith<$Res> {
-  factory $VerifyEmailEventCopyWith(
-          VerifyEmailEvent value, $Res Function(VerifyEmailEvent) then) =
-      _$VerifyEmailEventCopyWithImpl<$Res, VerifyEmailEvent>;
+abstract class $EmailVerificationEventCopyWith<$Res> {
+  factory $EmailVerificationEventCopyWith(EmailVerificationEvent value,
+          $Res Function(EmailVerificationEvent) then) =
+      _$EmailVerificationEventCopyWithImpl<$Res, EmailVerificationEvent>;
 }
 
 /// @nodoc
-class _$VerifyEmailEventCopyWithImpl<$Res, $Val extends VerifyEmailEvent>
-    implements $VerifyEmailEventCopyWith<$Res> {
-  _$VerifyEmailEventCopyWithImpl(this._value, this._then);
+class _$EmailVerificationEventCopyWithImpl<$Res,
+        $Val extends EmailVerificationEvent>
+    implements $EmailVerificationEventCopyWith<$Res> {
+  _$EmailVerificationEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -98,7 +99,7 @@ abstract class _$$_StartedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StartedCopyWithImpl<$Res>
-    extends _$VerifyEmailEventCopyWithImpl<$Res, _$_Started>
+    extends _$EmailVerificationEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
   __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
       : super(_value, _then);
@@ -111,13 +112,14 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VerifyEmailEvent.started()';
+    return 'EmailVerificationEvent.started()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'VerifyEmailEvent.started'));
+    properties
+        .add(DiagnosticsProperty('type', 'EmailVerificationEvent.started'));
   }
 
   @override
@@ -207,7 +209,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   }
 }
 
-abstract class _Started implements VerifyEmailEvent {
+abstract class _Started implements EmailVerificationEvent {
   const factory _Started() = _$_Started;
 }
 
@@ -220,7 +222,8 @@ abstract class _$$_OnSendEmailVerificationCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnSendEmailVerificationCopyWithImpl<$Res>
-    extends _$VerifyEmailEventCopyWithImpl<$Res, _$_OnSendEmailVerification>
+    extends _$EmailVerificationEventCopyWithImpl<$Res,
+        _$_OnSendEmailVerification>
     implements _$$_OnSendEmailVerificationCopyWith<$Res> {
   __$$_OnSendEmailVerificationCopyWithImpl(_$_OnSendEmailVerification _value,
       $Res Function(_$_OnSendEmailVerification) _then)
@@ -236,14 +239,14 @@ class _$_OnSendEmailVerification
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VerifyEmailEvent.onSendEmailVerification()';
+    return 'EmailVerificationEvent.onSendEmailVerification()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty(
-        'type', 'VerifyEmailEvent.onSendEmailVerification'));
+        'type', 'EmailVerificationEvent.onSendEmailVerification'));
   }
 
   @override
@@ -334,7 +337,7 @@ class _$_OnSendEmailVerification
   }
 }
 
-abstract class _OnSendEmailVerification implements VerifyEmailEvent {
+abstract class _OnSendEmailVerification implements EmailVerificationEvent {
   const factory _OnSendEmailVerification() = _$_OnSendEmailVerification;
 }
 
@@ -348,7 +351,8 @@ abstract class _$$_OnCheckEmailVerificationCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnCheckEmailVerificationCopyWithImpl<$Res>
-    extends _$VerifyEmailEventCopyWithImpl<$Res, _$_OnCheckEmailVerification>
+    extends _$EmailVerificationEventCopyWithImpl<$Res,
+        _$_OnCheckEmailVerification>
     implements _$$_OnCheckEmailVerificationCopyWith<$Res> {
   __$$_OnCheckEmailVerificationCopyWithImpl(_$_OnCheckEmailVerification _value,
       $Res Function(_$_OnCheckEmailVerification) _then)
@@ -364,14 +368,14 @@ class _$_OnCheckEmailVerification
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VerifyEmailEvent.onCheckEmailVerification()';
+    return 'EmailVerificationEvent.onCheckEmailVerification()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty(
-        'type', 'VerifyEmailEvent.onCheckEmailVerification'));
+        'type', 'EmailVerificationEvent.onCheckEmailVerification'));
   }
 
   @override
@@ -462,7 +466,7 @@ class _$_OnCheckEmailVerification
   }
 }
 
-abstract class _OnCheckEmailVerification implements VerifyEmailEvent {
+abstract class _OnCheckEmailVerification implements EmailVerificationEvent {
   const factory _OnCheckEmailVerification() = _$_OnCheckEmailVerification;
 }
 
@@ -475,7 +479,7 @@ abstract class _$$_OnDeleteAccountCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnDeleteAccountCopyWithImpl<$Res>
-    extends _$VerifyEmailEventCopyWithImpl<$Res, _$_OnDeleteAccount>
+    extends _$EmailVerificationEventCopyWithImpl<$Res, _$_OnDeleteAccount>
     implements _$$_OnDeleteAccountCopyWith<$Res> {
   __$$_OnDeleteAccountCopyWithImpl(
       _$_OnDeleteAccount _value, $Res Function(_$_OnDeleteAccount) _then)
@@ -491,14 +495,14 @@ class _$_OnDeleteAccount
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VerifyEmailEvent.onDeleteAccount()';
+    return 'EmailVerificationEvent.onDeleteAccount()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'VerifyEmailEvent.onDeleteAccount'));
+    properties.add(
+        DiagnosticsProperty('type', 'EmailVerificationEvent.onDeleteAccount'));
   }
 
   @override
@@ -588,17 +592,18 @@ class _$_OnDeleteAccount
   }
 }
 
-abstract class _OnDeleteAccount implements VerifyEmailEvent {
+abstract class _OnDeleteAccount implements EmailVerificationEvent {
   const factory _OnDeleteAccount() = _$_OnDeleteAccount;
 }
 
 /// @nodoc
-mixin _$VerifyEmailState {
+mixin _$EmailVerificationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() verified,
     required TResult Function() resended,
+    required TResult Function() successfull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -606,6 +611,7 @@ mixin _$VerifyEmailState {
     TResult? Function()? initial,
     TResult? Function()? verified,
     TResult? Function()? resended,
+    TResult? Function()? successfull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -613,6 +619,7 @@ mixin _$VerifyEmailState {
     TResult Function()? initial,
     TResult Function()? verified,
     TResult Function()? resended,
+    TResult Function()? successfull,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -621,6 +628,7 @@ mixin _$VerifyEmailState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Verified value) verified,
     required TResult Function(_Resended value) resended,
+    required TResult Function(_SuccessFull value) successfull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -628,6 +636,7 @@ mixin _$VerifyEmailState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Verified value)? verified,
     TResult? Function(_Resended value)? resended,
+    TResult? Function(_SuccessFull value)? successfull,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -635,22 +644,24 @@ mixin _$VerifyEmailState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Verified value)? verified,
     TResult Function(_Resended value)? resended,
+    TResult Function(_SuccessFull value)? successfull,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VerifyEmailStateCopyWith<$Res> {
-  factory $VerifyEmailStateCopyWith(
-          VerifyEmailState value, $Res Function(VerifyEmailState) then) =
-      _$VerifyEmailStateCopyWithImpl<$Res, VerifyEmailState>;
+abstract class $EmailVerificationStateCopyWith<$Res> {
+  factory $EmailVerificationStateCopyWith(EmailVerificationState value,
+          $Res Function(EmailVerificationState) then) =
+      _$EmailVerificationStateCopyWithImpl<$Res, EmailVerificationState>;
 }
 
 /// @nodoc
-class _$VerifyEmailStateCopyWithImpl<$Res, $Val extends VerifyEmailState>
-    implements $VerifyEmailStateCopyWith<$Res> {
-  _$VerifyEmailStateCopyWithImpl(this._value, this._then);
+class _$EmailVerificationStateCopyWithImpl<$Res,
+        $Val extends EmailVerificationState>
+    implements $EmailVerificationStateCopyWith<$Res> {
+  _$EmailVerificationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -667,7 +678,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$VerifyEmailStateCopyWithImpl<$Res, _$_Initial>
+    extends _$EmailVerificationStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -680,13 +691,14 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VerifyEmailState.initial()';
+    return 'EmailVerificationState.initial()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'VerifyEmailState.initial'));
+    properties
+        .add(DiagnosticsProperty('type', 'EmailVerificationState.initial'));
   }
 
   @override
@@ -704,6 +716,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function() initial,
     required TResult Function() verified,
     required TResult Function() resended,
+    required TResult Function() successfull,
   }) {
     return initial();
   }
@@ -714,6 +727,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? verified,
     TResult? Function()? resended,
+    TResult? Function()? successfull,
   }) {
     return initial?.call();
   }
@@ -724,6 +738,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function()? initial,
     TResult Function()? verified,
     TResult Function()? resended,
+    TResult Function()? successfull,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -738,6 +753,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Verified value) verified,
     required TResult Function(_Resended value) resended,
+    required TResult Function(_SuccessFull value) successfull,
   }) {
     return initial(this);
   }
@@ -748,6 +764,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Verified value)? verified,
     TResult? Function(_Resended value)? resended,
+    TResult? Function(_SuccessFull value)? successfull,
   }) {
     return initial?.call(this);
   }
@@ -758,6 +775,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Verified value)? verified,
     TResult Function(_Resended value)? resended,
+    TResult Function(_SuccessFull value)? successfull,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -767,7 +785,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements VerifyEmailState {
+abstract class _Initial implements EmailVerificationState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -780,7 +798,7 @@ abstract class _$$_VerifiedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_VerifiedCopyWithImpl<$Res>
-    extends _$VerifyEmailStateCopyWithImpl<$Res, _$_Verified>
+    extends _$EmailVerificationStateCopyWithImpl<$Res, _$_Verified>
     implements _$$_VerifiedCopyWith<$Res> {
   __$$_VerifiedCopyWithImpl(
       _$_Verified _value, $Res Function(_$_Verified) _then)
@@ -794,13 +812,14 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VerifyEmailState.verified()';
+    return 'EmailVerificationState.verified()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'VerifyEmailState.verified'));
+    properties
+        .add(DiagnosticsProperty('type', 'EmailVerificationState.verified'));
   }
 
   @override
@@ -818,6 +837,7 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
     required TResult Function() initial,
     required TResult Function() verified,
     required TResult Function() resended,
+    required TResult Function() successfull,
   }) {
     return verified();
   }
@@ -828,6 +848,7 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
     TResult? Function()? initial,
     TResult? Function()? verified,
     TResult? Function()? resended,
+    TResult? Function()? successfull,
   }) {
     return verified?.call();
   }
@@ -838,6 +859,7 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
     TResult Function()? initial,
     TResult Function()? verified,
     TResult Function()? resended,
+    TResult Function()? successfull,
     required TResult orElse(),
   }) {
     if (verified != null) {
@@ -852,6 +874,7 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Verified value) verified,
     required TResult Function(_Resended value) resended,
+    required TResult Function(_SuccessFull value) successfull,
   }) {
     return verified(this);
   }
@@ -862,6 +885,7 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Verified value)? verified,
     TResult? Function(_Resended value)? resended,
+    TResult? Function(_SuccessFull value)? successfull,
   }) {
     return verified?.call(this);
   }
@@ -872,6 +896,7 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
     TResult Function(_Initial value)? initial,
     TResult Function(_Verified value)? verified,
     TResult Function(_Resended value)? resended,
+    TResult Function(_SuccessFull value)? successfull,
     required TResult orElse(),
   }) {
     if (verified != null) {
@@ -881,7 +906,7 @@ class _$_Verified with DiagnosticableTreeMixin implements _Verified {
   }
 }
 
-abstract class _Verified implements VerifyEmailState {
+abstract class _Verified implements EmailVerificationState {
   const factory _Verified() = _$_Verified;
 }
 
@@ -894,7 +919,7 @@ abstract class _$$_ResendedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ResendedCopyWithImpl<$Res>
-    extends _$VerifyEmailStateCopyWithImpl<$Res, _$_Resended>
+    extends _$EmailVerificationStateCopyWithImpl<$Res, _$_Resended>
     implements _$$_ResendedCopyWith<$Res> {
   __$$_ResendedCopyWithImpl(
       _$_Resended _value, $Res Function(_$_Resended) _then)
@@ -908,13 +933,14 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VerifyEmailState.resended()';
+    return 'EmailVerificationState.resended()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'VerifyEmailState.resended'));
+    properties
+        .add(DiagnosticsProperty('type', 'EmailVerificationState.resended'));
   }
 
   @override
@@ -932,6 +958,7 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
     required TResult Function() initial,
     required TResult Function() verified,
     required TResult Function() resended,
+    required TResult Function() successfull,
   }) {
     return resended();
   }
@@ -942,6 +969,7 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
     TResult? Function()? initial,
     TResult? Function()? verified,
     TResult? Function()? resended,
+    TResult? Function()? successfull,
   }) {
     return resended?.call();
   }
@@ -952,6 +980,7 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
     TResult Function()? initial,
     TResult Function()? verified,
     TResult Function()? resended,
+    TResult Function()? successfull,
     required TResult orElse(),
   }) {
     if (resended != null) {
@@ -966,6 +995,7 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Verified value) verified,
     required TResult Function(_Resended value) resended,
+    required TResult Function(_SuccessFull value) successfull,
   }) {
     return resended(this);
   }
@@ -976,6 +1006,7 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Verified value)? verified,
     TResult? Function(_Resended value)? resended,
+    TResult? Function(_SuccessFull value)? successfull,
   }) {
     return resended?.call(this);
   }
@@ -986,6 +1017,7 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
     TResult Function(_Initial value)? initial,
     TResult Function(_Verified value)? verified,
     TResult Function(_Resended value)? resended,
+    TResult Function(_SuccessFull value)? successfull,
     required TResult orElse(),
   }) {
     if (resended != null) {
@@ -995,6 +1027,127 @@ class _$_Resended with DiagnosticableTreeMixin implements _Resended {
   }
 }
 
-abstract class _Resended implements VerifyEmailState {
+abstract class _Resended implements EmailVerificationState {
   const factory _Resended() = _$_Resended;
+}
+
+/// @nodoc
+abstract class _$$_SuccessFullCopyWith<$Res> {
+  factory _$$_SuccessFullCopyWith(
+          _$_SuccessFull value, $Res Function(_$_SuccessFull) then) =
+      __$$_SuccessFullCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SuccessFullCopyWithImpl<$Res>
+    extends _$EmailVerificationStateCopyWithImpl<$Res, _$_SuccessFull>
+    implements _$$_SuccessFullCopyWith<$Res> {
+  __$$_SuccessFullCopyWithImpl(
+      _$_SuccessFull _value, $Res Function(_$_SuccessFull) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SuccessFull with DiagnosticableTreeMixin implements _SuccessFull {
+  const _$_SuccessFull();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'EmailVerificationState.successfull()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'EmailVerificationState.successfull'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SuccessFull);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() verified,
+    required TResult Function() resended,
+    required TResult Function() successfull,
+  }) {
+    return successfull();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? verified,
+    TResult? Function()? resended,
+    TResult? Function()? successfull,
+  }) {
+    return successfull?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? verified,
+    TResult Function()? resended,
+    TResult Function()? successfull,
+    required TResult orElse(),
+  }) {
+    if (successfull != null) {
+      return successfull();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Verified value) verified,
+    required TResult Function(_Resended value) resended,
+    required TResult Function(_SuccessFull value) successfull,
+  }) {
+    return successfull(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Verified value)? verified,
+    TResult? Function(_Resended value)? resended,
+    TResult? Function(_SuccessFull value)? successfull,
+  }) {
+    return successfull?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Verified value)? verified,
+    TResult Function(_Resended value)? resended,
+    TResult Function(_SuccessFull value)? successfull,
+    required TResult orElse(),
+  }) {
+    if (successfull != null) {
+      return successfull(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessFull implements EmailVerificationState {
+  const factory _SuccessFull() = _$_SuccessFull;
 }

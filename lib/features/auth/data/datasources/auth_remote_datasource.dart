@@ -48,7 +48,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      if (e.code == FirebaseExceptionCode.userNotFound) {
+      if (e.code == FirebaseExceptionCode.userNotFound ||
+          e.code == FirebaseExceptionCode.wrongPassword) {
         throw WrongEmailOrPasswordException();
       }
       rethrow;

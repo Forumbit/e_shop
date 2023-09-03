@@ -4,7 +4,7 @@ import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
-import 'package:e_shop/features/auth/presentation/bloc/verify_email/verify_email_bloc.dart';
+import 'package:e_shop/features/auth/presentation/bloc/email_verification/email_verification_bloc.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/widgets/custom_widgets/custom_elevated_button.dart';
@@ -28,8 +28,8 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     timer = Timer.periodic(
       const Duration(seconds: 3),
       (timer) {
-        context.read<VerifyEmailBloc>().add(
-              const VerifyEmailEvent.onCheckEmailVerification(),
+        context.read<EmailVerificationBloc>().add(
+              const EmailVerificationEvent.onCheckEmailVerification(),
             );
       },
     );
@@ -45,17 +45,17 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     });
   }
 
-  void _onPressedResendEmail() {
+  void _onPressedResendEmail(BuildContext context) {
     if (!canResendEmail) return;
-    context.read<VerifyEmailBloc>().add(
-          const VerifyEmailEvent.onSendEmailVerification(),
+    context.read<EmailVerificationBloc>().add(
+          const EmailVerificationEvent.onSendEmailVerification(),
         );
   }
 
-  void _onPressedCancelButton() {
+  void _onPressedCancelButton(BuildContext context) {
     timer?.cancel();
-    context.read<VerifyEmailBloc>().add(
-          const VerifyEmailEvent.onDeleteAccount(),
+    context.read<EmailVerificationBloc>().add(
+          const EmailVerificationEvent.onDeleteAccount(),
         );
   }
 
@@ -68,10 +68,10 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   @override
   Widget build(BuildContext context) {
     final diContainer = ProviderValue.of<DIContainer>(context);
-    return BlocProvider<VerifyEmailBloc>(
-      create: (_) => VerifyEmailBloc(
+    return BlocProvider<EmailVerificationBloc>(
+      create: (_) => EmailVerificationBloc(
         diContainer.getAuthRepository(),
-      )..add(const VerifyEmailEvent.started()),
+      )..add(const EmailVerificationEvent.started()),
       child: Scaffold(
         body: Center(
           child: Padding(
@@ -97,16 +97,18 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 20.h),
-                BlocListener<VerifyEmailBloc, VerifyEmailState>(
+                BlocListener<EmailVerificationBloc, EmailVerificationState>(
                   listener: (context, state) => state.when(
                     initial: () => _onInitial(context),
                     verified: () => context.go(AppRouteUrl.loader),
                     resended: () async => await _onResended(),
+                    successfull: () => context.go(AppRouteUrl.loader),
                   ),
-                  child: BlocBuilder<VerifyEmailBloc, VerifyEmailState>(
+                  child: BlocBuilder<EmailVerificationBloc,
+                      EmailVerificationState>(
                     builder: (context, state) {
                       return CustomElevatedButton(
-                        onPressed: _onPressedResendEmail,
+                        onPressed: () => _onPressedResendEmail(context),
                         backgroundColor:
                             canResendEmail ? AppColors.mainColor : null,
                         child: const Text(AppTexts.send),
@@ -115,12 +117,16 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   ),
                 ),
                 SizedBox(height: 20.h),
-                TextButton(
-                  onPressed: _onPressedCancelButton,
-                  child: const Text(
-                    AppTexts.cancel,
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                BlocBuilder<EmailVerificationBloc, EmailVerificationState>(
+                  builder: (context, state) {
+                    return TextButton(
+                      onPressed: () => _onPressedCancelButton(context),
+                      child: const Text(
+                        AppTexts.cancel,
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

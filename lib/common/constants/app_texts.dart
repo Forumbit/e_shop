@@ -33,4 +33,6 @@ class AppTexts {
       'Please go to the mail and click on the link to register your email address.';
   static const submit = 'submit';
   static const cart = 'Cart';
+  static const or = 'or';
+  static const gmail = 'Gmail';
 }

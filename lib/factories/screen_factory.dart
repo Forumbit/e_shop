@@ -4,7 +4,7 @@ import 'package:e_shop/features/app/presentation/pages/loader_page.dart';
 import 'package:e_shop/features/auth/presentation/pages/login_page.dart';
 import 'package:e_shop/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:e_shop/features/auth/presentation/pages/sign_up_page.dart';
-import 'package:e_shop/features/auth/presentation/pages/verify_email_page.dart';
+import 'package:e_shop/features/auth/presentation/pages/email_verification_page.dart';
 import 'package:e_shop/features/cart/presentation/pages/cart_page.dart';
 import 'package:e_shop/features/category/presentation/pages/category_list_page.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
@@ -51,8 +51,11 @@ class ScreenFactoryDefault implements ScreenFactory {
       );
 
   @override
-  Widget makeResetPassword() => ResetPasswordPage(
-        authRepository: _diContainer.getAuthRepository(),
+  Widget makeResetPassword() => ProviderValue<DIContainer>(
+        value: _diContainer,
+        child: ResetPasswordPage(
+          authRepository: _diContainer.getAuthRepository(),
+        ),
       );
 
   //* ============ category screen factory ============

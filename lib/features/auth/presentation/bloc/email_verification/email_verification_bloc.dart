@@ -3,18 +3,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'verify_email_event.dart';
-part 'verify_email_state.dart';
-part 'verify_email_bloc.freezed.dart';
+part 'email_verification_event.dart';
+part 'email_verification_state.dart';
+part 'email_verification_bloc.freezed.dart';
 
-class VerifyEmailBloc extends Bloc<VerifyEmailEvent, VerifyEmailState> {
-  VerifyEmailBloc(this.authRepository) : super(const _Initial()) {
-    on<VerifyEmailEvent>(
+class EmailVerificationBloc extends Bloc<EmailVerificationEvent, EmailVerificationState> {
+  EmailVerificationBloc(this.authRepository) : super(const _Initial()) {
+    on<EmailVerificationEvent>(
       (event, emit) => event.when(
         started: () => _init(emit),
         onSendEmailVerification: () => _sendEmailVerification(emit),
         onCheckEmailVerification: () => _checkEmailVerification(emit),
-        onDeleteAccount: () => _deleteAccount(),
+        onDeleteAccount: () => _deleteAccount(emit),
       ),
     );
   }
@@ -22,39 +22,33 @@ class VerifyEmailBloc extends Bloc<VerifyEmailEvent, VerifyEmailState> {
   final AuthRepository authRepository;
 
   Future<void> _init(emit) async {
-    emit(const VerifyEmailState.initial());
+    emit(const EmailVerificationState.initial());
     await _checkEmailVerification(emit);
   }
 
   Future<void> _checkEmailVerification(emit) async {
     try {
       final isEmailVerified = await authRepository.checkEmailVerification();
-      if (isEmailVerified) emit(const VerifyEmailState.verified());
+      if (isEmailVerified) emit(const EmailVerificationState.verified());
     } catch (e) {
-      print(e);
       throw Exception(e);
     }
   }
 
   Future<void> _sendEmailVerification(emit) async {
     try {
-      emit(const VerifyEmailState.resended());
+      emit(const EmailVerificationState.resended());
       await authRepository.sendEmailVerification();
     } catch (e) {
-      print(e);
       throw Exception(e);
     }
   }
 
-  Future<void> _deleteAccount() async {
+  Future<void> _deleteAccount(emit) async {
     try {
-      // timer?.cancel();
       await authRepository.deleteAccount();
-      // if (mounted) {
-      //   context.go(AppRouteUrl.loader);
-      // }
+      emit(const EmailVerificationState.successfull());
     } catch (e) {
-      print(e);
       throw Exception(e);
     }
   }
