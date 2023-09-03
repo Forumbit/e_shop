@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/config/configuration.dart';
 import 'package:e_shop/common/utils/mixins/product_remote_datasource_mixin.dart';
 import 'package:e_shop/features/product/data/models/product_list/product_list_model.dart';
@@ -23,15 +22,19 @@ class SearchRemoteDataSourceImpl
         ApiConfiguration.host,
         '/products/search',
         {
-          'limit': ApiConfiguration.limitQueryParameter,
-          'skip': skip.toString(),
-          'q': query,
+          ApiConfiguration.limitText: ApiConfiguration.limitQueryParameter,
+          ApiConfiguration.skipText: skip.toString(),
+          ApiConfiguration.queryText: query,
         },
       );
       return await getProducts(dio, url);
-    } catch (e) {
-      log(e.toString());
-      throw Exception(e);
+    } on Object catch (e, s) {
+      logger.e(
+        'Get products of search remote',
+        error: e,
+        stackTrace: s,
+      );
+      rethrow;
     }
   }
 }
