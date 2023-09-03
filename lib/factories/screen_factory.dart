@@ -45,8 +45,9 @@ class ScreenFactoryDefault implements ScreenFactory {
       );
 
   @override
-  Widget makeVerifyEmail() => VerifyEmailPage(
-        authRepository: _diContainer.getAuthRepository(),
+  Widget makeVerifyEmail() => ProviderValue<DIContainer>(
+        value: _diContainer,
+        child: VerifyEmailPage(),
       );
 
   @override

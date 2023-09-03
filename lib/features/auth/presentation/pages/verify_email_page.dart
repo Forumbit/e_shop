@@ -2,86 +2,61 @@ import 'dart:async';
 
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/route/app_route_name.dart';
+import 'package:e_shop/common/utils/provider/provider_value.dart';
+import 'package:e_shop/di/di_container.dart';
+import 'package:e_shop/features/auth/presentation/bloc/verify_email/verify_email_bloc.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
+import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class VerifyEmailPage extends StatefulWidget {
-  const VerifyEmailPage({
-    super.key,
-    required this.authRepository,
-  });
-
-  final AuthRepository authRepository;
+  const VerifyEmailPage({super.key});
 
   @override
   State<VerifyEmailPage> createState() => _VerifyEmailPageState();
 }
 
 class _VerifyEmailPageState extends State<VerifyEmailPage> {
-  bool isEmailVerified = false;
-  bool canResendEmail = false;
-  Timer? timer;
+  bool canResendEmail = true;
+  late final Timer? timer;
 
-  Future<void> _checkEmailVerification() async {
-    try {
-      isEmailVerified = await widget.authRepository.checkEmailVerification();
-      if (isEmailVerified && mounted) {
-        context.go(AppRouteUrl.loader);
-      }
-    } catch (e) {
-      print(e);
-      throw Exception(e);
-    }
-  }
-
-  Future<void> _sendEmailVerification() async {
-    try {
-      await widget.authRepository.sendEmailVerification();
-      setState(() {
-        canResendEmail = false;
-      });
-      await Future.delayed(const Duration(seconds: 5));
-      setState(() {
-        canResendEmail = true;
-      });
-    } catch (e) {
-      print(e);
-      throw Exception(e);
-    }
-  }
-
-  Future<void> _deleteAccount() async {
-    try {
-      timer?.cancel();
-      await widget.authRepository.deleteAccount();
-      if (mounted) {
-        context.go(AppRouteUrl.loader);
-      }
-    } catch (e) {
-      print(e);
-      throw Exception(e);
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (!isEmailVerified) {
-      _sendEmailVerification();
-    }
-
+  void _onInitial(BuildContext context) {
     timer = Timer.periodic(
       const Duration(seconds: 3),
       (timer) {
-        _checkEmailVerification();
+        context.read<VerifyEmailBloc>().add(
+              const VerifyEmailEvent.onCheckEmailVerification(),
+            );
       },
     );
+  }
+
+  Future<void> _onResended() async {
+    setState(() {
+      canResendEmail = false;
+    });
+    await Future.delayed(const Duration(seconds: 15));
+    setState(() {
+      canResendEmail = true;
+    });
+  }
+
+  void _onPressedResendEmail() {
+    if (!canResendEmail) return;
+    context.read<VerifyEmailBloc>().add(
+          const VerifyEmailEvent.onSendEmailVerification(),
+        );
+  }
+
+  void _onPressedCancelButton() {
+    timer?.cancel();
+    context.read<VerifyEmailBloc>().add(
+          const VerifyEmailEvent.onDeleteAccount(),
+        );
   }
 
   @override
@@ -92,45 +67,63 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                AppImages.verification,
-                height: 200.h,
-              ),
-              SizedBox(height: 30.h),
-              Text(
-                AppTexts.checkMailTitle,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.sp,
+    final diContainer = ProviderValue.of<DIContainer>(context);
+    return BlocProvider<VerifyEmailBloc>(
+      create: (_) => VerifyEmailBloc(
+        diContainer.getAuthRepository(),
+      )..add(const VerifyEmailEvent.started()),
+      child: Scaffold(
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  AppImages.verification,
+                  height: 200.h,
                 ),
-              ),
-              SizedBox(height: 20.h),
-              const Text(
-                AppTexts.checkMailDescription,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 20.h),
-              CustomElevatedButton(
-                onPressed: canResendEmail ? _sendEmailVerification : null,
-                backgroundColor: canResendEmail ? AppColors.mainColor : null,
-                child: const Text(AppTexts.send),
-              ),
-              SizedBox(height: 20.h),
-              TextButton(
-                onPressed: _deleteAccount,
-                child: const Text(
-                  AppTexts.cancel,
-                  style: TextStyle(color: Colors.grey),
+                SizedBox(height: 30.h),
+                Text(
+                  AppTexts.checkMailTitle,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.sp,
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(height: 20.h),
+                const Text(
+                  AppTexts.checkMailDescription,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 20.h),
+                BlocListener<VerifyEmailBloc, VerifyEmailState>(
+                  listener: (context, state) => state.when(
+                    initial: () => _onInitial(context),
+                    verified: () => context.go(AppRouteUrl.loader),
+                    resended: () async => await _onResended(),
+                  ),
+                  child: BlocBuilder<VerifyEmailBloc, VerifyEmailState>(
+                    builder: (context, state) {
+                      return CustomElevatedButton(
+                        onPressed: _onPressedResendEmail,
+                        backgroundColor:
+                            canResendEmail ? AppColors.mainColor : null,
+                        child: const Text(AppTexts.send),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                TextButton(
+                  onPressed: _onPressedCancelButton,
+                  child: const Text(
+                    AppTexts.cancel,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
