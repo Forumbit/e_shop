@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: 'Nunito',
             colorScheme: ColorScheme.fromSeed(

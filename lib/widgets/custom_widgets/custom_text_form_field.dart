@@ -22,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: _email,
       decoration: InputDecoration(
         labelText: labelText,
+        labelStyle: TextStyle(fontSize: 14.sp),
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(

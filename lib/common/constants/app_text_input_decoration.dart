@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 abstract class AppTextInputDecoration {
   static final mainInputDecoration = InputDecoration(
     filled: true,
+    labelStyle: TextStyle(fontSize: 14.sp),
     fillColor: Colors.white,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.r),
