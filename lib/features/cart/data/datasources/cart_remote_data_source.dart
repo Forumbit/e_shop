@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/common/constants/firebase_collectioin_names.dart';
+import 'package:e_shop/common/constants/firebase_constants/firebase_collection_names.dart';
+import 'package:e_shop/common/constants/firebase_constants/firebase_field_names.dart';
 import 'package:e_shop/features/cart/data/models/cart_model.dart';
 
 abstract interface class CartRemoteDataSource {
@@ -36,7 +37,12 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       final carts = firebaseFirestore.collection(
         FireDBNames.carts,
       );
-      final cart = await carts.where('uid', isEqualTo: uid).get();
+      final cart = await carts
+          .where(
+            FBFieldNames.uid,
+            isEqualTo: uid,
+          )
+          .get();
       if (cart.docs.isNotEmpty) {
         final cartModel = CartModel.fromJson(cart.docs.first.data());
         return cartModel;
