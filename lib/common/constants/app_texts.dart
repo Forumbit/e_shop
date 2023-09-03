@@ -35,4 +35,8 @@ class AppTexts {
   static const cart = 'Cart';
   static const or = 'or';
   static const gmail = 'Gmail';
+  static const total = 'Total';
+  static const translationWasSuccess = 'Transaction was succesffully completed';
+  static const checkout = 'Checkout';
+  static const quantity = 'Quantity';
 }
