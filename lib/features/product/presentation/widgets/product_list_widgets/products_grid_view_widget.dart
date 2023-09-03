@@ -1,9 +1,7 @@
-import 'dart:developer';
-
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_list/product_list_bloc.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_item_widget.dart';
+import 'package:e_shop/features/product/presentation/widgets/product_item_widgets/product_item_body_widget.dart';
 import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_item_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,18 +36,14 @@ class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
       return;
     }
     _scrollController = ScrollController();
-    log('Scroll Controller was initilialized');
     _scrollController!.addListener(_onChange);
-    log('Scroll Change was added');
   }
 
   @override
   void dispose() {
     if (!widget.areProductsEnded) {
       _scrollController!.removeListener(_onChange);
-      log('Scroll Change was removed');
       _scrollController!.dispose();
-      log('Scroll controller was disposed');
     }
     super.dispose();
   }
@@ -60,7 +54,10 @@ class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
       final page = (widget.productList?.products.length ?? 0) ~/ 10;
       if (!widget.areProductsEnded) {
         context.read<ProductListBloc>().add(
-              ProductListEvent.onGetProducts(query: widget.query, page: page),
+              ProductListEvent.onGetProducts(
+                query: widget.query,
+                page: page,
+              ),
             );
       } else {}
     }
@@ -73,8 +70,6 @@ class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
 
     // bottom shimmer
     final isLoadingCount = widget.areProductsEnded ? 0 : 2;
-    //! Проблема: перестраивается элементы
-    //! Из-за чего создаются и удаляются новые контроллеры
     return GridView.builder(
       controller: _scrollController,
       physics: isLoading ? const NeverScrollableScrollPhysics() : null,

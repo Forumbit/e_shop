@@ -63,13 +63,10 @@ class AppBarBottomWidget extends StatelessWidget {
                         ),
                         TextSpan(
                           text: switch (productListEnum) {
-                            ProductListEnum.popular => '"Popular"',
+                            ProductListEnum.popular => '"${AppTexts.popular}"',
                             ProductListEnum.category => '"$categoryName"',
                             ProductListEnum.search => '"${controller.text}"',
                           },
-                          // text: controller.text != ''
-                          //     ? '"${controller.text}"'
-                          //     : '"${AppTexts.popular}"',
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,

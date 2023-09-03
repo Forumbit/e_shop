@@ -5,7 +5,7 @@ import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_detail/product_detail_bloc.dart';
 import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/body/floating_action_add_button.dart';
+import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_body/floating_action_add_button.dart';
 import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_detail_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';

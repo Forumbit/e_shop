@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:e_shop/features/cart/data/mapper/cart_product_mapper.dart';
@@ -21,8 +19,14 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
   ) : super(const _Initial()) {
     on<ProductDetailEvent>(
       (event, emit) async => event.when(
-        started: (int id) async => await _init(emit, id),
-        onPressedCartButton: (quantity) async => await _addProductToCart(emit, quantity),
+        started: (int id) async => await _init(
+          emit,
+          id,
+        ),
+        onPressedCartButton: (quantity) async => await _addProductToCart(
+          emit,
+          quantity,
+        ),
       ),
       transformer: sequential(),
     );
@@ -42,7 +46,6 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       final product = await _productRepository.getProduct(id);
       emit(ProductDetailState.loaded(product));
     } catch (e) {
-      log(e.toString());
       emit(const ProductDetailState.error());
     }
   }
@@ -53,11 +56,10 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       final product = (state as _Loaded).product;
       final cartProduct = CartProductMapper.fromProductEntity(product).copyWith(
         quantity: quantity,
-        total: product.price * quantity
+        total: product.price * quantity,
       );
       await _cartRepository.addProductCart(user!.uid, cartProduct);
     } catch (e) {
-      log(e.toString());
       emit(const ProductDetailState.error());
     }
   }

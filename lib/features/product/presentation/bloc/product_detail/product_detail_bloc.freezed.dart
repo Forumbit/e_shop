@@ -646,6 +646,8 @@ abstract class _$$_LoadedCopyWith<$Res> {
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({ProductEntity product});
+
+  $ProductEntityCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -666,6 +668,14 @@ class __$$_LoadedCopyWithImpl<$Res>
           : product // ignore: cast_nullable_to_non_nullable
               as ProductEntity,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductEntityCopyWith<$Res> get product {
+    return $ProductEntityCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
   }
 }
 

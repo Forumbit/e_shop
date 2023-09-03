@@ -826,6 +826,8 @@ abstract class _$$_LoadedCopyWith<$Res> {
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({ProductListEntity productList, bool areProductsEnded});
+
+  $ProductListEntityCopyWith<$Res> get productList;
 }
 
 /// @nodoc
@@ -851,6 +853,14 @@ class __$$_LoadedCopyWithImpl<$Res>
           : areProductsEnded // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductListEntityCopyWith<$Res> get productList {
+    return $ProductListEntityCopyWith<$Res>(_value.productList, (value) {
+      return _then(_value.copyWith(productList: value));
+    });
   }
 }
 

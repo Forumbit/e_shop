@@ -50,8 +50,8 @@ class CategoryRemoteDataSourceImpl
         ApiConfiguration.host,
         'products/category/$category',
         {
-          'limit': ApiConfiguration.limitQueryParameter,
-          'skip': skip.toString(),
+          ApiConfiguration.limitText: ApiConfiguration.limitQueryParameter,
+          ApiConfiguration.skipText: skip.toString(),
         },
       );
       return await getProducts(dio, url);
