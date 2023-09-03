@@ -57,6 +57,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   Future<void> _deleteAccount() async {
     try {
+      timer?.cancel();
       await widget.authRepository.deleteAccount();
       if (mounted) {
         context.go(AppRouteUrl.loader);
