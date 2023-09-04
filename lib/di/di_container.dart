@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:e_shop/factories/screen_factory.dart';
+import 'package:e_shop/features/app/presentation/widgets/app.dart';
 import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:e_shop/features/auth/data/repository/auth_repository.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
@@ -20,7 +21,6 @@ import 'package:e_shop/features/product/domain/repository/product_repository.dar
 import 'package:e_shop/features/search/data/datasources/search_remote_datasource.dart';
 import 'package:e_shop/features/search/data/repository/search_repository.dart';
 import 'package:e_shop/features/search/domain/repository/search_repository.dart';
-import 'package:e_shop/main.dart';
 import 'package:e_shop/route/app_go_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

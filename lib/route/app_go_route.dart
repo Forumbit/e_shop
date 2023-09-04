@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/features/app/presentation/widgets/app.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/widgets/custom_widgets/custom_bottom_bar.dart';
-import 'package:e_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
