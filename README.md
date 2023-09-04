@@ -1,16 +1,27 @@
-# e_shop
+<h1 align="center"> E-shop </h1>
 
-A new Flutter project.
 
-## Getting Started
+<h3 align="center"> E-shop created using Flutter framework  </h3>
 
-This project is a starting point for a Flutter application.
+## 3 задание
+ - Адаптивность вёрстки (применен <b>screenutils</b>) ✅
+ - Чистая архитектура (проект, построенный на feature-first) ✅
+ - Использование BLoC ✅
+ - Использование Freezed ✅
+ - Использование GoRouter ✅
+ - Правильная работа с API (dio) ✅
+ - работа с git: правильный нейминг коммитов (с соблюдением идеала) ✅
+ 
+#### Задание*
+ - Реализовать авторизацию через почту ✅
+ - Реализовать авторизацию через Google ✅
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features:
+ - App (главный экран, загрузочный экран)
+ - Auth (фича авторизации, использовалось [FirebaseAuth](https://firebase.google.com/))
+ - Cart (фича корзины для продуктов, с реализацией CRUD [FirebaseStore](https://firebase.google.com/))
+ - Category (фича категория - вид продукта, использовалось апи: [DummyJson](https://dummyjson.com))
+ - Product (фича продуктов, использовалось апи: [DummyJson](https://dummyjson.com))
+ - Search (фича поиска, использовалось апи: [DummyJson](https://dummyjson.com))
+ - User (фича пользователя, использовалось [FirebaseAuth](https://firebase.google.com/))
