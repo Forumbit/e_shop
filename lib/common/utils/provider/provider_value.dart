@@ -10,7 +10,10 @@ class ProviderValue<T> extends InheritedWidget {
   final T value;
 
   static T? maybeOf<T>(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ProviderValue<T>>()?.value;
+    final widget = context
+        .getElementForInheritedWidgetOfExactType<ProviderValue<T>>()
+        ?.widget;
+    return widget is ProviderValue<T> ? widget.value : null;
   }
 
   static T of<T>(BuildContext context) {
@@ -18,7 +21,6 @@ class ProviderValue<T> extends InheritedWidget {
     if (provider == null) throw Exception('The provider is null');
     return provider;
   }
-
 
   @override
   bool updateShouldNotify(ProviderValue oldWidget) => false;
