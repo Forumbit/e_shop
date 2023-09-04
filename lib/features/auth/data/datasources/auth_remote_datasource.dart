@@ -1,6 +1,5 @@
 import 'package:e_shop/common/constants/firebase_constants/firebase_exception_code.dart';
-import 'package:e_shop/common/error/exceptions.dart';
-import 'package:e_shop/common/utils/logger_utils.dart';
+import 'package:e_shop/common/exceptions/exceptions.dart';
 import 'package:e_shop/features/user/data/mapper/user_mapper.dart';
 import 'package:e_shop/features/user/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,12 +29,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (currentUser == null) return null;
       final userModel = UserMapper.fromFirebaseUser(currentUser);
       return userModel;
-    } on Object catch (e, s) {
-      logger.e(
-        'Get user remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -53,12 +47,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw WrongEmailOrPasswordException();
       }
       rethrow;
-    } on Object catch (e, s) {
-      logger.e(
-        'Login remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -73,12 +62,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         accessToken: authGuest.accessToken,
       );
       await firebaseAuth.signInWithCredential(credential);
-    } on Object catch (e, s) {
-      logger.e(
-        'Login with gmail remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -91,12 +75,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (e.code == FirebaseExceptionCode.userNotFound) {
         throw WrongEmailOrPasswordException();
       }
-    } on Object catch (e, s) {
-      logger.e(
-        'Reset password remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -113,12 +92,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw EmailAlreadyInUse();
       }
       rethrow;
-    } on Object catch (e, s) {
-      logger.e(
-        'Sign up remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -128,12 +102,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       final user = firebaseAuth.currentUser!;
       await user.sendEmailVerification();
-    } on Object catch (e, s) {
-      logger.e(
-        'Send email remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -145,12 +114,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       await user.reload();
       final emailVerified = user.emailVerified;
       return emailVerified;
-    } on Object catch (e, s) {
-      logger.e(
-        'Check email remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -160,12 +124,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       final user = firebaseAuth.currentUser!;
       await user.delete();
-    } on Object catch (e, s) {
-      logger.e(
-        'Delete Account remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -174,12 +133,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<void> logout() async {
     try {
       await firebaseAuth.signOut();
-    } on Object catch (e, s) {
-      logger.e(
-        'Logout remote exception',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }

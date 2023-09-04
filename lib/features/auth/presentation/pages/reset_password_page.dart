@@ -4,23 +4,17 @@ import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
 import 'package:e_shop/di/di_container.dart';
-import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:e_shop/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:e_shop/route/app_route_name.dart';
-import 'package:e_shop/widgets/custom_widgets/custom_elevated_button.dart';
-import 'package:e_shop/widgets/custom_widgets/email_text_field.dart';
+import 'package:e_shop/features/common/widgets/custom_widgets/custom_elevated_button.dart';
+import 'package:e_shop/features/common/widgets/custom_widgets/email_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class ResetPasswordPage extends StatefulWidget {
-  const ResetPasswordPage({
-    super.key,
-    required this.authRepository,
-  });
-
-  final AuthRepository authRepository;
+  const ResetPasswordPage({super.key});
 
   @override
   State<ResetPasswordPage> createState() => _ResetPasswordPageState();

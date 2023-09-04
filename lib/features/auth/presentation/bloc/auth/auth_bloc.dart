@@ -1,6 +1,7 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/error/exceptions.dart';
+import 'package:e_shop/common/exceptions/exceptions.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,7 +34,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ),
         onLoginWithGmail: () => _loginWithGmail(emit),
       ),
+      transformer: droppable(),
     );
+    
   }
 
   final AuthRepository authRepository;
@@ -54,13 +57,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           true,
         ),
       );
-    } catch (e) {
+    } on Object {
       emit(
         const AuthState.message(
           AppErrorText.commonError,
           true,
         ),
       );
+      rethrow;
     }
   }
 
@@ -85,13 +89,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           true,
         ),
       );
-    } catch (e) {
+    } on Object {
       emit(
         const AuthState.message(
           AppErrorText.commonError,
           true,
         ),
       );
+      rethrow;
     }
   }
 
@@ -119,13 +124,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           true,
         ),
       );
-    } catch (e) {
-      print(e);
+    } on Object {
+      emit(
+        const AuthState.message(
+          AppErrorText.commonError,
+          true,
+        ),
+      );
+      rethrow;
     }
   }
 
   Future<void> _loginWithGmail(emit) async {
-    await authRepository.loginWithGmail();
-    emit(const AuthState.success());
+    try {
+      await authRepository.loginWithGmail();
+      emit(const AuthState.success());
+    } on Object {
+      emit(
+        const AuthState.message(
+          AppErrorText.commonError,
+          true,
+        ),
+      );
+      rethrow;
+    }
   }
 }

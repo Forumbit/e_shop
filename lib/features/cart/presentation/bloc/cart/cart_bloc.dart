@@ -40,7 +40,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(const CartState.loading());
       final user = _getUser(emit);
       await _getCart(user.uid, emit);
-    } catch (e) {
+    } on Object {
       emit(const CartState.error());
       rethrow;
     }
@@ -51,7 +51,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(const CartState.loading());
       final user = _getUser(emit);
       await _getCart(user.uid, emit);
-    } catch (e) {
+    } on Object {
       emit(const CartState.error());
       rethrow;
     }
@@ -60,7 +60,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   UserEntity _getUser(emit) {
     try {
       return authRepository.getUser()!;
-    } catch (e) {
+    } on Object {
       emit(const CartState.error());
       rethrow;
     }
@@ -69,9 +69,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   Future<void> _getCart(String uid, emit) async {
     try {
       final cart = await cartRepository.getCart(uid);
-      print(cart);
       emit(CartState.loaded(cart!));
-    } catch (e) {
+    } on Object {
       emit(const CartState.error());
       rethrow;
     }
@@ -81,7 +80,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       final user = authRepository.getUser();
       await _getCart(user!.uid, emit);
-    } catch (e) {
+    } on Object {
       emit(const CartState.error());
       rethrow;
     }
@@ -92,7 +91,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       final cartId = (state as _Loaded).cart.docId!;
       await cartProductRepository.updateProductCart(cartId, product);
       await _updateCart(emit);
-    } catch (e) {
+    } on Object {
       emit(const CartState.error());
       rethrow;
     }
@@ -103,7 +102,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       final cartId = (state as _Loaded).cart.docId!;
       await cartProductRepository.deleteProductCart(cartId, productId);
       await _updateCart(emit);
-    } catch (e) {
+    } on Object {
       emit(const CartState.error());
       rethrow;
     }

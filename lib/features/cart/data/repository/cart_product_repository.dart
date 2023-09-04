@@ -1,4 +1,3 @@
-import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/features/cart/data/datasources/cart_product_remote_data_source.dart';
 import 'package:e_shop/features/cart/data/datasources/cart_remote_data_source.dart';
 import 'package:e_shop/features/cart/data/mapper/cart_product_mapper.dart';
@@ -25,12 +24,7 @@ class CartProductRepositoryImpl implements CartProductRepository {
         cartId,
         productModel,
       );
-    } on Object catch (e, s) {
-      logger.e(
-        'add product cart repo',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -46,12 +40,7 @@ class CartProductRepositoryImpl implements CartProductRepository {
         cartId,
         productModel,
       );
-    } on Object catch (e, s) {
-      logger.e(
-        'update product cart repo',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -66,12 +55,7 @@ class CartProductRepositoryImpl implements CartProductRepository {
         cartId,
         productId,
       );
-    } on Object catch (e, s) {
-      logger.e(
-        'delete product cart repo',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }

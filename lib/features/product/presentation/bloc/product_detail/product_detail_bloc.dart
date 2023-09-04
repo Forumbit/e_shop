@@ -45,8 +45,9 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       emit(const ProductDetailState.loading());
       final product = await _productRepository.getProduct(id);
       emit(ProductDetailState.loaded(product));
-    } catch (e) {
+    } on Object {
       emit(const ProductDetailState.error());
+      rethrow;
     }
   }
 
@@ -59,8 +60,9 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
         total: product.price * quantity,
       );
       await _cartRepository.addProductCart(user!.uid, cartProduct);
-    } catch (e) {
+    } on Object {
       emit(const ProductDetailState.error());
+      rethrow;
     }
   }
 }

@@ -1,53 +1,46 @@
 import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/features/app/presentation/pages/home_page.dart';
+import 'package:e_shop/features/app/presentation/pages/loader_page.dart';
+import 'package:e_shop/features/app/presentation/widgets/app.dart';
+import 'package:e_shop/features/auth/presentation/pages/email_verification_page.dart';
+import 'package:e_shop/features/auth/presentation/pages/login_page.dart';
+import 'package:e_shop/features/auth/presentation/pages/reset_password_page.dart';
+import 'package:e_shop/features/auth/presentation/pages/sign_up_page.dart';
+import 'package:e_shop/features/cart/presentation/pages/cart_page.dart';
+import 'package:e_shop/features/category/presentation/pages/category_list_page.dart';
+import 'package:e_shop/features/common/enum/product_list_enum.dart';
+import 'package:e_shop/features/product/presentation/pages/product_detail_page.dart';
+import 'package:e_shop/features/product/presentation/pages/product_list_page.dart';
+import 'package:e_shop/features/user/presentation/pages/user_page.dart';
 import 'package:e_shop/route/app_route_name.dart';
-import 'package:e_shop/widgets/custom_widgets/custom_bottom_bar.dart';
-import 'package:e_shop/main.dart';
+import 'package:e_shop/features/common/widgets/custom_widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-abstract interface class ScreenFactory {
-  Widget makeLoader();
-  Widget makeHome();
-  Widget makeLogin();
-  Widget makeVerifyEmail();
-  Widget makeSignUp();
-  Widget makeResetPassword();
-  Widget makeCategoryList();
-  Widget makePopularProductList();
-  Widget makeCategoryProductList(String category);
-  Widget makeSearchProductList(String query);
-  Widget makeProductDetail(int id);
-  Widget makeProfile();
-  Widget makeCart();
-}
-
 class AppGoRoute implements AppRoute {
-  final ScreenFactory screenFactory;
-  AppGoRoute({required this.screenFactory});
-
   @override
   RouterConfig<Object>? get router => GoRouter(
         initialLocation: AppRouteUrl.loader,
         routes: [
           GoRoute(
             path: AppRouteUrl.loader,
-            builder: (context, state) => screenFactory.makeLoader(),
+            builder: (context, state) => const LoaderPage(),
           ),
           GoRoute(
             path: AppRouteUrl.login,
-            builder: (context, state) => screenFactory.makeLogin(),
+            builder: (context, state) => const LoginPage(),
           ),
           GoRoute(
             path: AppRouteUrl.signUp,
-            builder: (context, state) => screenFactory.makeSignUp(),
+            builder: (context, state) => const SignUpPage(),
           ),
           GoRoute(
             path: AppRouteUrl.resetPassword,
-            builder: (context, state) => screenFactory.makeResetPassword(),
+            builder: (context, state) => const ResetPasswordPage(),
           ),
           GoRoute(
             path: AppRouteUrl.verifyEmail,
-            builder: (context, state) => screenFactory.makeVerifyEmail(),
+            builder: (context, state) => const VerifyEmailPage(),
           ),
           StatefulShellRoute.indexedStack(
             builder: (context, state, navigationShell) =>
@@ -58,34 +51,42 @@ class AppGoRoute implements AppRoute {
                   GoRoute(
                     path: AppRouteUrl.home,
                     builder: (BuildContext context, GoRouterState state) =>
-                        screenFactory.makeHome(),
+                        const HomePage(),
                     routes: [
                       GoRoute(
                         name: AppRouteNamed.categoryList,
                         path: AppRouteUrl.categoryList,
                         builder: (BuildContext context, GoRouterState state) =>
-                            screenFactory.makeCategoryList(),
+                            const CategoryListPage(),
                       ),
                       GoRoute(
                         name: AppRouteNamed.popularProduct,
                         path: AppRouteUrl.popularProductList,
                         builder: (BuildContext context, GoRouterState state) =>
-                            screenFactory.makePopularProductList(),
+                            const ProductListPage(
+                          productListEnum: ProductListEnum.popular,
+                        ),
                       ),
                       GoRoute(
                         name: AppRouteNamed.categoryProduct,
                         path: AppRouteUrl.categoryProductList,
                         builder: (BuildContext context, GoRouterState state) =>
-                            screenFactory.makeCategoryProductList(
-                          state.pathParameters[AppRouteArgument.category] ?? '',
+                            ProductListPage(
+                          parameter:
+                              state.pathParameters[AppRouteArgument.category] ??
+                                  '',
+                          productListEnum: ProductListEnum.category,
                         ),
                       ),
                       GoRoute(
                         name: AppRouteNamed.searchProduct,
                         path: AppRouteUrl.searchProductList,
                         builder: (BuildContext context, GoRouterState state) =>
-                            screenFactory.makeSearchProductList(
-                          state.pathParameters[AppRouteArgument.query] ?? '',
+                            ProductListPage(
+                          parameter:
+                              state.pathParameters[AppRouteArgument.query] ??
+                                  '',
+                          productListEnum: ProductListEnum.search,
                         ),
                       ),
                       GoRoute(
@@ -95,7 +96,7 @@ class AppGoRoute implements AppRoute {
                           final id = int.tryParse(
                               state.pathParameters[AppRouteArgument.id] ?? '');
                           if (id == null) return Container();
-                          return screenFactory.makeProductDetail(id);
+                          return ProductDetailPage(id: id);
                         },
                       ),
                     ],
@@ -107,7 +108,7 @@ class AppGoRoute implements AppRoute {
                   GoRoute(
                     path: AppRouteUrl.cart,
                     builder: (BuildContext context, GoRouterState state) =>
-                        screenFactory.makeCart(),
+                        const CartPage(),
                   ),
                 ],
               ),
@@ -129,7 +130,7 @@ class AppGoRoute implements AppRoute {
                   GoRoute(
                     path: AppRouteUrl.profile,
                     builder: (BuildContext context, GoRouterState state) =>
-                        screenFactory.makeProfile(),
+                        const UserPage(),
                   ),
                 ],
               ),

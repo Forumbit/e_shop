@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/features/category/domain/repository/category_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,6 +14,7 @@ class CategoryListBloc extends Bloc<CategoryListEvent, CategoryListState> {
         started: () async => await _getCategories(emit),
         onGetCategories: () async => await _getCategories(emit),
       ),
+      transformer: sequential(),
     );
   }
 
@@ -23,8 +25,9 @@ class CategoryListBloc extends Bloc<CategoryListEvent, CategoryListState> {
       emit(const CategoryListState.loading());
       final categories = await _categoryRepository.getCategories();
       emit(CategoryListState.loaded(categories));
-    } catch (e) {
+    } on Object {
       emit(const CategoryListState.error());
+      rethrow;
     }
   }
 }
