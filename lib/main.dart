@@ -10,10 +10,12 @@ abstract interface class AppFactory {
 }
 
 void main() async {
-  final app = appFactory();
-  await app.initialize();
   runZonedGuarded(
-    () => runApp(app.makeApp()),
+    () async {
+      final app = appFactory();
+      await app.initialize();
+      runApp(app.makeApp());
+    },
     (error, stack) => logger.e(
       'Zone Exceptions',
       error: error,

@@ -1,4 +1,5 @@
 import 'package:e_shop/common/utils/observer/app_bloc_observer.dart';
+import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/features/app/presentation/widgets/app.dart';
 import 'package:e_shop/main.dart';
@@ -20,6 +21,11 @@ class AppFactoryImpl implements AppFactory {
 
   @override
   Widget makeApp() {
-    return MyApp(appRoute: _diContainer.makeRoute());
+    return ProviderValue(
+      value: _diContainer,
+      child: MyApp(
+        appRoute: _diContainer.makeRoute(),
+      ),
+    );
   }
 }

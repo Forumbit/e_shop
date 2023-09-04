@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:e_shop/factories/screen_factory.dart';
 import 'package:e_shop/features/app/presentation/widgets/app.dart';
 import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:e_shop/features/auth/data/repository/auth_repository.dart';
@@ -30,8 +29,7 @@ class DIContainer {
   late final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   //* ============= app feature =============
-  ScreenFactory _makeScreenFactory() => ScreenFactoryDefault();
-  AppRoute makeRoute() => AppGoRoute(screenFactory: _makeScreenFactory());
+  AppRoute makeRoute() => AppGoRoute();
 
   //* ============= auth feature =============
   AuthRemoteDataSource _getAuthRemoteDataSource() =>
