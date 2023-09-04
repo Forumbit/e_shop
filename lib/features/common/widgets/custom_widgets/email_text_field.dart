@@ -21,9 +21,8 @@ class EmailTextField extends StatelessWidget {
       validator: (value) {
         if (value != null && !EmailValidator.validate(value)) {
           return AppErrorText.emailIsNotCorrect;
-        } else {
-          return null;
         }
+        return null;
       },
       decoration: AppTextInputDecoration.mainInputDecoration.copyWith(
         labelText: labelText,

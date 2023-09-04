@@ -8,12 +8,12 @@ import 'package:e_shop/features/auth/presentation/pages/reset_password_page.dart
 import 'package:e_shop/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:e_shop/features/cart/presentation/pages/cart_page.dart';
 import 'package:e_shop/features/category/presentation/pages/category_list_page.dart';
-import 'package:e_shop/features/product/domain/enum/product_list_enum.dart';
+import 'package:e_shop/features/common/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/pages/product_detail_page.dart';
 import 'package:e_shop/features/product/presentation/pages/product_list_page.dart';
 import 'package:e_shop/features/user/presentation/pages/user_page.dart';
 import 'package:e_shop/route/app_route_name.dart';
-import 'package:e_shop/widgets/custom_widgets/custom_bottom_bar.dart';
+import 'package:e_shop/features/common/widgets/custom_widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

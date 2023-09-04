@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/presentation/bloc/product_detail/product_detail_bloc.dart';
-import 'package:e_shop/widgets/custom_widgets/modal_bottom_sheet_widget.dart';
+import 'package:e_shop/features/common/widgets/custom_widgets/modal_bottom_sheet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -2,7 +2,7 @@ import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_shadows.dart';
 import 'package:e_shop/common/constants/app_text_styles.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/widgets/shimmer/shimmer_loading.dart';
+import 'package:e_shop/features/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:math' as math;
