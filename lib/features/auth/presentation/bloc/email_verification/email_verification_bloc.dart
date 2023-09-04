@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +8,8 @@ part 'email_verification_event.dart';
 part 'email_verification_state.dart';
 part 'email_verification_bloc.freezed.dart';
 
-class EmailVerificationBloc extends Bloc<EmailVerificationEvent, EmailVerificationState> {
+class EmailVerificationBloc
+    extends Bloc<EmailVerificationEvent, EmailVerificationState> {
   EmailVerificationBloc(this.authRepository) : super(const _Initial()) {
     on<EmailVerificationEvent>(
       (event, emit) => event.when(
@@ -16,6 +18,7 @@ class EmailVerificationBloc extends Bloc<EmailVerificationEvent, EmailVerificati
         onCheckEmailVerification: () => _checkEmailVerification(emit),
         onDeleteAccount: () => _deleteAccount(emit),
       ),
+      transformer: droppable(),
     );
   }
 
@@ -30,8 +33,8 @@ class EmailVerificationBloc extends Bloc<EmailVerificationEvent, EmailVerificati
     try {
       final isEmailVerified = await authRepository.checkEmailVerification();
       if (isEmailVerified) emit(const EmailVerificationState.verified());
-    } catch (e) {
-      throw Exception(e);
+    } on Object {
+      rethrow;
     }
   }
 
@@ -39,8 +42,8 @@ class EmailVerificationBloc extends Bloc<EmailVerificationEvent, EmailVerificati
     try {
       emit(const EmailVerificationState.resended());
       await authRepository.sendEmailVerification();
-    } catch (e) {
-      throw Exception(e);
+    } on Object {
+      rethrow;
     }
   }
 
@@ -48,8 +51,8 @@ class EmailVerificationBloc extends Bloc<EmailVerificationEvent, EmailVerificati
     try {
       await authRepository.deleteAccount();
       emit(const EmailVerificationState.successfull());
-    } catch (e) {
-      throw Exception(e);
+    } on Object {
+      rethrow;
     }
   }
 }

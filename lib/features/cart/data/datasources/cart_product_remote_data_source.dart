@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_shop/common/constants/firebase_constants/firebase_collection_names.dart';
 import 'package:e_shop/common/constants/firebase_constants/firebase_field_names.dart';
-import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/features/cart/data/models/cart_product_model.dart';
 
 abstract interface class CartProductRemoteDataSource {
@@ -30,12 +29,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
           .get();
 
       return oldProductJson;
-    } on Object catch (e, s) {
-      logger.e(
-        'On get old product remote',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -53,12 +47,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
         return productsModel;
       }
       return [];
-    } on Object catch (e, s) {
-      logger.e(
-        'Get products cart remote',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -99,12 +88,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
               newProduct.toJson(),
             );
       }
-    } on Object catch (e, s) {
-      logger.e(
-        'Add product cart remote',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -129,12 +113,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
               product.toJson(),
             );
       }
-    } on Object catch (e, s) {
-      logger.e(
-        'Update product cart remote',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -145,12 +124,7 @@ class CartProductRemoteDataSourceImpl implements CartProductRemoteDataSource {
       final carts = firebaseFirestore.collection(FireDBNames.carts);
       final products = carts.doc(cartId).collection(FireDBNames.products);
       await products.doc(productId).delete();
-    } on Object catch (e, s) {
-      logger.e(
-        'Delete product cart remote',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }

@@ -1,11 +1,9 @@
 import 'dart:developer';
 
+import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 
 class AppBlocObserver extends BlocObserver {
-  final logger = Logger();
-
   @override
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);

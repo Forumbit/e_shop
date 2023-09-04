@@ -1,4 +1,3 @@
-import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/features/product/data/datasources/product_remote_data_source.dart';
 import 'package:e_shop/features/product/data/mapper/product_list_mapper.dart';
 import 'package:e_shop/features/product/data/mapper/product_mapper.dart';
@@ -18,12 +17,7 @@ class ProductRepositoryImpl implements ProductRepository {
           await productRemoteDataSource.getPopularProducts(skip);
       final productEntities = ProductListMapper.toEntity(productListModel);
       return productEntities;
-    } on Object catch (e, s) {
-      logger.e(
-        'Get popular products repo',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -40,12 +34,7 @@ class ProductRepositoryImpl implements ProductRepository {
       final productModel = await productRemoteDataSource.getProduct(id);
       final productEntity = ProductMapper.toEntity(productModel);
       return productEntity;
-    } on Object catch (e, s) {
-      logger.e(
-        'Get products repo',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }

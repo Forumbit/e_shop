@@ -34,8 +34,9 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     try {
       emit(const ProductListState.loading());
       await _getProducts(emit: emit, parameter: parameter);
-    } catch (e) {
+    } on Object {
       emit(const ProductListState.error());
+      rethrow;
     }
   }
 
@@ -43,8 +44,9 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     try {
       emit(const ProductListState.loading());
       await _getProducts(emit: emit, parameter: query);
-    } catch (e) {
+    } on Object {
       emit(const ProductListState.error());
+      rethrow;
     }
   }
 
@@ -70,8 +72,9 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
       } else if (state is _Loading) {
         emit(ProductListState.loaded(newProductList, areProductsEnded));
       }
-    } catch (e) {
+    } on Object {
       emit(const ProductListState.error());
+      rethrow;
     }
   }
 }

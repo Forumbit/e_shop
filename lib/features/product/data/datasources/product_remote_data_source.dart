@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:e_shop/common/utils/logger_utils.dart';
 import 'package:e_shop/common/utils/mixins/product_remote_datasource_mixin.dart';
 import 'package:e_shop/config/configuration.dart';
 import 'package:e_shop/features/product/data/models/product/product_model.dart';
@@ -30,12 +29,7 @@ class ProductRemoteDataSourceImpl
       final json = response.data;
       final product = ProductModel.fromJson(json);
       return product;
-    } on Object catch (e, s) {
-      logger.e(
-        'Get product remote',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
@@ -52,12 +46,7 @@ class ProductRemoteDataSourceImpl
         },
       );
       return await getProducts(dio, url);
-    } on Object catch (e, s) {
-      logger.e(
-        'Get popular product remote',
-        error: e,
-        stackTrace: s,
-      );
+    } on Object {
       rethrow;
     }
   }
