@@ -1,21 +1,25 @@
+import 'dart:async';
+
+import 'package:e_shop/common/utils/logger_utils.dart';
+import 'package:e_shop/factories/app_factory.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+abstract interface class AppFactory {
+  Future<void> initialize();
+  Widget makeApp();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Text('Flutter Demo Home Page'),
-    );
-  }
+void main() async {
+  runZonedGuarded(
+    () async {
+      final app = appFactory();
+      await app.initialize();
+      runApp(app.makeApp());
+    },
+    (error, stack) => logger.e(
+      'Zone Exceptions',
+      error: error,
+      stackTrace: stack,
+    ),
+  );
 }
