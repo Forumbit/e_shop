@@ -1,5 +1,5 @@
 import 'package:e_shop/features/cart/domain/entities/cart_product_entity.dart';
-import 'package:e_shop/features/cart/presentation/bloc/cart/cart_bloc.dart';
+import 'package:e_shop/features/cart/bloc/cart/cart_bloc.dart';
 import 'package:e_shop/features/common/widgets/custom_widgets/modal_bottom_sheet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

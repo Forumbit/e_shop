@@ -3,11 +3,11 @@ import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/features/cart/domain/entities/cart_entity.dart';
-import 'package:e_shop/features/cart/presentation/bloc/cart/cart_bloc.dart';
-import 'package:e_shop/features/cart/presentation/widgets/cart_bottom_sheet_widget.dart';
-import 'package:e_shop/features/cart/presentation/widgets/shimmer_widgets/cart_page_loading_widget.dart';
-import 'package:e_shop/features/cart/presentation/widgets/cart_product_actions_widget.dart';
-import 'package:e_shop/features/cart/presentation/widgets/cart_product_content_widget.dart';
+import 'package:e_shop/features/cart/bloc/cart/cart_bloc.dart';
+import 'package:e_shop/features/cart/widgets/cart_bottom_sheet_widget.dart';
+import 'package:e_shop/features/cart/widgets/shimmer_widgets/cart_page_loading_widget.dart';
+import 'package:e_shop/features/cart/widgets/cart_product_actions_widget.dart';
+import 'package:e_shop/features/cart/widgets/cart_product_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +29,6 @@ class CartPage extends StatelessWidget {
           initial: () => const CartPageLoadingWidget(),
           loading: () => const CartPageLoadingWidget(),
           loaded: (CartEntity cart) {
-
             //* Total price 😶
             final total = (cart.products != null && cart.products!.isNotEmpty)
                 ? cart.products!.map((e) => e.total).reduce(
