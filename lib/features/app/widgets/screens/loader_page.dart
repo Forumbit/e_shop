@@ -2,7 +2,7 @@ import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
-import 'package:e_shop/features/app/presentation/bloc/loader/loader_bloc.dart';
+import 'package:e_shop/features/app/bloc/loader/loader_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

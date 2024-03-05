@@ -1,7 +1,7 @@
 import 'package:e_shop/common/utils/observer/app_bloc_observer.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
-import 'package:e_shop/features/app/presentation/widgets/app.dart';
+import 'package:e_shop/features/app/widgets/app.dart';
 import 'package:e_shop/main.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

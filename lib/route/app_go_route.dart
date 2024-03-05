@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/features/app/presentation/pages/home_page.dart';
-import 'package:e_shop/features/app/presentation/pages/loader_page.dart';
-import 'package:e_shop/features/app/presentation/widgets/app.dart';
+import 'package:e_shop/features/app/widgets/screens/home_page.dart';
+import 'package:e_shop/features/app/widgets/screens/loader_page.dart';
+import 'package:e_shop/features/app/widgets/app.dart';
 import 'package:e_shop/features/auth/widgets/screens/email_verification_page.dart';
 import 'package:e_shop/features/auth/widgets/screens/login_page.dart';
 import 'package:e_shop/features/auth/widgets/screens/reset_password_page.dart';

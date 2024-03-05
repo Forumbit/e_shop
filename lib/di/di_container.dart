@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:e_shop/features/app/presentation/widgets/app.dart';
+import 'package:e_shop/features/app/widgets/app.dart';
 import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:e_shop/features/auth/data/repository/auth_repository.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
