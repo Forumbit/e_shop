@@ -7,7 +7,7 @@ import 'package:e_shop/features/auth/widgets/screens/login_page.dart';
 import 'package:e_shop/features/auth/widgets/screens/reset_password_page.dart';
 import 'package:e_shop/features/auth/widgets/screens/sign_up_page.dart';
 import 'package:e_shop/features/cart/widgets/screens/cart_page.dart';
-import 'package:e_shop/features/category/presentation/pages/category_list_page.dart';
+import 'package:e_shop/features/category/widgets/screens/category_list_page.dart';
 import 'package:e_shop/features/common/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/presentation/pages/product_detail_page.dart';
 import 'package:e_shop/features/product/presentation/pages/product_list_page.dart';
