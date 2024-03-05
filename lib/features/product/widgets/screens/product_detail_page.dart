@@ -3,10 +3,10 @@ import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
-import 'package:e_shop/features/product/presentation/bloc/product_detail/product_detail_bloc.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_detail_widgets/product_detail_body/floating_action_add_button.dart';
-import 'package:e_shop/features/product/presentation/widgets/shimmer_loading_widgets/product_detail_loading_widget.dart';
+import 'package:e_shop/features/product/bloc/product_detail/product_detail_bloc.dart';
+import 'package:e_shop/features/product/widgets/product_detail_widgets/product_detail_widget.dart';
+import 'package:e_shop/features/product/widgets/product_detail_widgets/product_detail_body/floating_action_add_button.dart';
+import 'package:e_shop/features/product/widgets/shimmer_loading_widgets/product_detail_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,7 +66,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               loading: () => const ProductDetailLoadingWidget(),
               loaded: (ProductEntity product) =>
                   ProductDetailWidget(product: product),
-              error: () => const Center(child: Text(AppErrorText.commonError,)),
+              error: () => const Center(
+                  child: Text(
+                AppErrorText.commonError,
+              )),
             ),
           ),
           floatingActionButtonLocation:

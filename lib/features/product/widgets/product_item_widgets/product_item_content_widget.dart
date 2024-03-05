@@ -1,6 +1,6 @@
 import 'package:e_shop/common/constants/app_images.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_item_widgets/product_item_price_widget.dart';
+import 'package:e_shop/features/product/widgets/product_item_widgets/product_item_price_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

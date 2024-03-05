@@ -1,5 +1,5 @@
-import 'package:e_shop/features/product/presentation/widgets/product_item_widgets/product_item_content_widget.dart';
-import 'package:e_shop/features/product/presentation/widgets/product_item_widgets/product_item_image_widget.dart';
+import 'package:e_shop/features/product/widgets/product_item_widgets/product_item_content_widget.dart';
+import 'package:e_shop/features/product/widgets/product_item_widgets/product_item_image_widget.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
