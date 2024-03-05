@@ -1,7 +1,7 @@
 import 'package:e_shop/common/constants/app_colors.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
-import 'package:e_shop/features/common/widgets/custom_widgets/custom_elevated_button.dart';
+import 'package:e_shop/common/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
