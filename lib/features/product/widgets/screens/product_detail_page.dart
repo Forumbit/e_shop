@@ -1,7 +1,7 @@
-import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/constants/app_error_text.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
 import 'package:e_shop/di/di_container.dart';
-import 'package:e_shop/common/utils/provider/provider_value.dart';
+import 'package:e_shop/core/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:e_shop/features/product/bloc/product_detail/product_detail_bloc.dart';
 import 'package:e_shop/features/product/widgets/product_detail_widgets/product_detail_widget.dart';

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/common/constants/firebase_constants/firebase_collection_names.dart';
-import 'package:e_shop/common/constants/firebase_constants/firebase_field_names.dart';
+import 'package:e_shop/core/common/constants/firebase_constants/firebase_collection_names.dart';
+import 'package:e_shop/core/common/constants/firebase_constants/firebase_field_names.dart';
 import 'package:e_shop/features/cart/data/models/cart_product_model.dart';
 
 abstract interface class CartProductRemoteDataSource {

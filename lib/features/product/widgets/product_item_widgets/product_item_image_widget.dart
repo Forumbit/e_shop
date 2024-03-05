@@ -1,5 +1,5 @@
-import 'package:e_shop/common/constants/app_colors.dart';
-import 'package:e_shop/common/constants/app_shadows.dart';
+import 'package:e_shop/core/common/constants/app_colors.dart';
+import 'package:e_shop/core/common/constants/app_shadows.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

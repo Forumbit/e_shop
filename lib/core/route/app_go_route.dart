@@ -1,4 +1,4 @@
-import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
 import 'package:e_shop/features/app/widgets/screens/home_page.dart';
 import 'package:e_shop/features/app/widgets/screens/loader_page.dart';
 import 'package:e_shop/features/app/widgets/app.dart';
@@ -8,12 +8,12 @@ import 'package:e_shop/features/auth/widgets/screens/reset_password_page.dart';
 import 'package:e_shop/features/auth/widgets/screens/sign_up_page.dart';
 import 'package:e_shop/features/cart/widgets/screens/cart_page.dart';
 import 'package:e_shop/features/category/widgets/screens/category_list_page.dart';
-import 'package:e_shop/common/enum/product_list_enum.dart';
+import 'package:e_shop/core/common/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/widgets/screens/product_detail_page.dart';
 import 'package:e_shop/features/product/widgets/screens/product_list_page.dart';
 import 'package:e_shop/features/user/widgets/screens/user_page.dart';
-import 'package:e_shop/route/app_route_name.dart';
-import 'package:e_shop/common/widgets/custom_widgets/custom_bottom_bar.dart';
+import 'package:e_shop/core/route/app_route_name.dart';
+import 'package:e_shop/core/common/widgets/custom_widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,5 +1,5 @@
-import 'package:e_shop/common/widgets/shimmer/shimmer_container_widget.dart';
-import 'package:e_shop/common/widgets/shimmer/shimmer_loading.dart';
+import 'package:e_shop/core/common/widgets/shimmer/shimmer_container_widget.dart';
+import 'package:e_shop/core/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

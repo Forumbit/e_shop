@@ -1,8 +1,8 @@
-import 'package:e_shop/common/constants/app_error_text.dart';
+import 'package:e_shop/core/common/constants/app_error_text.dart';
 import 'package:e_shop/features/product/widgets/product_list_widgets/products_grid_view_widget.dart';
-import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
+import 'package:e_shop/core/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
-import 'package:e_shop/common/enum/product_list_enum.dart';
+import 'package:e_shop/core/common/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,7 +1,7 @@
-import 'package:e_shop/common/constants/app_colors.dart';
-import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/common/constants/app_text_input_decoration.dart';
+import 'package:e_shop/core/common/constants/app_colors.dart';
+import 'package:e_shop/core/common/constants/app_error_text.dart';
+import 'package:e_shop/core/common/constants/app_images.dart';
+import 'package:e_shop/core/common/constants/app_text_input_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

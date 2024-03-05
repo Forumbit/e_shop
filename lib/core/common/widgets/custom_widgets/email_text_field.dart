@@ -1,5 +1,5 @@
-import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/common/constants/app_text_input_decoration.dart';
+import 'package:e_shop/core/common/constants/app_error_text.dart';
+import 'package:e_shop/core/common/constants/app_text_input_decoration.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:e_shop/common/exceptions/exceptions.dart';
+import 'package:e_shop/core/common/exceptions/exceptions.dart';
 import 'package:e_shop/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:e_shop/features/user/data/mapper/user_mapper.dart';

@@ -1,4 +1,4 @@
-import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
 import 'package:e_shop/features/cart/domain/entities/cart_product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

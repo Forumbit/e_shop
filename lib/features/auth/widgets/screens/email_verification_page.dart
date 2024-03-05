@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:e_shop/common/constants/app_colors.dart';
-import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/common/utils/provider/provider_value.dart';
+import 'package:e_shop/core/common/constants/app_colors.dart';
+import 'package:e_shop/core/common/constants/app_images.dart';
+import 'package:e_shop/core/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/features/auth/bloc/email_verification/email_verification_bloc.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/route/app_route_name.dart';
-import 'package:e_shop/common/widgets/custom_widgets/custom_elevated_button.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
+import 'package:e_shop/core/route/app_route_name.dart';
+import 'package:e_shop/core/common/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

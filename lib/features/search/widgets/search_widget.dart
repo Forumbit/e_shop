@@ -1,8 +1,9 @@
-import 'package:e_shop/common/constants/app_colors.dart';
-import 'package:e_shop/common/constants/app_images.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/constants/app_colors.dart';
+import 'package:e_shop/core/common/constants/app_images.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class SearchWidget extends StatefulWidget {
   const SearchWidget({
     super.key,

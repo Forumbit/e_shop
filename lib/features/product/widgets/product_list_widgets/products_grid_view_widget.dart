@@ -1,5 +1,5 @@
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
-import 'package:e_shop/common/enum/product_list_enum.dart';
+import 'package:e_shop/core/common/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/product/widgets/product_item_widgets/product_item_body_widget.dart';
 import 'package:e_shop/features/product/widgets/shimmer_loading_widgets/product_item_loading_widget.dart';

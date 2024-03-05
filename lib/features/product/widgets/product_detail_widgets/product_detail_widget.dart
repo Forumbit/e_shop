@@ -1,5 +1,5 @@
-import 'package:e_shop/common/constants/app_colors.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/constants/app_colors.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
 import 'package:e_shop/features/product/domain/entities/product_entity.dart';
 import 'package:e_shop/features/product/widgets/product_detail_widgets/product_detail_body/carousel_product_widget.dart';
 import 'package:e_shop/features/product/widgets/product_detail_widgets/product_detail_body/characters_widget.dart';

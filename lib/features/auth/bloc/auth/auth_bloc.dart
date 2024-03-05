@@ -1,7 +1,7 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/exceptions/exceptions.dart';
+import 'package:e_shop/core/common/constants/app_error_text.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/exceptions/exceptions.dart';
 import 'package:e_shop/features/auth/domain/repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -36,7 +36,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ),
       transformer: droppable(),
     );
-    
   }
 
   final AuthRepository authRepository;

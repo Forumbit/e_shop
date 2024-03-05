@@ -20,7 +20,7 @@ import 'package:e_shop/features/product/domain/repository/product_repository.dar
 import 'package:e_shop/features/search/data/datasources/search_remote_datasource.dart';
 import 'package:e_shop/features/search/data/repository/search_repository.dart';
 import 'package:e_shop/features/search/domain/repository/search_repository.dart';
-import 'package:e_shop/route/app_go_route.dart';
+import 'package:e_shop/core/route/app_go_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class DIContainer {

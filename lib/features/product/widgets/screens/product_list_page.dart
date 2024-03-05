@@ -1,8 +1,8 @@
-import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/repository/product_list_repository.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/repository/product_list_repository.dart';
 import 'package:e_shop/di/di_container.dart';
-import 'package:e_shop/common/utils/provider/provider_value.dart';
-import 'package:e_shop/common/enum/product_list_enum.dart';
+import 'package:e_shop/core/common/utils/provider/provider_value.dart';
+import 'package:e_shop/core/common/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/product/widgets/product_list_widgets/app_bar_bottom_widget.dart';
 import 'package:e_shop/features/product/widgets/product_list_widgets/product_list_body_widget.dart';

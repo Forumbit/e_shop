@@ -1,5 +1,5 @@
-import 'package:e_shop/common/constants/firebase_constants/firebase_exception_code.dart';
-import 'package:e_shop/common/exceptions/exceptions.dart';
+import 'package:e_shop/core/common/constants/firebase_constants/firebase_exception_code.dart';
+import 'package:e_shop/core/common/exceptions/exceptions.dart';
 import 'package:e_shop/features/user/data/mapper/user_mapper.dart';
 import 'package:e_shop/features/user/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';

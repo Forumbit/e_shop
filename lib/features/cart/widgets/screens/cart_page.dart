@@ -1,6 +1,6 @@
-import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/utils/provider/provider_value.dart';
+import 'package:e_shop/core/common/constants/app_error_text.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/utils/provider/provider_value.dart';
 import 'package:e_shop/di/di_container.dart';
 import 'package:e_shop/features/cart/domain/entities/cart_entity.dart';
 import 'package:e_shop/features/cart/bloc/cart/cart_bloc.dart';

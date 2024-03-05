@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:e_shop/common/utils/logger_utils.dart';
+import 'package:e_shop/core/common/utils/logger_utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppBlocObserver extends BlocObserver {

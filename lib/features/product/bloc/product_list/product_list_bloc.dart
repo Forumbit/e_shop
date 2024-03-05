@@ -1,6 +1,6 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:e_shop/common/repository/product_list_repository.dart';
-import 'package:e_shop/config/configuration.dart';
+import 'package:e_shop/core/common/repository/product_list_repository.dart';
+import 'package:e_shop/core/config/configuration.dart';
 import 'package:e_shop/features/product/domain/entities/product_list_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

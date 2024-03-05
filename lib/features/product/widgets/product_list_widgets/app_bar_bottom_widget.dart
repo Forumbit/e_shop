@@ -1,6 +1,6 @@
-import 'package:e_shop/route/app_route_name.dart';
-import 'package:e_shop/common/constants/app_texts.dart';
-import 'package:e_shop/common/enum/product_list_enum.dart';
+import 'package:e_shop/core/route/app_route_name.dart';
+import 'package:e_shop/core/common/constants/app_texts.dart';
+import 'package:e_shop/core/common/enum/product_list_enum.dart';
 import 'package:e_shop/features/product/bloc/product_list/product_list_bloc.dart';
 import 'package:e_shop/features/search/widgets/search_widget.dart';
 import 'package:flutter/material.dart';

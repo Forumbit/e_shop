@@ -1,9 +1,9 @@
-import 'package:e_shop/common/constants/app_error_text.dart';
-import 'package:e_shop/route/app_route_name.dart';
+import 'package:e_shop/core/common/constants/app_error_text.dart';
+import 'package:e_shop/core/route/app_route_name.dart';
 import 'package:e_shop/di/di_container.dart';
-import 'package:e_shop/common/utils/provider/provider_value.dart';
+import 'package:e_shop/core/common/utils/provider/provider_value.dart';
 import 'package:e_shop/features/search/widgets/search_widget.dart';
-import 'package:e_shop/common/widgets/shimmer/shimmer.dart';
+import 'package:e_shop/core/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/features/category/bloc/category_list/category_list_bloc.dart';
 import 'package:e_shop/features/category/widgets/products_of_category_list_loading_widget.dart';
 import 'package:e_shop/features/category/widgets/products_of_category_list_widget.dart';
