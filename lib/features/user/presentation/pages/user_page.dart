@@ -1,5 +1,6 @@
 import 'package:e_shop/common/constants/app_error_text.dart';
 import 'package:e_shop/common/constants/app_texts.dart';
+import 'package:e_shop/features/user/presentation/widgets/logout_alert_dialog.dart';
 import 'package:e_shop/route/app_route_name.dart';
 import 'package:e_shop/common/utils/provider/provider_value.dart';
 import 'package:e_shop/common/utils/snack_bar_message.dart';
@@ -22,6 +23,7 @@ class UserPage extends StatelessWidget {
       await authRepository.logout();
       if (context.mounted) context.go(AppRouteUrl.loader);
     } catch (e) {
+      if (!context.mounted) return;
       CustomSnackBar.showSnackBar(
         context,
         AppErrorText.commonError,
@@ -43,9 +45,14 @@ class UserPage extends StatelessWidget {
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () => _onLogoutPressed(
-                diContainer.getAuthRepository(),
-                context,
+              onPressed: () => showDialog(
+                context: context,
+                builder: (ctx) => LogoutAlertDialog(
+                  onSubmitted: () => _onLogoutPressed(
+                    diContainer.getAuthRepository(),
+                    context,
+                  ),
+                ),
               ),
               icon: const Icon(Icons.logout),
             ),
@@ -62,7 +69,7 @@ class UserPage extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: 50.w,
-                    height: 50.h,
+                    height: 50.w,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(50.r),
                       child: Image.network(
