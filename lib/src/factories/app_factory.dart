@@ -2,10 +2,14 @@ import 'package:e_shop/src/core/common/utils/observer/app_bloc_observer.dart';
 import 'package:e_shop/src/core/common/utils/provider/provider_value.dart';
 import 'package:e_shop/src/di/di_container.dart';
 import 'package:e_shop/src/features/app/widgets/app.dart';
-import 'package:e_shop/main.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+abstract interface class AppFactory {
+  Future<void> initialize();
+  Widget makeApp();
+}
 
 AppFactory appFactory() => AppFactoryImpl();
 
