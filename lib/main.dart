@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:e_shop/core/common/utils/logger_utils.dart';
-import 'package:e_shop/factories/app_factory.dart';
+import 'package:e_shop/src/core/common/utils/logger_utils.dart';
+import 'package:e_shop/src/factories/app_factory.dart';
 import 'package:flutter/material.dart';
 
 abstract interface class AppFactory {
