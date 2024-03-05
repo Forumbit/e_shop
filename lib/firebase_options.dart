@@ -17,16 +17,16 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -49,20 +49,24 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCQnJALlk9WMMkAFBPJ0-u3xelD8uxw_QU',
-    appId: '1:286725574913:web:812a9304f0a4efb7d7cb00',
-    messagingSenderId: '286725574913',
-    projectId: 'e-shop-b41d0',
-    authDomain: 'e-shop-b41d0.firebaseapp.com',
-    storageBucket: 'e-shop-b41d0.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCDMBHT6x_FBDS1xOJ9CZepd45GS7Fg6r4',
     appId: '1:286725574913:android:7cee8ea1622fb832d7cb00',
     messagingSenderId: '286725574913',
     projectId: 'e-shop-b41d0',
+    databaseURL: 'https://e-shop-b41d0-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'e-shop-b41d0.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCI2scvAUasdOLJuGEEoqpzLH6Gld0mtCY',
+    appId: '1:286725574913:ios:f088a0821f9dca06d7cb00',
+    messagingSenderId: '286725574913',
+    projectId: 'e-shop-b41d0',
+    databaseURL: 'https://e-shop-b41d0-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'e-shop-b41d0.appspot.com',
+    androidClientId: '286725574913-dh9u6tnjgn053c708isscoakgmisovg9.apps.googleusercontent.com',
+    iosClientId: '286725574913-mmjt4ckra0tdtf2hlujnp27s2s8djll0.apps.googleusercontent.com',
+    iosBundleId: 'com.example.eShop',
   );
 }

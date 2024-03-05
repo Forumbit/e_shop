@@ -1,10 +1,48 @@
 {
   "project_info": {
     "project_number": "286725574913",
+    "firebase_url": "https://e-shop-b41d0-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "e-shop-b41d0",
     "storage_bucket": "e-shop-b41d0.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286725574913:android:f2a912cd38f67b71d7cb00",
+        "android_client_info": {
+          "package_name": "com.e.shop.bundleId"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286725574913-dh9u6tnjgn053c708isscoakgmisovg9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.e.shop.bundleId",
+            "certificate_hash": "28dcad4dcdf5320484a23b5cecb1d31fc14fd80f"
+          }
+        },
+        {
+          "client_id": "286725574913-tnnnl823m55856ug9ofcno9nc19jone8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDMBHT6x_FBDS1xOJ9CZepd45GS7Fg6r4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286725574913-9l2vfjl6piod19cbenm3565dm10i5q6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:286725574913:android:7cee8ea1622fb832d7cb00",
@@ -14,7 +52,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "286725574913-9l2vfjl6piod19cbenm3565dm10i5q6t.apps.googleusercontent.com",
+          "client_id": "286725574913-rc7oerl3n46rmo7fogcjpio4fro4s30g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_shop",
+            "certificate_hash": "28dcad4dcdf5320484a23b5cecb1d31fc14fd80f"
+          }
+        },
+        {
+          "client_id": "286725574913-tnnnl823m55856ug9ofcno9nc19jone8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
