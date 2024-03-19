@@ -26,10 +26,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   var isVisible = true;
 
   void _toggleFAButtonVisibility(UserScrollNotification notification) {
-    if (notification.direction == ScrollDirection.forward) {
-      if (!isVisible) setState(() => isVisible = true);
-    } else if (notification.direction == ScrollDirection.reverse) {
-      if (isVisible) setState(() => isVisible = false);
+    if (notification.depth == 0) {
+      if (notification.direction == ScrollDirection.forward) {
+        if (!isVisible) setState(() => isVisible = true);
+      } else if (notification.direction == ScrollDirection.reverse) {
+        if (isVisible) setState(() => isVisible = false);
+      }
     }
   }
 

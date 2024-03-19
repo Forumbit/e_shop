@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract interface class CartScopeController {
   void editProduct(int value, CartProductEntity product);
+  void refreshCart();
 }
 
 class CartScope extends StatefulWidget {
@@ -43,6 +44,9 @@ class _CartScopeState extends State<CartScope> implements CartScopeController {
     bloc.close();
     super.dispose();
   }
+
+  @override
+  void refreshCart() => bloc.add(const CartEvent.onRefreshCart());
 
   @override
   void editProduct(

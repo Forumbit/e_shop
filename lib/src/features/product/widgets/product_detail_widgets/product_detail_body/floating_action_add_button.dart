@@ -1,13 +1,35 @@
 import 'package:e_shop/src/core/common/constants/app_images.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
+import 'package:e_shop/src/features/cart/widgets/cart_scope.dart';
 import 'package:e_shop/src/features/product/bloc/product_detail/product_detail_bloc.dart';
 import 'package:e_shop/src/core/common/widgets/custom_widgets/modal_bottom_sheet_widget.dart';
+import 'package:e_shop/src/features/product/domain/entities/product_entity.dart';
+import 'package:e_shop/src/features/product/widgets/product_detail_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FloatingActionAddButton extends StatelessWidget {
   const FloatingActionAddButton({super.key});
+
+  Future<dynamic> _showBottomSheet(
+      BuildContext context, ProductEntity product) {
+    return showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (_) => BlocProvider.value(
+        value: context.read<ProductDetailBloc>(),
+        child: ModalBottomSheet(
+          total: product.stock,
+          initialValue: 1,
+          onEvent: (int quantity) {
+            ProductDetailScope.of(context).addProductToCart(quantity);
+            CartScope.of(context).refreshCart();
+          },
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +51,7 @@ class FloatingActionAddButton extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () => showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                builder: (_) => BlocProvider.value(
-                  value: context.read<ProductDetailBloc>(),
-                  child: ModalBottomSheet(
-                    total: product.stock,
-                    initialValue: 1,
-                    onEvent: (int quantity) =>
-                        BlocProvider.of<ProductDetailBloc>(context).add(
-                      ProductDetailEvent.onPressedCartButton(quantity),
-                    ),
-                  ),
-                ),
-              ),
+              onPressed: () => _showBottomSheet(context, product),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

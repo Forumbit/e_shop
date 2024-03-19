@@ -1,4 +1,5 @@
 import 'package:e_shop/src/core/common/constants/app_colors.dart';
+import 'package:e_shop/src/features/cart/widgets/cart_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,28 +16,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      splitScreenMode: true,
-      minTextAdapt: true,
-      builder: (BuildContext context, Widget? child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            fontFamily: 'Nunito',
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: AppColors.mainColor,
+    return CartScope(
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        splitScreenMode: true,
+        minTextAdapt: true,
+        builder: (BuildContext context, Widget? child) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              fontFamily: 'Nunito',
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: AppColors.mainColor,
+              ),
+              textSelectionTheme: const TextSelectionThemeData(
+                selectionColor: AppColors.mainColor,
+                cursorColor: AppColors.mainColor,
+                selectionHandleColor: AppColors.mainColor,
+              ),
+              useMaterial3: true,
             ),
-            textSelectionTheme: const TextSelectionThemeData(
-              selectionColor: AppColors.mainColor,
-              cursorColor: AppColors.mainColor,
-              selectionHandleColor: AppColors.mainColor,
-            ),
-            useMaterial3: true,
-          ),
-          routerConfig: _router,
-        );
-      },
+            routerConfig: _router,
+          );
+        },
+      ),
     );
   }
 }

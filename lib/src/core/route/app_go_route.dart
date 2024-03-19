@@ -9,7 +9,6 @@ import 'package:e_shop/src/features/auth/widgets/screens/email_verification_page
 import 'package:e_shop/src/features/auth/widgets/screens/login_page.dart';
 import 'package:e_shop/src/features/auth/widgets/screens/reset_password_page.dart';
 import 'package:e_shop/src/features/auth/widgets/screens/sign_up_page.dart';
-import 'package:e_shop/src/features/cart/widgets/cart_scope.dart';
 import 'package:e_shop/src/features/cart/widgets/screens/cart_page.dart';
 import 'package:e_shop/src/features/category/widgets/category_list_scope.dart';
 import 'package:e_shop/src/features/category/widgets/screens/category_list_page.dart';
@@ -139,7 +138,7 @@ class AppGoRoute implements AppRoute {
                   GoRoute(
                     path: AppRouteUrl.cart,
                     builder: (BuildContext context, GoRouterState state) =>
-                        const CartScope(child: CartPage()),
+                        const CartPage(),
                   ),
                 ],
               ),

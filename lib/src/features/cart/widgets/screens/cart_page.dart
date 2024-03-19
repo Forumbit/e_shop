@@ -31,14 +31,6 @@ class CartPage extends StatelessWidget {
               scrolledUnderElevation: 0,
               title: const Text(AppTexts.cart),
               centerTitle: true,
-              actions: [
-                IconButton(
-                  onPressed: () => context.read<CartBloc>().add(
-                        const CartEvent.onRefreshCart(),
-                      ),
-                  icon: const Icon(Icons.refresh),
-                )
-              ],
             ),
             body: ListView.separated(
               padding: EdgeInsets.only(bottom: 120.h),
