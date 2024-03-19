@@ -1,14 +1,12 @@
 import 'package:e_shop/src/core/common/constants/app_colors.dart';
 import 'package:e_shop/src/core/common/constants/app_images.dart';
-import 'package:e_shop/src/core/common/utils/snack_bar_message.dart';
 import 'package:e_shop/src/features/auth/bloc/auth/auth_bloc.dart';
 import 'package:e_shop/src/features/auth/widgets/auth_divider.dart';
 import 'package:e_shop/src/core/route/app_route_name.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
-import 'package:e_shop/src/core/common/utils/provider/provider_value.dart';
-import 'package:e_shop/src/di/di_container.dart';
 import 'package:e_shop/src/core/common/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:e_shop/src/core/common/widgets/custom_widgets/email_text_field.dart';
+import 'package:e_shop/src/features/auth/widgets/auth_scope.dart';
 import 'package:e_shop/src/features/auth/widgets/gmail_button.dart';
 import 'package:e_shop/src/core/common/widgets/custom_widgets/password_text_field.dart';
 import 'package:flutter/material.dart';
@@ -31,12 +29,11 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _onLoginButtonPressed(BuildContext context) async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
-    context.read<AuthBloc>().add(
-          AuthEvent.onLogin(
-            _email.text.trim(),
-            _password.text.trim(),
-          ),
-        );
+
+    AuthScope.of(context).onLoginButtonPressed(
+      _email.text.trim(),
+      _password.text.trim(),
+    );
   }
 
   void _onForgotPasswordButtonPressed() {
@@ -59,122 +56,106 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final diContainer = ProviderValue.of<DIContainer>(context);
-    return BlocProvider(
-      create: (_) => AuthBloc(
-        diContainer.getAuthRepository(),
-      ),
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) => state.maybeWhen(
-            orElse: () => Never,
-            message: (message, error) => CustomSnackBar.showSnackBar(
-                  context,
-                  message,
-                  error,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            children: [
+              SizedBox(height: 100.h),
+              Image.asset(
+                AppImages.login,
+                height: 200.h,
+              ),
+              SizedBox(height: 20.h),
+              Text(
+                AppTexts.login,
+                style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.bold,
                 ),
-            success: () => context.go(AppRouteUrl.loader)),
-        child: Scaffold(
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Column(
+              ),
+              SizedBox(height: 20.h),
+              Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    EmailTextField(
+                      controller: _email,
+                      labelText: AppTexts.email,
+                    ),
+                    SizedBox(height: 20.h),
+                    PasswordTextField(
+                      controller: _password,
+                      labelText: AppTexts.password,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20.h),
+              Row(
                 children: [
-                  SizedBox(height: 100.h),
-                  Image.asset(
-                    AppImages.login,
-                    height: 200.h,
+                  const Text(
+                    '${AppTexts.forgotPassword}?   ',
+                    style: TextStyle(color: Colors.black),
                   ),
-                  SizedBox(height: 20.h),
-                  Text(
-                    AppTexts.login,
-                    style: TextStyle(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () => _onForgotPasswordButtonPressed(),
+                    child: const Text(
+                      AppTexts.clickHere,
+                      style: TextStyle(color: Colors.orange),
                     ),
-                  ),
-                  SizedBox(height: 20.h),
-                  Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        EmailTextField(
-                          controller: _email,
-                          labelText: AppTexts.email,
-                        ),
-                        SizedBox(height: 20.h),
-                        PasswordTextField(
-                          controller: _password,
-                          labelText: AppTexts.password,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20.h),
-                  Row(
-                    children: [
-                      const Text(
-                        '${AppTexts.forgotPassword}?   ',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      GestureDetector(
-                        onTap: () => _onForgotPasswordButtonPressed(),
-                        child: const Text(
-                          AppTexts.clickHere,
-                          style: TextStyle(color: Colors.orange),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 40.h),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 54.h,
-                    child: BlocBuilder<AuthBloc, AuthState>(
-                      builder: (context, state) => state.maybeWhen(
-                        loading: () => CustomElevatedButton(
-                          onPressed: () {},
-                          backgroundColor: AppColors.mainColor,
-                          child: const CircularProgressIndicator(
-                            color: Colors.black,
-                          ),
-                        ),
-                        orElse: () => CustomElevatedButton(
-                          onPressed: () => _onLoginButtonPressed(context),
-                          backgroundColor: AppColors.mainColor,
-                          child: const Text(AppTexts.login),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  const AuthDivider(),
-                  SizedBox(height: 10.h),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 54.h,
-                    child: const GmailButton(),
-                  ),
-                  SizedBox(height: 40.h),
-                  const Text('${AppTexts.dontHaveAccount}?'),
-                  SizedBox(height: 10.h),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 54.h,
-                    child: CustomElevatedButton(
-                      backgroundColor: Colors.black,
-                      onPressed: () => context.push(AppRouteUrl.signUp),
-                      child: const Text(
-                        AppTexts.signUp,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 30.h),
+                  )
                 ],
               ),
-            ),
+              SizedBox(height: 40.h),
+              SizedBox(
+                width: double.infinity,
+                height: 54.h,
+                child: BlocBuilder<AuthBloc, AuthState>(
+                  builder: (context, state) => state.maybeWhen(
+                    loading: () => CustomElevatedButton(
+                      onPressed: () {},
+                      backgroundColor: AppColors.mainColor,
+                      child: const CircularProgressIndicator(
+                        color: Colors.black,
+                      ),
+                    ),
+                    orElse: () => CustomElevatedButton(
+                      onPressed: () => _onLoginButtonPressed(context),
+                      backgroundColor: AppColors.mainColor,
+                      child: const Text(AppTexts.login),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h),
+              const AuthDivider(),
+              SizedBox(height: 10.h),
+              SizedBox(
+                width: double.infinity,
+                height: 54.h,
+                child: const GmailButton(),
+              ),
+              SizedBox(height: 40.h),
+              const Text('${AppTexts.dontHaveAccount}?'),
+              SizedBox(height: 10.h),
+              SizedBox(
+                width: double.infinity,
+                height: 54.h,
+                child: CustomElevatedButton(
+                  backgroundColor: Colors.black,
+                  onPressed: () => context.push(AppRouteUrl.signUp),
+                  child: const Text(
+                    AppTexts.signUp,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 30.h),
+            ],
           ),
         ),
       ),

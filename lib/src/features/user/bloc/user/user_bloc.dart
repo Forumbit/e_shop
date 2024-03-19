@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:e_shop/src/features/auth/domain/repository/auth_repository.dart';
 import 'package:e_shop/src/features/user/domain/entities/user_entity.dart';
@@ -12,8 +14,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc({required this.authRepository}) : super(const _Initial()) {
     on<UserEvent>(
       (event, emit) async => event.when(
-        started: () => _init(emit),
-      ),
+          started: () => _init(emit), logout: () => _logoutUser(emit)),
       transformer: sequential(),
     );
   }
@@ -26,6 +27,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       final user = authRepository.getUser();
       emit(UserState.loaded(user));
     } on Object {
+      emit(const UserState.error());
+      rethrow;
+    }
+  }
+
+  FutureOr<void> _logoutUser(emit) async {
+    try {
+      await authRepository.logout();
+    } catch (e) {
       emit(const UserState.error());
       rethrow;
     }

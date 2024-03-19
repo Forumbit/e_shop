@@ -15,7 +15,7 @@ class ProductItemPriceWidget extends StatelessWidget {
     final finalPrice =
         (product.price * (100 - product.discountPercentage) ~/ 100);
     return SizedBox(
-      width: 95.w,
+      width: 100.w,
       child: RichText(
         text: TextSpan(
           children: [
@@ -36,7 +36,7 @@ class ProductItemPriceWidget extends StatelessWidget {
             TextSpan(
               text: '\$$finalPrice',
               style: TextStyle(
-                fontSize: 16.sp,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xFFB6B4B0),
               ),

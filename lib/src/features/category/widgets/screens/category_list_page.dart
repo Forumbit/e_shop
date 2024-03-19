@@ -3,8 +3,6 @@ import 'package:e_shop/src/core/common/constants/app_gradients.dart';
 import 'package:e_shop/src/core/route/app_route_name.dart';
 import 'package:e_shop/src/core/common/constants/app_shadows.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
-import 'package:e_shop/src/di/di_container.dart';
-import 'package:e_shop/src/core/common/utils/provider/provider_value.dart';
 import 'package:e_shop/src/core/common/widgets/shimmer/shimmer.dart';
 import 'package:e_shop/src/core/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:e_shop/src/features/category/bloc/category_list/category_list_bloc.dart';
@@ -18,19 +16,14 @@ class CategoryListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final diContainer = ProviderValue.of<DIContainer>(context);
-    return BlocProvider<CategoryListBloc>(
-      create: (context) => CategoryListBloc(
-        diContainer.getCategoryRepository(),
-      )..add(const CategoryListEvent.started()),
-      child: Scaffold(
-        appBar: AppBar(
-          scrolledUnderElevation: 0,
-          title: const Text(AppTexts.categories),
-          centerTitle: true,
-        ),
-        body: Shimmer(
-            child: BlocBuilder<CategoryListBloc, CategoryListState>(
+    return Scaffold(
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        title: const Text(AppTexts.categories),
+        centerTitle: true,
+      ),
+      body: Shimmer(
+        child: BlocBuilder<CategoryListBloc, CategoryListState>(
           builder: (context, state) => state.when(
             initial: () => const _CategoryGridViewWidget(),
             loading: () => const _CategoryGridViewWidget(),
@@ -41,7 +34,7 @@ class CategoryListPage extends StatelessWidget {
               child: Text(AppErrorText.commonError),
             ),
           ),
-        )),
+        ),
       ),
     );
   }
