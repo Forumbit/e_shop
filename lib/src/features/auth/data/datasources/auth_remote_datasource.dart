@@ -56,7 +56,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<void> loginWithGmail() async {
     try {
       final GoogleSignInAccount? guest = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication authGuest = await guest!.authentication;
+      if (guest == null) return;
+      final GoogleSignInAuthentication authGuest = await guest.authentication;
       final credential = GoogleAuthProvider.credential(
         idToken: authGuest.idToken,
         accessToken: authGuest.accessToken,
