@@ -16,6 +16,7 @@ final class AppRunner {
     runZonedGuarded(
       () async {
         WidgetsFlutterBinding.ensureInitialized();
+        WidgetsBinding.instance.deferFirstFrame();
 
         // setup bloc
         Bloc.observer = AppBlocObserver();
@@ -30,7 +31,7 @@ final class AppRunner {
 
         // setup route
         final route = AppGoRoute();
-
+        WidgetsBinding.instance.allowFirstFrame();
         runApp(
           DependenciesScope(
             dependencies: dependencies,
