@@ -22,8 +22,10 @@ class FloatingActionAddButton extends StatelessWidget {
         child: ModalBottomSheet(
           total: product.stock,
           initialValue: 1,
-          onEvent: (int quantity) {
+          onEvent: (int quantity) async {
             ProductDetailScope.of(context).addProductToCart(quantity);
+            await Future.delayed(const Duration(seconds: 1));
+            if (!context.mounted) return;
             CartScope.of(context).refreshCart();
           },
         ),
