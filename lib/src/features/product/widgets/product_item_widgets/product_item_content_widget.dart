@@ -1,4 +1,6 @@
+import 'package:e_shop/src/core/common/constants/app_colors.dart';
 import 'package:e_shop/src/core/common/constants/app_images.dart';
+import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/features/product/domain/entities/product_entity.dart';
 import 'package:e_shop/src/features/product/widgets/product_item_widgets/product_item_price_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,25 +25,21 @@ class ProductItemContentItemWidget extends StatelessWidget {
             const Spacer(),
             Image.asset(
               AppImages.star,
-              color: Colors.yellow,
+              color: AppColors.accent,
             ),
             const SizedBox(width: 4),
             Text(
               '${product.rating}',
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: const Color(0xFF4A4A4A),
-              ),
+              style:
+                  AppTextStyles.rating.copyWith(color: AppColors.typography2),
             ),
           ],
         ),
         SizedBox(height: 4.h),
         Text(
           product.title,
-          style: TextStyle(
-            fontSize: 14.sp,
-            color: const Color(0xFF696D84),
-          ),
+          style:
+              AppTextStyles.productName.copyWith(color: AppColors.typography4),
           maxLines: 1,
           softWrap: true,
           overflow: TextOverflow.ellipsis,

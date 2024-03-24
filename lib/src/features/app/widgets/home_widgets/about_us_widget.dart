@@ -24,9 +24,10 @@ class AboutUsWidget extends StatelessWidget {
         children: [
           Text(
             AppTexts.aboutUs,
-            style: AppTextStyles.subtitleStyle,
+            style:
+                AppTextStyles.caption4.copyWith(color: AppColors.typography2),
           ),
-          SizedBox(height: 3.h),
+          SizedBox(height: 10.h),
           ShimmerLoading(
             isLoading: isLoading,
             child: AspectRatio(
@@ -59,16 +60,15 @@ class AboutUsWidget extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  AppTexts.whoAreWe,
-                                  style: TextStyle(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  AppTexts.whoWeAre,
+                                  style: AppTextStyles.caption5
+                                      .copyWith(color: AppColors.typography3),
                                 ),
                                 SizedBox(height: 5.h),
                                 Text(
                                   'E-shop is the largest marketplace in the world! Here you can buy whatever comes to mind...',
-                                  style: TextStyle(fontSize: 12.sp),
+                                  style: AppTextStyles.text2
+                                      .copyWith(color: AppColors.typography2),
                                   maxLines: 3,
                                   softWrap: true,
                                   overflow: TextOverflow.ellipsis,
@@ -78,11 +78,8 @@ class AboutUsWidget extends StatelessWidget {
                                   onTap: () {},
                                   child: Text(
                                     AppTexts.moreInfo,
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
+                                    style: AppTextStyles.readMore
+                                        .copyWith(color: AppColors.typography3),
                                   ),
                                 ),
                               ],
@@ -113,7 +110,7 @@ class _BackgroundItemWidget extends StatelessWidget {
         transform: Matrix4.skew(2, 2)..rotateZ(-math.pi / 2),
         child: Container(
           decoration: BoxDecoration(
-              color: AppColors.mainColor,
+              color: AppColors.accent,
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black,

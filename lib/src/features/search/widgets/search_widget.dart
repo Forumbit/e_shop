@@ -1,5 +1,6 @@
 import 'package:e_shop/src/core/common/constants/app_colors.dart';
 import 'package:e_shop/src/core/common/constants/app_images.dart';
+import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,18 +32,19 @@ class _SearchWidgetState extends State<SearchWidget> {
               widget.onSubmitted(text);
             },
             decoration: InputDecoration(
-              filled: true,
-              fillColor: AppColors.defaultColor,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50.r),
-                borderSide: BorderSide.none,
-              ),
-              prefixIcon: Padding(
-                padding: EdgeInsets.only(left: 20.w, right: 9.w),
-                child: Image.asset(AppImages.search),
-              ),
-              hintText: AppTexts.searchProducts,
-            ),
+                filled: true,
+                fillColor: AppColors.main,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50.r),
+                  borderSide: BorderSide.none,
+                ),
+                prefixIcon: Padding(
+                  padding: EdgeInsets.only(left: 20.w, right: 9.w),
+                  child: Image.asset(AppImages.search),
+                ),
+                hintText: AppTexts.searchProducts,
+                hintStyle: AppTextStyles.productName
+                    .copyWith(color: AppColors.typography1)),
           ),
         ),
         SizedBox(width: 10.w),
@@ -54,7 +56,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             iconSize: 25.w,
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
-                AppColors.defaultColor,
+                AppColors.main,
               ),
             ),
           ),

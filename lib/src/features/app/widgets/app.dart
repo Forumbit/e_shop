@@ -25,9 +25,13 @@ class MyApp extends StatelessWidget {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
+              scaffoldBackgroundColor: AppColors.background,
+              appBarTheme: const AppBarTheme(
+                backgroundColor: AppColors.background,
+              ),
               fontFamily: 'Nunito',
               colorScheme: ColorScheme.fromSeed(
-                seedColor: AppColors.mainColor,
+                seedColor: AppColors.accent,
               ),
               textSelectionTheme: const TextSelectionThemeData(
                 selectionColor: AppColors.mainColor,

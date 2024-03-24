@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@Deprecated('Version-2')
 abstract class AppGradients {
   static const gradientsWithColors = <List<Color>>[
     [

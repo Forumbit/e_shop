@@ -1,5 +1,6 @@
+import 'package:e_shop/src/core/common/constants/app_colors.dart';
 import 'package:e_shop/src/core/common/constants/app_error_text.dart';
-import 'package:e_shop/src/core/common/constants/app_gradients.dart';
+import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/core/route/app_route_name.dart';
 import 'package:e_shop/src/core/common/constants/app_shadows.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
@@ -60,7 +61,8 @@ class _CategoryGridViewWidget extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return _CategoryGridViewItemWidget(
           isLoading: isLoading,
-          gradientWithColors: AppGradients.gradientsWithColors[index % 5],
+          backgroundColor:
+              AppColors.categoryColors[index % AppColors.categoryColors.length],
           category: categories?[index],
         );
       },
@@ -71,12 +73,12 @@ class _CategoryGridViewWidget extends StatelessWidget {
 class _CategoryGridViewItemWidget extends StatelessWidget {
   const _CategoryGridViewItemWidget({
     required this.isLoading,
-    required this.gradientWithColors,
+    required this.backgroundColor,
     required this.category,
   });
 
   final bool isLoading;
-  final List<Color> gradientWithColors;
+  final Color backgroundColor;
   final String? category;
 
   @override
@@ -95,14 +97,15 @@ class _CategoryGridViewItemWidget extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: AlignmentDirectional.topStart,
-                end: AlignmentDirectional.bottomEnd,
-                colors: gradientWithColors,
-              ),
-              boxShadow: AppShadows.itemShadow,
+              color: backgroundColor,
+              boxShadow: isLoading ? null : AppShadows.itemShadow,
               borderRadius: BorderRadius.circular(8.r)),
-          child: Center(child: Text(category ?? '')),
+          child: Center(
+              child: Text(
+            category ?? '',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.caption3.copyWith(color: AppColors.main),
+          )),
         ),
       ),
     );

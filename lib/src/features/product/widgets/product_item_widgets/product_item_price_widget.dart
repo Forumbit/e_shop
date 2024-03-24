@@ -1,3 +1,5 @@
+import 'package:e_shop/src/core/common/constants/app_colors.dart';
+import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/features/product/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,11 +25,10 @@ class ProductItemPriceWidget extends StatelessWidget {
               children: [
                 TextSpan(
                   text: '\$${product.price}',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500,
+                  style: AppTextStyles.text2.copyWith(
+                    color: AppColors.typography2,
                     decoration: TextDecoration.lineThrough,
-                    color: const Color(0xFF4A4A4A),
+                    decorationColor: Colors.black,
                   ),
                 ),
                 const TextSpan(text: '  '),
@@ -35,11 +36,7 @@ class ProductItemPriceWidget extends StatelessWidget {
             ),
             TextSpan(
               text: '\$$finalPrice',
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFFB6B4B0),
-              ),
+              style: AppTextStyles.price.copyWith(color: AppColors.additional3),
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:e_shop/src/core/common/constants/app_colors.dart';
+import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
 import 'package:e_shop/src/core/common/widgets/shimmer/shimmer_loading.dart';
 import 'package:flutter/material.dart';
@@ -18,22 +19,12 @@ class CategoryListLoadingWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                AppTexts.categories,
-                style: TextStyle(
-                  color: const Color(0xFF4A4A4A),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.sp,
-                ),
-              ),
-              Text(
-                AppTexts.showAll,
-                style: TextStyle(
-                  color: const Color(0xFFB6B4B0),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14.sp,
-                ),
-              ),
+              Text(AppTexts.categories,
+                  style: AppTextStyles.caption4
+                      .copyWith(color: AppColors.typography2)),
+              Text(AppTexts.showAll,
+                  style: AppTextStyles.viewAll
+                      .copyWith(color: AppColors.typography1)),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
-import 'package:e_shop/src/core/common/constants/app_gradients.dart';
+import 'package:e_shop/src/core/common/constants/app_colors.dart';
+import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/core/route/app_route_name.dart';
 import 'package:e_shop/src/core/common/constants/app_shadows.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
@@ -25,26 +26,14 @@ class CategoryListWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                AppTexts.categories,
-                style: TextStyle(
-                  color: const Color(0xFF4A4A4A),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.sp,
-                ),
-              ),
+              Text(AppTexts.categories,
+                  style: AppTextStyles.caption4
+                      .copyWith(color: AppColors.typography2)),
               GestureDetector(
-                onTap: () {
-                  context.pushNamed(AppRouteNamed.categoryList);
-                },
-                child: Text(
-                  AppTexts.showAll,
-                  style: TextStyle(
-                    color: const Color(0xFFB6B4B0),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.sp,
-                  ),
-                ),
+                onTap: () => context.pushNamed(AppRouteNamed.categoryList),
+                child: Text(AppTexts.showAll,
+                    style: AppTextStyles.viewAll
+                        .copyWith(color: AppColors.typography1)),
               ),
             ],
           ),
@@ -61,7 +50,8 @@ class CategoryListWidget extends StatelessWidget {
               final category = isLoading ? null : categories![index];
               return CategoryItemWidget(
                 category: category,
-                gradientWithColors: AppGradients.gradientsWithColors[index % 5],
+                backgroundColor: AppColors
+                    .categoryColors[index % AppColors.categoryColors.length],
               );
             },
             separatorBuilder: (BuildContext context, int index) {
@@ -76,11 +66,11 @@ class CategoryListWidget extends StatelessWidget {
 
 class CategoryItemWidget extends StatelessWidget {
   final String? category;
-  final List<Color> gradientWithColors;
+  final Color backgroundColor;
   const CategoryItemWidget({
     super.key,
     required this.category,
-    required this.gradientWithColors,
+    required this.backgroundColor,
   });
 
   @override
@@ -92,11 +82,7 @@ class CategoryItemWidget extends StatelessWidget {
         height: 64.h,
         width: 124.w,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: AlignmentDirectional.topStart,
-            end: AlignmentDirectional.bottomEnd,
-            colors: gradientWithColors,
-          ),
+          color: backgroundColor,
           boxShadow: AppShadows.itemShadow,
           borderRadius: BorderRadius.circular(12),
         ),
@@ -122,9 +108,9 @@ class CategoryItemWidget extends StatelessWidget {
           child: Text(
             category ?? '',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 14.sp,
+            style: AppTextStyles.productName.copyWith(
+              color: AppColors.main,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

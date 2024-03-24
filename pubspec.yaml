@@ -59,3 +59,18 @@ flutter:
           weight: 500
         - asset: assets/fonts/Nunito/Nunito-Bold.ttf
           weight: 700
+    - family: "Manrope"
+      fonts:
+        - asset: assets/fonts/Nunito/Manrope/Manrope-Regular.ttf
+        - asset: assets/fonts/Nunito/Manrope/Manrope-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Nunito/Manrope/Manrope-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Nunito/Manrope/Manrope-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Nunito/Manrope/Manrope-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Nunito/Manrope/Manrope-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Nunito/Manrope/Manrope-ExtraBold.ttf
+          weight: 800

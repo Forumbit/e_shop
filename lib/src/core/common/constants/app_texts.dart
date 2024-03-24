@@ -7,7 +7,7 @@ class AppTexts {
   static const loading = 'Loading...';
   static const aboutUs = 'About us';
   static const moreInfo = 'More info';
-  static const whoAreWe = 'Who are we?';
+  static const whoWeAre = 'Who we are?';
   static const popular = 'Popular';
   static const brand = 'Brand';
   static const reviews = 'Reviews';

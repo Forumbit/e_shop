@@ -1,3 +1,4 @@
+import 'package:e_shop/src/core/common/constants/app_colors.dart';
 import 'package:e_shop/src/core/route/app_route_name.dart';
 import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
@@ -21,7 +22,8 @@ class PopularProductLoadingWidget extends StatelessWidget {
             children: [
               Text(
                 AppTexts.popular,
-                style: AppTextStyles.subtitleStyle,
+                style: AppTextStyles.caption4
+                    .copyWith(color: AppColors.typography2),
               ),
               GestureDetector(
                 onTap: () {
@@ -29,11 +31,8 @@ class PopularProductLoadingWidget extends StatelessWidget {
                 },
                 child: Text(
                   AppTexts.showAll,
-                  style: TextStyle(
-                    color: const Color(0xFFB6B4B0),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.sp,
-                  ),
+                  style: AppTextStyles.viewAll
+                      .copyWith(color: AppColors.typography1),
                 ),
               ),
             ],
