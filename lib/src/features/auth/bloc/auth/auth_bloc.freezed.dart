@@ -12,7 +12,8 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -23,10 +24,12 @@ mixin _$AuthEvent {
     required TResult Function(String email) onResetPassword,
     required TResult Function() onLoginWithGmail,
     required TResult Function(
-            String email, String password, String repeatPassword)
-        onSignUp,
-  }) =>
-      throw _privateConstructorUsedError;
+      String email,
+      String password,
+      String repeatPassword,
+    )
+    onSignUp,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
@@ -34,9 +37,8 @@ mixin _$AuthEvent {
     TResult? Function(String email)? onResetPassword,
     TResult? Function()? onLoginWithGmail,
     TResult? Function(String email, String password, String repeatPassword)?
-        onSignUp,
-  }) =>
-      throw _privateConstructorUsedError;
+    onSignUp,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
@@ -44,10 +46,9 @@ mixin _$AuthEvent {
     TResult Function(String email)? onResetPassword,
     TResult Function()? onLoginWithGmail,
     TResult Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
@@ -55,8 +56,7 @@ mixin _$AuthEvent {
     required TResult Function(_OnResetPassword value) onResetPassword,
     required TResult Function(_OnLoginWithGmaill value) onLoginWithGmail,
     required TResult Function(_OnSignUp value) onSignUp,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
@@ -64,8 +64,7 @@ mixin _$AuthEvent {
     TResult? Function(_OnResetPassword value)? onResetPassword,
     TResult? Function(_OnLoginWithGmaill value)? onLoginWithGmail,
     TResult? Function(_OnSignUp value)? onSignUp,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
@@ -74,8 +73,7 @@ mixin _$AuthEvent {
     TResult Function(_OnLoginWithGmaill value)? onLoginWithGmail,
     TResult Function(_OnSignUp value)? onSignUp,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -93,27 +91,36 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+    _$StartedImpl value,
+    $Res Function(_$StartedImpl) then,
+  ) = __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+    _$StartedImpl _value,
+    $Res Function(_$StartedImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -121,9 +128,9 @@ class _$_Started implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -137,8 +144,11 @@ class _$_Started implements _Started {
     required TResult Function(String email) onResetPassword,
     required TResult Function() onLoginWithGmail,
     required TResult Function(
-            String email, String password, String repeatPassword)
-        onSignUp,
+      String email,
+      String password,
+      String repeatPassword,
+    )
+    onSignUp,
   }) {
     return started();
   }
@@ -151,7 +161,7 @@ class _$_Started implements _Started {
     TResult? Function(String email)? onResetPassword,
     TResult? Function()? onLoginWithGmail,
     TResult? Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
   }) {
     return started?.call();
   }
@@ -164,7 +174,7 @@ class _$_Started implements _Started {
     TResult Function(String email)? onResetPassword,
     TResult Function()? onLoginWithGmail,
     TResult Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -215,48 +225,52 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements AuthEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnLoginCopyWith<$Res> {
-  factory _$$_OnLoginCopyWith(
-          _$_OnLogin value, $Res Function(_$_OnLogin) then) =
-      __$$_OnLoginCopyWithImpl<$Res>;
+abstract class _$$OnLoginImplCopyWith<$Res> {
+  factory _$$OnLoginImplCopyWith(
+    _$OnLoginImpl value,
+    $Res Function(_$OnLoginImpl) then,
+  ) = __$$OnLoginImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$$_OnLoginCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_OnLogin>
-    implements _$$_OnLoginCopyWith<$Res> {
-  __$$_OnLoginCopyWithImpl(_$_OnLogin _value, $Res Function(_$_OnLogin) _then)
-      : super(_value, _then);
+class __$$OnLoginImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$OnLoginImpl>
+    implements _$$OnLoginImplCopyWith<$Res> {
+  __$$OnLoginImplCopyWithImpl(
+    _$OnLoginImpl _value,
+    $Res Function(_$OnLoginImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? email = null,
-    Object? password = null,
-  }) {
-    return _then(_$_OnLogin(
-      null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? email = null, Object? password = null}) {
+    return _then(
+      _$OnLoginImpl(
+        null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == password
+            ? _value.password
+            : password // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_OnLogin implements _OnLogin {
-  const _$_OnLogin(this.email, this.password);
+class _$OnLoginImpl implements _OnLogin {
+  const _$OnLoginImpl(this.email, this.password);
 
   @override
   final String email;
@@ -269,10 +283,10 @@ class _$_OnLogin implements _OnLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnLogin &&
+            other is _$OnLoginImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -281,11 +295,13 @@ class _$_OnLogin implements _OnLogin {
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnLoginCopyWith<_$_OnLogin> get copyWith =>
-      __$$_OnLoginCopyWithImpl<_$_OnLogin>(this, _$identity);
+  _$$OnLoginImplCopyWith<_$OnLoginImpl> get copyWith =>
+      __$$OnLoginImplCopyWithImpl<_$OnLoginImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -295,8 +311,11 @@ class _$_OnLogin implements _OnLogin {
     required TResult Function(String email) onResetPassword,
     required TResult Function() onLoginWithGmail,
     required TResult Function(
-            String email, String password, String repeatPassword)
-        onSignUp,
+      String email,
+      String password,
+      String repeatPassword,
+    )
+    onSignUp,
   }) {
     return onLogin(email, password);
   }
@@ -309,7 +328,7 @@ class _$_OnLogin implements _OnLogin {
     TResult? Function(String email)? onResetPassword,
     TResult? Function()? onLoginWithGmail,
     TResult? Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
   }) {
     return onLogin?.call(email, password);
   }
@@ -322,7 +341,7 @@ class _$_OnLogin implements _OnLogin {
     TResult Function(String email)? onResetPassword,
     TResult Function()? onLoginWithGmail,
     TResult Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
     required TResult orElse(),
   }) {
     if (onLogin != null) {
@@ -374,50 +393,57 @@ class _$_OnLogin implements _OnLogin {
 
 abstract class _OnLogin implements AuthEvent {
   const factory _OnLogin(final String email, final String password) =
-      _$_OnLogin;
+      _$OnLoginImpl;
 
   String get email;
   String get password;
-  @JsonKey(ignore: true)
-  _$$_OnLoginCopyWith<_$_OnLogin> get copyWith =>
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnLoginImplCopyWith<_$OnLoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnResetPasswordCopyWith<$Res> {
-  factory _$$_OnResetPasswordCopyWith(
-          _$_OnResetPassword value, $Res Function(_$_OnResetPassword) then) =
-      __$$_OnResetPasswordCopyWithImpl<$Res>;
+abstract class _$$OnResetPasswordImplCopyWith<$Res> {
+  factory _$$OnResetPasswordImplCopyWith(
+    _$OnResetPasswordImpl value,
+    $Res Function(_$OnResetPasswordImpl) then,
+  ) = __$$OnResetPasswordImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String email});
 }
 
 /// @nodoc
-class __$$_OnResetPasswordCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_OnResetPassword>
-    implements _$$_OnResetPasswordCopyWith<$Res> {
-  __$$_OnResetPasswordCopyWithImpl(
-      _$_OnResetPassword _value, $Res Function(_$_OnResetPassword) _then)
-      : super(_value, _then);
+class __$$OnResetPasswordImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$OnResetPasswordImpl>
+    implements _$$OnResetPasswordImplCopyWith<$Res> {
+  __$$OnResetPasswordImplCopyWithImpl(
+    _$OnResetPasswordImpl _value,
+    $Res Function(_$OnResetPasswordImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? email = null,
-  }) {
-    return _then(_$_OnResetPassword(
-      null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? email = null}) {
+    return _then(
+      _$OnResetPasswordImpl(
+        null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_OnResetPassword implements _OnResetPassword {
-  const _$_OnResetPassword(this.email);
+class _$OnResetPasswordImpl implements _OnResetPassword {
+  const _$OnResetPasswordImpl(this.email);
 
   @override
   final String email;
@@ -428,21 +454,26 @@ class _$_OnResetPassword implements _OnResetPassword {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnResetPassword &&
+            other is _$OnResetPasswordImpl &&
             (identical(other.email, email) || other.email == email));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnResetPasswordCopyWith<_$_OnResetPassword> get copyWith =>
-      __$$_OnResetPasswordCopyWithImpl<_$_OnResetPassword>(this, _$identity);
+  _$$OnResetPasswordImplCopyWith<_$OnResetPasswordImpl> get copyWith =>
+      __$$OnResetPasswordImplCopyWithImpl<_$OnResetPasswordImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -452,8 +483,11 @@ class _$_OnResetPassword implements _OnResetPassword {
     required TResult Function(String email) onResetPassword,
     required TResult Function() onLoginWithGmail,
     required TResult Function(
-            String email, String password, String repeatPassword)
-        onSignUp,
+      String email,
+      String password,
+      String repeatPassword,
+    )
+    onSignUp,
   }) {
     return onResetPassword(email);
   }
@@ -466,7 +500,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult? Function(String email)? onResetPassword,
     TResult? Function()? onLoginWithGmail,
     TResult? Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
   }) {
     return onResetPassword?.call(email);
   }
@@ -479,7 +513,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(String email)? onResetPassword,
     TResult Function()? onLoginWithGmail,
     TResult Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
     required TResult orElse(),
   }) {
     if (onResetPassword != null) {
@@ -530,34 +564,42 @@ class _$_OnResetPassword implements _OnResetPassword {
 }
 
 abstract class _OnResetPassword implements AuthEvent {
-  const factory _OnResetPassword(final String email) = _$_OnResetPassword;
+  const factory _OnResetPassword(final String email) = _$OnResetPasswordImpl;
 
   String get email;
-  @JsonKey(ignore: true)
-  _$$_OnResetPasswordCopyWith<_$_OnResetPassword> get copyWith =>
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnResetPasswordImplCopyWith<_$OnResetPasswordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnLoginWithGmaillCopyWith<$Res> {
-  factory _$$_OnLoginWithGmaillCopyWith(_$_OnLoginWithGmaill value,
-          $Res Function(_$_OnLoginWithGmaill) then) =
-      __$$_OnLoginWithGmaillCopyWithImpl<$Res>;
+abstract class _$$OnLoginWithGmaillImplCopyWith<$Res> {
+  factory _$$OnLoginWithGmaillImplCopyWith(
+    _$OnLoginWithGmaillImpl value,
+    $Res Function(_$OnLoginWithGmaillImpl) then,
+  ) = __$$OnLoginWithGmaillImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnLoginWithGmaillCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_OnLoginWithGmaill>
-    implements _$$_OnLoginWithGmaillCopyWith<$Res> {
-  __$$_OnLoginWithGmaillCopyWithImpl(
-      _$_OnLoginWithGmaill _value, $Res Function(_$_OnLoginWithGmaill) _then)
-      : super(_value, _then);
+class __$$OnLoginWithGmaillImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$OnLoginWithGmaillImpl>
+    implements _$$OnLoginWithGmaillImplCopyWith<$Res> {
+  __$$OnLoginWithGmaillImplCopyWithImpl(
+    _$OnLoginWithGmaillImpl _value,
+    $Res Function(_$OnLoginWithGmaillImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_OnLoginWithGmaill implements _OnLoginWithGmaill {
-  const _$_OnLoginWithGmaill();
+class _$OnLoginWithGmaillImpl implements _OnLoginWithGmaill {
+  const _$OnLoginWithGmaillImpl();
 
   @override
   String toString() {
@@ -565,9 +607,9 @@ class _$_OnLoginWithGmaill implements _OnLoginWithGmaill {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnLoginWithGmaill);
+        (other.runtimeType == runtimeType && other is _$OnLoginWithGmaillImpl);
   }
 
   @override
@@ -581,8 +623,11 @@ class _$_OnLoginWithGmaill implements _OnLoginWithGmaill {
     required TResult Function(String email) onResetPassword,
     required TResult Function() onLoginWithGmail,
     required TResult Function(
-            String email, String password, String repeatPassword)
-        onSignUp,
+      String email,
+      String password,
+      String repeatPassword,
+    )
+    onSignUp,
   }) {
     return onLoginWithGmail();
   }
@@ -595,7 +640,7 @@ class _$_OnLoginWithGmaill implements _OnLoginWithGmaill {
     TResult? Function(String email)? onResetPassword,
     TResult? Function()? onLoginWithGmail,
     TResult? Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
   }) {
     return onLoginWithGmail?.call();
   }
@@ -608,7 +653,7 @@ class _$_OnLoginWithGmaill implements _OnLoginWithGmaill {
     TResult Function(String email)? onResetPassword,
     TResult Function()? onLoginWithGmail,
     TResult Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
     required TResult orElse(),
   }) {
     if (onLoginWithGmail != null) {
@@ -659,26 +704,30 @@ class _$_OnLoginWithGmaill implements _OnLoginWithGmaill {
 }
 
 abstract class _OnLoginWithGmaill implements AuthEvent {
-  const factory _OnLoginWithGmaill() = _$_OnLoginWithGmaill;
+  const factory _OnLoginWithGmaill() = _$OnLoginWithGmaillImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnSignUpCopyWith<$Res> {
-  factory _$$_OnSignUpCopyWith(
-          _$_OnSignUp value, $Res Function(_$_OnSignUp) then) =
-      __$$_OnSignUpCopyWithImpl<$Res>;
+abstract class _$$OnSignUpImplCopyWith<$Res> {
+  factory _$$OnSignUpImplCopyWith(
+    _$OnSignUpImpl value,
+    $Res Function(_$OnSignUpImpl) then,
+  ) = __$$OnSignUpImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String email, String password, String repeatPassword});
 }
 
 /// @nodoc
-class __$$_OnSignUpCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_OnSignUp>
-    implements _$$_OnSignUpCopyWith<$Res> {
-  __$$_OnSignUpCopyWithImpl(
-      _$_OnSignUp _value, $Res Function(_$_OnSignUp) _then)
-      : super(_value, _then);
+class __$$OnSignUpImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$OnSignUpImpl>
+    implements _$$OnSignUpImplCopyWith<$Res> {
+  __$$OnSignUpImplCopyWithImpl(
+    _$OnSignUpImpl _value,
+    $Res Function(_$OnSignUpImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -686,27 +735,29 @@ class __$$_OnSignUpCopyWithImpl<$Res>
     Object? password = null,
     Object? repeatPassword = null,
   }) {
-    return _then(_$_OnSignUp(
-      null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == repeatPassword
-          ? _value.repeatPassword
-          : repeatPassword // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$OnSignUpImpl(
+        null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == password
+            ? _value.password
+            : password // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == repeatPassword
+            ? _value.repeatPassword
+            : repeatPassword // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_OnSignUp implements _OnSignUp {
-  const _$_OnSignUp(this.email, this.password, this.repeatPassword);
+class _$OnSignUpImpl implements _OnSignUp {
+  const _$OnSignUpImpl(this.email, this.password, this.repeatPassword);
 
   @override
   final String email;
@@ -721,10 +772,10 @@ class _$_OnSignUp implements _OnSignUp {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnSignUp &&
+            other is _$OnSignUpImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -735,11 +786,13 @@ class _$_OnSignUp implements _OnSignUp {
   @override
   int get hashCode => Object.hash(runtimeType, email, password, repeatPassword);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnSignUpCopyWith<_$_OnSignUp> get copyWith =>
-      __$$_OnSignUpCopyWithImpl<_$_OnSignUp>(this, _$identity);
+  _$$OnSignUpImplCopyWith<_$OnSignUpImpl> get copyWith =>
+      __$$OnSignUpImplCopyWithImpl<_$OnSignUpImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -749,8 +802,11 @@ class _$_OnSignUp implements _OnSignUp {
     required TResult Function(String email) onResetPassword,
     required TResult Function() onLoginWithGmail,
     required TResult Function(
-            String email, String password, String repeatPassword)
-        onSignUp,
+      String email,
+      String password,
+      String repeatPassword,
+    )
+    onSignUp,
   }) {
     return onSignUp(email, password, repeatPassword);
   }
@@ -763,7 +819,7 @@ class _$_OnSignUp implements _OnSignUp {
     TResult? Function(String email)? onResetPassword,
     TResult? Function()? onLoginWithGmail,
     TResult? Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
   }) {
     return onSignUp?.call(email, password, repeatPassword);
   }
@@ -776,7 +832,7 @@ class _$_OnSignUp implements _OnSignUp {
     TResult Function(String email)? onResetPassword,
     TResult Function()? onLoginWithGmail,
     TResult Function(String email, String password, String repeatPassword)?
-        onSignUp,
+    onSignUp,
     required TResult orElse(),
   }) {
     if (onSignUp != null) {
@@ -827,14 +883,20 @@ class _$_OnSignUp implements _OnSignUp {
 }
 
 abstract class _OnSignUp implements AuthEvent {
-  const factory _OnSignUp(final String email, final String password,
-      final String repeatPassword) = _$_OnSignUp;
+  const factory _OnSignUp(
+    final String email,
+    final String password,
+    final String repeatPassword,
+  ) = _$OnSignUpImpl;
 
   String get email;
   String get password;
   String get repeatPassword;
-  @JsonKey(ignore: true)
-  _$$_OnSignUpCopyWith<_$_OnSignUp> get copyWith =>
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnSignUpImplCopyWith<_$OnSignUpImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -846,16 +908,14 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String message, bool error) message,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String message, bool error)? message,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -863,24 +923,21 @@ mixin _$AuthState {
     TResult Function()? success,
     TResult Function(String message, bool error)? message,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Message value) message,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Message value)? message,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -888,8 +945,7 @@ mixin _$AuthState {
     TResult Function(_Success value)? success,
     TResult Function(_Message value)? message,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -907,27 +963,36 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -935,9 +1000,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -1019,28 +1084,34 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AuthState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, _then);
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -1048,9 +1119,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -1132,28 +1203,34 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements AuthState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+    _$SuccessImpl value,
+    $Res Function(_$SuccessImpl) then,
+  ) = __$$SuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, _then);
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+    _$SuccessImpl _value,
+    $Res Function(_$SuccessImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Success implements _Success {
-  const _$_Success();
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl();
 
   @override
   String toString() {
@@ -1161,9 +1238,9 @@ class _$_Success implements _Success {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Success);
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
@@ -1245,48 +1322,52 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements AuthState {
-  const factory _Success() = _$_Success;
+  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_MessageCopyWith<$Res> {
-  factory _$$_MessageCopyWith(
-          _$_Message value, $Res Function(_$_Message) then) =
-      __$$_MessageCopyWithImpl<$Res>;
+abstract class _$$MessageImplCopyWith<$Res> {
+  factory _$$MessageImplCopyWith(
+    _$MessageImpl value,
+    $Res Function(_$MessageImpl) then,
+  ) = __$$MessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message, bool error});
 }
 
 /// @nodoc
-class __$$_MessageCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Message>
-    implements _$$_MessageCopyWith<$Res> {
-  __$$_MessageCopyWithImpl(_$_Message _value, $Res Function(_$_Message) _then)
-      : super(_value, _then);
+class __$$MessageImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$MessageImpl>
+    implements _$$MessageImplCopyWith<$Res> {
+  __$$MessageImplCopyWithImpl(
+    _$MessageImpl _value,
+    $Res Function(_$MessageImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? error = null,
-  }) {
-    return _then(_$_Message(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? message = null, Object? error = null}) {
+    return _then(
+      _$MessageImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_Message implements _Message {
-  const _$_Message(this.message, this.error);
+class _$MessageImpl implements _Message {
+  const _$MessageImpl(this.message, this.error);
 
   @override
   final String message;
@@ -1299,10 +1380,10 @@ class _$_Message implements _Message {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Message &&
+            other is _$MessageImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
@@ -1310,11 +1391,13 @@ class _$_Message implements _Message {
   @override
   int get hashCode => Object.hash(runtimeType, message, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MessageCopyWith<_$_Message> get copyWith =>
-      __$$_MessageCopyWithImpl<_$_Message>(this, _$identity);
+  _$$MessageImplCopyWith<_$MessageImpl> get copyWith =>
+      __$$MessageImplCopyWithImpl<_$MessageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1392,11 +1475,15 @@ class _$_Message implements _Message {
 }
 
 abstract class _Message implements AuthState {
-  const factory _Message(final String message, final bool error) = _$_Message;
+  const factory _Message(final String message, final bool error) =
+      _$MessageImpl;
 
   String get message;
   bool get error;
-  @JsonKey(ignore: true)
-  _$$_MessageCopyWith<_$_Message> get copyWith =>
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MessageImplCopyWith<_$MessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

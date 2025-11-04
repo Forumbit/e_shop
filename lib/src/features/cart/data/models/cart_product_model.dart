@@ -6,7 +6,7 @@ part 'cart_product_model.g.dart';
 @freezed
 class CartProductModel with _$CartProductModel {
   factory CartProductModel({
-    required String? docId,
+    String? docId,
     required int id,
     required int price,
     required int stock,

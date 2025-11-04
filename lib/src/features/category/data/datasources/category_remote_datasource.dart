@@ -5,10 +5,7 @@ import 'package:e_shop/src/features/product/data/models/product_list/product_lis
 
 abstract interface class CategoryRemoteDataSource {
   Future<List<String>> getCategories();
-  Future<ProductListModel> getProductsOfCategory(
-    String category,
-    int skip,
-  );
+  Future<ProductListModel> getProductsOfCategory(String category, int skip);
 }
 
 class CategoryRemoteDataSourceImpl
@@ -23,7 +20,7 @@ class CategoryRemoteDataSourceImpl
     try {
       final url = Uri.http(
         ApiConfiguration.host,
-        '/products/categories',
+        '/products/category-list',
       ).toString();
       final response = await dio.get(url);
       final json = response.data;
@@ -40,14 +37,11 @@ class CategoryRemoteDataSourceImpl
     int skip,
   ) async {
     try {
-      final url = Uri.http(
-        ApiConfiguration.host,
-        'products/category/$category',
-        {
-          ApiConfiguration.limitText: ApiConfiguration.limitQueryParameter,
-          ApiConfiguration.skipText: skip.toString(),
-        },
-      );
+      final url =
+          Uri.http(ApiConfiguration.host, 'products/category/$category', {
+            ApiConfiguration.limitText: ApiConfiguration.limitQueryParameter,
+            ApiConfiguration.skipText: skip.toString(),
+          });
       return await getProducts(dio, url);
     } on Object {
       rethrow;

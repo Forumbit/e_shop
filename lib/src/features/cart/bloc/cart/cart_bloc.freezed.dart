@@ -12,7 +12,8 @@ part of 'cart_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$CartEvent {
@@ -22,16 +23,14 @@ mixin _$CartEvent {
     required TResult Function() onRefreshCart,
     required TResult Function(CartProductEntity product) onProductUpdated,
     required TResult Function(String productId) onProductDeleted,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? onRefreshCart,
     TResult? Function(CartProductEntity product)? onProductUpdated,
     TResult? Function(String productId)? onProductDeleted,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
@@ -39,24 +38,21 @@ mixin _$CartEvent {
     TResult Function(CartProductEntity product)? onProductUpdated,
     TResult Function(String productId)? onProductDeleted,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OnRefreshCart value) onRefreshCart,
     required TResult Function(_OnProductUpdated value) onProductUpdated,
     required TResult Function(_OnProductDeleted value) onProductDeleted,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OnRefreshCart value)? onRefreshCart,
     TResult? Function(_OnProductUpdated value)? onProductUpdated,
     TResult? Function(_OnProductDeleted value)? onProductDeleted,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
@@ -64,8 +60,7 @@ mixin _$CartEvent {
     TResult Function(_OnProductUpdated value)? onProductUpdated,
     TResult Function(_OnProductDeleted value)? onProductDeleted,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -83,27 +78,36 @@ class _$CartEventCopyWithImpl<$Res, $Val extends CartEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+    _$StartedImpl value,
+    $Res Function(_$StartedImpl) then,
+  ) = __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$CartEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+    _$StartedImpl _value,
+    $Res Function(_$StartedImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -111,9 +115,9 @@ class _$_Started implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -195,29 +199,34 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements CartEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnRefreshCartCopyWith<$Res> {
-  factory _$$_OnRefreshCartCopyWith(
-          _$_OnRefreshCart value, $Res Function(_$_OnRefreshCart) then) =
-      __$$_OnRefreshCartCopyWithImpl<$Res>;
+abstract class _$$OnRefreshCartImplCopyWith<$Res> {
+  factory _$$OnRefreshCartImplCopyWith(
+    _$OnRefreshCartImpl value,
+    $Res Function(_$OnRefreshCartImpl) then,
+  ) = __$$OnRefreshCartImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnRefreshCartCopyWithImpl<$Res>
-    extends _$CartEventCopyWithImpl<$Res, _$_OnRefreshCart>
-    implements _$$_OnRefreshCartCopyWith<$Res> {
-  __$$_OnRefreshCartCopyWithImpl(
-      _$_OnRefreshCart _value, $Res Function(_$_OnRefreshCart) _then)
-      : super(_value, _then);
+class __$$OnRefreshCartImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$OnRefreshCartImpl>
+    implements _$$OnRefreshCartImplCopyWith<$Res> {
+  __$$OnRefreshCartImplCopyWithImpl(
+    _$OnRefreshCartImpl _value,
+    $Res Function(_$OnRefreshCartImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_OnRefreshCart implements _OnRefreshCart {
-  const _$_OnRefreshCart();
+class _$OnRefreshCartImpl implements _OnRefreshCart {
+  const _$OnRefreshCartImpl();
 
   @override
   String toString() {
@@ -225,9 +234,9 @@ class _$_OnRefreshCart implements _OnRefreshCart {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnRefreshCart);
+        (other.runtimeType == runtimeType && other is _$OnRefreshCartImpl);
   }
 
   @override
@@ -309,14 +318,15 @@ class _$_OnRefreshCart implements _OnRefreshCart {
 }
 
 abstract class _OnRefreshCart implements CartEvent {
-  const factory _OnRefreshCart() = _$_OnRefreshCart;
+  const factory _OnRefreshCart() = _$OnRefreshCartImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnProductUpdatedCopyWith<$Res> {
-  factory _$$_OnProductUpdatedCopyWith(
-          _$_OnProductUpdated value, $Res Function(_$_OnProductUpdated) then) =
-      __$$_OnProductUpdatedCopyWithImpl<$Res>;
+abstract class _$$OnProductUpdatedImplCopyWith<$Res> {
+  factory _$$OnProductUpdatedImplCopyWith(
+    _$OnProductUpdatedImpl value,
+    $Res Function(_$OnProductUpdatedImpl) then,
+  ) = __$$OnProductUpdatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CartProductEntity product});
 
@@ -324,26 +334,31 @@ abstract class _$$_OnProductUpdatedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnProductUpdatedCopyWithImpl<$Res>
-    extends _$CartEventCopyWithImpl<$Res, _$_OnProductUpdated>
-    implements _$$_OnProductUpdatedCopyWith<$Res> {
-  __$$_OnProductUpdatedCopyWithImpl(
-      _$_OnProductUpdated _value, $Res Function(_$_OnProductUpdated) _then)
-      : super(_value, _then);
+class __$$OnProductUpdatedImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$OnProductUpdatedImpl>
+    implements _$$OnProductUpdatedImplCopyWith<$Res> {
+  __$$OnProductUpdatedImplCopyWithImpl(
+    _$OnProductUpdatedImpl _value,
+    $Res Function(_$OnProductUpdatedImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? product = null,
-  }) {
-    return _then(_$_OnProductUpdated(
-      null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as CartProductEntity,
-    ));
+  $Res call({Object? product = null}) {
+    return _then(
+      _$OnProductUpdatedImpl(
+        null == product
+            ? _value.product
+            : product // ignore: cast_nullable_to_non_nullable
+                  as CartProductEntity,
+      ),
+    );
   }
 
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CartProductEntityCopyWith<$Res> get product {
@@ -355,8 +370,8 @@ class __$$_OnProductUpdatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnProductUpdated implements _OnProductUpdated {
-  const _$_OnProductUpdated(this.product);
+class _$OnProductUpdatedImpl implements _OnProductUpdated {
+  const _$OnProductUpdatedImpl(this.product);
 
   @override
   final CartProductEntity product;
@@ -367,21 +382,26 @@ class _$_OnProductUpdated implements _OnProductUpdated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnProductUpdated &&
+            other is _$OnProductUpdatedImpl &&
             (identical(other.product, product) || other.product == product));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, product);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnProductUpdatedCopyWith<_$_OnProductUpdated> get copyWith =>
-      __$$_OnProductUpdatedCopyWithImpl<_$_OnProductUpdated>(this, _$identity);
+  _$$OnProductUpdatedImplCopyWith<_$OnProductUpdatedImpl> get copyWith =>
+      __$$OnProductUpdatedImplCopyWithImpl<_$OnProductUpdatedImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -460,49 +480,56 @@ class _$_OnProductUpdated implements _OnProductUpdated {
 
 abstract class _OnProductUpdated implements CartEvent {
   const factory _OnProductUpdated(final CartProductEntity product) =
-      _$_OnProductUpdated;
+      _$OnProductUpdatedImpl;
 
   CartProductEntity get product;
-  @JsonKey(ignore: true)
-  _$$_OnProductUpdatedCopyWith<_$_OnProductUpdated> get copyWith =>
+
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnProductUpdatedImplCopyWith<_$OnProductUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnProductDeletedCopyWith<$Res> {
-  factory _$$_OnProductDeletedCopyWith(
-          _$_OnProductDeleted value, $Res Function(_$_OnProductDeleted) then) =
-      __$$_OnProductDeletedCopyWithImpl<$Res>;
+abstract class _$$OnProductDeletedImplCopyWith<$Res> {
+  factory _$$OnProductDeletedImplCopyWith(
+    _$OnProductDeletedImpl value,
+    $Res Function(_$OnProductDeletedImpl) then,
+  ) = __$$OnProductDeletedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String productId});
 }
 
 /// @nodoc
-class __$$_OnProductDeletedCopyWithImpl<$Res>
-    extends _$CartEventCopyWithImpl<$Res, _$_OnProductDeleted>
-    implements _$$_OnProductDeletedCopyWith<$Res> {
-  __$$_OnProductDeletedCopyWithImpl(
-      _$_OnProductDeleted _value, $Res Function(_$_OnProductDeleted) _then)
-      : super(_value, _then);
+class __$$OnProductDeletedImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$OnProductDeletedImpl>
+    implements _$$OnProductDeletedImplCopyWith<$Res> {
+  __$$OnProductDeletedImplCopyWithImpl(
+    _$OnProductDeletedImpl _value,
+    $Res Function(_$OnProductDeletedImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? productId = null,
-  }) {
-    return _then(_$_OnProductDeleted(
-      null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? productId = null}) {
+    return _then(
+      _$OnProductDeletedImpl(
+        null == productId
+            ? _value.productId
+            : productId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_OnProductDeleted implements _OnProductDeleted {
-  const _$_OnProductDeleted(this.productId);
+class _$OnProductDeletedImpl implements _OnProductDeleted {
+  const _$OnProductDeletedImpl(this.productId);
 
   @override
   final String productId;
@@ -513,10 +540,10 @@ class _$_OnProductDeleted implements _OnProductDeleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnProductDeleted &&
+            other is _$OnProductDeletedImpl &&
             (identical(other.productId, productId) ||
                 other.productId == productId));
   }
@@ -524,11 +551,16 @@ class _$_OnProductDeleted implements _OnProductDeleted {
   @override
   int get hashCode => Object.hash(runtimeType, productId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnProductDeletedCopyWith<_$_OnProductDeleted> get copyWith =>
-      __$$_OnProductDeletedCopyWithImpl<_$_OnProductDeleted>(this, _$identity);
+  _$$OnProductDeletedImplCopyWith<_$OnProductDeletedImpl> get copyWith =>
+      __$$OnProductDeletedImplCopyWithImpl<_$OnProductDeletedImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -606,11 +638,15 @@ class _$_OnProductDeleted implements _OnProductDeleted {
 }
 
 abstract class _OnProductDeleted implements CartEvent {
-  const factory _OnProductDeleted(final String productId) = _$_OnProductDeleted;
+  const factory _OnProductDeleted(final String productId) =
+      _$OnProductDeletedImpl;
 
   String get productId;
-  @JsonKey(ignore: true)
-  _$$_OnProductDeletedCopyWith<_$_OnProductDeleted> get copyWith =>
+
+  /// Create a copy of CartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnProductDeletedImplCopyWith<_$OnProductDeletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -622,16 +658,14 @@ mixin _$CartState {
     required TResult Function() loading,
     required TResult Function(CartEntity cart) loaded,
     required TResult Function() error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(CartEntity cart)? loaded,
     TResult? Function()? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -639,24 +673,21 @@ mixin _$CartState {
     TResult Function(CartEntity cart)? loaded,
     TResult Function()? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -664,8 +695,7 @@ mixin _$CartState {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -683,27 +713,36 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -711,9 +750,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -795,28 +834,34 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements CartState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, _then);
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -824,9 +869,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -908,13 +953,15 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements CartState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+    _$LoadedImpl value,
+    $Res Function(_$LoadedImpl) then,
+  ) = __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CartEntity cart});
 
@@ -922,25 +969,31 @@ abstract class _$$_LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
-      : super(_value, _then);
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+    _$LoadedImpl _value,
+    $Res Function(_$LoadedImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? cart = null,
-  }) {
-    return _then(_$_Loaded(
-      null == cart
-          ? _value.cart
-          : cart // ignore: cast_nullable_to_non_nullable
-              as CartEntity,
-    ));
+  $Res call({Object? cart = null}) {
+    return _then(
+      _$LoadedImpl(
+        null == cart
+            ? _value.cart
+            : cart // ignore: cast_nullable_to_non_nullable
+                  as CartEntity,
+      ),
+    );
   }
 
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CartEntityCopyWith<$Res> get cart {
@@ -952,8 +1005,8 @@ class __$$_LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.cart);
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(this.cart);
 
   @override
   final CartEntity cart;
@@ -964,21 +1017,23 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
+            other is _$LoadedImpl &&
             (identical(other.cart, cart) || other.cart == cart));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, cart);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1056,32 +1111,42 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements CartState {
-  const factory _Loaded(final CartEntity cart) = _$_Loaded;
+  const factory _Loaded(final CartEntity cart) = _$LoadedImpl;
 
   CartEntity get cart;
-  @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+    _$ErrorImpl value,
+    $Res Function(_$ErrorImpl) then,
+  ) = __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, _then);
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+    _$ErrorImpl _value,
+    $Res Function(_$ErrorImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -1089,9 +1154,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -1173,5 +1238,5 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements CartState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }

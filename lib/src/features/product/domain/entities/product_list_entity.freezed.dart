@@ -12,7 +12,8 @@ part of 'product_list_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ProductListEntity {
@@ -21,7 +22,9 @@ mixin _$ProductListEntity {
   int get skip => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductListEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductListEntityCopyWith<ProductListEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -29,8 +32,9 @@ mixin _$ProductListEntity {
 /// @nodoc
 abstract class $ProductListEntityCopyWith<$Res> {
   factory $ProductListEntityCopyWith(
-          ProductListEntity value, $Res Function(ProductListEntity) then) =
-      _$ProductListEntityCopyWithImpl<$Res, ProductListEntity>;
+    ProductListEntity value,
+    $Res Function(ProductListEntity) then,
+  ) = _$ProductListEntityCopyWithImpl<$Res, ProductListEntity>;
   @useResult
   $Res call({List<ProductEntity> products, int total, int skip, int limit});
 }
@@ -45,6 +49,8 @@ class _$ProductListEntityCopyWithImpl<$Res, $Val extends ProductListEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductListEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -53,46 +59,53 @@ class _$ProductListEntityCopyWithImpl<$Res, $Val extends ProductListEntity>
     Object? skip = null,
     Object? limit = null,
   }) {
-    return _then(_value.copyWith(
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductEntity>,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      skip: null == skip
-          ? _value.skip
-          : skip // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            products: null == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<ProductEntity>,
+            total: null == total
+                ? _value.total
+                : total // ignore: cast_nullable_to_non_nullable
+                      as int,
+            skip: null == skip
+                ? _value.skip
+                : skip // ignore: cast_nullable_to_non_nullable
+                      as int,
+            limit: null == limit
+                ? _value.limit
+                : limit // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$_ProductListEntityCopyWith<$Res>
+abstract class _$$ProductListEntityImplCopyWith<$Res>
     implements $ProductListEntityCopyWith<$Res> {
-  factory _$$_ProductListEntityCopyWith(_$_ProductListEntity value,
-          $Res Function(_$_ProductListEntity) then) =
-      __$$_ProductListEntityCopyWithImpl<$Res>;
+  factory _$$ProductListEntityImplCopyWith(
+    _$ProductListEntityImpl value,
+    $Res Function(_$ProductListEntityImpl) then,
+  ) = __$$ProductListEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ProductEntity> products, int total, int skip, int limit});
 }
 
 /// @nodoc
-class __$$_ProductListEntityCopyWithImpl<$Res>
-    extends _$ProductListEntityCopyWithImpl<$Res, _$_ProductListEntity>
-    implements _$$_ProductListEntityCopyWith<$Res> {
-  __$$_ProductListEntityCopyWithImpl(
-      _$_ProductListEntity _value, $Res Function(_$_ProductListEntity) _then)
-      : super(_value, _then);
+class __$$ProductListEntityImplCopyWithImpl<$Res>
+    extends _$ProductListEntityCopyWithImpl<$Res, _$ProductListEntityImpl>
+    implements _$$ProductListEntityImplCopyWith<$Res> {
+  __$$ProductListEntityImplCopyWithImpl(
+    _$ProductListEntityImpl _value,
+    $Res Function(_$ProductListEntityImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of ProductListEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,36 +114,38 @@ class __$$_ProductListEntityCopyWithImpl<$Res>
     Object? skip = null,
     Object? limit = null,
   }) {
-    return _then(_$_ProductListEntity(
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductEntity>,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      skip: null == skip
-          ? _value.skip
-          : skip // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$ProductListEntityImpl(
+        products: null == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<ProductEntity>,
+        total: null == total
+            ? _value.total
+            : total // ignore: cast_nullable_to_non_nullable
+                  as int,
+        skip: null == skip
+            ? _value.skip
+            : skip // ignore: cast_nullable_to_non_nullable
+                  as int,
+        limit: null == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_ProductListEntity implements _ProductListEntity {
-  _$_ProductListEntity(
-      {required final List<ProductEntity> products,
-      required this.total,
-      required this.skip,
-      required this.limit})
-      : _products = products;
+class _$ProductListEntityImpl implements _ProductListEntity {
+  _$ProductListEntityImpl({
+    required final List<ProductEntity> products,
+    required this.total,
+    required this.skip,
+    required this.limit,
+  }) : _products = products;
 
   final List<ProductEntity> _products;
   @override
@@ -153,10 +168,10 @@ class _$_ProductListEntity implements _ProductListEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductListEntity &&
+            other is _$ProductListEntityImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.skip, skip) || other.skip == skip) &&
@@ -164,23 +179,33 @@ class _$_ProductListEntity implements _ProductListEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_products), total, skip, limit);
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(_products),
+    total,
+    skip,
+    limit,
+  );
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductListEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductListEntityCopyWith<_$_ProductListEntity> get copyWith =>
-      __$$_ProductListEntityCopyWithImpl<_$_ProductListEntity>(
-          this, _$identity);
+  _$$ProductListEntityImplCopyWith<_$ProductListEntityImpl> get copyWith =>
+      __$$ProductListEntityImplCopyWithImpl<_$ProductListEntityImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ProductListEntity implements ProductListEntity {
-  factory _ProductListEntity(
-      {required final List<ProductEntity> products,
-      required final int total,
-      required final int skip,
-      required final int limit}) = _$_ProductListEntity;
+  factory _ProductListEntity({
+    required final List<ProductEntity> products,
+    required final int total,
+    required final int skip,
+    required final int limit,
+  }) = _$ProductListEntityImpl;
 
   @override
   List<ProductEntity> get products;
@@ -190,8 +215,11 @@ abstract class _ProductListEntity implements ProductListEntity {
   int get skip;
   @override
   int get limit;
+
+  /// Create a copy of ProductListEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ProductListEntityCopyWith<_$_ProductListEntity> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProductListEntityImplCopyWith<_$ProductListEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

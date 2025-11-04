@@ -5,7 +5,7 @@ part 'cart_product_entity.freezed.dart';
 @freezed
 class CartProductEntity with _$CartProductEntity {
   factory CartProductEntity({
-    required String? docId,
+    String? docId,
     required int id,
     required int price,
     required int quantity,

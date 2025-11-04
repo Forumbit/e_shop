@@ -3,7 +3,6 @@ import 'package:e_shop/src/core/common/exceptions/exceptions.dart';
 import 'package:e_shop/src/features/user/data/mapper/user_mapper.dart';
 import 'package:e_shop/src/features/user/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 abstract interface class AuthRemoteDataSource {
   UserModel? getAccount();
@@ -54,18 +53,19 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> loginWithGmail() async {
-    try {
-      final GoogleSignInAccount? guest = await GoogleSignIn().signIn();
-      if (guest == null) return;
-      final GoogleSignInAuthentication authGuest = await guest.authentication;
-      final credential = GoogleAuthProvider.credential(
-        idToken: authGuest.idToken,
-        accessToken: authGuest.accessToken,
-      );
-      await firebaseAuth.signInWithCredential(credential);
-    } on Object {
-      rethrow;
-    }
+    // try {
+    //   final GoogleSignInAccount? guest = await GoogleSignIn().signIn();
+    //   if (guest == null) return;
+    //   final GoogleSignInAuthentication authGuest = await guest.authentication;
+    //   final credential = GoogleAuthProvider.credential(
+    //     idToken: authGuest.idToken,
+    //     accessToken: authGuest.accessToken,
+    //   );
+    //   await firebaseAuth.signInWithCredential(credential);
+    // } on Object {
+    //   rethrow;
+    // }
+    throw UnimplementedError();
   }
 
   @override

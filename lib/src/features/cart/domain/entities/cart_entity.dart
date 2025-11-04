@@ -6,8 +6,8 @@ part 'cart_entity.freezed.dart';
 @freezed
 class CartEntity with _$CartEntity {
   factory CartEntity({
-    required String? docId,
+    String? docId,
     required String uid,
-    required List<CartProductEntity>? products,
+    List<CartProductEntity>? products,
   }) = _CartEntity;
 }

@@ -12,7 +12,8 @@ part of 'product_list_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductListModel _$ProductListModelFromJson(Map<String, dynamic> json) {
   return _ProductListModel.fromJson(json);
@@ -25,8 +26,12 @@ mixin _$ProductListModel {
   int get skip => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductListModelCopyWith<ProductListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -34,8 +39,9 @@ mixin _$ProductListModel {
 /// @nodoc
 abstract class $ProductListModelCopyWith<$Res> {
   factory $ProductListModelCopyWith(
-          ProductListModel value, $Res Function(ProductListModel) then) =
-      _$ProductListModelCopyWithImpl<$Res, ProductListModel>;
+    ProductListModel value,
+    $Res Function(ProductListModel) then,
+  ) = _$ProductListModelCopyWithImpl<$Res, ProductListModel>;
   @useResult
   $Res call({List<ProductModel> products, int total, int skip, int limit});
 }
@@ -50,6 +56,8 @@ class _$ProductListModelCopyWithImpl<$Res, $Val extends ProductListModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -58,46 +66,53 @@ class _$ProductListModelCopyWithImpl<$Res, $Val extends ProductListModel>
     Object? skip = null,
     Object? limit = null,
   }) {
-    return _then(_value.copyWith(
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      skip: null == skip
-          ? _value.skip
-          : skip // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            products: null == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<ProductModel>,
+            total: null == total
+                ? _value.total
+                : total // ignore: cast_nullable_to_non_nullable
+                      as int,
+            skip: null == skip
+                ? _value.skip
+                : skip // ignore: cast_nullable_to_non_nullable
+                      as int,
+            limit: null == limit
+                ? _value.limit
+                : limit // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$_ProductListModelCopyWith<$Res>
+abstract class _$$ProductListModelImplCopyWith<$Res>
     implements $ProductListModelCopyWith<$Res> {
-  factory _$$_ProductListModelCopyWith(
-          _$_ProductListModel value, $Res Function(_$_ProductListModel) then) =
-      __$$_ProductListModelCopyWithImpl<$Res>;
+  factory _$$ProductListModelImplCopyWith(
+    _$ProductListModelImpl value,
+    $Res Function(_$ProductListModelImpl) then,
+  ) = __$$ProductListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ProductModel> products, int total, int skip, int limit});
 }
 
 /// @nodoc
-class __$$_ProductListModelCopyWithImpl<$Res>
-    extends _$ProductListModelCopyWithImpl<$Res, _$_ProductListModel>
-    implements _$$_ProductListModelCopyWith<$Res> {
-  __$$_ProductListModelCopyWithImpl(
-      _$_ProductListModel _value, $Res Function(_$_ProductListModel) _then)
-      : super(_value, _then);
+class __$$ProductListModelImplCopyWithImpl<$Res>
+    extends _$ProductListModelCopyWithImpl<$Res, _$ProductListModelImpl>
+    implements _$$ProductListModelImplCopyWith<$Res> {
+  __$$ProductListModelImplCopyWithImpl(
+    _$ProductListModelImpl _value,
+    $Res Function(_$ProductListModelImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of ProductListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,41 +121,43 @@ class __$$_ProductListModelCopyWithImpl<$Res>
     Object? skip = null,
     Object? limit = null,
   }) {
-    return _then(_$_ProductListModel(
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      skip: null == skip
-          ? _value.skip
-          : skip // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$ProductListModelImpl(
+        products: null == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<ProductModel>,
+        total: null == total
+            ? _value.total
+            : total // ignore: cast_nullable_to_non_nullable
+                  as int,
+        skip: null == skip
+            ? _value.skip
+            : skip // ignore: cast_nullable_to_non_nullable
+                  as int,
+        limit: null == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductListModel
+class _$ProductListModelImpl
     with DiagnosticableTreeMixin
     implements _ProductListModel {
-  _$_ProductListModel(
-      {required final List<ProductModel> products,
-      required this.total,
-      required this.skip,
-      required this.limit})
-      : _products = products;
+  _$ProductListModelImpl({
+    required final List<ProductModel> products,
+    required this.total,
+    required this.skip,
+    required this.limit,
+  }) : _products = products;
 
-  factory _$_ProductListModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductListModelFromJson(json);
+  factory _$ProductListModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductListModelImplFromJson(json);
 
   final List<ProductModel> _products;
   @override
@@ -174,44 +191,53 @@ class _$_ProductListModel
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductListModel &&
+            other is _$ProductListModelImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.skip, skip) || other.skip == skip) &&
             (identical(other.limit, limit) || other.limit == limit));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_products), total, skip, limit);
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(_products),
+    total,
+    skip,
+    limit,
+  );
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductListModelCopyWith<_$_ProductListModel> get copyWith =>
-      __$$_ProductListModelCopyWithImpl<_$_ProductListModel>(this, _$identity);
+  _$$ProductListModelImplCopyWith<_$ProductListModelImpl> get copyWith =>
+      __$$ProductListModelImplCopyWithImpl<_$ProductListModelImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductListModelToJson(
-      this,
-    );
+    return _$$ProductListModelImplToJson(this);
   }
 }
 
 abstract class _ProductListModel implements ProductListModel {
-  factory _ProductListModel(
-      {required final List<ProductModel> products,
-      required final int total,
-      required final int skip,
-      required final int limit}) = _$_ProductListModel;
+  factory _ProductListModel({
+    required final List<ProductModel> products,
+    required final int total,
+    required final int skip,
+    required final int limit,
+  }) = _$ProductListModelImpl;
 
   factory _ProductListModel.fromJson(Map<String, dynamic> json) =
-      _$_ProductListModel.fromJson;
+      _$ProductListModelImpl.fromJson;
 
   @override
   List<ProductModel> get products;
@@ -221,8 +247,11 @@ abstract class _ProductListModel implements ProductListModel {
   int get skip;
   @override
   int get limit;
+
+  /// Create a copy of ProductListModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ProductListModelCopyWith<_$_ProductListModel> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProductListModelImplCopyWith<_$ProductListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

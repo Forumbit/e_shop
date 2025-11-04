@@ -7,9 +7,9 @@ part 'cart_model.g.dart';
 @freezed
 class CartModel with _$CartModel {
   factory CartModel({
-    required String? docId,
+    String? docId,
     required String uid,
-    required List<CartProductModel>? products,
+    List<CartProductModel>? products,
   }) = _CartModel;
 
   factory CartModel.fromJson(Map<String, dynamic> json) =>

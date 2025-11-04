@@ -12,7 +12,8 @@ part of 'cart_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$CartEntity {
@@ -20,7 +21,9 @@ mixin _$CartEntity {
   String get uid => throw _privateConstructorUsedError;
   List<CartProductEntity>? get products => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartEntityCopyWith<CartEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -28,8 +31,9 @@ mixin _$CartEntity {
 /// @nodoc
 abstract class $CartEntityCopyWith<$Res> {
   factory $CartEntityCopyWith(
-          CartEntity value, $Res Function(CartEntity) then) =
-      _$CartEntityCopyWithImpl<$Res, CartEntity>;
+    CartEntity value,
+    $Res Function(CartEntity) then,
+  ) = _$CartEntityCopyWithImpl<$Res, CartEntity>;
   @useResult
   $Res call({String? docId, String uid, List<CartProductEntity>? products});
 }
@@ -44,6 +48,8 @@ class _$CartEntityCopyWithImpl<$Res, $Val extends CartEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -51,42 +57,49 @@ class _$CartEntityCopyWithImpl<$Res, $Val extends CartEntity>
     Object? uid = null,
     Object? products = freezed,
   }) {
-    return _then(_value.copyWith(
-      docId: freezed == docId
-          ? _value.docId
-          : docId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      products: freezed == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductEntity>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            docId: freezed == docId
+                ? _value.docId
+                : docId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            uid: null == uid
+                ? _value.uid
+                : uid // ignore: cast_nullable_to_non_nullable
+                      as String,
+            products: freezed == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<CartProductEntity>?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$_CartEntityCopyWith<$Res>
+abstract class _$$CartEntityImplCopyWith<$Res>
     implements $CartEntityCopyWith<$Res> {
-  factory _$$_CartEntityCopyWith(
-          _$_CartEntity value, $Res Function(_$_CartEntity) then) =
-      __$$_CartEntityCopyWithImpl<$Res>;
+  factory _$$CartEntityImplCopyWith(
+    _$CartEntityImpl value,
+    $Res Function(_$CartEntityImpl) then,
+  ) = __$$CartEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? docId, String uid, List<CartProductEntity>? products});
 }
 
 /// @nodoc
-class __$$_CartEntityCopyWithImpl<$Res>
-    extends _$CartEntityCopyWithImpl<$Res, _$_CartEntity>
-    implements _$$_CartEntityCopyWith<$Res> {
-  __$$_CartEntityCopyWithImpl(
-      _$_CartEntity _value, $Res Function(_$_CartEntity) _then)
-      : super(_value, _then);
+class __$$CartEntityImplCopyWithImpl<$Res>
+    extends _$CartEntityCopyWithImpl<$Res, _$CartEntityImpl>
+    implements _$$CartEntityImplCopyWith<$Res> {
+  __$$CartEntityImplCopyWithImpl(
+    _$CartEntityImpl _value,
+    $Res Function(_$CartEntityImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of CartEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,31 +107,33 @@ class __$$_CartEntityCopyWithImpl<$Res>
     Object? uid = null,
     Object? products = freezed,
   }) {
-    return _then(_$_CartEntity(
-      docId: freezed == docId
-          ? _value.docId
-          : docId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      products: freezed == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductEntity>?,
-    ));
+    return _then(
+      _$CartEntityImpl(
+        docId: freezed == docId
+            ? _value.docId
+            : docId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        uid: null == uid
+            ? _value.uid
+            : uid // ignore: cast_nullable_to_non_nullable
+                  as String,
+        products: freezed == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<CartProductEntity>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_CartEntity implements _CartEntity {
-  _$_CartEntity(
-      {required this.docId,
-      required this.uid,
-      required final List<CartProductEntity>? products})
-      : _products = products;
+class _$CartEntityImpl implements _CartEntity {
+  _$CartEntityImpl({
+    this.docId,
+    required this.uid,
+    final List<CartProductEntity>? products,
+  }) : _products = products;
 
   @override
   final String? docId;
@@ -140,10 +155,10 @@ class _$_CartEntity implements _CartEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartEntity &&
+            other is _$CartEntityImpl &&
             (identical(other.docId, docId) || other.docId == docId) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             const DeepCollectionEquality().equals(other._products, _products));
@@ -151,20 +166,27 @@ class _$_CartEntity implements _CartEntity {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, docId, uid, const DeepCollectionEquality().hash(_products));
+    runtimeType,
+    docId,
+    uid,
+    const DeepCollectionEquality().hash(_products),
+  );
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartEntityCopyWith<_$_CartEntity> get copyWith =>
-      __$$_CartEntityCopyWithImpl<_$_CartEntity>(this, _$identity);
+  _$$CartEntityImplCopyWith<_$CartEntityImpl> get copyWith =>
+      __$$CartEntityImplCopyWithImpl<_$CartEntityImpl>(this, _$identity);
 }
 
 abstract class _CartEntity implements CartEntity {
-  factory _CartEntity(
-      {required final String? docId,
-      required final String uid,
-      required final List<CartProductEntity>? products}) = _$_CartEntity;
+  factory _CartEntity({
+    final String? docId,
+    required final String uid,
+    final List<CartProductEntity>? products,
+  }) = _$CartEntityImpl;
 
   @override
   String? get docId;
@@ -172,8 +194,11 @@ abstract class _CartEntity implements CartEntity {
   String get uid;
   @override
   List<CartProductEntity>? get products;
+
+  /// Create a copy of CartEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_CartEntityCopyWith<_$_CartEntity> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CartEntityImplCopyWith<_$CartEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

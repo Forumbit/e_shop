@@ -12,7 +12,8 @@ part of 'cart_product_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$CartProductEntity {
@@ -25,7 +26,9 @@ mixin _$CartProductEntity {
   String get title => throw _privateConstructorUsedError;
   int get total => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartProductEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartProductEntityCopyWith<CartProductEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -33,18 +36,20 @@ mixin _$CartProductEntity {
 /// @nodoc
 abstract class $CartProductEntityCopyWith<$Res> {
   factory $CartProductEntityCopyWith(
-          CartProductEntity value, $Res Function(CartProductEntity) then) =
-      _$CartProductEntityCopyWithImpl<$Res, CartProductEntity>;
+    CartProductEntity value,
+    $Res Function(CartProductEntity) then,
+  ) = _$CartProductEntityCopyWithImpl<$Res, CartProductEntity>;
   @useResult
-  $Res call(
-      {String? docId,
-      int id,
-      int price,
-      int quantity,
-      int stock,
-      String thumbnail,
-      String title,
-      int total});
+  $Res call({
+    String? docId,
+    int id,
+    int price,
+    int quantity,
+    int stock,
+    String thumbnail,
+    String title,
+    int total,
+  });
 }
 
 /// @nodoc
@@ -57,6 +62,8 @@ class _$CartProductEntityCopyWithImpl<$Res, $Val extends CartProductEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartProductEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -69,70 +76,78 @@ class _$CartProductEntityCopyWithImpl<$Res, $Val extends CartProductEntity>
     Object? title = null,
     Object? total = null,
   }) {
-    return _then(_value.copyWith(
-      docId: freezed == docId
-          ? _value.docId
-          : docId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      stock: null == stock
-          ? _value.stock
-          : stock // ignore: cast_nullable_to_non_nullable
-              as int,
-      thumbnail: null == thumbnail
-          ? _value.thumbnail
-          : thumbnail // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            docId: freezed == docId
+                ? _value.docId
+                : docId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            price: null == price
+                ? _value.price
+                : price // ignore: cast_nullable_to_non_nullable
+                      as int,
+            quantity: null == quantity
+                ? _value.quantity
+                : quantity // ignore: cast_nullable_to_non_nullable
+                      as int,
+            stock: null == stock
+                ? _value.stock
+                : stock // ignore: cast_nullable_to_non_nullable
+                      as int,
+            thumbnail: null == thumbnail
+                ? _value.thumbnail
+                : thumbnail // ignore: cast_nullable_to_non_nullable
+                      as String,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            total: null == total
+                ? _value.total
+                : total // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$_CartProductEntityCopyWith<$Res>
+abstract class _$$CartProductEntityImplCopyWith<$Res>
     implements $CartProductEntityCopyWith<$Res> {
-  factory _$$_CartProductEntityCopyWith(_$_CartProductEntity value,
-          $Res Function(_$_CartProductEntity) then) =
-      __$$_CartProductEntityCopyWithImpl<$Res>;
+  factory _$$CartProductEntityImplCopyWith(
+    _$CartProductEntityImpl value,
+    $Res Function(_$CartProductEntityImpl) then,
+  ) = __$$CartProductEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? docId,
-      int id,
-      int price,
-      int quantity,
-      int stock,
-      String thumbnail,
-      String title,
-      int total});
+  $Res call({
+    String? docId,
+    int id,
+    int price,
+    int quantity,
+    int stock,
+    String thumbnail,
+    String title,
+    int total,
+  });
 }
 
 /// @nodoc
-class __$$_CartProductEntityCopyWithImpl<$Res>
-    extends _$CartProductEntityCopyWithImpl<$Res, _$_CartProductEntity>
-    implements _$$_CartProductEntityCopyWith<$Res> {
-  __$$_CartProductEntityCopyWithImpl(
-      _$_CartProductEntity _value, $Res Function(_$_CartProductEntity) _then)
-      : super(_value, _then);
+class __$$CartProductEntityImplCopyWithImpl<$Res>
+    extends _$CartProductEntityCopyWithImpl<$Res, _$CartProductEntityImpl>
+    implements _$$CartProductEntityImplCopyWith<$Res> {
+  __$$CartProductEntityImplCopyWithImpl(
+    _$CartProductEntityImpl _value,
+    $Res Function(_$CartProductEntityImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of CartProductEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,55 +160,58 @@ class __$$_CartProductEntityCopyWithImpl<$Res>
     Object? title = null,
     Object? total = null,
   }) {
-    return _then(_$_CartProductEntity(
-      docId: freezed == docId
-          ? _value.docId
-          : docId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      stock: null == stock
-          ? _value.stock
-          : stock // ignore: cast_nullable_to_non_nullable
-              as int,
-      thumbnail: null == thumbnail
-          ? _value.thumbnail
-          : thumbnail // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$CartProductEntityImpl(
+        docId: freezed == docId
+            ? _value.docId
+            : docId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        price: null == price
+            ? _value.price
+            : price // ignore: cast_nullable_to_non_nullable
+                  as int,
+        quantity: null == quantity
+            ? _value.quantity
+            : quantity // ignore: cast_nullable_to_non_nullable
+                  as int,
+        stock: null == stock
+            ? _value.stock
+            : stock // ignore: cast_nullable_to_non_nullable
+                  as int,
+        thumbnail: null == thumbnail
+            ? _value.thumbnail
+            : thumbnail // ignore: cast_nullable_to_non_nullable
+                  as String,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        total: null == total
+            ? _value.total
+            : total // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_CartProductEntity implements _CartProductEntity {
-  _$_CartProductEntity(
-      {required this.docId,
-      required this.id,
-      required this.price,
-      required this.quantity,
-      required this.stock,
-      required this.thumbnail,
-      required this.title,
-      required this.total});
+class _$CartProductEntityImpl implements _CartProductEntity {
+  _$CartProductEntityImpl({
+    this.docId,
+    required this.id,
+    required this.price,
+    required this.quantity,
+    required this.stock,
+    required this.thumbnail,
+    required this.title,
+    required this.total,
+  });
 
   @override
   final String? docId;
@@ -218,10 +236,10 @@ class _$_CartProductEntity implements _CartProductEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartProductEntity &&
+            other is _$CartProductEntityImpl &&
             (identical(other.docId, docId) || other.docId == docId) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.price, price) || other.price == price) &&
@@ -236,26 +254,40 @@ class _$_CartProductEntity implements _CartProductEntity {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, docId, id, price, quantity, stock, thumbnail, title, total);
+    runtimeType,
+    docId,
+    id,
+    price,
+    quantity,
+    stock,
+    thumbnail,
+    title,
+    total,
+  );
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartProductEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartProductEntityCopyWith<_$_CartProductEntity> get copyWith =>
-      __$$_CartProductEntityCopyWithImpl<_$_CartProductEntity>(
-          this, _$identity);
+  _$$CartProductEntityImplCopyWith<_$CartProductEntityImpl> get copyWith =>
+      __$$CartProductEntityImplCopyWithImpl<_$CartProductEntityImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _CartProductEntity implements CartProductEntity {
-  factory _CartProductEntity(
-      {required final String? docId,
-      required final int id,
-      required final int price,
-      required final int quantity,
-      required final int stock,
-      required final String thumbnail,
-      required final String title,
-      required final int total}) = _$_CartProductEntity;
+  factory _CartProductEntity({
+    final String? docId,
+    required final int id,
+    required final int price,
+    required final int quantity,
+    required final int stock,
+    required final String thumbnail,
+    required final String title,
+    required final int total,
+  }) = _$CartProductEntityImpl;
 
   @override
   String? get docId;
@@ -273,8 +305,11 @@ abstract class _CartProductEntity implements CartProductEntity {
   String get title;
   @override
   int get total;
+
+  /// Create a copy of CartProductEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_CartProductEntityCopyWith<_$_CartProductEntity> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CartProductEntityImplCopyWith<_$CartProductEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,49 +12,45 @@ part of 'loader_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$LoaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LoaderEventCopyWith<$Res> {
   factory $LoaderEventCopyWith(
-          LoaderEvent value, $Res Function(LoaderEvent) then) =
-      _$LoaderEventCopyWithImpl<$Res, LoaderEvent>;
+    LoaderEvent value,
+    $Res Function(LoaderEvent) then,
+  ) = _$LoaderEventCopyWithImpl<$Res, LoaderEvent>;
 }
 
 /// @nodoc
@@ -66,27 +62,36 @@ class _$LoaderEventCopyWithImpl<$Res, $Val extends LoaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+    _$StartedImpl value,
+    $Res Function(_$StartedImpl) then,
+  ) = __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$LoaderEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$LoaderEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+    _$StartedImpl _value,
+    $Res Function(_$StartedImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -94,9 +99,9 @@ class _$_Started implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -104,17 +109,13 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-  }) {
+  TResult when<TResult extends Object?>({required TResult Function() started}) {
     return started();
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-  }) {
+  TResult? whenOrNull<TResult extends Object?>({TResult? Function()? started}) {
     return started?.call();
   }
 
@@ -160,7 +161,7 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements LoaderEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -170,52 +171,47 @@ mixin _$LoaderState {
     required TResult Function() initial,
     required TResult Function(bool isLogged) isLogged,
     required TResult Function() noVerifiedEmail,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(bool isLogged)? isLogged,
     TResult? Function()? noVerifiedEmail,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(bool isLogged)? isLogged,
     TResult Function()? noVerifiedEmail,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_NoAuth value) isLogged,
     required TResult Function(_NoVerifiedEmail value) noVerifiedEmail,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_NoAuth value)? isLogged,
     TResult? Function(_NoVerifiedEmail value)? noVerifiedEmail,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_NoAuth value)? isLogged,
     TResult Function(_NoVerifiedEmail value)? noVerifiedEmail,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LoaderStateCopyWith<$Res> {
   factory $LoaderStateCopyWith(
-          LoaderState value, $Res Function(LoaderState) then) =
-      _$LoaderStateCopyWithImpl<$Res, LoaderState>;
+    LoaderState value,
+    $Res Function(LoaderState) then,
+  ) = _$LoaderStateCopyWithImpl<$Res, LoaderState>;
 }
 
 /// @nodoc
@@ -227,27 +223,36 @@ class _$LoaderStateCopyWithImpl<$Res, $Val extends LoaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$LoaderStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$LoaderStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -255,9 +260,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -333,42 +338,48 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements LoaderState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_NoAuthCopyWith<$Res> {
-  factory _$$_NoAuthCopyWith(_$_NoAuth value, $Res Function(_$_NoAuth) then) =
-      __$$_NoAuthCopyWithImpl<$Res>;
+abstract class _$$NoAuthImplCopyWith<$Res> {
+  factory _$$NoAuthImplCopyWith(
+    _$NoAuthImpl value,
+    $Res Function(_$NoAuthImpl) then,
+  ) = __$$NoAuthImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isLogged});
 }
 
 /// @nodoc
-class __$$_NoAuthCopyWithImpl<$Res>
-    extends _$LoaderStateCopyWithImpl<$Res, _$_NoAuth>
-    implements _$$_NoAuthCopyWith<$Res> {
-  __$$_NoAuthCopyWithImpl(_$_NoAuth _value, $Res Function(_$_NoAuth) _then)
-      : super(_value, _then);
+class __$$NoAuthImplCopyWithImpl<$Res>
+    extends _$LoaderStateCopyWithImpl<$Res, _$NoAuthImpl>
+    implements _$$NoAuthImplCopyWith<$Res> {
+  __$$NoAuthImplCopyWithImpl(
+    _$NoAuthImpl _value,
+    $Res Function(_$NoAuthImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of LoaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isLogged = null,
-  }) {
-    return _then(_$_NoAuth(
-      null == isLogged
-          ? _value.isLogged
-          : isLogged // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? isLogged = null}) {
+    return _then(
+      _$NoAuthImpl(
+        null == isLogged
+            ? _value.isLogged
+            : isLogged // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_NoAuth implements _NoAuth {
-  const _$_NoAuth(this.isLogged);
+class _$NoAuthImpl implements _NoAuth {
+  const _$NoAuthImpl(this.isLogged);
 
   @override
   final bool isLogged;
@@ -379,10 +390,10 @@ class _$_NoAuth implements _NoAuth {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoAuth &&
+            other is _$NoAuthImpl &&
             (identical(other.isLogged, isLogged) ||
                 other.isLogged == isLogged));
   }
@@ -390,11 +401,13 @@ class _$_NoAuth implements _NoAuth {
   @override
   int get hashCode => Object.hash(runtimeType, isLogged);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoAuthCopyWith<_$_NoAuth> get copyWith =>
-      __$$_NoAuthCopyWithImpl<_$_NoAuth>(this, _$identity);
+  _$$NoAuthImplCopyWith<_$NoAuthImpl> get copyWith =>
+      __$$NoAuthImplCopyWithImpl<_$NoAuthImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -466,34 +479,42 @@ class _$_NoAuth implements _NoAuth {
 }
 
 abstract class _NoAuth implements LoaderState {
-  const factory _NoAuth(final bool isLogged) = _$_NoAuth;
+  const factory _NoAuth(final bool isLogged) = _$NoAuthImpl;
 
   bool get isLogged;
-  @JsonKey(ignore: true)
-  _$$_NoAuthCopyWith<_$_NoAuth> get copyWith =>
+
+  /// Create a copy of LoaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NoAuthImplCopyWith<_$NoAuthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NoVerifiedEmailCopyWith<$Res> {
-  factory _$$_NoVerifiedEmailCopyWith(
-          _$_NoVerifiedEmail value, $Res Function(_$_NoVerifiedEmail) then) =
-      __$$_NoVerifiedEmailCopyWithImpl<$Res>;
+abstract class _$$NoVerifiedEmailImplCopyWith<$Res> {
+  factory _$$NoVerifiedEmailImplCopyWith(
+    _$NoVerifiedEmailImpl value,
+    $Res Function(_$NoVerifiedEmailImpl) then,
+  ) = __$$NoVerifiedEmailImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NoVerifiedEmailCopyWithImpl<$Res>
-    extends _$LoaderStateCopyWithImpl<$Res, _$_NoVerifiedEmail>
-    implements _$$_NoVerifiedEmailCopyWith<$Res> {
-  __$$_NoVerifiedEmailCopyWithImpl(
-      _$_NoVerifiedEmail _value, $Res Function(_$_NoVerifiedEmail) _then)
-      : super(_value, _then);
+class __$$NoVerifiedEmailImplCopyWithImpl<$Res>
+    extends _$LoaderStateCopyWithImpl<$Res, _$NoVerifiedEmailImpl>
+    implements _$$NoVerifiedEmailImplCopyWith<$Res> {
+  __$$NoVerifiedEmailImplCopyWithImpl(
+    _$NoVerifiedEmailImpl _value,
+    $Res Function(_$NoVerifiedEmailImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_NoVerifiedEmail implements _NoVerifiedEmail {
-  const _$_NoVerifiedEmail();
+class _$NoVerifiedEmailImpl implements _NoVerifiedEmail {
+  const _$NoVerifiedEmailImpl();
 
   @override
   String toString() {
@@ -501,9 +522,9 @@ class _$_NoVerifiedEmail implements _NoVerifiedEmail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoVerifiedEmail);
+        (other.runtimeType == runtimeType && other is _$NoVerifiedEmailImpl);
   }
 
   @override
@@ -579,5 +600,5 @@ class _$_NoVerifiedEmail implements _NoVerifiedEmail {
 }
 
 abstract class _NoVerifiedEmail implements LoaderState {
-  const factory _NoVerifiedEmail() = _$_NoVerifiedEmail;
+  const factory _NoVerifiedEmail() = _$NoVerifiedEmailImpl;
 }

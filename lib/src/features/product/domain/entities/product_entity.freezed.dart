@@ -12,7 +12,8 @@ part of 'product_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ProductEntity {
@@ -28,7 +29,9 @@ mixin _$ProductEntity {
   String get thumbnail => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductEntityCopyWith<ProductEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -36,21 +39,23 @@ mixin _$ProductEntity {
 /// @nodoc
 abstract class $ProductEntityCopyWith<$Res> {
   factory $ProductEntityCopyWith(
-          ProductEntity value, $Res Function(ProductEntity) then) =
-      _$ProductEntityCopyWithImpl<$Res, ProductEntity>;
+    ProductEntity value,
+    $Res Function(ProductEntity) then,
+  ) = _$ProductEntityCopyWithImpl<$Res, ProductEntity>;
   @useResult
-  $Res call(
-      {int id,
-      String title,
-      String description,
-      int price,
-      double discountPercentage,
-      double rating,
-      int stock,
-      String brand,
-      String category,
-      String thumbnail,
-      List<String> images});
+  $Res call({
+    int id,
+    String title,
+    String description,
+    int price,
+    double discountPercentage,
+    double rating,
+    int stock,
+    String brand,
+    String category,
+    String thumbnail,
+    List<String> images,
+  });
 }
 
 /// @nodoc
@@ -63,6 +68,8 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,85 +85,93 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
     Object? thumbnail = null,
     Object? images = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      discountPercentage: null == discountPercentage
-          ? _value.discountPercentage
-          : discountPercentage // ignore: cast_nullable_to_non_nullable
-              as double,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      stock: null == stock
-          ? _value.stock
-          : stock // ignore: cast_nullable_to_non_nullable
-              as int,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      thumbnail: null == thumbnail
-          ? _value.thumbnail
-          : thumbnail // ignore: cast_nullable_to_non_nullable
-              as String,
-      images: null == images
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+            price: null == price
+                ? _value.price
+                : price // ignore: cast_nullable_to_non_nullable
+                      as int,
+            discountPercentage: null == discountPercentage
+                ? _value.discountPercentage
+                : discountPercentage // ignore: cast_nullable_to_non_nullable
+                      as double,
+            rating: null == rating
+                ? _value.rating
+                : rating // ignore: cast_nullable_to_non_nullable
+                      as double,
+            stock: null == stock
+                ? _value.stock
+                : stock // ignore: cast_nullable_to_non_nullable
+                      as int,
+            brand: null == brand
+                ? _value.brand
+                : brand // ignore: cast_nullable_to_non_nullable
+                      as String,
+            category: null == category
+                ? _value.category
+                : category // ignore: cast_nullable_to_non_nullable
+                      as String,
+            thumbnail: null == thumbnail
+                ? _value.thumbnail
+                : thumbnail // ignore: cast_nullable_to_non_nullable
+                      as String,
+            images: null == images
+                ? _value.images
+                : images // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$_ProductEntityCopyWith<$Res>
+abstract class _$$ProductEntityImplCopyWith<$Res>
     implements $ProductEntityCopyWith<$Res> {
-  factory _$$_ProductEntityCopyWith(
-          _$_ProductEntity value, $Res Function(_$_ProductEntity) then) =
-      __$$_ProductEntityCopyWithImpl<$Res>;
+  factory _$$ProductEntityImplCopyWith(
+    _$ProductEntityImpl value,
+    $Res Function(_$ProductEntityImpl) then,
+  ) = __$$ProductEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String title,
-      String description,
-      int price,
-      double discountPercentage,
-      double rating,
-      int stock,
-      String brand,
-      String category,
-      String thumbnail,
-      List<String> images});
+  $Res call({
+    int id,
+    String title,
+    String description,
+    int price,
+    double discountPercentage,
+    double rating,
+    int stock,
+    String brand,
+    String category,
+    String thumbnail,
+    List<String> images,
+  });
 }
 
 /// @nodoc
-class __$$_ProductEntityCopyWithImpl<$Res>
-    extends _$ProductEntityCopyWithImpl<$Res, _$_ProductEntity>
-    implements _$$_ProductEntityCopyWith<$Res> {
-  __$$_ProductEntityCopyWithImpl(
-      _$_ProductEntity _value, $Res Function(_$_ProductEntity) _then)
-      : super(_value, _then);
+class __$$ProductEntityImplCopyWithImpl<$Res>
+    extends _$ProductEntityCopyWithImpl<$Res, _$ProductEntityImpl>
+    implements _$$ProductEntityImplCopyWith<$Res> {
+  __$$ProductEntityImplCopyWithImpl(
+    _$ProductEntityImpl _value,
+    $Res Function(_$ProductEntityImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of ProductEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,71 +187,73 @@ class __$$_ProductEntityCopyWithImpl<$Res>
     Object? thumbnail = null,
     Object? images = null,
   }) {
-    return _then(_$_ProductEntity(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      discountPercentage: null == discountPercentage
-          ? _value.discountPercentage
-          : discountPercentage // ignore: cast_nullable_to_non_nullable
-              as double,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      stock: null == stock
-          ? _value.stock
-          : stock // ignore: cast_nullable_to_non_nullable
-              as int,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      thumbnail: null == thumbnail
-          ? _value.thumbnail
-          : thumbnail // ignore: cast_nullable_to_non_nullable
-              as String,
-      images: null == images
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _$ProductEntityImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        price: null == price
+            ? _value.price
+            : price // ignore: cast_nullable_to_non_nullable
+                  as int,
+        discountPercentage: null == discountPercentage
+            ? _value.discountPercentage
+            : discountPercentage // ignore: cast_nullable_to_non_nullable
+                  as double,
+        rating: null == rating
+            ? _value.rating
+            : rating // ignore: cast_nullable_to_non_nullable
+                  as double,
+        stock: null == stock
+            ? _value.stock
+            : stock // ignore: cast_nullable_to_non_nullable
+                  as int,
+        brand: null == brand
+            ? _value.brand
+            : brand // ignore: cast_nullable_to_non_nullable
+                  as String,
+        category: null == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as String,
+        thumbnail: null == thumbnail
+            ? _value.thumbnail
+            : thumbnail // ignore: cast_nullable_to_non_nullable
+                  as String,
+        images: null == images
+            ? _value._images
+            : images // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-class _$_ProductEntity implements _ProductEntity {
-  _$_ProductEntity(
-      {required this.id,
-      required this.title,
-      required this.description,
-      required this.price,
-      required this.discountPercentage,
-      required this.rating,
-      required this.stock,
-      required this.brand,
-      required this.category,
-      required this.thumbnail,
-      required final List<String> images})
-      : _images = images;
+class _$ProductEntityImpl implements _ProductEntity {
+  _$ProductEntityImpl({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.price,
+    required this.discountPercentage,
+    required this.rating,
+    required this.stock,
+    required this.brand,
+    required this.category,
+    required this.thumbnail,
+    required final List<String> images,
+  }) : _images = images;
 
   @override
   final int id;
@@ -272,10 +289,10 @@ class _$_ProductEntity implements _ProductEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductEntity &&
+            other is _$ProductEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -295,39 +312,43 @@ class _$_ProductEntity implements _ProductEntity {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      description,
-      price,
-      discountPercentage,
-      rating,
-      stock,
-      brand,
-      category,
-      thumbnail,
-      const DeepCollectionEquality().hash(_images));
+    runtimeType,
+    id,
+    title,
+    description,
+    price,
+    discountPercentage,
+    rating,
+    stock,
+    brand,
+    category,
+    thumbnail,
+    const DeepCollectionEquality().hash(_images),
+  );
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductEntityCopyWith<_$_ProductEntity> get copyWith =>
-      __$$_ProductEntityCopyWithImpl<_$_ProductEntity>(this, _$identity);
+  _$$ProductEntityImplCopyWith<_$ProductEntityImpl> get copyWith =>
+      __$$ProductEntityImplCopyWithImpl<_$ProductEntityImpl>(this, _$identity);
 }
 
 abstract class _ProductEntity implements ProductEntity {
-  factory _ProductEntity(
-      {required final int id,
-      required final String title,
-      required final String description,
-      required final int price,
-      required final double discountPercentage,
-      required final double rating,
-      required final int stock,
-      required final String brand,
-      required final String category,
-      required final String thumbnail,
-      required final List<String> images}) = _$_ProductEntity;
+  factory _ProductEntity({
+    required final int id,
+    required final String title,
+    required final String description,
+    required final int price,
+    required final double discountPercentage,
+    required final double rating,
+    required final int stock,
+    required final String brand,
+    required final String category,
+    required final String thumbnail,
+    required final List<String> images,
+  }) = _$ProductEntityImpl;
 
   @override
   int get id;
@@ -351,8 +372,11 @@ abstract class _ProductEntity implements ProductEntity {
   String get thumbnail;
   @override
   List<String> get images;
+
+  /// Create a copy of ProductEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ProductEntityCopyWith<_$_ProductEntity> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProductEntityImplCopyWith<_$ProductEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
