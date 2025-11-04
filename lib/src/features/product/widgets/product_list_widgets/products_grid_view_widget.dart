@@ -1,6 +1,6 @@
-import 'package:e_shop/src/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/src/core/common/enum/product_list_enum.dart';
 import 'package:e_shop/src/features/product/bloc/product_list/product_list_bloc.dart';
+import 'package:e_shop/src/features/product/domain/entities/product_list_entity.dart';
 import 'package:e_shop/src/features/product/widgets/product_item_widgets/product_item_body_widget.dart';
 import 'package:e_shop/src/features/product/widgets/shimmer_loading_widgets/product_item_loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -43,22 +43,19 @@ class _ProductsGridViewWidgetState extends State<ProductsGridViewWidget> {
   void dispose() {
     if (!widget.areProductsEnded) {
       _scrollController!.removeListener(_onChange);
-      _scrollController!.dispose();
+      _scrollController.dispose();
     }
     super.dispose();
   }
 
   void _onChange() {
     if (_scrollController!.position.maxScrollExtent ==
-        _scrollController!.offset) {
+        _scrollController.offset) {
       final page = (widget.productList?.products.length ?? 0) ~/ 10;
       if (!widget.areProductsEnded) {
         context.read<ProductListBloc>().add(
-              ProductListEvent.onGetProducts(
-                query: widget.query,
-                page: page,
-              ),
-            );
+          ProductListEvent.onGetProducts(query: widget.query, page: page),
+        );
       } else {}
     }
   }

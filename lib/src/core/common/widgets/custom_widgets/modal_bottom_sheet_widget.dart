@@ -72,25 +72,25 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                     key: _formKey,
                     child: TextFormField(
                       textAlign: TextAlign.center,
-                      decoration:
-                          AppTextInputDecoration.mainInputDecoration.copyWith(
-                        prefixIcon: IconButton(
-                          onPressed: () => _decrement(),
-                          icon: const Icon(Icons.remove),
-                        ),
-                        suffixIcon: IconButton(
-                          onPressed: () => _increment(),
-                          icon: const Icon(Icons.add),
-                        ),
-                        fillColor: Colors.white38,
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                        ),
-                        errorMaxLines: 3,
-                      ),
+                      decoration: AppTextInputDecoration.mainInputDecoration
+                          .copyWith(
+                            prefixIcon: IconButton(
+                              onPressed: () => _decrement(),
+                              icon: const Icon(Icons.remove),
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: () => _increment(),
+                              icon: const Icon(Icons.add),
+                            ),
+                            fillColor: Colors.white38,
+                            border: const OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            errorMaxLines: 3,
+                          ),
                       controller: _quantityController,
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.number,
@@ -110,8 +110,8 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
           SizedBox(height: 20.h),
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(AppColors.mainColor),
-              shape: MaterialStateProperty.all(
+              backgroundColor: WidgetStateProperty.all(AppColors.mainColor),
+              shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4.r),
                 ),
@@ -130,9 +130,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
             },
             child: const Text(
               AppTexts.addToCart,
-              style: TextStyle(
-                color: Colors.white,
-              ),
+              style: TextStyle(color: Colors.white),
             ),
           ),
           SizedBox(height: 20.h),

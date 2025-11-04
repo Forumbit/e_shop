@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryListLoadingWidget extends StatelessWidget {
-  const CategoryListLoadingWidget({
-    super.key,
-  });
+  const CategoryListLoadingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +17,18 @@ class CategoryListLoadingWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(AppTexts.categories,
-                  style: AppTextStyles.caption4
-                      .copyWith(color: AppColors.typography2)),
-              Text(AppTexts.showAll,
-                  style: AppTextStyles.viewAll
-                      .copyWith(color: AppColors.typography1)),
+              Text(
+                AppTexts.categories,
+                style: AppTextStyles.caption4.copyWith(
+                  color: AppColors.typography2,
+                ),
+              ),
+              Text(
+                AppTexts.showAll,
+                style: AppTextStyles.viewAll.copyWith(
+                  color: AppColors.typography1,
+                ),
+              ),
             ],
           ),
         ),
@@ -59,12 +63,10 @@ class _CategoryItemLoadingWidget extends StatelessWidget {
         width: 124.w,
         child: TextButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(AppColors.defaultColor),
-            overlayColor: MaterialStateProperty.all(Colors.grey),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
+            backgroundColor: WidgetStateProperty.all(AppColors.defaultColor),
+            overlayColor: WidgetStateProperty.all(Colors.grey),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
             ),
           ),
           onPressed: () {},

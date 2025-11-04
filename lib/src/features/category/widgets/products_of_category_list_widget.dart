@@ -1,18 +1,15 @@
 import 'package:e_shop/src/core/common/constants/app_colors.dart';
-import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
-import 'package:e_shop/src/core/route/app_route_name.dart';
 import 'package:e_shop/src/core/common/constants/app_shadows.dart';
+import 'package:e_shop/src/core/common/constants/app_text_styles.dart';
 import 'package:e_shop/src/core/common/constants/app_texts.dart';
 import 'package:e_shop/src/core/common/widgets/shimmer/shimmer_loading.dart';
+import 'package:e_shop/src/core/route/app_route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class CategoryListWidget extends StatelessWidget {
-  const CategoryListWidget({
-    super.key,
-    required this.categories,
-  });
+  const CategoryListWidget({super.key, required this.categories});
 
   final List<String>? categories;
 
@@ -26,14 +23,20 @@ class CategoryListWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(AppTexts.categories,
-                  style: AppTextStyles.caption4
-                      .copyWith(color: AppColors.typography2)),
+              Text(
+                AppTexts.categories,
+                style: AppTextStyles.caption4.copyWith(
+                  color: AppColors.typography2,
+                ),
+              ),
               GestureDetector(
                 onTap: () => context.pushNamed(AppRouteNamed.categoryList),
-                child: Text(AppTexts.showAll,
-                    style: AppTextStyles.viewAll
-                        .copyWith(color: AppColors.typography1)),
+                child: Text(
+                  AppTexts.showAll,
+                  style: AppTextStyles.viewAll.copyWith(
+                    color: AppColors.typography1,
+                  ),
+                ),
               ),
             ],
           ),
@@ -88,21 +91,17 @@ class CategoryItemWidget extends StatelessWidget {
         ),
         child: TextButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            overlayColor: MaterialStateProperty.all(Colors.grey),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
+            backgroundColor: WidgetStateProperty.all(Colors.transparent),
+            overlayColor: WidgetStateProperty.all(Colors.grey),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
             ),
           ),
           onPressed: () {
             if (isLoading) return;
             context.pushNamed(
               AppRouteNamed.categoryProduct,
-              pathParameters: {
-                AppRouteArgument.category: category!,
-              },
+              pathParameters: {AppRouteArgument.category: category!},
             );
           },
           child: Text(

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProviderValue<T> extends InheritedWidget {
-  const ProviderValue({
-    super.key,
-    required this.value,
-    required Widget child,
-  }) : super(child: child);
+  const ProviderValue({super.key, required this.value, required super.child});
 
   final T value;
 
